@@ -32,11 +32,15 @@ export function Select({ value, onChange, options, placeholder = 'Select…', cl
 
   return (
     <div ref={ref} className={cn('relative', className)}>
-      {label && <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
+      {label && (
+        <label className="block text-xs font-semibold uppercase tracking-wide text-gray-500 mb-1.5">
+          {label}
+        </label>
+      )}
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-left focus:outline-none focus:ring-2 focus:ring-[#C8A84B] hover:border-[#C8A84B]/60 transition-colors"
+        className="flex w-full items-center justify-between rounded-xl border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-left focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary hover:border-gray-300 transition-colors"
       >
         <span className={selected ? 'text-gray-900' : 'text-gray-400'}>
           {selected ? selected.label : placeholder}
@@ -47,7 +51,7 @@ export function Select({ value, onChange, options, placeholder = 'Select…', cl
       </button>
 
       {open && (
-        <div className="absolute z-50 mt-1 w-full rounded-lg border border-gray-200 bg-white shadow-xl overflow-hidden animate-[modalIn_0.15s_cubic-bezier(0.16,1,0.3,1)_both]">
+        <div className="absolute z-50 mt-1.5 w-full rounded-xl border border-gray-100 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.10)] overflow-hidden animate-[modalIn_0.15s_cubic-bezier(0.16,1,0.3,1)_both]">
           <div className="max-h-52 overflow-y-auto py-1">
             {options.map((opt) => (
               <button
@@ -55,8 +59,8 @@ export function Select({ value, onChange, options, placeholder = 'Select…', cl
                 type="button"
                 onClick={() => { onChange(opt.value); setOpen(false); }}
                 className={cn(
-                  'flex w-full items-center justify-between px-3 py-2 text-sm transition-colors hover:bg-gray-50',
-                  value === opt.value ? 'text-[#C8A84B] font-medium bg-[#C8A84B]/5' : 'text-gray-700'
+                  'flex w-full items-center justify-between px-3.5 py-2 text-sm transition-colors hover:bg-gray-50',
+                  value === opt.value ? 'text-[#C8A84B] font-semibold bg-primary/5' : 'text-gray-700'
                 )}
               >
                 <span>{opt.label}</span>

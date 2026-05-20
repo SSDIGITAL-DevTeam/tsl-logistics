@@ -40,12 +40,12 @@ export function Modal({ open, onClose, title, children, size = 'md', className }
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
 
       {/* Centering wrapper */}
-      <div className="absolute inset-0 flex items-start justify-center p-4 py-10">
+      <div className="absolute inset-0 flex items-center justify-center p-4">
         {/* Modal panel — flex column, constrained height so body can scroll */}
         <div
           className={cn(
             'relative w-full flex flex-col bg-white rounded-xl shadow-2xl',
-            'max-h-[calc(100vh-5rem)]',
+            'max-h-[calc(100vh-3rem)]',
             'animate-[modalIn_0.2s_cubic-bezier(0.16,1,0.3,1)_both]',
             sizes[size],
             className

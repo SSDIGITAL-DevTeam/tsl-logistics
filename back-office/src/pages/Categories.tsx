@@ -62,24 +62,26 @@ export function CategoriesPage() {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Blog Categories</h1>
-          <p className="text-sm text-gray-400 mt-0.5">Organise blog posts by category</p>
+          <h1 className="text-2xl font-bold text-gray-900">Blog Categories</h1>
+          <p className="text-sm text-gray-400 mt-0.5">Organise posts by topic</p>
         </div>
         <Button size="sm" onClick={openCreate}>
-          <Plus className="h-4 w-4" /> Add Category
+          <Plus className="h-3.5 w-3.5" /> Add Category
         </Button>
       </div>
 
-      <div className="rounded-xl bg-white shadow-sm border border-gray-100 overflow-hidden">
+      <div className="rounded-2xl bg-white ring-1 ring-black/5 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-100">
+          <table className="min-w-full">
             <thead>
-              <tr className="bg-gray-50">
+              <tr className="border-b border-gray-100 bg-gray-50/70">
                 {['Name', 'Slug', 'Description', 'Actions'].map((h) => (
-                  <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">{h}</th>
+                  <th key={h} className="px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-widest text-gray-400">
+                    {h}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -88,32 +90,34 @@ export function CategoriesPage() {
                 [...Array(4)].map((_, i) => (
                   <tr key={i} className="animate-pulse">
                     {[...Array(4)].map((_, j) => (
-                      <td key={j} className="px-4 py-3"><div className="h-4 rounded bg-gray-200" /></td>
+                      <td key={j} className="px-4 py-3.5">
+                        <div className="h-3.5 rounded-lg bg-gray-100" />
+                      </td>
                     ))}
                   </tr>
                 ))
               ) : categories?.length ? (
                 categories.map((cat) => (
-                  <tr key={cat.id} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-4 py-3">
+                  <tr key={cat.id} className="hover:bg-amber-50/20 transition-colors">
+                    <td className="px-4 py-3.5">
                       <p className="text-sm font-semibold text-gray-900">{cat.name}</p>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-400">/{cat.slug}</td>
-                    <td className="px-4 py-3 text-sm text-gray-500 max-w-[260px] truncate">
+                    <td className="px-4 py-3.5 text-sm text-gray-400 font-mono">/{cat.slug}</td>
+                    <td className="px-4 py-3.5 text-sm text-gray-500 max-w-72 truncate">
                       {cat.description || <span className="text-gray-300">—</span>}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5">
                       <div className="flex items-center gap-1">
                         <Button size="sm" variant="ghost" onClick={() => openEdit(cat)}>
-                          <Pencil className="h-4 w-4" />
+                          <Pencil className="h-3.5 w-3.5" />
                         </Button>
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                          className="text-red-400 hover:text-red-600 hover:bg-red-50"
                           onClick={() => setConfirmDelete(cat)}
                         >
-                          <Trash2 className="h-4 w-4" />
+                          <Trash2 className="h-3.5 w-3.5" />
                         </Button>
                       </div>
                     </td>
@@ -121,7 +125,7 @@ export function CategoriesPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={4} className="px-4 py-12 text-center text-sm text-gray-400">
+                  <td colSpan={4} className="px-4 py-14 text-center text-sm text-gray-400">
                     No categories yet.
                   </td>
                 </tr>
@@ -138,15 +142,15 @@ export function CategoriesPage() {
       >
         <form onSubmit={handleSubmit((d) => save.mutate(d))} className="space-y-4">
           <Input label="Name *" error={errors.name?.message} {...register('name')} />
-          <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-700">Description</label>
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-semibold uppercase tracking-wide text-gray-500">Description</label>
             <textarea
               rows={2}
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#C8A84B]"
+              className="rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary resize-none"
               {...register('description')}
             />
           </div>
-          <div className="flex justify-end gap-2">
+          <div className="flex justify-end gap-2 pt-1">
             <Button type="button" variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
             <Button type="submit" loading={isSubmitting || save.isPending}>
               {editTarget ? 'Update' : 'Create'}
