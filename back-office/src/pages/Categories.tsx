@@ -9,6 +9,7 @@ import api from '../lib/api';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Modal } from '../components/ui/Modal';
+import { ConfirmModal } from '../components/ui/ConfirmModal';
 import type { BlogCategory } from '../types';
 
 const schema = z.object({
@@ -22,6 +23,7 @@ export function CategoriesPage() {
   const qc = useQueryClient();
   const [editTarget, setEditTarget] = useState<BlogCategory | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState<BlogCategory | null>(null);
 
   const { data: categories, isLoading } = useQuery<BlogCategory[]>({
     queryKey: ['admin-categories'],
@@ -54,12 +56,13 @@ export function CategoriesPage() {
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['admin-categories'] });
       toast.success('Category deleted');
+      setConfirmDelete(null);
     },
     onError: () => toast.error('Failed to delete category'),
   });
 
   return (
-    <div className="space-y-6 max-w-3xl">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Blog Categories</h1>
@@ -108,10 +111,7 @@ export function CategoriesPage() {
                           size="sm"
                           variant="ghost"
                           className="text-red-500 hover:text-red-700 hover:bg-red-50"
-                          onClick={() => {
-                            if (window.confirm(`Delete "${cat.name}"?`)) del.mutate(cat.id);
-                          }}
-                          disabled={del.isPending}
+                          onClick={() => setConfirmDelete(cat)}
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>
@@ -154,6 +154,16 @@ export function CategoriesPage() {
           </div>
         </form>
       </Modal>
+
+      <ConfirmModal
+        open={!!confirmDelete}
+        onClose={() => setConfirmDelete(null)}
+        onConfirm={() => confirmDelete && del.mutate(confirmDelete.id)}
+        title="Delete category?"
+        message={confirmDelete ? `"${confirmDelete.name}" will be permanently deleted. Posts using this category will be unaffected.` : ''}
+        confirmLabel="Delete"
+        isPending={del.isPending}
+      />
     </div>
   );
 }

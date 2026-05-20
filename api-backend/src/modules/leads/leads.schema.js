@@ -9,7 +9,7 @@ export const createLeadSchema = z.object({
   source: z.string().min(1, 'Source is required').max(100),
   pagePath: z.string().max(255).optional(),
   // Honeypot — must be empty
-  website: z.string().max(0, 'Bot detected').optional(),
+  _h: z.string().max(0, 'Bot detected').optional(),
 });
 
 export const listLeadsQuerySchema = z.object({

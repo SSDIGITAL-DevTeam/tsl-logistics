@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 
 @theme {
   --color-primary: #C8A84B;
@@ -24,6 +24,36 @@ body {
 }
 .sidebar-enter { animation: slideInLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .sidebar-exit  { animation: slideOutLeft 0.2s ease-in both; }
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Toast countdown progress bar */
+[data-sonner-toast] {
+  overflow: hidden !important;
+}
+[data-sonner-toast]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+  animation: toast-countdown 4000ms linear forwards;
+  transform-origin: left;
+}
+[data-sonner-toast][data-type="success"]::after  { background: #22c55e; }
+[data-sonner-toast][data-type="error"]::after    { background: #ef4444; }
+[data-sonner-toast][data-type="warning"]::after  { background: #f59e0b; }
+[data-sonner-toast][data-type="info"]::after     { background: #3b82f6; }
+[data-sonner-toast]:not([data-type])::after      { background: #C8A84B; }
+@keyframes toast-countdown {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
 
 /* Tiptap editor styles */
 .tiptap-editor .ProseMirror {

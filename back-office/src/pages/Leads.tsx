@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Download, Search, Filter, X } from 'lucide-react';
 import api from '../lib/api';
 import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
+import { Select } from '../components/ui/Select';
 import { Badge } from '../components/ui/Badge';
 import type { Lead, PaginatedResponse } from '../types';
 import dayjs from 'dayjs';
@@ -75,16 +75,15 @@ export function LeadsPage() {
               className="w-full rounded-lg border border-gray-300 pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#C8A84B]"
             />
           </div>
-          <select
+          <Select
             value={draft.source}
-            onChange={(e) => setDraft((d) => ({ ...d, source: e.target.value }))}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#C8A84B]"
-          >
-            <option value="">All Sources</option>
-            {sources?.map(({ source }) => (
-              <option key={source} value={source}>{source}</option>
-            ))}
-          </select>
+            onChange={(v) => setDraft((d) => ({ ...d, source: v }))}
+            placeholder="All Sources"
+            options={[
+              { value: '', label: 'All Sources' },
+              ...(sources?.map(({ source }) => ({ value: source, label: source })) ?? []),
+            ]}
+          />
           <input
             type="date"
             value={draft.dateFrom}

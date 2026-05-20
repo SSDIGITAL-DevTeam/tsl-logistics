@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     // Honeypot: bots fill this field, humans don't
-    if (body.website) {
+    if (body._h) {
       return NextResponse.json({ success: true });
     }
 
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
         message: body.message,
         source: body.source || "contact",
         pagePath: body.pagePath || "/contact",
-        website: body.website,
+        _h: body._h,
       }),
     });
 

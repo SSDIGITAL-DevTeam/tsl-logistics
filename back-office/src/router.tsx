@@ -7,7 +7,6 @@ import { ResetPasswordPage } from './pages/ResetPassword';
 import { DashboardPage } from './pages/Dashboard';
 import { LeadsPage } from './pages/Leads';
 import { BlogListPage } from './pages/BlogList';
-import { BlogEditorPage } from './pages/BlogEditor';
 import { CategoriesPage } from './pages/Categories';
 
 export const router = createBrowserRouter([
@@ -27,8 +26,6 @@ export const router = createBrowserRouter([
           { path: '/dashboard', element: <DashboardPage /> },
           { path: '/leads', element: <LeadsPage /> },
           { path: '/blog', element: <BlogListPage /> },
-          { path: '/blog/new', element: <BlogEditorPage /> },
-          { path: '/blog/:id/edit', element: <BlogEditorPage /> },
           { path: '/categories', element: <CategoriesPage /> },
         ],
       },

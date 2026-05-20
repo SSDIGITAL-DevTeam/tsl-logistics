@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import CustomSelect from "./ui/CustomSelect";
 
 interface ContactFormProps {
   enquiryOptions?: string[];
@@ -29,7 +30,7 @@ export default function ContactForm({
     email: "",
     enquiry: "",
     message: "",
-    website: "", // honeypot — must stay empty
+    _h: "", // honeypot — must stay empty
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -70,9 +71,9 @@ export default function ContactForm({
       {/* Honeypot — hidden from humans, bots fill it */}
       <input
         type="text"
-        name="website"
-        value={form.website}
-        onChange={(e) => setForm({ ...form, website: e.target.value })}
+        name="_h"
+        value={form._h}
+        onChange={(e) => setForm({ ...form, _h: e.target.value })}
         tabIndex={-1}
         autoComplete="off"
         style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }}
@@ -116,16 +117,12 @@ export default function ContactForm({
       </div>
       <div>
         <label className="block text-sm font-medium text-[#252525] mb-1">Type of Enquiry</label>
-        <select
+        <CustomSelect
           value={form.enquiry}
-          onChange={(e) => setForm({ ...form, enquiry: e.target.value })}
-          className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none bg-white"
-        >
-          <option value="" disabled hidden>Select an enquiry type</option>
-          {enquiryOptions.map((opt) => (
-            <option key={opt} value={opt}>{opt}</option>
-          ))}
-        </select>
+          onChange={(v) => setForm({ ...form, enquiry: v })}
+          options={enquiryOptions}
+          placeholder="Select an enquiry type"
+        />
       </div>
       <div>
         <label className="block text-sm font-medium text-[#252525] mb-1">Message</label>
