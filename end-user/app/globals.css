@@ -1,10 +1,6 @@
-@import "tailwindcss";
-
-/*
-  NOTE: Do NOT add a bare `* { margin:0; padding:0 }` reset here.
-  Tailwind v4's preflight already does that inside `@layer base`, and an
-  unlayered reset would override every spacing utility (px-4, mb-6, mx-auto…).
-*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --primary: #C8A84B;
