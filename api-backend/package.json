@@ -1,0 +1,36 @@
+{
+  "name": "tsl-api-backend",
+  "version": "1.0.0",
+  "description": "TSL Logistics REST API",
+  "type": "module",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "node --watch --env-file=.env src/index.js",
+    "migrate": "node --env-file=.env src/migrate.js",
+    "generate": "drizzle-kit generate",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.10.1",
+    "drizzle-orm": "^0.40.1",
+    "mysql2": "^3.14.0",
+    "jsonwebtoken": "^9.0.2",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.0",
+    "pino-pretty": "^13.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
