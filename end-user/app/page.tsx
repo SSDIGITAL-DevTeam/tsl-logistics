@@ -180,21 +180,20 @@ export default function HomePage() {
 
       {/* ── Hero Section ── */}
       <section
-        className="relative min-h-[480px] md:min-h-[580px] flex items-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/BANNER new-1920w.png')" }}
+        className="relative min-h-[600px] md:min-h-[800px] flex items-center bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/hero-bg.png')" }}
       >
-        <div className="hero-overlay absolute inset-0" />
-        <div className="hero-in relative z-10 max-w-[1200px] mx-auto px-4 py-20 text-center w-full">
-          <div className="inline-block bg-[#C8A84B]/20 border border-[#C8A84B]/40 rounded-full px-4 py-1.5 text-[#C8A84B] text-xs font-semibold uppercase tracking-widest mb-5">
-            Singapore&rsquo;s Trusted Logistics Partner Since 2003
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-[64px] font-bold text-white leading-tight mb-6">
-            Delivering value to our clients &ndash; On time, Every time!
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="hero-in relative z-10 max-w-[1200px] mx-auto px-4 py-20 w-full flex flex-col items-start text-left">
+          <h1 className="text-5xl md:text-6xl lg:text-[80px] font-bold text-white leading-[1.1] mb-6 max-w-4xl">
+            Delivering value to<br />
+            our clients &ndash; On time,<br />
+            Every time!
           </h1>
-          <p className="text-white/90 text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed">
+          <p className="text-white text-sm md:text-base max-w-2xl mb-10 leading-relaxed">
             TSL Logistics Pte Ltd. was founded in 2003 by veteran logistics expert Mr. Alan Tay Soon Lai with the
             objective of establishing a client-focused{" "}
-            <a href="https://www.tsllogistics.sg/" className="text-[#C8A84B] underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.tsllogistics.sg/" className="underline hover:no-underline" target="_blank" rel="noopener noreferrer">
               logistics company in Singapore
             </a>
             . Since then, TSL has grown to become one of Singapore&rsquo;s most renowned integrated logistics
@@ -203,9 +202,8 @@ export default function HomePage() {
           </p>
           <Link
             href="/tsl-logistics"
-            className="inline-flex items-center gap-2 bg-[#F05921] hover:bg-[#d44d1a] text-white font-semibold py-3.5 px-10 rounded-full uppercase text-sm tracking-widest transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            className="inline-block bg-[#F2C94C] hover:bg-[#d9b443] text-gray-900 font-semibold py-4 px-10 uppercase text-sm tracking-widest transition-all"
           >
-            <Star size={14} />
             OUR SERVICES
           </Link>
         </div>
