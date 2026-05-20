@@ -1,9 +1,11 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface ContactFormProps {
   enquiryOptions?: string[];
+  source?: string;
 }
 
 const defaultOptions = [
@@ -13,11 +15,22 @@ const defaultOptions = [
   "Others",
 ];
 
-export default function ContactForm({ enquiryOptions = defaultOptions }: ContactFormProps) {
+export default function ContactForm({
+  enquiryOptions = defaultOptions,
+  source = "contact",
+}: ContactFormProps) {
+  const pathname = usePathname();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [form, setForm] = useState({ name: "", phone: "", email: "", enquiry: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    enquiry: "",
+    message: "",
+    website: "", // honeypot — must stay empty
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +40,11 @@ export default function ContactForm({ enquiryOptions = defaultOptions }: Contact
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          source,
+          pagePath: pathname,
+        }),
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
@@ -50,6 +67,18 @@ export default function ContactForm({ enquiryOptions = defaultOptions }: Contact
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Honeypot — hidden from humans, bots fill it */}
+      <input
+        type="text"
+        name="website"
+        value={form.website}
+        onChange={(e) => setForm({ ...form, website: e.target.value })}
+        tabIndex={-1}
+        autoComplete="off"
+        style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }}
+        aria-hidden="true"
+      />
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-[#252525] mb-1">Name <span className="text-red-500">*</span></label>
@@ -119,4 +148,3 @@ export default function ContactForm({ enquiryOptions = defaultOptions }: Contact
     </form>
   );
 }
-

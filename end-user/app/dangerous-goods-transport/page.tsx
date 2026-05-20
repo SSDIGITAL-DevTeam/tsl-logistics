@@ -71,6 +71,7 @@ export default function DangerousGoodsTransportPage() {
     <ServicePageLayout
       title="TSL DG Trucking – Dangerous Goods Handling"
       enquiryOptions={enquiryOptions}
+      source="dangerous-goods-transport"
     >
       {/* Hero image */}
       <div className="aspect-[16/6] relative overflow-hidden rounded-lg mb-10 shadow">

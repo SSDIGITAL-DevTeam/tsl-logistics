@@ -56,7 +56,7 @@ const customerReasons = [
 
 export default function WarehousingServicesPage() {
   return (
-    <ServicePageLayout title="TSL Warehousing Solutions" enquiryOptions={enquiryOptions}>
+    <ServicePageLayout title="TSL Warehousing Solutions" enquiryOptions={enquiryOptions} source="warehousing-services">
       {/* Hero image */}
       <div className="aspect-[16/6] relative overflow-hidden rounded-lg mb-10 shadow">
         <Image

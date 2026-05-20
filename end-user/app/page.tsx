@@ -5,11 +5,73 @@ import Link from "next/link";
 import { Star, Phone, Mail, MapPin } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
+import JsonLd from "@/components/JsonLd";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tsllogistics.sg";
 
 export const metadata: Metadata = {
-  title: "Logistic Company in Singapore | Logistic Service Provider | TSL Logistic",
+  title: "Logistic Company in Singapore | Logistic Service Provider | TSL Logistics",
   description:
     "Streamline your logistic service provider, TSL Logistics the best logistics company in Singapore. Your trusted partner for transportation, warehousing, & distribution.",
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    url: SITE_URL,
+  },
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What services do you offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "As a leading logistics company in Singapore, we offer transportation, warehousing, distribution, freight forwarding, and supply chain management.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What regions do you operate in?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We have a global reach, operating across various regions and continents to meet the diverse needs of our clients.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What industries do you specialise in serving?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We specialise in retail, manufacturing, healthcare, automotive, technology, and more — including dangerous goods and perishable goods handling.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do you ensure the timely delivery of goods?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We utilise advanced tracking systems, efficient route planning, and strategic partnerships to ensure the timely delivery of goods to their destinations.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you offer customs clearance services?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we provide comprehensive customs clearance services to facilitate smooth import and export processes across international borders.",
+      },
+    },
+  ],
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+  ],
 };
 
 const certifications = [
@@ -113,6 +175,9 @@ const documentPermits = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqLd} />
+      <JsonLd data={breadcrumbLd} />
+
       {/* ── Hero Section ── */}
       <section
         className="relative min-h-[480px] md:min-h-[580px] flex items-center bg-cover bg-center bg-no-repeat"

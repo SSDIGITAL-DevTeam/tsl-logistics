@@ -29,7 +29,7 @@ export default function ContactPage() {
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 anim-fade-left">
               <h2 className="text-xl font-bold text-[#252525] mb-1">Send Us a Message</h2>
               <div className="gold-divider-left mb-6" />
-              <ContactForm />
+              <ContactForm source="contact" />
             </div>
 
             {/* Contact cards */}

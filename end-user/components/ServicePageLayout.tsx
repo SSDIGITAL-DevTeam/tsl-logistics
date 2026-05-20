@@ -6,6 +6,7 @@ interface ServicePageLayoutProps {
   children: React.ReactNode;
   enquiryOptions?: string[];
   showContactForm?: boolean;
+  source?: string;
 }
 
 export default function ServicePageLayout({
@@ -13,6 +14,7 @@ export default function ServicePageLayout({
   children,
   enquiryOptions,
   showContactForm = true,
+  source = "service",
 }: ServicePageLayoutProps) {
   return (
     <>
@@ -44,7 +46,7 @@ export default function ServicePageLayout({
               <div className="gold-divider" />
             </div>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8">
-              <ContactForm enquiryOptions={enquiryOptions} />
+              <ContactForm enquiryOptions={enquiryOptions} source={source} />
             </div>
           </div>
         </section>
