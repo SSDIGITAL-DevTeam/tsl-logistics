@@ -34,15 +34,15 @@ export function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#141414] via-[#1E1E1E] to-[#252525] px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#C8A84B] font-bold text-white text-xl">T</div>
-          <h1 className="text-2xl font-bold text-gray-900">TSL Back Office</h1>
-          <p className="mt-1 text-sm text-gray-500">Sign in to manage your logistics website</p>
+          <img src="/logo.png" alt="TSL Logistics" className="mx-auto mb-5 h-14 w-auto object-contain" />
+          <h1 className="text-2xl font-bold text-white">Back Office</h1>
+          <p className="mt-1.5 text-sm text-white/40">Sign in to manage your logistics website</p>
         </div>
 
-        <div className="rounded-2xl bg-white p-8 shadow-sm border border-gray-100">
+        <div className="rounded-2xl bg-white p-8 shadow-2xl shadow-black/40">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <Input
               label="Email"
@@ -60,16 +60,16 @@ export function LoginPage() {
             />
 
             {error && (
-              <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
+              <div className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700 border border-red-100">{error}</div>
             )}
 
-            <Button type="submit" loading={isSubmitting} className="w-full">
+            <Button type="submit" loading={isSubmitting} className="w-full !mt-6">
               Sign In
             </Button>
           </form>
 
-          <p className="mt-4 text-center text-sm text-gray-500">
-            <Link to="/forgot-password" className="text-[#C8A84B] hover:underline">
+          <p className="mt-5 text-center text-sm text-gray-400">
+            <Link to="/forgot-password" className="text-[#C8A84B] hover:underline font-medium">
               Forgot password?
             </Link>
           </p>

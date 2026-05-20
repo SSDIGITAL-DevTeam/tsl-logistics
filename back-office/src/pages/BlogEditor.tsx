@@ -4,7 +4,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { ArrowLeft, Save, Eye, Upload } from 'lucide-react';
+import { ArrowLeft, Save, Upload } from 'lucide-react';
+import { toast } from 'sonner';
 import api from '../lib/api';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
@@ -77,8 +78,10 @@ export function BlogEditorPage() {
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['admin-posts'] });
+      toast.success(isEdit ? 'Post updated' : 'Post created');
       navigate('/blog');
     },
+    onError: () => toast.error('Failed to save post'),
   });
 
   const onCoverChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -201,11 +204,6 @@ export function BlogEditorPage() {
           </div>
         </div>
 
-        {save.isError && (
-          <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
-            Failed to save post. Please try again.
-          </div>
-        )}
       </form>
     </div>
   );

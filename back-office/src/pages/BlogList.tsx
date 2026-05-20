@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Plus, Pencil, Trash2, Eye } from 'lucide-react';
+import { Plus, Pencil, Trash2 } from 'lucide-react';
+import { toast } from 'sonner';
 import api from '../lib/api';
 import { Button } from '../components/ui/Button';
 import { Badge, statusToBadgeVariant } from '../components/ui/Badge';
@@ -22,7 +23,8 @@ export function BlogListPage() {
 
   const { mutate: deletePost, isPending: deleting } = useMutation({
     mutationFn: (id: string) => api.delete(`/api/v1/admin/blog/${id}`),
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['admin-posts'] }),
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ['admin-posts'] }); toast.success('Post deleted'); },
+    onError: () => toast.error('Failed to delete post'),
   });
 
   const confirmDelete = (id: string, title: string) => {
@@ -32,7 +34,7 @@ export function BlogListPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Blog Posts</h1>
+        <h1 className="text-xl font-bold text-gray-900">Blog Posts</h1>
         <Link to="/blog/new">
           <Button size="sm">
             <Plus className="h-4 w-4" /> New Post

@@ -1,11 +1,29 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @theme {
   --color-primary: #C8A84B;
   --color-primary-dark: #a8883b;
   --color-accent: #F05921;
   --color-dark: #1E1E1E;
+  --font-sans: 'Inter', system-ui, sans-serif;
 }
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Mobile sidebar slide-in animation */
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+@keyframes slideOutLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+.sidebar-enter { animation: slideInLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.sidebar-exit  { animation: slideOutLeft 0.2s ease-in both; }
 
 /* Tiptap editor styles */
 .tiptap-editor .ProseMirror {
