@@ -1,4 +1,4 @@
-const API_URL = process.env.TSL_API_URL ?? '';
+const API_URL = process.env.TSL_API_URL || 'https://api.tsllogistics.sg';
 
 export interface BlogPost {
   id: string;
