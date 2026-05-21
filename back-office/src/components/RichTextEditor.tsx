@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useEditor, EditorContent, type Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
@@ -35,6 +36,12 @@ export function RichTextEditor({ value, onChange, placeholder = 'Write your blog
       onChange(editor.getHTML());
     },
   });
+
+  useEffect(() => {
+    if (!editor) return;
+    if (editor.getHTML() === value) return;
+    editor.commands.setContent(value || '', false);
+  }, [editor, value]);
 
   if (!editor) return null;
 
