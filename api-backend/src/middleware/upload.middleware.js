@@ -1,13 +1,16 @@
 import multer from 'multer';
 import path from 'path';
 import { randomUUID } from 'crypto';
-import { env } from '../config/env.js';
+import { mkdirSync } from 'fs';
+import { uploadDir } from '../config/uploads.js';
 
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 const MAX_FILE_SIZE_MB = 5;
 
+mkdirSync(uploadDir, { recursive: true });
+
 const storage = multer.diskStorage({
-  destination: env.UPLOAD_DIR,
+  destination: uploadDir,
   filename(req, file, cb) {
     const ext = path.extname(file.originalname).toLowerCase();
     cb(null, `${randomUUID()}${ext}`);

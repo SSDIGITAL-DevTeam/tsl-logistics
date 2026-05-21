@@ -10,7 +10,8 @@ import {
   Image as ImageIcon, List, ListOrdered, Quote, Undo, Redo,
   AlignLeft, AlignCenter, AlignRight, Heading1, Heading2, Heading3,
 } from 'lucide-react';
-import api from '../lib/api';
+import { toast } from 'sonner';
+import api, { assetUrl } from '../lib/api';
 import { cn } from './ui/cn';
 
 interface RichTextEditorProps {
@@ -63,10 +64,13 @@ function Toolbar({ editor }: { editor: Editor }) {
       try {
         const formData = new FormData();
         formData.append('image', file);
-        const { data } = await api.post<{ url: string }>('/api/v1/admin/blog/upload-image', formData);
-        editor.chain().focus().setImage({ src: `${import.meta.env.VITE_API_URL}${data.url}` }).run();
-      } catch {
-        alert('Image upload failed. Please try again.');
+        const { data } = await api.post<{ url: string }>('/api/v1/admin/blog/upload-image', formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
+        editor.chain().focus().setImage({ src: assetUrl(data.url) }).run();
+        toast.success('Image uploaded');
+      } catch (error: any) {
+        toast.error(error?.response?.data?.message || 'Image upload failed. Please try again.');
       }
     };
     input.click();

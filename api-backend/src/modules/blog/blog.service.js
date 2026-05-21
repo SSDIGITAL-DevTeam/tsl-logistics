@@ -13,7 +13,7 @@ import {
   deletePost,
 } from './blog.repository.js';
 import { slugify } from '../../utils/slugify.js';
-import { env } from '../../config/env.js';
+import { uploadDir } from '../../config/uploads.js';
 
 export async function getPublishedPostsService(query) {
   return findPublishedPosts(query);
@@ -136,7 +136,7 @@ function estimateReadingTime(htmlContent) {
 async function deleteUploadedFile(imageUrl) {
   try {
     const filename = path.basename(imageUrl);
-    await fs.unlink(path.join(env.UPLOAD_DIR, filename));
+    await fs.unlink(path.join(uploadDir, filename));
   } catch {
     // Non-critical: file may already be gone
   }

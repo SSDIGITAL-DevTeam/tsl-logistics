@@ -6,7 +6,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Save, Upload } from 'lucide-react';
 import { toast } from 'sonner';
 import { useState } from 'react';
-import api from '../lib/api';
+import api, { assetUrl } from '../lib/api';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { Select } from '../components/ui/Select';
@@ -94,7 +94,7 @@ export function BlogEditor({ id, onClose }: Props) {
         metaDescription: post.metaDescription ?? '',
         ogImage: post.ogImage ?? '',
       });
-      if (post.coverImage) setCoverPreview(`${import.meta.env.VITE_API_URL}${post.coverImage}`);
+      if (post.coverImage) setCoverPreview(assetUrl(post.coverImage));
     }
   }, [post, reset]);
 
@@ -111,7 +111,7 @@ export function BlogEditor({ id, onClose }: Props) {
       toast.success(isEdit ? 'Post updated' : 'Post created');
       onClose();
     },
-    onError: () => toast.error('Failed to save post'),
+    onError: (error: any) => toast.error(error?.response?.data?.message || 'Failed to save post'),
   });
 
   const onCoverChange = (e: React.ChangeEvent<HTMLInputElement>) => {

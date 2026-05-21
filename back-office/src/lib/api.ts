@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+export const SESSION_TOKEN_KEY = 'tsl_access_token';
+export const SESSION_USER_KEY = 'tsl_user';
+
+export function assetUrl(path: string | null | undefined) {
+  if (!path) return '';
+  if (/^https?:\/\//i.test(path)) return path;
+  return `${API_URL}${path.startsWith('/') ? path : `/${path}`}`;
+}
 
 // Module-level token store (never localStorage — XSS hygiene)
 let accessToken: string | null = null;
@@ -37,9 +45,11 @@ async function doRefresh(): Promise<string | null> {
       { withCredentials: true }
     );
     setAccessToken(data.accessToken);
+    sessionStorage.setItem(SESSION_TOKEN_KEY, data.accessToken);
     return data.accessToken;
   } catch {
     setAccessToken(null);
+    sessionStorage.removeItem(SESSION_TOKEN_KEY);
     return null;
   }
 }
@@ -49,7 +59,10 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const original = error.config;
-    if (error.response?.status === 401 && !original._retry) {
+    const status = error.response?.status;
+    const shouldTryRefresh = (status === 401 || status === 403) && !original?._retry;
+
+    if (shouldTryRefresh && !original.url?.includes('/api/auth/refresh')) {
       original._retry = true;
 
       if (!refreshingPromise) {

@@ -3,10 +3,9 @@ import helmet from 'helmet';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import pinoHttp from 'pino-http';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
 import { env } from './config/env.js';
+import { uploadDir } from './config/uploads.js';
 import { logger } from './lib/logger.js';
 import { errorMiddleware } from './middleware/error.middleware.js';
 import { authMiddleware } from './middleware/auth.middleware.js';
@@ -17,9 +16,6 @@ import { leadsPublicRouter, leadsAdminRouter } from './modules/leads/leads.route
 import { blogCategoryPublicRouter, blogCategoryAdminRouter } from './modules/blog-category/blog-category.routes.js';
 import { blogPublicRouter, blogAdminRouter } from './modules/blog/blog.routes.js';
 import { dashboardRoutes } from './modules/dashboard/dashboard.routes.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const app = express();
 
@@ -71,7 +67,7 @@ app.use(apiRateLimit);
 // Serve uploaded files
 app.use(
   '/uploads',
-  express.static(join(__dirname, '..', env.UPLOAD_DIR), {
+  express.static(uploadDir, {
     setHeaders(res) {
       res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
     },
