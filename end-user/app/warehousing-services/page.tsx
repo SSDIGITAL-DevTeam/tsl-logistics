@@ -1,151 +1,145 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import {
+  FigmaBand,
+  FigmaFeatureGrid,
+  FigmaImageCards,
+  FigmaIntro,
+  FigmaSectionHeader,
+  FigmaServiceShell,
+  FigmaSplitSection,
+  serviceIcons,
+} from "@/components/FigmaServiceContent";
 
 export const metadata: Metadata = {
-  title: "Warehousing Services Singapore | Storage Solutions | TSL Logistics",
+  title: "TSL Warehousing | Storage Solutions Singapore | TSL Logistics",
   description:
-    "TSL Logistics offers state-of-the-art warehousing services in Singapore with advanced security, inventory management, and flexible storage solutions.",
+    "TSL Warehousing provides secure general cargo storage, flexible storage options, inventory management, packing, sorting, labelling, loading, and unloading services.",
 };
 
 const enquiryOptions = [
   "General warehousing / storage",
+  "Long-term storage",
+  "Short-term storage",
+  "Packing & repacking",
+  "Sorting and labelling",
   "Inventory management",
-  "Order fulfilment",
-  "Customised warehousing solutions",
+  "Loading and unloading",
   "Others",
-];
-
-const facilities = [
-  {
-    title: "High-Capacity",
-    text: "Our warehouse services in Singapore can handle large volumes of inventory, making them ideal for businesses with fluctuating storage requirements.",
-  },
-  {
-    title: "Secure and Monitored",
-    text: "Our facilities are equipped with advanced security systems, including surveillance cameras and access controls, to ensure the safety of your goods.",
-  },
-];
-
-const warehouseServices = [
-  {
-    title: "Inventory Management",
-    text: "Our advanced inventory management systems help you keep track of stock levels, anticipate demand, and optimise your supply chain.",
-  },
-  {
-    title: "Order Fulfilment",
-    text: "From order processing to packing and shipping, we offer seamless order fulfilment services that ensure timely delivery to your customers.",
-  },
-  {
-    title: "Customised Solutions",
-    text: "We work closely with you to understand your unique needs and tailor our warehousing services in Singapore to meet your specific requirements.",
-  },
-];
-
-const expertiseReasons = [
-  { label: "Industry Experience", text: "With a proven track record in safe and reliable warehousing and logistics, we have the knowledge and experience to handle a broad range of goods." },
-  { label: "Advanced Technology", text: "We leverage the latest technology to streamline processes, enhance visibility, and improve accuracy in inventory management." },
-  { label: "Skilled Team", text: "Our team of warehousing experts is dedicated to providing personalised service and finding solutions that drive your business forward." },
-];
-
-const customerReasons = [
-  { label: "Collaboration", text: "We believe in collaboration, and therefore we work closely with our clients to develop strategies that align with their goals." },
-  { label: "Flexible Solutions", text: "Our flexible warehousing options allow you to scale your storage needs up or down based on seasonal demand, without the burden of long-term commitments." },
-  { label: "Transparency", text: "We provide you with real-time access to inventory data and updates, allowing you to make informed decisions about your stocks." },
 ];
 
 export default function WarehousingServicesPage() {
   return (
     <ServicePageLayout title="Warehousing Services" image="/images/TSL Logistics Warehouse-1920w.jpeg" enquiryOptions={enquiryOptions} source="warehousing-services">
-      {/* Hero image */}
-      <div className="aspect-[16/6] relative overflow-hidden rounded-lg mb-10 shadow">
-        <Image
-          src="/images/TSL Logistics Warehouse-1920w.jpeg"
-          alt="Warehousing services Singapore"
-          fill
-          className="object-cover"
-          priority
+      <FigmaServiceShell>
+        <FigmaIntro
+          title="TSL Warehousing"
+          image="/images/figma-services/warehouse-intro.png"
+          imageAlt="TSL Warehousing facility"
+          body={[
+            "Reliable, secure, and flexible warehousing solutions to support your supply chain needs.",
+            "Our Singapore West Zone facility is designed for efficient handling of general cargo, offering scalable storage options and integrated logistics support to help your business operate smoothly and grow with confidence.",
+          ]}
         />
-      </div>
 
-      {/* Intro */}
-      <div className="max-w-3xl mx-auto text-center mb-12">
-        <p className="text-[#555] leading-relaxed mb-4">
-          Want to store your products and goods, but don&rsquo;t know where? Have you run out of storage space and now
-          need urgent warehousing space? Well, we can definitely help!
-        </p>
-        <p className="text-[#555] leading-relaxed">
-          We understand that effective warehousing is a cornerstone of any successful business operation. With over 20
-          years of industry experience in logistics and warehousing in Singapore, we have developed a deep understanding
-          of the challenges businesses face when it comes to storage, inventory management, and distribution. Partner
-          with TSL Logistics for tailored warehousing solutions for operational efficiency to drive your business growth.
-        </p>
-      </div>
+        <FigmaSplitSection
+          eyebrow="Strategic Warehouse Location"
+          title="Strategic Warehouse Location"
+          image="/images/figma-services/warehouse-location.png"
+          imageAlt="Warehouse location"
+          reverse
+          body={[
+            "Our warehouse is strategically located in Singapore's West Zone, providing easy access to major industrial areas, ports, and transport networks.",
+            "This ensures faster handling, smoother distribution, and cost-efficient logistics for your operations.",
+          ]}
+          cta="Contact Us"
+        />
 
-      {/* Facilities */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold text-center text-[#252525] mb-8">
-          Our Facilities – State-of-the-Art Warehousing in Singapore
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {facilities.map((f, i) => (
-            <div key={i} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <div className="w-10 h-10 bg-[#C8A84B] rounded-full flex items-center justify-center mb-4">
-                <span className="text-white font-bold text-sm">{i + 1}</span>
+        <FigmaBand>
+          <div className="space-y-8">
+            <FigmaSectionHeader title="Cargo We Handle" subtitle="We accommodate a wide range of general cargo, including:" />
+            <FigmaFeatureGrid
+              features={[
+                { title: "General cargo", text: "Non-specialised goods handled with secure and systematic storage.", icon: serviceIcons.boxes },
+                { title: "Palletised goods", text: "Pallet-based cargo for efficient stacking, handling, and movement.", icon: serviceIcons.forklift },
+                { title: "Cartons and boxed items", text: "Individual cartons and boxes stored neatly for easy access and tracking.", icon: serviceIcons.package },
+              ]}
+            />
+            <p className="mx-auto max-w-4xl text-center text-sm leading-[1.5] text-[#121212] md:text-[20px]">
+              Whether you manage bulk shipments or smaller consignments, our facility is equipped to handle your inventory with care and accuracy.
+            </p>
+          </div>
+        </FigmaBand>
+
+        <section className="space-y-8">
+          <FigmaSectionHeader
+            title="Flexible Storage Options"
+            subtitle="Our flexible space allocation allows you to scale up or down without long-term constraints."
+          />
+          <FigmaImageCards
+            cards={[
+              {
+                title: "Long-term storage",
+                text: "For stable inventory management.",
+                image: "/images/figma-services/warehouse-long.png",
+                alt: "Long-term warehouse storage",
+              },
+              {
+                title: "Short-term storage",
+                text: "For temporary holding or peak periods.",
+                image: "/images/figma-services/warehouse-short.png",
+                alt: "Short-term warehouse storage",
+              },
+            ]}
+          />
+        </section>
+
+        <section className="grid items-center gap-8 md:grid-cols-[1.03fr_1fr] md:gap-[68px]">
+          <div className="relative aspect-[616/606] overflow-hidden rounded-[27px] bg-[#e1e1e1]">
+            <Image src="/images/figma-services/warehouse-value.png" alt="Value-added warehouse services" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+          </div>
+          <div>
+            <FigmaSectionHeader title="Value-Added Warehouse Services" align="left" />
+            <div className="mt-7 text-sm leading-[1.5] text-[#121212] md:text-[20px]">
+              <p>Beyond storage, we offer value-added services to streamline your logistics workflow:</p>
+              <ul className="mt-6 space-y-2 font-bold">
+                <li>Packing & repacking</li>
+                <li>Sorting and labelling</li>
+                <li>Inventory management</li>
+                <li>Loading and unloading</li>
+              </ul>
+              <p className="mt-6">
+                By integrating these services under one roof, we help reduce handling time, minimize errors, and improve overall efficiency.
+              </p>
+              <div className="mt-8">
+                <a href="/contact" className="inline-flex h-[38px] min-w-[150px] items-center justify-center rounded-full bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)]">
+                  Contact Us
+                </a>
               </div>
-              <h3 className="font-bold text-[#C8A84B] mb-3">{f.title}</h3>
-              <p className="text-[#555] text-sm leading-relaxed">{f.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Services */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold text-center text-[#252525] mb-8">
-          Our Services – Warehousing Services in Singapore
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {warehouseServices.map((s, i) => (
-            <div key={i} className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-bold text-[#C8A84B] mb-3">{s.title}</h3>
-              <p className="text-[#555] text-sm leading-relaxed">{s.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Why Choose TSL */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold text-center text-[#252525] mb-8">Why Choose TSL Logistics?</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Expertise block */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-            <h3 className="font-bold text-[#C8A84B] text-lg mb-4">Expertise and Reliability</h3>
-            <div className="space-y-4">
-              {expertiseReasons.map((r, i) => (
-                <div key={i}>
-                  <p className="font-bold text-[#252525] text-sm">{r.label}</p>
-                  <p className="text-[#555] text-sm leading-relaxed">{r.text}</p>
-                </div>
-              ))}
             </div>
           </div>
-          {/* Customer-centric block */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-            <h3 className="font-bold text-[#C8A84B] text-lg mb-4">Customer-Centric Approach</h3>
-            <div className="space-y-4">
-              {customerReasons.map((r, i) => (
-                <div key={i}>
-                  <p className="font-bold text-[#252525] text-sm">{r.label}</p>
-                  <p className="text-[#555] text-sm leading-relaxed">{r.text}</p>
-                </div>
-              ))}
+        </section>
+
+        <FigmaBand dark>
+          <div className="grid items-center gap-8 lg:grid-cols-[1fr_340px]">
+            <div>
+              <h2 className="text-3xl font-extrabold leading-[1.3] md:text-[40px]">Let&apos;s Optimize Your Storage & Distribution</h2>
+              <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-[20px]">
+                Looking for secure and flexible warehousing solutions in Singapore? Contact us today to discuss your storage requirements, space needs, and operational goals. Our team is ready to provide tailored warehousing solutions that help streamline your inventory management, improve efficiency, and support your business operations seamlessly as you grow.
+              </p>
+              <div className="mt-6">
+                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-[#121212]">
+                  Contact Us
+                </a>
+              </div>
+            </div>
+            <div className="relative aspect-[340/220] overflow-hidden">
+              <Image src="/images/figma-services/warehouse-cta.png" alt="" fill sizes="340px" className="object-cover" />
             </div>
           </div>
-        </div>
-      </div>
+        </FigmaBand>
+      </FigmaServiceShell>
     </ServicePageLayout>
   );
 }
-

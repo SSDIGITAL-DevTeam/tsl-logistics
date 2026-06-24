@@ -31,8 +31,8 @@ export const departmentLabels: Record<TeamDepartment, string> = {
 };
 
 const commonCard = {
-  company: "TSL Logistics Pte Ltd",
-  phone: "+65 8888 0605",
+  company: "TSL LOGISTICS PTE LTD",
+  phone: "+65 8688 8606",
   website: "www.tsllogistics.sg",
   address: "3 Kaki Bukit Rd 1, #02-01 Eunos Technolink, Singapore 415935",
   mapQuery: "TSL Logistics Pte Ltd, 3 Kaki Bukit Road 1, Singapore 415935",
@@ -51,17 +51,15 @@ export const teamMembers: TeamMember[] = [
     department: "logistics",
     photo: "/images/team/alan-tay.png",
     intro:
-      "Founder and Managing Director of TSL Group, Alan Tay oversees corporate direction, partnerships, and the long-term service standards that shape TSL's logistics operations.",
+      "Founder and Managing Director of TSL Group, with over 20 years of experience in the logistics industry. He began his career in courier services and has since built deep expertise across trucking, warehousing, and end-to-end supply chain operations, driving efficiency and reliability at every level.",
     experience: [
-      "End-to-end logistics and supply-chain management",
+      "End-to-end logistics and supply chain management",
       "Fleet operations and transport optimization",
       "Business growth and strategic expansion",
-      "Partnership and client relationship development",
+      "Warehousing and distribution solutions",
     ],
     contributions: [
-      "Built TSL into a trusted logistics brand in Singapore",
-      "Developed service standards across delivery, warehousing, and transport",
-      "Maintains long-term customer confidence through dependable operations",
+      "Alan has been instrumental in building TSL Group into a trusted logistics partner. His leadership drives operational excellence, scalable growth, and strong client relationships across Singapore and the region",
     ],
     card: {
       ...commonCard,
@@ -71,21 +69,19 @@ export const teamMembers: TeamMember[] = [
   {
     slug: "shirley-goh",
     name: "Shirley Goh",
-    role: "Senior Manager - Logistics",
+    role: "Sales Manager - Logistics",
     department: "logistics",
     photo: "/images/team/shirley-goh.png",
     intro:
-      "Shirley supports TSL's logistics team with operational planning, customer coordination, and daily service consistency across transport and warehousing requests.",
+      "Started with TSL Logistics in 2018 without prior industry experience, driven by a strong willingness to learn. Gained hands-on experience across Sales, Customer Service, Accounts, and Operations, building a well-rounded understanding of logistics, client management, and operations. Brings a practical, adaptable approach backed by years of cross-functional experience.",
     experience: [
-      "Customer service and client communications",
-      "Transport and warehousing coordination",
-      "Documentation control and service follow-up",
-      "Daily operational planning",
+      "Versatile across sales, customer service, accounts, and operations",
+      "Strong understanding of logistics processes and coordination",
+      "Skilled in managing client relationships and service quality",
+      "Adaptable with continuous growth from zero experience",
     ],
     contributions: [
-      "Keeps communication clear between customers and operations",
-      "Supports fast turnaround for logistics requests",
-      "Helps maintain steady service quality across daily jobs",
+      "Shirley contributes to smooth and efficient daily operations. She responds promptly to customer needs while maintaining strong client relationships. She supports sales activities and helps drive business growth. She collaborates effectively across teams to improve workflow efficiency, and remains flexible in handling multiple roles to strengthen team performance and reliability.",
     ],
     card: {
       ...commonCard,
@@ -99,17 +95,15 @@ export const teamMembers: TeamMember[] = [
     department: "logistics",
     photo: "/images/team/phillip-wong.png",
     intro:
-      "Phillip manages operational delivery for logistics jobs, making sure schedules, manpower, and transport resources move in the right order.",
+      "Joined logistics industry in 2017 as an Operations Controller cum Customer Service, gaining extensive hands-on experience in operational coordination and client support. Over the years, has developed strong expertise in managing and optimizing trucking operations.",
     experience: [
-      "Daily logistics and fleet planning",
-      "Warehouse coordination",
-      "Transport scheduling and dispatch",
-      "Team supervision and route management",
+      "End-to-end operations management and workflow optimization",
+      "Customer service strategy and client relationship management",
+      "Experienced in managing complex logistics operations with a focus on compliance and safety standards",
+      "Performance management and team leadership",
     ],
     contributions: [
-      "Improves planning between warehouse and transport teams",
-      "Coordinates resources for time-sensitive deliveries",
-      "Supports reliable dispatch and on-site execution",
+      "Drives operational efficiency by streamlining logistics processes and improving turnaround times. Enhances customer satisfaction through reliable delivery and proactive communication. Contributes to business growth by optimizing resources and supporting cost-effective logistics solutions.",
     ],
     card: {
       ...commonCard,

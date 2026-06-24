@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Building2, Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Building2, Globe, Mail, MapPin, Phone, Share2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getInitials, getTeamMember, teamMembers } from "@/lib/team";
 
@@ -21,30 +21,60 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function Avatar({
-  name,
-  photo,
-  size = "large",
-}: {
-  name: string;
-  photo?: string;
-  size?: "large" | "small";
-}) {
-  const className =
-    size === "large"
-      ? "h-24 w-24 border-[5px] text-2xl"
-      : "h-12 w-12 border-[3px] text-sm";
+function TapeStrip() {
+  const tapeText = Array.from({ length: 8 }).map((_, index) => (
+    <span key={index} className="shrink-0">
+      TSL Logistic&nbsp;&nbsp; Delivery&nbsp;&nbsp; Shipping
+    </span>
+  ));
 
   return (
-    <div
-      className={`${className} bg-gold-gradient relative grid place-items-center overflow-hidden rounded-full border-white font-bold text-[#1a1a1a] shadow-lg`}
-    >
+    <div className="absolute left-1/2 top-[94px] h-[92px] w-[186%] -translate-x-2/3 overflow-visible">
+      <div className="absolute left-1/2 top-0 flex h-[40px] w-full -translate-x-1/2 rotate-[3.7deg] items-center gap-[18px] bg-[#c6a44f] px-4 text-[14px] font-black leading-none text-[#121212]">
+        {tapeText}
+      </div>
+      <div className="absolute left-1/2 top-[16px] flex h-[40px] w-full -translate-x-1/2 -rotate-[0.41deg] items-center gap-[18px] bg-gold-gradient px-4 text-[14px] font-black leading-none text-[#121212]">
+        {tapeText}
+      </div>
+    </div>
+  );
+}
+
+function Avatar({ name, photo }: { name: string; photo?: string }) {
+  return (
+    <div className="relative z-10 grid h-[122px] w-[122px] place-items-center overflow-hidden rounded-full bg-gold-gradient text-2xl font-bold text-[#121212] shadow-lg">
       {photo ? (
-        <Image src={photo} alt={name} fill sizes="96px" className="object-cover" />
+        <Image
+          src={photo}
+          alt={name}
+          fill
+          sizes="122px"
+          className="object-cover object-top"
+        />
       ) : (
         getInitials(name)
       )}
     </div>
+  );
+}
+
+function RoundAction({
+  icon,
+  href,
+  label,
+}: {
+  icon: React.ReactNode;
+  href: string;
+  label: string;
+}) {
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      className="grid h-[70px] w-[70px] place-items-center rounded-full bg-gold-gradient text-[#121212]"
+    >
+      {icon}
+    </a>
   );
 }
 
@@ -58,18 +88,18 @@ function ContactRow({
   href?: string;
 }) {
   const content = (
-    <div className="flex min-h-10 items-center gap-3 rounded-md bg-[#eeeeee] px-3 py-2 text-xs font-semibold text-[#333]">
-      <span className="grid h-5 w-5 shrink-0 place-items-center text-[#222]">
+    <div className="flex min-h-[71px] items-center gap-4 rounded-[14px] bg-[#eeeeee] px-[22px] py-4 text-[18px] leading-[1.45] text-[#121212] md:text-[22px]">
+      <span className="grid h-[27px] w-[27px] shrink-0 place-items-center text-[#121212]">
         {icon}
       </span>
-      <span className="leading-snug">{children}</span>
+      <span>{children}</span>
     </div>
   );
 
   if (!href) return content;
 
   return (
-    <a href={href} className="block transition hover:-translate-y-0.5">
+    <a href={href} className="block">
       {content}
     </a>
   );
@@ -81,82 +111,104 @@ export default async function DigitalBusinessCardPage({ params }: Props) {
   if (!member) notFound();
 
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    member.card.mapQuery
+    member.card.mapQuery,
   )}&output=embed`;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f3f0e9] bg-[url('/images/permit-section.jpg')] bg-cover bg-center px-4 py-14">
-      <div className="pointer-events-none absolute inset-0 z-0 bg-white/[0.9]" />
+    <div className="relative overflow-hidden bg-[#f5f5f5] px-4 py-[60px] md:py-[60px]">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-10"
+        style={{ backgroundImage: "url('/images/permit-section.jpg')" }}
+      />
+      <div className="absolute inset-0 bg-white/75" />
 
-      <section className="relative z-10 mx-auto max-w-[370px]">
-        <div className="relative mt-9 rounded-xl border border-[#d9d9d9] bg-white p-4 pt-16 text-center shadow-2xl">
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
-            <Avatar name={member.name} photo={member.photo} />
+      <section className="relative z-10 mx-auto w-full max-w-[670px]">
+        <div className="relative overflow-hidden rounded-[28px] bg-white pb-[22px] shadow-[0_5px_17px_rgba(0,0,0,0.5)]">
+          <div className="relative h-[292px] overflow-visible">
+            <TapeStrip />
+
+            <div className="absolute left-1/2 top-[69px] flex -translate-x-1/2 flex-col items-center">
+              <div className="relative">
+                <Avatar name={member.name} photo={member.photo} />
+                <div className="absolute z-20 -bottom-1 -right-2 grid h-[46px] w-[46px] place-items-center rounded-full border-[3px] border-white bg-gold-gradient text-xs font-bold text-white">
+                  TSL
+                </div>
+              </div>
+              <h1 className="mt-[30px] text-center text-[24px] font-bold leading-[1.5] text-[#121212] md:text-[28px]">
+                {member.name}
+              </h1>
+              <p className="text-center text-[18px] leading-[1.5] text-[#121212] md:text-[22px]">
+                {member.role.replace(" - Logistics", "")}
+              </p>
+            </div>
           </div>
 
-          <h1 className="text-xl font-bold text-[#151515]">{member.name}</h1>
-          <p className="mt-1 text-[11px] font-semibold text-[var(--primary-dark)]">
-            {member.role}
-          </p>
+          <div className="px-[21px]">
+            <div className="mb-3 flex justify-center gap-4">
+              <RoundAction
+                href={`tel:${member.card.phone.replace(/\s/g, "")}`}
+                label="Call"
+                icon={<Phone size={27} fill="currentColor" />}
+              />
+              <RoundAction
+                href={`mailto:${member.card.email}`}
+                label="Email"
+                icon={<Mail size={27} fill="currentColor" />}
+              />
+              <RoundAction
+                href={`/our-team/${member.slug}`}
+                label="Share"
+                icon={<Share2 size={27} fill="currentColor" />}
+              />
+            </div>
 
-          <div className="mt-3 flex justify-center gap-2">
             <a
-              href={member.card.socials.facebook}
-              aria-label="Facebook"
-              className="bg-gold-gradient grid h-8 w-8 place-items-center rounded-full text-xs font-black text-[#181818] transition hover:-translate-y-0.5 hover:opacity-90"
+              href={`mailto:${member.card.email}`}
+              className="mb-[14px] flex h-[57px] items-center justify-center rounded-[14px] bg-gold-gradient text-[20px] leading-[1.5] text-[#121212] md:text-[22px]"
             >
-              f
+              Save Contact
             </a>
-            <a
-              href={member.card.socials.instagram}
-              aria-label="Instagram"
-              className="bg-gold-gradient grid h-8 w-8 place-items-center rounded-full text-[10px] font-black text-[#181818] transition hover:-translate-y-0.5 hover:opacity-90"
-            >
-              ig
-            </a>
-            <a
-              href={member.card.socials.linkedin}
-              aria-label="LinkedIn"
-              className="bg-gold-gradient grid h-8 w-8 place-items-center rounded-full text-xs font-black text-[#181818] transition hover:-translate-y-0.5 hover:opacity-90"
-            >
-              in
-            </a>
-          </div>
 
-          <a
-            href={`mailto:${member.card.email}`}
-            className="bg-gold-gradient mt-4 block rounded-md px-4 py-2 text-xs font-bold text-[#161616] transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--primary-dark)]"
-          >
-            Share Contact
-          </a>
-
-          <div className="mt-4 space-y-2 text-left">
-            <ContactRow icon={<Building2 size={14} />}>
-              {member.card.company}
-            </ContactRow>
-            <ContactRow icon={<Mail size={14} />} href={`mailto:${member.card.email}`}>
-              {member.card.email}
-            </ContactRow>
-            <ContactRow icon={<Phone size={14} />} href={`tel:${member.card.phone.replace(/\s/g, "")}`}>
-              {member.card.phone}
-            </ContactRow>
-            <ContactRow icon={<Globe size={14} />} href={`https://${member.card.website}`}>
-              {member.card.website}
-            </ContactRow>
-            <ContactRow icon={<MapPin size={14} />}>{member.card.address}</ContactRow>
-          </div>
-
-          <div className="mt-3 overflow-hidden rounded-md border border-[#d7d7d7]">
-            <iframe
-              src={mapSrc}
-              width="100%"
-              height="165"
-              style={{ border: 0, display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title={`${member.name} location map`}
-            />
+            <div className="space-y-[11px] text-left">
+              <ContactRow icon={<Building2 size={27} fill="currentColor" />}>
+                {member.card.company}
+              </ContactRow>
+              <ContactRow
+                icon={<Mail size={27} fill="currentColor" />}
+                href={`mailto:${member.card.email}`}
+              >
+                {member.card.email}
+              </ContactRow>
+              <ContactRow
+                icon={<Phone size={27} fill="currentColor" />}
+                href={`tel:${member.card.phone.replace(/\s/g, "")}`}
+              >
+                {member.card.phone}
+              </ContactRow>
+              <ContactRow
+                icon={<Globe size={27} />}
+                href={`https://${member.card.website}`}
+              >
+                {member.card.website}
+              </ContactRow>
+              <div className="overflow-hidden rounded-[21px] bg-[#eeeeee]">
+                <ContactRow icon={<MapPin size={27} fill="currentColor" />}>
+                  {member.card.address}
+                </ContactRow>
+                <div className="mx-[10px] mb-[14px] overflow-hidden rounded-[14px]">
+                  <iframe
+                    src={mapSrc}
+                    width="100%"
+                    height="279"
+                    style={{ border: 0, display: "block" }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${member.name} location map`}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
