@@ -6,8 +6,8 @@
   --primary: #C8A84B;
   --primary-dark: #9A7D2D;
   --primary-light: #E5C96A;
-  --accent: #F05921;
-  --accent-dark: #d44d1a;
+  --accent: #C8A84B;
+  --accent-dark: #9A7D2D;
   --text-dark: #252525;
   --text-light: #555555;
   --dark: #1E1E1E;
@@ -54,6 +54,15 @@ body {
 @keyframes navItemIn {
   from { opacity: 0; transform: translateX(-8px); }
   to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Bottom sheet slide-up (mobile dialog) ── */
+@keyframes sheetUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+.animate-sheet-up {
+  animation: sheetUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ── Mobile menu entry ── */
@@ -153,6 +162,46 @@ body {
   .stagger-grid > *:nth-child(7) { animation-delay: 0.36s; }
 }
 
+/* ── Reusable section background ── */
+.section-soft {
+  background-color: #f5f6f8;
+}
+
+/* ── Gold gradient (reusable token) ── */
+:root {
+  --gold-gradient: linear-gradient(120deg, #B0873A 0%, #F7EF89 50%, #D2AC47 100%);
+}
+
+/* ── Gold button (reusable) ── */
+.btn-pill-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold-gradient);
+  color: #1a1a1a;
+  padding: 0.875rem 2rem;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.18s ease, box-shadow 0.2s ease;
+}
+.btn-pill-gold:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(176, 135, 58, 0.4);
+}
+.btn-pill-gold:active {
+  transform: scale(0.98);
+}
+
+/* ── Gold gradient background (reusable) ── */
+.bg-gold-gradient {
+  background: var(--gold-gradient);
+}
+
 /* ── Buttons ── */
 .btn-primary {
   display: inline-flex;
@@ -173,7 +222,7 @@ body {
 .btn-primary:hover {
   background-color: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(240, 89, 33, 0.3);
+  box-shadow: 0 10px 24px rgba(200, 168, 75, 0.3);
 }
 
 .btn-gold {
@@ -321,7 +370,7 @@ input:focus, select:focus, textarea:focus {
 .blog-content ol { list-style-type: decimal; }
 .blog-content li { margin-bottom: 0.35em; line-height: 1.7; }
 .blog-content a { color: var(--primary); text-decoration: underline; }
-.blog-content a:hover { color: var(--accent); }
+.blog-content a:hover { color: var(--primary-dark); }
 .blog-content blockquote {
   border-left: 4px solid var(--primary);
   padding: 0.5rem 1rem;

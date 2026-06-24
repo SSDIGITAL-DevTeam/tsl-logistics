@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Phone, Mail, MapPin } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Contact Us | TSL Logistics",
@@ -11,15 +12,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      {/* ── Page Title ── */}
-      <div className="bg-[#1E1E1E] py-12 border-b border-[#C8A84B]/30">
-        <div className="hero-in max-w-[1200px] mx-auto px-4 text-center">
-          <p className="eyebrow mb-2">Get In Touch</p>
-          <h1 className="text-2xl md:text-3xl font-bold text-white">Contact Us</h1>
-          <p className="text-gray-300 mt-2 text-sm">You&rsquo;ve got logistic needs, and we have solutions.</p>
-          <div className="gold-divider" />
-        </div>
-      </div>
+      <PageHero title="Contact Us" image="/images/permit-section.jpg" />
 
       {/* ── Form + Contact Info ── */}
       <section className="py-16 bg-white">

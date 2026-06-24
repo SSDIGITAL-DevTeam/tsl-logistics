@@ -69,7 +69,8 @@ const whyChoose = [
 export default function DangerousGoodsTransportPage() {
   return (
     <ServicePageLayout
-      title="TSL DG Trucking – Dangerous Goods Handling"
+      title="Dangerous Goods Transport"
+      image="/images/TSL Logistics DG TRUCK-1920w.png"
       enquiryOptions={enquiryOptions}
       source="dangerous-goods-transport"
     >
@@ -127,7 +128,7 @@ export default function DangerousGoodsTransportPage() {
           {dgServices.map((s, i) => (
             <div key={i} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 bg-[#F05921] rounded-full flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 bg-[#C8A84B] rounded-full flex items-center justify-center shrink-0">
                   <span className="text-white font-bold text-xs">{i + 1}</span>
                 </div>
                 <h3 className="font-bold text-[#C8A84B]">{s.title}</h3>

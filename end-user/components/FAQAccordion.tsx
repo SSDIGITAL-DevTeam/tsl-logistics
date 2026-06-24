@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 
 const faqs = [
   {
     question: "What services do you offer?",
     answer: `As a leading logistics company in Singapore, we offer a comprehensive range of logistics services, including:
-    <ul class="list-disc pl-6 mt-2 space-y-1">
+    <ul class="list-disc pl-5 mt-2 space-y-1">
       <li>Transportation</li>
       <li>Warehousing</li>
       <li>Distribution</li>
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "Should I use air or sea freight to transport my cargo?",
     answer: `It depends on the goods you wish to transport. Consider the following:
-    <ul class="list-disc pl-6 mt-2 space-y-1">
+    <ul class="list-disc pl-5 mt-2 space-y-1">
       <li>Urgency (air freight is faster)</li>
       <li>Cost (sea freight is generally cheaper)</li>
       <li>Cargo type (perishables vs. dry goods)</li>
@@ -53,7 +53,7 @@ const faqs = [
   {
     question: "What are the documents required for customs clearance in Singapore?",
     answer: `The standard documents include:
-    <ul class="list-disc pl-6 mt-2 space-y-1">
+    <ul class="list-disc pl-5 mt-2 space-y-1">
       <li>Commercial invoice</li>
       <li>Packing list</li>
       <li>Bill of lading</li>
@@ -71,48 +71,42 @@ export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="space-y-3">
-      {faqs.map((faq, i) => (
-        <div
-          key={i}
-          className={`rounded-lg border overflow-hidden transition-all duration-200 ${
-            openIndex === i
-              ? "border-[#C8A84B] shadow-md"
-              : "border-gray-200 shadow-sm hover:border-[#C8A84B]/50 hover:shadow-md"
-          }`}
-        >
-          <button
-            onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className={`flex items-center justify-between w-full px-6 py-5 text-left transition-colors ${
-              openIndex === i ? "faq-open-bg" : "bg-white hover:bg-gray-50"
-            }`}
+    <div className="space-y-2">
+      {faqs.map((faq, i) => {
+        const isOpen = openIndex === i;
+        return (
+          <div
+            key={i}
+            className="border border-gray-200 overflow-hidden"
           >
-            <span className="flex items-center gap-3 flex-1 pr-4">
+            <button
+              onClick={() => setOpenIndex(isOpen ? null : i)}
+              className="flex items-center justify-between w-full px-6 py-5 text-left bg-white hover:bg-gray-50 transition-colors duration-150"
+            >
+              <h3 className="font-semibold text-[#1a1a1a] text-sm md:text-base pr-4">
+                {faq.question}
+              </h3>
+              {/* Gold circle chevron button */}
               <span
-                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-colors ${
-                  openIndex === i ? "bg-[#C8A84B] text-white" : "bg-gray-100 text-[#555]"
-                }`}
+                className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200"
+                style={{ background: "var(--gold-gradient)" }}
               >
-                {i + 1}
+                <ChevronUp
+                  size={16}
+                  className={`text-[#1a1a1a] transition-transform duration-200 ${isOpen ? "rotate-0" : "rotate-180"}`}
+                />
               </span>
-              <h3 className="font-semibold text-[#252525] text-sm md:text-base">{faq.question}</h3>
-            </span>
-            <ChevronDown
-              size={18}
-              className={`text-[#C8A84B] shrink-0 transition-transform duration-200 ${
-                openIndex === i ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-          <div className={`accordion-content${openIndex === i ? " open" : ""}`}>
-            <div
-              className="px-6 py-5 bg-white text-sm text-[#555] leading-relaxed border-t-2 border-[#C8A84B]/20"
-              style={{ borderLeft: "3px solid #C8A84B" }}
-              dangerouslySetInnerHTML={{ __html: faq.answer }}
-            />
+            </button>
+
+            <div className={`accordion-content${isOpen ? " open" : ""}`}>
+              <div
+                className="px-6 py-5 bg-gray-50 text-sm text-[#555] leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: faq.answer }}
+              />
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

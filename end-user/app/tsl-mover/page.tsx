@@ -44,7 +44,7 @@ const enquiryOptions = [
 
 export default function TSLMoverPage() {
   return (
-    <ServicePageLayout title="TSL Mover" enquiryOptions={enquiryOptions} source="tsl-mover">
+    <ServicePageLayout title="TSL Mover" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} source="tsl-mover">
       {/* Description */}
       <div className="text-center mb-12">
         <p className="text-[#555] leading-relaxed max-w-3xl mx-auto mb-4">

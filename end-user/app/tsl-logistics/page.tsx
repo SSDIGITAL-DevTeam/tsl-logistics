@@ -145,7 +145,7 @@ function TSLLogisticsContent() {
 
 export default function TSLLogisticsPage() {
   return (
-    <ServicePageLayout title="TSL Logistics" enquiryOptions={enquiryOptions} source="tsl-logistics">
+    <ServicePageLayout title="TSL Logistics" image="/images/service-mover.jpg" enquiryOptions={enquiryOptions} source="tsl-logistics">
       <TSLLogisticsContent />
     </ServicePageLayout>
   );

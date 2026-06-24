@@ -56,7 +56,7 @@ const reasons = [
 
 export default function TransportationVehicleRentalsPage() {
   return (
-    <ServicePageLayout title="TSL Transportation Vehicle Rentals" enquiryOptions={enquiryOptions} source="vehicle-rentals">
+    <ServicePageLayout title="Vehicle Rentals" image="/images/TSL Rental Vehicle-1920w.png" enquiryOptions={enquiryOptions} source="vehicle-rentals">
       {/* Hero image */}
       <div className="aspect-[16/6] relative overflow-hidden rounded-lg mb-10 shadow">
         <Image
@@ -127,7 +127,7 @@ export default function TransportationVehicleRentalsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {reasons.map((r, i) => (
             <div key={i} className="flex gap-4 p-5 bg-gray-50 rounded-lg">
-              <span className="text-[#F05921] font-bold text-xl leading-none mt-0.5 shrink-0">✓</span>
+              <span className="text-[#C8A84B] font-bold text-xl leading-none mt-0.5 shrink-0">✓</span>
               <div>
                 <h3 className="font-bold text-[#252525] mb-1">{r.title}</h3>
                 <p className="text-[#555] text-sm leading-relaxed">{r.text}</p>

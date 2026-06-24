@@ -146,7 +146,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mt-12 pt-8 border-t border-gray-200">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-[#C8A84B] font-semibold text-sm hover:text-[#F05921] transition-colors"
+              className="inline-flex items-center gap-2 text-[#C8A84B] font-semibold text-sm hover:text-[#9A7D2D] transition-colors"
             >
               ← Back to Blog
             </Link>

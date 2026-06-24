@@ -1,8 +1,10 @@
 import Link from "next/link";
 import ContactForm from "./ContactForm";
+import PageHero from "./PageHero";
 
 interface ServicePageLayoutProps {
   title: string;
+  image?: string;
   children: React.ReactNode;
   enquiryOptions?: string[];
   showContactForm?: boolean;
@@ -11,6 +13,7 @@ interface ServicePageLayoutProps {
 
 export default function ServicePageLayout({
   title,
+  image,
   children,
   enquiryOptions,
   showContactForm = true,
@@ -18,14 +21,7 @@ export default function ServicePageLayout({
 }: ServicePageLayoutProps) {
   return (
     <>
-      {/* ── Page Title ── */}
-      <div className="bg-[#1E1E1E] py-12 border-b border-[#C8A84B]/30">
-        <div className="hero-in max-w-[1200px] mx-auto px-4 text-center">
-          <p className="eyebrow mb-2">TSL Logistics Service</p>
-          <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{title}</h1>
-          <div className="gold-divider" />
-        </div>
-      </div>
+      <PageHero title={title} image={image} />
 
       {/* ── Page Content ── */}
       <div className="py-14 bg-white">

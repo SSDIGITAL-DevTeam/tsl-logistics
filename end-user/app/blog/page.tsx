@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/api";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -17,15 +18,7 @@ export default async function BlogPage() {
 
   return (
     <>
-      {/* Page Title */}
-      <div className="bg-[#1E1E1E] py-12 border-b border-[#C8A84B]/30">
-        <div className="hero-in max-w-[1200px] mx-auto px-4 text-center">
-          <p className="eyebrow mb-2">News &amp; Insights</p>
-          <h1 className="text-2xl md:text-3xl font-bold text-white">Blog</h1>
-          <p className="text-gray-300 mt-2 text-sm">Industry insights, tips, and news from TSL Logistics</p>
-          <div className="gold-divider" />
-        </div>
-      </div>
+      <PageHero title="Blog" image="/images/hero-bg-new.jpg" />
 
       {/* Blog Grid */}
       <section className="py-16 bg-white">
@@ -80,7 +73,7 @@ export default async function BlogPage() {
                       <div className="mt-4 pt-4 border-t border-gray-100">
                         <Link
                           href={`/blog/${post.slug}`}
-                          className="inline-flex items-center gap-1 text-[#C8A84B] font-semibold text-sm hover:text-[#F05921] hover:gap-2 transition-all"
+                          className="inline-flex items-center gap-1 text-[#C8A84B] font-semibold text-sm hover:text-[#9A7D2D] hover:gap-2 transition-all"
                         >
                           Read More →
                         </Link>
@@ -103,7 +96,7 @@ export default async function BlogPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-[#F05921] hover:bg-[#d44d1a] text-white font-semibold py-3 px-8 rounded uppercase text-sm tracking-wide transition-colors"
+            className="inline-flex items-center gap-2 bg-[#C8A84B] hover:bg-[#9A7D2D] text-[#1a1a1a] font-semibold py-3 px-8 rounded uppercase text-sm tracking-wide transition-colors"
           >
             Contact Us Today
           </Link>

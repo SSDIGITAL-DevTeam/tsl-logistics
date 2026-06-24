@@ -1,224 +1,260 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, MapPin, ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { Phone, ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 
 const services = [
-  { label: "TSL LOGISTICS", href: "/tsl-logistics" },
-  { label: "TSL MOVER", href: "/tsl-mover" },
-  { label: "CONTAINER, TRUCK, AND TANKER HAULIER SERVICES", href: "/container-truck-tanker-haulier-services" },
-  { label: "WAREHOUSING SERVICES", href: "/warehousing-services" },
-  { label: "TSL DG TRUCKING – DANGEROUS GOODS HANDLING", href: "/dangerous-goods-transport" },
-  { label: "TSL TRANSPORTATION VEHICLE RENTALS", href: "/transportation-vehicles-rentals" },
+  { label: "TSL Logistics", href: "/tsl-logistics" },
+  { label: "TSL Mover", href: "/tsl-mover" },
+  { label: "Container, Truck & Tanker Haulier", href: "/container-truck-tanker-haulier-services" },
+  { label: "Warehousing Services", href: "/warehousing-services" },
+  { label: "Dangerous Goods Transport", href: "/dangerous-goods-transport" },
+  { label: "Transportation Vehicle Rentals", href: "/transportation-vehicles-rentals" },
 ];
 
 const navLinks: { label: string; href: string; children?: typeof services }[] = [
   { label: "HOME", href: "/" },
   { label: "ABOUT", href: "/about" },
   { label: "SERVICES", href: "#", children: services },
+  { label: "OUR TEAM", href: "/our-team" },
   { label: "BLOG", href: "/blog" },
   { label: "CONTACT US", href: "/contact" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [desktopOpen, setDesktopOpen] = useState(false);
+  const isHome = pathname === "/";
 
-  // Always close the SERVICES dropdown when the route changes
-  useEffect(() => { setDesktopOpen(false); }, [pathname]);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // On homepage: transparent until scrolled. On other pages: always white.
+  const transparent = isHome && !scrolled;
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
     if (href === "#") return services.some((s) => pathname.startsWith(s.href));
+    if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
   return (
     <>
-      {/* ── Top Info Bar — scrolls away with the page ── */}
-      <div className="bg-[#1E1E1E]">
-        <div className="max-w-[1200px] mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between py-2 gap-1 md:gap-0">
-            <a
-              href="tel:+6567772724"
-              className="flex items-center gap-2 text-[#C8A84B] text-sm hover:text-white transition-colors duration-200"
-            >
-              <Phone size={13} />
-              <span>6777 2724</span>
-            </a>
-            <a
-              href="https://goo.gl/maps/oFjmzyzy9dH5nnFr5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-300 text-sm hover:text-[#C8A84B] transition-colors duration-200 text-center"
-            >
-              <MapPin size={13} className="shrink-0 text-[#C8A84B]" />
-              <span>3 Kaki Bukit Road 1 #02-01 Eunos Technolink Singapore 415935</span>
-            </a>
-            <a
-              href="https://www.facebook.com/tsllogistics.sg/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[#C8A84B] text-sm hover:text-white transition-colors duration-200"
-            >
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-              <span>TSL Logistics FB Page</span>
-            </a>
-          </div>
-        </div>
-      </div>
+      {/* Spacer so page content doesn't hide under fixed header on non-home pages */}
+      {!isHome && <div className="h-[72px]" />}
 
-      {/* ── Logo Row — scrolls away with the page ── */}
-      <div className="bg-white border-b border-gray-100 shadow-sm">
-        <div className="max-w-[1200px] mx-auto px-4 py-3 flex justify-center">
-          <Link href="/" className="transition-opacity hover:opacity-85">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          transparent
+            ? "bg-gradient-to-b from-black/55 to-transparent shadow-none"
+            : "bg-white shadow-md border-b border-gray-100"
+        }`}
+      >
+        <div
+          className="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between gap-8"
+          style={transparent ? { textShadow: "0 1px 4px rgba(0,0,0,0.6)" } : undefined}
+        >
+
+          {/* ── Logo ── */}
+          <Link href="/" className="shrink-0 hover:opacity-85 transition-opacity">
             <Image
               src="/images/new_logo4-640w.png"
-              alt="TSL Logistics Logo"
-              width={410}
-              height={105}
-              className="h-[56px] w-auto md:h-[72px] transition-all duration-300"
+              alt="TSL Logistics"
+              width={200}
+              height={52}
+              className="h-[44px] w-auto"
               priority
             />
           </Link>
-        </div>
-      </div>
 
-      {/* ── Sticky: ONLY the gold nav bar ── */}
-      <header className="sticky top-0 z-50 shadow-md">
-        {/* Navigation Row (gold) */}
-        <div className="bg-[#C8A84B]">
-          <div className="max-w-[1200px] mx-auto px-4">
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center justify-center h-12">
-              {navLinks.map((link) => (
+          {/* ── Desktop Nav (centre) ── */}
+          <nav className="hidden md:flex items-center gap-1 flex-1 justify-center">
+            {navLinks.map((link) =>
+              link.children ? (
                 <div
                   key={link.label}
-                  className="nav-item relative h-12 group"
-                  onMouseEnter={() => link.children && setDesktopOpen(true)}
-                  onMouseLeave={() => link.children && setDesktopOpen(false)}
+                  className="relative"
+                  ref={dropdownRef}
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
                 >
-                  {link.children ? (
-                    <>
-                      <button
-                        className={`flex items-center gap-1.5 px-4 h-12 text-sm font-semibold transition-colors duration-200 uppercase tracking-wide ${
-                          isActive(link.href) || desktopOpen ? "text-white" : "text-[#1a1a1a] hover:text-white"
-                        }`}
-                      >
-                        {link.label}
-                        <ChevronDown size={13} className={`transition-transform duration-300 ${desktopOpen ? "rotate-180" : ""}`} />
-                        <span
-                          className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-white transition-all duration-300 ${
-                            isActive(link.href) || desktopOpen ? "w-8" : "w-0"
-                          }`}
-                        />
-                      </button>
-                      {desktopOpen && (
-                        <div
-                          className="nav-dropdown is-open absolute top-full bg-white shadow-2xl border-t-[3px] border-[#C8A84B] min-w-[340px] z-50 rounded-b-xl overflow-hidden"
-                          style={{ left: "50%", transform: "translateX(-50%)" }}
-                        >
-                          {link.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              onClick={() => setDesktopOpen(false)}
-                              className={`nav-dropdown-item flex items-center gap-2 px-5 py-3 text-sm transition-colors duration-200 border-b border-gray-50 last:border-0 ${
-                                pathname.startsWith(child.href)
-                                  ? "bg-[#C8A84B]/15 text-[#9A7D2D] font-semibold"
-                                  : "text-[#252525] hover:bg-[#C8A84B]/12 hover:text-[#9A7D2D] hover:pl-6"
-                              }`}
-                            >
-                              <ChevronRight size={11} className="shrink-0 text-[#C8A84B]" />
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className={`relative flex items-center px-4 h-12 text-sm font-semibold transition-colors duration-200 uppercase tracking-wide ${
-                        isActive(link.href) ? "text-white" : "text-[#1a1a1a] hover:text-white"
-                      }`}
-                    >
-                      {link.label}
-                      <span
-                        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-white transition-all duration-300 ${
-                          isActive(link.href) ? "w-8" : "w-0 group-hover:w-8"
-                        }`}
-                      />
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </nav>
+                  <button
+                    className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
+                      transparent
+                        ? isActive(link.href)
+                          ? "text-white"
+                          : "text-white/80 hover:text-white"
+                        : isActive(link.href)
+                        ? "text-[#C8A84B]"
+                        : "text-[#444] hover:text-[#1a1a1a]"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={13}
+                      className={`transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
 
-            {/* Mobile Nav Toggle */}
-            <div className="md:hidden flex items-center justify-between py-3">
-              <span className="text-sm font-bold text-[#1a1a1a] uppercase tracking-wide">Menu</span>
-              <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="text-[#1a1a1a] p-1 hover:text-white transition-colors duration-200"
-                aria-label="Toggle menu"
-              >
-                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Nav Menu */}
-          {mobileOpen && (
-            <div className="md:hidden bg-white border-t-2 border-[#C8A84B] shadow-lg max-h-[70vh] overflow-y-auto mobile-menu-in">
-              {navLinks.map((link) => (
-                <div key={link.label}>
-                  {link.children ? (
-                    <>
-                      <button
-                        onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                        className="flex items-center justify-between w-full px-4 py-3 text-sm font-semibold text-[#252525] border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                      >
-                        <span>{link.label}</span>
-                        <ChevronDown size={16} className={`transition-transform duration-300 text-[#C8A84B] ${mobileServicesOpen ? "rotate-180" : ""}`} />
-                      </button>
-                      <div className={`bg-gray-50 overflow-hidden transition-all duration-300 ${mobileServicesOpen ? "max-h-[600px]" : "max-h-0"}`}>
+                  {servicesOpen && (
+                    <div className="nav-dropdown absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white shadow-2xl border border-gray-100 rounded-xl overflow-hidden min-w-[300px] z-50">
+                      <div className="py-1">
                         {link.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            onClick={() => { setMobileOpen(false); setMobileServicesOpen(false); }}
-                            className="flex items-center gap-2 px-8 py-2.5 text-sm text-[#252525] hover:text-[#C8A84B] hover:pl-9 border-b border-gray-100 last:border-0 transition-all"
+                            onClick={() => setServicesOpen(false)}
+                            className={`nav-dropdown-item flex items-center gap-2.5 px-5 py-3 text-sm border-b border-gray-50 last:border-0 transition-all ${
+                              pathname.startsWith(child.href)
+                                ? "text-[#C8A84B] font-semibold bg-[#C8A84B]/5"
+                                : "text-[#333] hover:text-[#C8A84B] hover:bg-[#C8A84B]/5 hover:pl-6"
+                            }`}
                           >
-                            <ChevronRight size={10} className="text-[#C8A84B] shrink-0" />
+                            <ChevronRight size={11} className="text-[#C8A84B] shrink-0" />
                             {child.label}
                           </Link>
                         ))}
                       </div>
-                    </>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`block px-4 py-3 text-sm font-semibold border-b border-gray-100 transition-colors ${
-                        isActive(link.href)
-                          ? "text-[#C8A84B] bg-[#C8A84B]/5"
-                          : "text-[#252525] hover:text-[#C8A84B] hover:bg-gray-50"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
+                    </div>
                   )}
                 </div>
-              ))}
-            </div>
-          )}
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setServicesOpen(false)}
+                  className={`relative px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
+                    transparent
+                      ? isActive(link.href)
+                        ? "text-white"
+                        : "text-white/80 hover:text-white"
+                      : isActive(link.href)
+                      ? "text-[#C8A84B]"
+                      : "text-[#444] hover:text-[#1a1a1a]"
+                  }`}
+                >
+                  {link.label}
+                  {isActive(link.href) && (
+                    <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-4 rounded-full ${transparent ? "bg-white" : "bg-[#C8A84B]"}`} />
+                  )}
+                </Link>
+              )
+            )}
+          </nav>
+
+          {/* ── Right: phone + CTA ── */}
+          <div className="hidden md:flex items-center gap-4 shrink-0">
+            <a
+              href="tel:+6567772724"
+              className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-200 ${
+                transparent ? "text-white/90 hover:text-white" : "text-[#1a1a1a] hover:text-[#C8A84B]"
+              }`}
+            >
+              <Phone size={14} />
+              +65 6777 2724
+            </a>
+            <Link
+              href="/contact"
+              className="btn-pill-gold !py-2.5 !px-5 !text-sm"
+            >
+              Contact Us
+            </Link>
+          </div>
+
+          {/* ── Mobile toggle ── */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+            className={`md:hidden p-2 rounded-md transition-colors ${
+              transparent ? "text-white hover:bg-white/10" : "text-[#1a1a1a] hover:bg-gray-100"
+            }`}
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
+
+        {/* ── Mobile Menu ── */}
+        {mobileOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100 shadow-lg mobile-menu-in">
+            <nav className="max-w-[1200px] mx-auto px-6 py-3 flex flex-col">
+              {navLinks.map((link) =>
+                link.children ? (
+                  <div key={link.label}>
+                    <button
+                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                      className="flex items-center justify-between w-full py-3 text-sm font-semibold text-[#252525] border-b border-gray-100"
+                    >
+                      <span>{link.label}</span>
+                      <ChevronDown
+                        size={16}
+                        className={`text-[#C8A84B] transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        mobileServicesOpen ? "max-h-[600px]" : "max-h-0"
+                      }`}
+                    >
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => { setMobileOpen(false); setMobileServicesOpen(false); }}
+                          className="flex items-center gap-2 pl-4 py-2.5 text-sm text-[#444] hover:text-[#C8A84B] border-b border-gray-50 last:border-0 transition-colors"
+                        >
+                          <ChevronRight size={10} className="text-[#C8A84B] shrink-0" />
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setMobileServicesOpen(false);
+                    }}
+                    className={`py-3 text-sm font-semibold border-b border-gray-100 transition-colors ${
+                      isActive(link.href) ? "text-[#C8A84B]" : "text-[#252525] hover:text-[#C8A84B]"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
+              <div className="pt-4 pb-2 flex flex-col gap-3">
+                <a
+                  href="tel:+6567772724"
+                  className="flex items-center gap-2 text-sm font-semibold text-[#1a1a1a]"
+                >
+                  <Phone size={14} className="text-[#C8A84B]" />
+                  +65 6777 2724
+                </a>
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex justify-center bg-[#C8A84B] hover:bg-[#9A7D2D] text-[#1a1a1a] font-bold text-sm py-3 px-5 rounded-lg transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </nav>
+          </div>
+        )}
       </header>
     </>
   );

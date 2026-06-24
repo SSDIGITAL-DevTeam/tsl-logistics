@@ -56,7 +56,7 @@ const whyChoose = [
 
 export default function ContainerTruckTankerPage() {
   return (
-    <ServicePageLayout title="Container, Truck, and Tanker Haulier Services" enquiryOptions={enquiryOptions} source="container-haulier">
+    <ServicePageLayout title="Container Haulier Services" image="/images/containers2.jpeg" enquiryOptions={enquiryOptions} source="container-haulier">
       {/* Hero image */}
       <div className="aspect-[16/6] relative overflow-hidden rounded-lg mb-10 shadow">
         <Image
@@ -122,7 +122,7 @@ export default function ContainerTruckTankerPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {whyChoose.map((item, i) => (
             <div key={i} className="flex gap-4 p-5 bg-gray-50 rounded-lg">
-              <span className="text-[#F05921] font-bold text-xl leading-none mt-0.5 shrink-0">✓</span>
+              <span className="text-[#C8A84B] font-bold text-xl leading-none mt-0.5 shrink-0">✓</span>
               <div>
                 <h3 className="font-bold text-[#252525] mb-1">{item.title}</h3>
                 <p className="text-[#555] text-sm leading-relaxed">{item.text}</p>
