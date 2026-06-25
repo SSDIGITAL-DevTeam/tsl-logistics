@@ -6,38 +6,42 @@ export default function Footer() {
   return (
     <footer>
       {/* ── CTA Banner ── */}
-      {/* overflow-visible so truck floats above the section */}
-      <div
-        className="bg-gold-gradient relative z-10 py-20"
-        style={{ overflow: "visible" }}
-      >
-        {/* Subtle orb */}
-        <div className="absolute right-[30%] top-1/2 -translate-y-1/2 w-[280px] h-[280px] rounded-full bg-white/20 blur-3xl pointer-events-none" />
-
-        {/* Truck — relative to section, aligns to container right edge */}
-        <div
-          className="hidden md:block absolute -bottom-9 w-[300px] lg:w-[400px] pointer-events-none z-20"
-          style={{ right: "max(1.5rem, calc(50% - 600px + 1.5rem))" }}
-        >
+      <div className="relative z-10 min-h-[360px] overflow-hidden bg-[#111] md:min-h-[410px]">
+        <Image
+          src="/images/footer-cta-bg.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/20 md:bg-gradient-to-r md:from-black/45 md:via-black/20 md:to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 right-0 z-10 hidden w-[56vw] max-w-[760px] md:block">
           <Image
-            src="/images/cta-truck.png"
-            alt="TSL Logistics truck"
-            width={300}
-            height={300}
-            className="w-full object-contain"
+            src="/images/footer-cta-vehicle.png"
+            alt=""
+            width={811}
+            height={399}
+            className="h-auto w-full object-contain"
           />
         </div>
 
-        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-          <h2 className="text-[#1a1a1a] text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Quick &amp; Reliable
-          </h2>
-          <a
-            href="tel:+6567772724"
-            className="inline-flex items-center gap-2 bg-[#1a1a1a] hover:bg-black text-white font-semibold py-3 px-7 rounded-full text-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.98]"
-          >
-            Call Us Today <span aria-hidden>→</span>
-          </a>
+        <div className="relative z-20 mx-auto flex min-h-[360px] max-w-[1200px] items-center px-6 py-14 md:min-h-[410px]">
+          <div className="max-w-[560px]">
+            <h2 className="mb-5 text-4xl font-bold leading-tight text-white md:text-5xl">
+              Quick &amp; Reliable
+            </h2>
+            <p className="mb-10 max-w-[540px] text-sm leading-relaxed text-white/90 md:text-base">
+              We deliver fast, secure, and dependable logistics solutions that
+              help businesses move goods efficiently while maintaining complete
+              visibility and confidence throughout the shipping process.
+            </p>
+            <a
+              href="tel:+6567772724"
+              className="inline-flex min-w-[230px] items-center justify-center gap-2 bg-white px-7 py-4 text-sm font-semibold text-[#1a1a1a] transition hover:bg-[#f2f2f2] active:scale-[0.98]"
+            >
+              Call Us Today <span aria-hidden>→</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -49,11 +53,11 @@ export default function Footer() {
             <div className="lg:col-span-1">
               <Link href="/">
                 <Image
-                  src="/images/new_logo4-640w.png"
+                  src="/images/logo-tsl.svg"
                   alt="TSL Logistics"
-                  width={200}
-                  height={52}
-                  className="h-12 w-auto mb-4 brightness-0 invert"
+                  width={247}
+                  height={51}
+                  className="mb-4 h-10 w-auto brightness-0 invert"
                 />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed mb-4">
@@ -65,7 +69,7 @@ export default function Footer() {
                   href="https://www.facebook.com/tsllogistics.sg/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 bg-[#C8A84B]/20 hover:bg-[#C8A84B] text-[#C8A84B] hover:text-[#1E1E1E] rounded-full flex items-center justify-center transition-all duration-200"
+                  className="w-8 h-8 bg-[#C8A84B]/20 hover:bg-[#C8A84B] text-[#C8A84B] hover:text-[#1E1E1E] flex items-center justify-center transition-all duration-200"
                   aria-label="Facebook"
                 >
                   <svg
@@ -98,7 +102,7 @@ export default function Footer() {
                       href={link.href}
                       className="text-gray-400 hover:text-[#C8A84B] text-sm transition-colors duration-200 flex items-center gap-1.5 group"
                     >
-                      <span className="w-1 h-1 rounded-full bg-[#C8A84B] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                      <span className="w-1 h-1 bg-[#C8A84B] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                       {link.label}
                     </Link>
                   </li>
@@ -116,20 +120,12 @@ export default function Footer() {
                   { label: "TSL Logistics", href: "/tsl-logistics" },
                   { label: "TSL Mover", href: "/tsl-mover" },
                   {
-                    label: "Container & Tanker Haulier",
-                    href: "/container-truck-tanker-haulier-services",
+                    label: "TSL Express",
+                    href: "/tsl-express",
                   },
                   {
                     label: "Warehousing Services",
                     href: "/warehousing-services",
-                  },
-                  {
-                    label: "Dangerous Goods Transport",
-                    href: "/dangerous-goods-transport",
-                  },
-                  {
-                    label: "Vehicle Rentals",
-                    href: "/transportation-vehicles-rentals",
                   },
                 ].map((link) => (
                   <li key={link.href}>
@@ -137,7 +133,7 @@ export default function Footer() {
                       href={link.href}
                       className="text-gray-400 hover:text-[#C8A84B] text-sm transition-colors duration-200 flex items-center gap-1.5 group"
                     >
-                      <span className="w-1 h-1 rounded-full bg-[#C8A84B] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                      <span className="w-1 h-1 bg-[#C8A84B] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                       {link.label}
                     </Link>
                   </li>
@@ -193,7 +189,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="text-gray-500 text-xs flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse" />
+                  <span className="w-1.5 h-1.5 bg-green-500 inline-block animate-pulse" />
                   Mon–Fri, 9am–5pm
                 </li>
               </ul>

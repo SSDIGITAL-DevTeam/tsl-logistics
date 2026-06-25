@@ -12,9 +12,7 @@ const staticRoutes: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/tsl-logistics`, lastModified: now, priority: 0.9, changeFrequency: 'monthly' },
   { url: `${SITE_URL}/tsl-mover`, lastModified: now, priority: 0.9, changeFrequency: 'monthly' },
   { url: `${SITE_URL}/warehousing-services`, lastModified: now, priority: 0.9, changeFrequency: 'monthly' },
-  { url: `${SITE_URL}/dangerous-goods-transport`, lastModified: now, priority: 0.9, changeFrequency: 'monthly' },
-  { url: `${SITE_URL}/container-truck-tanker-haulier-services`, lastModified: now, priority: 0.9, changeFrequency: 'monthly' },
-  { url: `${SITE_URL}/transportation-vehicles-rentals`, lastModified: now, priority: 0.9, changeFrequency: 'monthly' },
+  { url: `${SITE_URL}/tsl-express`, lastModified: now, priority: 0.9, changeFrequency: 'monthly' },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

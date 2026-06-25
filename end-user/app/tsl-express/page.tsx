@@ -25,9 +25,9 @@ const enquiryOptions = [
   "Others",
 ];
 
-export default function ContainerTruckTankerPage() {
+export default function TSLExpressPage() {
   return (
-    <ServicePageLayout title="Container Haulier Services" image="/images/containers2.jpeg" enquiryOptions={enquiryOptions} source="container-haulier">
+    <ServicePageLayout title="TSL Express" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
       <FigmaServiceShell>
         <FigmaIntro
           title="TSL Express"
@@ -92,12 +92,12 @@ export default function ContainerTruckTankerPage() {
         <FigmaBand dark>
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_360px]">
             <div>
-              <h2 className="text-3xl font-extrabold leading-[1.3] md:text-[40px]">TSL Express: Fast, Reliable Logistics You Can Trust</h2>
-              <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-[20px]">
+              <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">TSL Express: Fast, Reliable Logistics You Can Trust</h2>
+              <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-base">
                 Ready to experience seamless shipping and delivery with TSL Express? Whether you need urgent courier services, freight forwarding, or comprehensive logistics solutions, our dedicated team ensures your goods arrive safely and on time, every time. Let us handle the logistics - so you can focus on growing your business.
               </p>
               <div className="mt-6">
-                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-[#121212]">
+                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center bg-white px-6 text-sm font-bold text-[#121212]">
                   Contact Us
                 </a>
               </div>

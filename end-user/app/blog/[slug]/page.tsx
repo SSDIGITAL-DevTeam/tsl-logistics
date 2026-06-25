@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Meta bar */}
           <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-8">
             {post.categoryName && (
-              <span className="bg-[#C8A84B] text-white px-3 py-1 rounded-full text-xs font-bold">
+              <span className="bg-[#C8A84B] text-white px-3 py-1 text-xs font-bold">
                 {post.categoryName}
               </span>
             )}
@@ -124,7 +124,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Cover image */}
           {post.coverImage && (
-            <div className="aspect-video relative overflow-hidden rounded-xl mb-8 shadow-md">
+            <div className="aspect-video relative overflow-hidden mb-8 shadow-md">
               <Image
                 src={`${API_URL}${post.coverImage}`}
                 alt={post.title}
@@ -163,7 +163,7 @@ export default async function BlogPostPage({ params }: Props) {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-[#C8A84B] hover:bg-[#9A7D2D] text-[#1E1E1E] font-bold py-3 px-8 rounded-full uppercase text-sm tracking-widest transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-[#C8A84B] hover:bg-[#9A7D2D] text-[#1E1E1E] font-bold py-3 px-8 uppercase text-sm tracking-widest transition-all hover:-translate-y-0.5"
           >
             Contact Us
           </Link>

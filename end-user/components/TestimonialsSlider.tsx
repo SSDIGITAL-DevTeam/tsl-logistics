@@ -62,7 +62,7 @@ export default function TestimonialsSlider() {
       <div className="flex items-center justify-center gap-4 mt-6">
         <button
           onClick={prev}
-          className="w-9 h-9 rounded-full border border-[#C8A84B] flex items-center justify-center text-[#C8A84B] hover:bg-[#C8A84B] hover:text-white transition-colors"
+          className="w-9 h-9 border border-[#C8A84B] flex items-center justify-center rounded-full text-[#C8A84B] hover:bg-[#C8A84B] hover:text-white transition-colors"
           aria-label="Previous"
         >
           <ChevronLeft size={16} />
@@ -81,7 +81,7 @@ export default function TestimonialsSlider() {
         </div>
         <button
           onClick={next}
-          className="w-9 h-9 rounded-full border border-[#C8A84B] flex items-center justify-center text-[#C8A84B] hover:bg-[#C8A84B] hover:text-white transition-colors"
+          className="w-9 h-9 border border-[#C8A84B] flex items-center justify-center rounded-full text-[#C8A84B] hover:bg-[#C8A84B] hover:text-white transition-colors"
           aria-label="Next"
         >
           <ChevronRight size={16} />
@@ -90,4 +90,3 @@ export default function TestimonialsSlider() {
     </div>
   );
 }
-

@@ -77,11 +77,11 @@ function Dialog({ onClose }: { onClose: () => void }) {
       />
 
       {/* Panel — bottom sheet on mobile, centered modal on md+ */}
-      <div className="relative bg-white w-full md:max-w-[580px] md:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col max-h-[88svh] md:max-h-[80vh] z-10 animate-sheet-up md:animate-none">
+      <div className="relative bg-white w-full md:max-w-[580px]-2xl shadow-2xl flex flex-col max-h-[88svh] md:max-h-[80vh] z-10 animate-sheet-up md:animate-none">
 
         {/* Drag handle (mobile only) */}
         <div className="md:hidden flex justify-center pt-3 pb-1 shrink-0">
-          <div className="w-10 h-1 rounded-full bg-gray-300" />
+          <div className="w-10 h-1 bg-gray-300" />
         </div>
 
         {/* Header */}
@@ -89,7 +89,7 @@ function Dialog({ onClose }: { onClose: () => void }) {
           <h3 className="font-bold text-[#1a1a1a] text-lg">Document &amp; Permit Processing</h3>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-[#555]"
+            className="w-8 h-8 flex items-center justify-center hover:bg-gray-100 transition-colors text-[#555]"
             aria-label="Close"
           >
             <X size={18} />
@@ -104,7 +104,7 @@ function Dialog({ onClose }: { onClose: () => void }) {
               <ul className="space-y-1.5 pl-1">
                 {section.items.map((item, j) => (
                   <li key={j} className="flex items-start gap-2.5">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#C8A84B] shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 bg-[#C8A84B] shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Building2, Globe, Mail, MapPin, Phone, Share2 } from "lucide-react";
+import Link from "next/link";
+import { ContactRound } from "lucide-react";
 import { notFound } from "next/navigation";
-import { getInitials, getTeamMember, teamMembers } from "@/lib/team";
+import { departmentLabels, getInitials, getTeamMember, teamMembers } from "@/lib/team";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -16,202 +17,114 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!member) return {};
 
   return {
-    title: `${member.name} | Digital Business Card`,
+    title: `${member.name} | Our Team`,
     description: `${member.name}, ${member.role} at TSL Logistics.`,
   };
 }
 
-function TapeStrip() {
-  const tapeText = Array.from({ length: 8 }).map((_, index) => (
-    <span key={index} className="shrink-0">
-      TSL Logistic&nbsp;&nbsp; Delivery&nbsp;&nbsp; Shipping
-    </span>
-  ));
-
+function DetailAvatar({ name, photo }: { name: string; photo?: string }) {
   return (
-    <div className="absolute left-1/2 top-[94px] h-[92px] w-[186%] -translate-x-2/3 overflow-visible">
-      <div className="absolute left-1/2 top-0 flex h-[40px] w-full -translate-x-1/2 rotate-[3.7deg] items-center gap-[18px] bg-[#c6a44f] px-4 text-[14px] font-black leading-none text-[#121212]">
-        {tapeText}
-      </div>
-      <div className="absolute left-1/2 top-[16px] flex h-[40px] w-full -translate-x-1/2 -rotate-[0.41deg] items-center gap-[18px] bg-gold-gradient px-4 text-[14px] font-black leading-none text-[#121212]">
-        {tapeText}
-      </div>
-    </div>
-  );
-}
-
-function Avatar({ name, photo }: { name: string; photo?: string }) {
-  return (
-    <div className="relative z-10 grid h-[122px] w-[122px] place-items-center overflow-hidden rounded-full bg-gold-gradient text-2xl font-bold text-[#121212] shadow-lg">
+    <div className="relative h-[174px] w-[174px] overflow-hidden rounded-full border-[6px] border-[#1a1a1a] bg-gold-gradient text-3xl font-bold text-[#121212]">
       {photo ? (
         <Image
           src={photo}
           alt={name}
           fill
-          sizes="122px"
-          className="object-cover object-top"
+          sizes="164px"
+          className="object-contain object-bottom"
+          priority
         />
       ) : (
-        getInitials(name)
+        <div className="grid h-full w-full place-items-center">
+          {getInitials(name)}
+        </div>
       )}
     </div>
   );
 }
 
-function RoundAction({
-  icon,
-  href,
-  label,
-}: {
-  icon: React.ReactNode;
-  href: string;
-  label: string;
-}) {
-  return (
-    <a
-      href={href}
-      aria-label={label}
-      className="grid h-[70px] w-[70px] place-items-center rounded-full bg-gold-gradient text-[#121212]"
-    >
-      {icon}
-    </a>
-  );
-}
-
-function ContactRow({
-  icon,
-  children,
-  href,
-}: {
-  icon: React.ReactNode;
-  children: React.ReactNode;
-  href?: string;
-}) {
-  const content = (
-    <div className="flex min-h-[71px] items-center gap-4 rounded-[14px] bg-[#eeeeee] px-[22px] py-4 text-[18px] leading-[1.45] text-[#121212] md:text-[22px]">
-      <span className="grid h-[27px] w-[27px] shrink-0 place-items-center text-[#121212]">
-        {icon}
-      </span>
-      <span>{children}</span>
-    </div>
-  );
-
-  if (!href) return content;
-
-  return (
-    <a href={href} className="block">
-      {content}
-    </a>
-  );
-}
-
-export default async function DigitalBusinessCardPage({ params }: Props) {
+export default async function TeamDetailPage({ params }: Props) {
   const { slug } = await params;
   const member = getTeamMember(slug);
   if (!member) notFound();
 
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    member.card.mapQuery,
-  )}&output=embed`;
+  const role = member.role.replace(
+    ` - ${departmentLabels[member.department]}`,
+    "",
+  );
 
   return (
-    <div className="relative overflow-hidden bg-[#f5f5f5] px-4 py-[60px] md:py-[60px]">
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-10"
-        style={{ backgroundImage: "url('/images/permit-section.jpg')" }}
-      />
-      <div className="absolute inset-0 bg-white/75" />
+    <main className="bg-[#f3f3f3] pb-14">
+      <section className="relative h-[138px] overflow-hidden bg-[#1a1a1a] md:h-[170px]">
+        <Image
+          src="/images/homepage-image-break.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center opacity-45"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/45" />
+      </section>
 
-      <section className="relative z-10 mx-auto w-full max-w-[670px]">
-        <div className="relative overflow-hidden rounded-[28px] bg-white pb-[22px] shadow-[0_5px_17px_rgba(0,0,0,0.5)]">
-          <div className="relative h-[292px] overflow-visible">
-            <TapeStrip />
-
-            <div className="absolute left-1/2 top-[69px] flex -translate-x-1/2 flex-col items-center">
-              <div className="relative">
-                <Avatar name={member.name} photo={member.photo} />
-                <div className="absolute z-20 -bottom-1 -right-2 grid h-[46px] w-[46px] place-items-center rounded-full border-[3px] border-white bg-gold-gradient text-xs font-bold text-white">
-                  TSL
-                </div>
-              </div>
-              <h1 className="mt-[30px] text-center text-[24px] font-bold leading-[1.5] text-[#121212] md:text-[28px]">
+      <section className="mx-auto max-w-[1160px] px-5 md:px-6">
+        <div className="-mt-[86px] grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-start">
+          <div>
+            <DetailAvatar name={member.name} photo={member.photo} />
+            <div className="mt-6">
+              <h1 className="text-3xl font-bold leading-tight text-[#1a1a1a]">
                 {member.name}
               </h1>
-              <p className="text-center text-[18px] leading-[1.5] text-[#121212] md:text-[22px]">
-                {member.role.replace(" - Logistics", "")}
+              <p className="mt-3 text-sm font-bold leading-snug text-[#b58b34] md:text-[15px]">
+                {role} - {departmentLabels[member.department]}
               </p>
             </div>
           </div>
 
-          <div className="px-[21px]">
-            <div className="mb-3 flex justify-center gap-4">
-              <RoundAction
-                href={`tel:${member.card.phone.replace(/\s/g, "")}`}
-                label="Call"
-                icon={<Phone size={27} fill="currentColor" />}
-              />
-              <RoundAction
-                href={`mailto:${member.card.email}`}
-                label="Email"
-                icon={<Mail size={27} fill="currentColor" />}
-              />
-              <RoundAction
-                href={`/our-team/${member.slug}`}
-                label="Share"
-                icon={<Share2 size={27} fill="currentColor" />}
-              />
-            </div>
+          <Link
+            href={`/our-team/${member.slug}/business-card`}
+            className="mt-[114px] inline-flex items-center justify-center gap-2 bg-gold-gradient px-7 py-3 text-sm font-bold leading-none text-[#121212] shadow-[0_2px_5px_rgba(0,0,0,0.12)] transition hover:brightness-105 md:min-w-[280px]"
+          >
+            <ContactRound size={18} strokeWidth={2.1} />
+            View Digital Business Card
+          </Link>
+        </div>
 
-            <a
-              href={`mailto:${member.card.email}`}
-              className="mb-[14px] flex h-[57px] items-center justify-center rounded-[14px] bg-gold-gradient text-[20px] leading-[1.5] text-[#121212] md:text-[22px]"
-            >
-              Save Contact
-            </a>
+        <p className="mt-5 max-w-[820px] text-sm leading-relaxed text-[#1a1a1a] md:text-[15px]">
+          {member.intro}
+        </p>
 
-            <div className="space-y-[11px] text-left">
-              <ContactRow icon={<Building2 size={27} fill="currentColor" />}>
-                {member.card.company}
-              </ContactRow>
-              <ContactRow
-                icon={<Mail size={27} fill="currentColor" />}
-                href={`mailto:${member.card.email}`}
-              >
-                {member.card.email}
-              </ContactRow>
-              <ContactRow
-                icon={<Phone size={27} fill="currentColor" />}
-                href={`tel:${member.card.phone.replace(/\s/g, "")}`}
-              >
-                {member.card.phone}
-              </ContactRow>
-              <ContactRow
-                icon={<Globe size={27} />}
-                href={`https://${member.card.website}`}
-              >
-                {member.card.website}
-              </ContactRow>
-              <div className="overflow-hidden rounded-[21px] bg-[#eeeeee]">
-                <ContactRow icon={<MapPin size={27} fill="currentColor" />}>
-                  {member.card.address}
-                </ContactRow>
-                <div className="mx-[10px] mb-[14px] overflow-hidden rounded-[14px]">
-                  <iframe
-                    src={mapSrc}
-                    width="100%"
-                    height="279"
-                    style={{ border: 0, display: "block" }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`${member.name} location map`}
-                  />
-                </div>
-              </div>
+        <div className="mt-9 grid gap-6 md:grid-cols-2">
+          <section className="bg-white p-6 md:p-8">
+            <h2 className="text-lg font-bold leading-tight text-[#1a1a1a]">
+              Key Experience / Expertise:
+            </h2>
+            <ul className="mt-2 list-disc pl-6 text-sm leading-relaxed text-[#1a1a1a] md:text-[15px]">
+              {member.experience.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+
+            <div className="mt-6">
+              <h2 className="text-lg font-bold leading-tight text-[#1a1a1a]">
+                Role In The Company:
+              </h2>
+              <p className="mt-1 text-sm leading-relaxed text-[#1a1a1a] md:text-[15px]">
+                {role}
+              </p>
             </div>
-          </div>
+          </section>
+
+          <section className="bg-white p-6 md:p-8">
+            <h2 className="text-lg font-bold leading-tight text-[#1a1a1a]">
+              Key Contributions / Value:
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-[#1a1a1a] md:text-[15px]">
+              {member.contributions.join(" ")}
+            </p>
+          </section>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

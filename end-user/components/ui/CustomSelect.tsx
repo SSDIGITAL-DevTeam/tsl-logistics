@@ -31,7 +31,7 @@ export default function CustomSelect({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between border border-gray-300 rounded px-3 py-2.5 text-sm bg-white focus:border-[#C8A84B] focus:outline-none hover:border-gray-400 transition-colors"
+        className="flex w-full items-center justify-between border border-gray-300 px-3 py-2.5 text-sm bg-white focus:border-[#C8A84B] focus:outline-none hover:border-gray-400 transition-colors"
       >
         <span className={value ? "text-[#252525]" : "text-gray-400"}>
           {value || placeholder}
@@ -48,7 +48,7 @@ export default function CustomSelect({
       </button>
 
       {open && (
-        <div className="absolute z-50 mt-1 w-full rounded border border-gray-200 bg-white shadow-lg overflow-hidden">
+        <div className="absolute z-50 mt-1 w-full border border-gray-200 bg-white shadow-lg overflow-hidden">
           <div className="max-h-52 overflow-y-auto py-1">
             {options.map((opt) => (
               <button

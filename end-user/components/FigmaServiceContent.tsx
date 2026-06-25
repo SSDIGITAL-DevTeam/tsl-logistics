@@ -71,7 +71,7 @@ export function FigmaContactButton({ children = "Contact Us" }: { children?: str
   return (
     <a
       href="/contact"
-      className="inline-flex h-[38px] min-w-[150px] items-center justify-center rounded-full bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)] transition hover:opacity-90"
+      className="inline-flex h-[38px] min-w-[150px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)] transition hover:opacity-90"
     >
       {children}
     </a>
@@ -80,13 +80,13 @@ export function FigmaContactButton({ children = "Contact Us" }: { children?: str
 
 export function FigmaIntro({ title, body, image, imageAlt }: IntroProps) {
   return (
-    <section className="grid items-center gap-8 md:grid-cols-[411px_1fr] md:gap-[68px]">
-      <div className="relative aspect-[411/410] overflow-hidden rounded-[27px] bg-[#e1e1e1]">
+    <section className="grid items-center gap-8 md:grid-cols-[411px_1fr] md:gap-12">
+      <div className="relative aspect-[411/410] overflow-hidden bg-[#e1e1e1]">
         <Image src={image} alt={imageAlt} fill sizes="(min-width: 768px) 48vw, 100vw" className="object-cover" priority />
       </div>
       <div>
-        <h2 className="mb-7 text-3xl font-extrabold leading-[1.3] text-[#121212] md:text-[53px]">{title}</h2>
-        <div className="space-y-4 text-sm leading-[1.5] text-[#121212] md:text-[20px]">
+        <h2 className="mb-5 text-2xl font-bold leading-tight text-[#1a1a1a] md:text-4xl">{title}</h2>
+        <div className="space-y-4 text-sm leading-relaxed text-[#555] md:text-base">
           {body.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
@@ -110,19 +110,19 @@ export function FigmaSectionHeader({
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow && <p className="eyebrow mb-2">{eyebrow}</p>}
-      <h2 className="text-2xl font-extrabold leading-[1.3] text-[#121212] md:text-[40px]">{title}</h2>
-      {subtitle && <p className="mt-3 text-sm leading-[1.5] text-[#121212] md:text-[16px]">{subtitle}</p>}
+      <h2 className="text-2xl font-bold leading-tight text-[#1a1a1a] md:text-3xl">{title}</h2>
+      {subtitle && <p className="mt-3 text-sm leading-relaxed text-[#555] md:text-base">{subtitle}</p>}
     </div>
   );
 }
 
 export function FigmaSplitSection({ eyebrow, title, subtitle, body = [], image, imageAlt, reverse, features, cta }: SplitSectionProps) {
   return (
-    <section className="grid items-center gap-8 md:grid-cols-[1fr_1.03fr] md:gap-[68px]">
+    <section className="grid items-center gap-8 md:grid-cols-[1fr_1.03fr] md:gap-12">
       <div className={reverse ? "md:order-2" : ""}>
         <FigmaSectionHeader eyebrow={eyebrow} title={title} subtitle={subtitle} align="left" />
         {body.length > 0 && (  
-          <div className="mt-7 space-y-4 text-sm leading-[1.5] text-[#121212] md:text-[20px]">
+          <div className="mt-5 space-y-4 text-sm leading-relaxed text-[#555] md:text-base">
             {body.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -131,7 +131,7 @@ export function FigmaSplitSection({ eyebrow, title, subtitle, body = [], image, 
         {cta && <div className="mt-8"><FigmaContactButton>{cta}</FigmaContactButton></div>}
         {features && <FigmaFeatureGrid features={features} compact className="mt-6" />}
       </div>
-      <div className={`relative aspect-[616/418] overflow-hidden rounded-[27px] bg-[#e1e1e1] ${reverse ? "md:order-1" : ""}`}>
+      <div className={`relative aspect-[616/418] overflow-hidden bg-[#e1e1e1] ${reverse ? "md:order-1" : ""}`}>
         <Image src={image} alt={imageAlt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
       </div>
     </section>
@@ -143,12 +143,12 @@ export function FigmaImageCards({ cards, columns = 2 }: { cards: ImageCard[]; co
     <div className={`grid gap-6 ${columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
       {cards.map((card) => (
         <article key={card.title} className="bg-white">
-          <div className="relative aspect-[619/440] overflow-hidden rounded-[28px] bg-[#e1e1e1]">
+          <div className="relative aspect-[619/440] overflow-hidden bg-[#e1e1e1]">
             <Image src={card.image} alt={card.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-500 hover:scale-105" />
           </div>
           <div className="pt-5">
-            <h3 className="text-lg font-bold leading-[1.5] text-[#121212] md:text-[24px]">{card.title}</h3>
-            {card.text && <p className="mt-2 text-sm leading-[1.5] text-[#121212]">{card.text}</p>}
+            <h3 className="text-base font-bold leading-snug text-[#1a1a1a] md:text-lg">{card.title}</h3>
+            {card.text && <p className="mt-2 text-sm leading-relaxed text-[#555]">{card.text}</p>}
           </div>
         </article>
       ))}
@@ -170,12 +170,12 @@ export function FigmaFeatureGrid({
       {features.map((feature) => {
         const Icon = feature.icon ?? CheckCircle2;
         return (
-          <article key={feature.title} className="rounded-[25px] bg-[#f5f5f5] p-6 text-[#121212]">
-            <div className="mb-4 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-gold-gradient text-[#1a1a1a]">
-              <Icon size={28} strokeWidth={2.2} />
+          <article key={feature.title} className="bg-[#f7f8fa] p-6 text-[#121212]">
+            <div className="mb-4 flex h-11 w-11 items-center justify-center bg-gold-gradient text-[#1a1a1a]">
+              <Icon size={22} strokeWidth={2.2} />
             </div>
-            <h3 className="text-base font-semibold leading-[1.3] text-[#121212] md:text-[20px]">{feature.title}</h3>
-            {feature.text && <p className="mt-2 text-sm leading-[1.4] text-[#121212] md:text-[16px]">{feature.text}</p>}
+            <h3 className="text-sm font-semibold leading-snug text-[#1a1a1a] md:text-base">{feature.title}</h3>
+            {feature.text && <p className="mt-2 text-sm leading-relaxed text-[#555]">{feature.text}</p>}
           </article>
         );
       })}
@@ -185,12 +185,12 @@ export function FigmaFeatureGrid({
 
 export function FigmaBand({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
   return (
-    <section className={`px-5 py-10 md:-mx-4 md:px-10 md:py-14 ${dark ? "rounded-[30px] bg-[#1a3263] text-white" : "bg-[#f5f5f5]"}`}>
+    <section className={`px-5 py-10 md:-mx-4 md:px-10 md:py-14 ${dark ? "bg-[#1a3263] text-white" : "bg-[#f5f5f5]"}`}>
       {children}
     </section>
   );
 }
 
 export function FigmaServiceShell({ children }: { children: ReactNode }) {
-  return <div className="space-y-20 md:space-y-28">{children}</div>;
+  return <div className="space-y-14 md:space-y-20">{children}</div>;
 }

@@ -31,7 +31,7 @@ function WhatsAppIcon() {
     <svg
       viewBox="0 0 32 32"
       aria-hidden="true"
-      className="h-7 w-7"
+      className="h-5 w-5"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -54,13 +54,13 @@ export default function FloatingHelpWidget() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-5 right-5 z-[90] flex flex-col items-end gap-3 md:bottom-7 md:right-7">
+    <div className="fixed bottom-4 right-4 z-[90] flex flex-col items-end gap-2.5 md:bottom-6 md:right-6">
       {open && (
-        <div className="w-[calc(100vw-2rem)] max-w-[330px] overflow-hidden rounded-[18px] border-2 border-[#222] bg-[#f4f4f4] shadow-2xl">
-          <div className="flex items-center justify-between bg-[#1f3a70] px-5 py-5 text-white">
-            <div className="flex items-center gap-3">
-              <Headphones size={28} strokeWidth={2.4} />
-              <h2 className="text-xl font-bold leading-tight">
+        <div className="w-[calc(100vw-2rem)] max-w-[280px] overflow-hidden rounded-xl border border-[#1f3a70]/20 bg-[#f7f8fa] shadow-lg">
+          <div className="flex items-center justify-between bg-[#1f3a70] px-4 py-3.5 text-white">
+            <div className="flex items-center gap-2.5">
+              <Headphones size={20} strokeWidth={2.2} />
+              <h2 className="text-base font-bold leading-tight">
                 We Are Ready To Help You
               </h2>
             </div>
@@ -68,28 +68,28 @@ export default function FloatingHelpWidget() {
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close help options"
-              className="ml-2 grid h-8 w-8 shrink-0 place-items-center rounded-full text-white/85 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70"
+              className="ml-2 grid h-7 w-7 shrink-0 place-items-center rounded-full text-white/85 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70"
             >
-              <X size={18} />
+              <X size={16} />
             </button>
           </div>
 
-          <div className="space-y-4 px-5 py-6">
+          <div className="space-y-3 px-4 py-4">
             <a
               href="mailto:sales@tsllogistics.sg"
-              className="group flex min-h-[56px] items-center gap-4 rounded-r-lg border-l-[6px] border-[#1f3a70] bg-white px-4 text-[#1f3a70] transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#1f3a70]"
+              className="group flex min-h-11 items-center gap-3 rounded-r-md border-l-4 border-[#1f3a70] bg-white px-3 text-[#1f3a70] transition hover:bg-[#f9fbff] focus:outline-none focus:ring-2 focus:ring-[#1f3a70]"
             >
-              <Mail size={28} strokeWidth={2.1} />
-              <span className="text-xl font-medium">Email Us</span>
+              <Mail size={20} strokeWidth={2.1} />
+              <span className="text-sm font-semibold">Email Us</span>
             </a>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex min-h-[56px] items-center gap-4 rounded-r-lg border-l-[6px] border-[#1f3a70] bg-white px-4 text-[#1f3a70] transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#1f3a70]"
+              className="group flex min-h-11 items-center gap-3 rounded-r-md border-l-4 border-[#1f3a70] bg-white px-3 text-[#1f3a70] transition hover:bg-[#f9fbff] focus:outline-none focus:ring-2 focus:ring-[#1f3a70]"
             >
               <WhatsAppIcon />
-              <span className="text-xl font-medium">
+              <span className="text-sm font-semibold">
                 Chat on WhatsApp
               </span>
             </a>
@@ -102,9 +102,9 @@ export default function FloatingHelpWidget() {
         onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
         aria-label={open ? "Close help options" : "Open help options"}
-        className="grid h-14 w-14 place-items-center rounded-full bg-[#1f3a70] text-white shadow-xl transition hover:-translate-y-0.5 hover:bg-[#18315f] focus:outline-none focus:ring-4 focus:ring-[#1f3a70]/30 active:scale-95 md:h-16 md:w-16"
+        className="grid h-12 w-12 place-items-center rounded-full bg-[#1f3a70] text-white shadow-lg transition hover:bg-[#18315f] focus:outline-none focus:ring-4 focus:ring-[#1f3a70]/30 active:scale-95 md:h-[52px] md:w-[52px]"
       >
-        {open ? <X size={26} /> : <ChatBubbleIcon className="h-10 w-10 md:h-11 md:w-11" />}
+        {open ? <X size={20} /> : <ChatBubbleIcon className="h-8 w-8" />}
       </button>
     </div>
   );

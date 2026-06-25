@@ -3,7 +3,7 @@ import Image from "next/image";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import {
   FigmaBand,
-  FigmaFeatureGrid,
+  FigmaContactButton,
   FigmaImageCards,
   FigmaIntro,
   FigmaSectionHeader,
@@ -77,85 +77,190 @@ export default function TSLLogisticsPage() {
           />
         </section>
 
-        <FigmaSplitSection
-          eyebrow="DG Cargo / Trucking"
-          title="TSL DG Trucking - Dangerous Goods Handling"
-          image="/images/figma-services/logistics-dg.png"
-          imageAlt="Dangerous goods trucking"
-          reverse
-          body={[
-            "TSL Logistics provides reliable Dangerous Goods (DG) trucking services in Singapore, specializing in the safe and compliant transport of hazardous materials. With over 20 years of industry experience, a highly trained team, and strict adherence to local and international regulations, we deliver secure, responsible, and tailored DG transport solutions with safety and reliability at the core.",
-          ]}
-          cta="Contact Us"
-        />
+        <section>
+          <FigmaSectionHeader title="DG Cargo / Trucking" />
+          <div className="mt-8 grid items-center gap-8 md:grid-cols-[320px_minmax(0,1fr)] md:gap-12">
+            <div className="relative aspect-[320/300] overflow-hidden bg-[#e1e1e1]">
+              <Image
+                src="/images/figma-services/logistics-dg.png"
+                alt="Dangerous goods trucking"
+                fill
+                sizes="(min-width: 768px) 320px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="max-w-[650px]">
+              <h3 className="text-xl font-bold leading-tight text-[#1a1a1a] md:text-2xl">
+                TSL DG Trucking - Dangerous Goods Handling
+              </h3>
+              <p className="mt-5 text-sm leading-relaxed text-[#333] md:text-base">
+                TSL Logistics provides reliable Dangerous Goods (DG) trucking
+                services in Singapore, specialising in the safe and compliant
+                transport of hazardous materials. With over 20 years of industry
+                experience, a highly trained team, and strict adherence to local
+                and international regulations, we deliver secure, responsible,
+                and tailored DG transport solutions with safety and reliability
+                at the core.
+              </p>
+              <div className="mt-6">
+                <FigmaContactButton>Contact Us</FigmaContactButton>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <section className="space-y-8">
-          <p className="mx-auto max-w-4xl text-center text-sm leading-[1.5] text-[#121212] md:text-[16px]">
-            As a leading provider of industrial transportation in Singapore, we offer a range of specialised services tailored to the transportation of dangerous goods, including the following:
-          </p>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <section className="grid items-stretch gap-6 md:grid-cols-[1fr_300px] lg:grid-cols-[1fr_380px]">
+          <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { title: "Chemicals and liquids", icon: serviceIcons.shield },
-              { title: "Gases", icon: serviceIcons.truck },
-              { title: "Flammable Substances", icon: serviceIcons.zap },
-              { title: "Toxic and Infectious Substances", icon: serviceIcons.file },
+              {
+                title: "Chemicals and liquids",
+                text: "We have the expertise to transport a variety of chemicals and liquids, ensuring proper packaging, labelling, and documentation to meet regulatory compliance.",
+                icon: serviceIcons.route,
+              },
+              {
+                title: "Gases",
+                text: "Our team is skilled in handling compressed and liquefied gases, taking into account all applicable safety requirements for both LPG and LNG cargo handling.",
+                icon: serviceIcons.truck,
+              },
+              {
+                title: "Flammable Substances",
+                text: "We understand the intricacies of transporting flammable materials and take all necessary precautions to prevent accidents.",
+                icon: serviceIcons.zap,
+              },
+              {
+                title: "Toxic and infectious substances",
+                text: "When transporting toxic or infectious substances, we follow stringent guidelines to protect our team, the public, and the environment.",
+                icon: serviceIcons.file,
+              },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className={`${index % 2 === 0 ? "bg-[#1a3263] text-white" : "bg-gold-gradient text-[#121212]"} rounded-[10px] p-5`}>
-                  <Icon className="mb-4" size={30} />
-                  <h3 className="text-lg font-bold leading-[1.3]">{item.title}</h3>
+                <article
+                  key={item.title}
+                  className={`${index === 0 || index === 3 ? "bg-[#1a3263] text-white" : "bg-gold-gradient text-[#121212]"} p-5`}
+                >
+                  <Icon className="mb-4" size={22} />
+                  <h3 className="text-sm font-bold leading-[1.3]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed opacity-90">
+                    {item.text}
+                  </p>
                 </article>
               );
             })}
           </div>
+          <div className="relative min-h-[360px] overflow-hidden bg-[#e1e1e1]">
+            <Image
+              src="/images/logistics-dangerous-goods-labels.png"
+              alt="Dangerous goods labelling"
+              fill
+              sizes="(min-width: 1024px) 380px, (min-width: 768px) 300px, 100vw"
+              className="object-cover"
+            />
+          </div>
         </section>
 
-        <section className="space-y-12">
-          <FigmaSectionHeader title="Dedicated Trucking Services (Contract Based)" />
-          <FigmaSplitSection
-            title="Dedicated Trucking Services"
-            image="/images/figma-services/logistics-dedicated.png"
-            imageAlt="Dedicated trucking service"
-            body={[
-              "We deliver dedicated trucking solutions designed for long-term, contract-based operations, giving your business full control over capacity, schedules, and service quality. Our trucks and professional drivers are assigned exclusively to your operations - functioning as an extension of your internal logistics team.",
-            ]}
-            cta="Contact Us"
-          />
-          <FigmaSplitSection
-            title="Guaranteed Availability"
-            image="/images/figma-services/logistics-freight.png"
-            imageAlt="TSL dedicated fleet"
-            reverse
-            body={[
-              "With a dedicated fleet, you gain guaranteed availability, predictable performance, and optimized routing that adapts to your supply chain needs. This model eliminates capacity uncertainty, reduces operational friction, and ensures every shipment moves on schedule - every time.",
-            ]}
-            cta="Contact Us"
-          />
-          <FigmaSplitSection
-            title="Stable and Cost-Efficient Operations"
-            image="/images/figma-services/logistics-project.png"
-            imageAlt="TSL operation"
-            body={[
-              "Ideal for businesses that prioritize stability, cost efficiency, and operational consistency, our dedicated trucking services empower you to scale with confidence while maintaining complete visibility and control over your transportation network.",
-            ]}
-            cta="Contact Us"
-          />
+        <section className="mx-auto max-w-[720px] space-y-8">
+          <h2 className="text-center text-xl font-bold leading-tight text-[#1a1a1a] md:text-2xl">
+            Dedicated Trucking Services (Contract Based)
+          </h2>
+          {[
+            {
+              image: "/images/figma-services/mover-heavy.png",
+              alt: "Dedicated trucking service",
+              body: (
+                <>
+                  We deliver <strong>dedicated trucking solutions designed for long-term, contract-based operations</strong>, giving your business full control over capacity, schedules, and service quality. Our trucks and professional drivers are assigned exclusively to your operations - functioning as an extension of your internal logistics team.
+                </>
+              ),
+              imageSide: "left",
+            },
+            {
+              image: "/images/figma-services/mover-residential.png",
+              alt: "TSL dedicated fleet",
+              body: (
+                <>
+                  With a dedicated fleet, you gain <strong>guaranteed availability</strong>, predictable performance, and optimized routing that adapts to your supply chain needs. This model eliminates capacity uncertainty, reduces operational friction, and ensures every shipment moves on schedule - every time.
+                </>
+              ),
+              imageSide: "right",
+            },
+            {
+              image: "/images/figma-services/mover-lorry.png",
+              alt: "TSL operation",
+              body: (
+                <>
+                  Ideal for businesses that prioritize <strong>stability, cost efficiency, and operational consistency</strong>, our dedicated trucking services empower you to scale with confidence while maintaining complete visibility and control over your transportation network.
+                </>
+              ),
+              imageSide: "left",
+            },
+          ].map((item) => (
+            <div
+              key={item.alt}
+              className={`grid items-center gap-6 ${
+                item.imageSide === "right"
+                  ? "md:grid-cols-[minmax(0,1fr)_230px] md:gap-10"
+                  : "md:grid-cols-[230px_minmax(0,1fr)] md:gap-10"
+              }`}
+            >
+              <div
+                className={`relative aspect-[230/190] overflow-hidden rounded-xl bg-[#e1e1e1] ${
+                  item.imageSide === "right" ? "md:order-2 md:justify-self-end" : ""
+                }`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(min-width: 768px) 230px, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className={item.imageSide === "right" ? "md:order-1" : ""}>
+                <p className="text-[13px] leading-relaxed text-[#1a1a1a] md:text-sm">
+                  {item.body}
+                </p>
+                <div className="mt-5">
+                  <a
+                    href="/contact"
+                    className="inline-flex h-8 min-w-[150px] items-center justify-center rounded-full bg-gold-gradient px-5 text-[11px] font-bold text-[#121212] transition hover:opacity-90"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
         </section>
 
         <FigmaBand>
-          <div className="space-y-8">
-            <FigmaSectionHeader
-              title="Why Choose Dedicated Trucking?"
-            />
-            <FigmaFeatureGrid
-              features={[
-                { title: "Consistent Capacity", text: "Always-ready fleet for your recurring logistics needs.", icon: serviceIcons.truck },
-                { title: "Optimised Routes", text: "Custom transport routes aligned to your operation.", icon: serviceIcons.route },
-                { title: "Dedicated Drivers", text: "Professional drivers assigned only to your schedule.", icon: serviceIcons.shield },
-                { title: "Cost Efficiency", text: "Stable operational costs with better cost control.", icon: serviceIcons.check },
-              ]}
-            />
+          <div className="space-y-9">
+            <FigmaSectionHeader title="Why Choose Dedicated Trucking?" />
+            <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { title: "Consistent Capacity", text: "Always-ready fleet with no last-minute shortages.", icon: serviceIcons.check },
+                { title: "Optimized Routes", text: "Custom routes for faster, more efficient deliveries.", icon: serviceIcons.check },
+                { title: "Dedicated Drivers", text: "Experienced drivers aligned with your standards.", icon: serviceIcons.check },
+                { title: "Cost Efficiency", text: "Stable pricing with reduced market risk.", icon: serviceIcons.check },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <article key={item.title} className="mx-auto max-w-[180px]">
+                    <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-gold-gradient text-[#121212]">
+                      <Icon size={20} strokeWidth={4} />
+                    </div>
+                    <h3 className="text-sm font-bold leading-tight text-[#1a1a1a]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-xs leading-relaxed text-[#555]">
+                      {item.text}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </FigmaBand>
 
@@ -171,35 +276,106 @@ export default function TSLLogisticsPage() {
           cta="Contact Us"
         />
 
-        <FigmaBand>
-          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-            <div>
-              <FigmaSectionHeader
-                eyebrow="Permit Declaration"
-                title="Permit Declaration"
-                subtitle="Managing transportation permits doesn't have to be complicated. Our permit declaration services handle all licensing and regulatory requirements for you, ensuring full compliance across routes and logistics."
-                align="left"
+        <section className="mx-auto max-w-[880px] space-y-12">
+          <h2 className="text-center text-[26px] font-bold leading-tight text-[#1a1a1a] md:text-[32px]">
+            Permit Declaration
+          </h2>
+
+          <div className="grid items-center gap-9 md:grid-cols-[400px_minmax(0,1fr)] md:gap-12">
+            <div className="relative aspect-[400/260] overflow-hidden rounded-xl bg-[#e1e1e1]">
+              <Image
+                src="/images/permit-processing-homepage.jpg"
+                alt="Permit declaration documentation"
+                fill
+                sizes="(min-width: 768px) 400px, 100vw"
+                className="object-cover"
               />
-              <p className="mt-5 text-sm leading-[1.5] text-[#121212] md:text-[20px]">
-                We minimise delays, penalties, and disruptions to your delivery with authorisation, so your shipments move smoothly, legally, and on time.
+            </div>
+            <div className="max-w-[360px]">
+              <p className="text-[13px] leading-relaxed text-[#1a1a1a] md:text-sm">
+                Managing transportation permits doesn&rsquo;t have to be
+                complicated. Our permit declaration service handles all
+                licenses and regulatory requirements for you, ensuring full
+                compliance across routes and regions.
+              </p>
+              <p className="mt-5 text-[13px] leading-relaxed text-[#1a1a1a] md:text-sm">
+                We minimize delays, penalties, and disruptions by working
+                directly with authorities - so your shipments move smoothly,
+                legally, and on time.
               </p>
               <div className="mt-6">
-                <a href="/contact" className="inline-flex h-[38px] min-w-[150px] items-center justify-center rounded-full bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)]">
+                <a
+                  href="/contact"
+                  className="inline-flex h-10 min-w-[190px] items-center justify-center rounded-full bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
+                >
                   Contact Us
                 </a>
               </div>
             </div>
-            <FigmaFeatureGrid
-              compact
-              features={[
-                { title: "Route & Transit Permits", icon: serviceIcons.route },
-                { title: "Special Cargo Approvals", icon: serviceIcons.shield },
-                { title: "Regulatory Documentation", icon: serviceIcons.file },
-                { title: "Authority Coordination", icon: serviceIcons.map },
-              ]}
-            />
           </div>
-        </FigmaBand>
+
+          <div className="space-y-6">
+            <h3 className="text-center text-xl font-bold leading-tight text-[#1a1a1a] md:text-[22px]">
+              What We Handle
+            </h3>
+            <div className="grid items-stretch gap-4 md:grid-cols-[1fr_270px]">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  {
+                    title: "Route & Transit Permits",
+                    text: "End-to-end processing of permits required for intercity, interprovincial, or restricted routes.",
+                    icon: serviceIcons.check,
+                  },
+                  {
+                    title: "Special Cargo Approvals",
+                    text: "Permits for oversized, overweight, hazardous, or sensitive cargo - handled in full compliance with regulations.",
+                    icon: serviceIcons.check,
+                  },
+                  {
+                    title: "Regulatory Documentation",
+                    text: "Preparation, submission, and verification of all mandatory paperwork to avoid errors or rejections.",
+                    icon: serviceIcons.check,
+                  },
+                  {
+                    title: "Authority Coordination",
+                    text: "Direct liaison with local and regulatory bodies to ensure fast approvals and clear communication.",
+                    icon: serviceIcons.check,
+                  },
+                ].map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <article
+                      key={item.title}
+                      className={`${index === 0 || index === 3 ? "bg-[#1a3263] text-white" : "bg-gold-gradient text-[#121212]"} min-h-[170px] rounded-xl p-5`}
+                    >
+                      <div
+                        className={`${index === 0 || index === 3 ? "bg-white text-[#1a3263]" : "bg-[#121212] text-[#f1d35f]"} mb-4 grid h-6 w-6 place-items-center rounded-full`}
+                      >
+                        <Icon size={15} strokeWidth={4} />
+                      </div>
+                      <h4 className="text-sm font-bold leading-tight">
+                        {item.title}
+                      </h4>
+                      <p className="mt-2 text-xs leading-relaxed opacity-90">
+                        {item.text}
+                      </p>
+                    </article>
+                  );
+                })}
+              </div>
+              <div className="flex min-h-[356px] items-center justify-center overflow-hidden rounded-xl bg-[#eeeeee]">
+                <Image
+                  src="/images/permit-container.png"
+                  alt="Permit cargo container"
+                  width={270}
+                  height={315}
+                  sizes="(min-width: 768px) 270px, 100vw"
+                  className="h-full w-full object-contain p-7"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         <FigmaSplitSection
           eyebrow="Project Management"
@@ -215,12 +391,12 @@ export default function TSLLogisticsPage() {
         <FigmaBand dark>
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_360px]">
             <div>
-              <h2 className="text-3xl font-extrabold leading-[1.3] md:text-[40px]">TSL Logistics: Complete Moving Solutions You Can Trust</h2>
-              <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-[20px]">
+              <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">TSL Logistics: Complete Moving Solutions You Can Trust</h2>
+              <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-base">
                 TSL Logistics provides end-to-end moving and storage services, covering packing, dismantling, relocation, disposal, and secure storage for homes, offices, warehouses, and commercial spaces. With professional movers and proven processes, we ensure every move is handled securely, safely, and stress-free from start to finish.
               </p>
               <div className="mt-6">
-                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-[#121212]">
+                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center bg-white px-6 text-sm font-bold text-[#121212]">
                   Contact Us
                 </a>
               </div>

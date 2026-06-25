@@ -42,7 +42,7 @@ export default async function BlogPage() {
                 return (
                   <article
                     key={post.id}
-                    className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col group hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                    className="bg-white overflow-hidden shadow-sm border border-gray-100 flex flex-col group hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                   >
                     <Link href={`/blog/${post.slug}`} className="block">
                       <div className="aspect-[16/9] relative overflow-hidden">
@@ -54,7 +54,7 @@ export default async function BlogPage() {
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         {post.categoryName && (
-                          <span className="absolute top-3 left-3 bg-[#C8A84B] text-[#1E1E1E] text-xs font-bold px-3 py-1 rounded-full">
+                          <span className="absolute top-3 left-3 bg-[#C8A84B] text-[#1E1E1E] text-xs font-bold px-3 py-1">
                             {post.categoryName}
                           </span>
                         )}
@@ -96,7 +96,7 @@ export default async function BlogPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-[#C8A84B] hover:bg-[#9A7D2D] text-[#1a1a1a] font-semibold py-3 px-8 rounded uppercase text-sm tracking-wide transition-colors"
+            className="inline-flex items-center gap-2 bg-[#C8A84B] hover:bg-[#9A7D2D] text-[#1a1a1a] font-semibold py-3 px-8 uppercase text-sm tracking-wide transition-colors"
           >
             Contact Us Today
           </Link>

@@ -88,7 +88,7 @@ export default function FAQAccordion() {
               </h3>
               {/* Gold circle chevron button */}
               <span
-                className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200"
+                className="w-8 h-8 flex items-center justify-center shrink-0 rounded-full transition-all duration-200"
                 style={{ background: "var(--gold-gradient)" }}
               >
                 <ChevronUp

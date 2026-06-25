@@ -19,7 +19,7 @@ export default function ContactPage() {
         <div className="max-w-[1200px] mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10">
             {/* Form */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 anim-fade-left">
+            <div className="bg-white border border-gray-100 shadow-sm p-6 md:p-8 anim-fade-left">
               <h2 className="text-xl font-bold text-[#252525] mb-1">Send Us a Message</h2>
               <div className="gold-divider-left mb-6" />
               <ContactForm source="contact" />
@@ -27,8 +27,8 @@ export default function ContactPage() {
 
             {/* Contact cards */}
             <div className="flex flex-col gap-4 anim-fade-right">
-              <div className="flex items-start gap-4 bg-gray-50 border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
-                <div className="w-11 h-11 bg-[#C8A84B] rounded-full flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 bg-gray-50 border border-gray-100 p-5 hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
+                <div className="w-11 h-11 bg-[#C8A84B] flex items-center justify-center shrink-0 rounded-full">
                   <Phone size={18} className="text-white" />
                 </div>
                 <div>
@@ -37,8 +37,8 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 bg-gray-50 border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
-                <div className="w-11 h-11 bg-[#C8A84B] rounded-full flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 bg-gray-50 border border-gray-100 p-5 hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
+                <div className="w-11 h-11 bg-[#C8A84B] flex items-center justify-center shrink-0 rounded-full">
                   <Mail size={18} className="text-white" />
                 </div>
                 <div>
@@ -58,8 +58,8 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 bg-gray-50 border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
-                <div className="w-11 h-11 bg-[#C8A84B] rounded-full flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 bg-gray-50 border border-gray-100 p-5 hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
+                <div className="w-11 h-11 bg-[#C8A84B] flex items-center justify-center shrink-0 rounded-full">
                   <MapPin size={18} className="text-white" />
                 </div>
                 <div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
       {/* ── Map ── */}
       <section className="pb-16 bg-white">
         <div className="max-w-[1200px] mx-auto px-4">
-          <div className="rounded-2xl overflow-hidden shadow-md border border-gray-100">
+          <div className="overflow-hidden shadow-md border border-gray-100">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15954.944552496003!2d103.9013238!3d1.3345077!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x913cceed8c5de5dc!2sTSL%20Logistics%20Pte%20Ltd!5e0!3m2!1sen!2ssg!4v1655364251092!5m2!1sen!2ssg"
               width="100%"

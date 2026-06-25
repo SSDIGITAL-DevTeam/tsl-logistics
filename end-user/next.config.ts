@@ -2,9 +2,14 @@ import type { NextConfig } from "next";
 
 const apiUrl = process.env.TSL_API_URL || 'https://api.tsllogistics.sg';
 const apiParsed = new URL(apiUrl);
+const allowedDevOrigins = [
+  '192.168.100.217',
+  ...(process.env.NEXT_ALLOWED_DEV_ORIGINS?.split(',').map((origin) => origin.trim()).filter(Boolean) ?? []),
+];
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  allowedDevOrigins,
   images: {
     // In development, localhost resolves to ::1 (private IP) which Next.js 15+
     // blocks as SSRF protection even when listed in remotePatterns.

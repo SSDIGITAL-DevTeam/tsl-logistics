@@ -7,6 +7,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
 import PermitDialog from "@/components/PermitDialog";
 import JsonLd from "@/components/JsonLd";
+import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tsllogistics.sg";
 
@@ -92,7 +93,7 @@ const services = [
     title: "TSL Express",
     image: "/images/service-express.jpg",
     alt: "TSL Express delivery van",
-    href: "/tsl-logistics",
+    href: "/tsl-express",
   },
   {
     title: "TSL Warehousing",
@@ -100,13 +101,6 @@ const services = [
     alt: "TSL Warehousing facility",
     href: "/warehousing-services",
   },
-];
-
-const certifications = [
-  { src: "/images/bizSAFE-Enterprise-Level-STAR-e1633345808369-1920w.jpeg", alt: "BizSAFE Enterprise Level Star" },
-  { src: "/images/STA-Logo-1920w.png", alt: "STA Member" },
-  { src: "/images/ISO-45001-VERTICAL-SAC-1920w.jpeg", alt: "ISO 45001 SAC Certified" },
-  { src: "/images/ISO-45001-VERTICAL-SAC copy-1920w.jpeg", alt: "ISO 45001 Certified" },
 ];
 
 const whyUs = [
@@ -181,10 +175,10 @@ export default function HomePage() {
                 the objective of establishing a client-focused logistics company in Singapore.
               </p>
               <Link
-                href="/tsl-logistics"
+                href="/contact"
                 className="btn-pill-gold"
               >
-                Our Services
+                Contact Now
               </Link>
             </div>
           </div>
@@ -234,36 +228,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Companies That Move With Us ── */}
-      <section className="py-16 bg-white border-t border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-10 anim-fade-up">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#C8A84B] mb-2">Our credentials</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a]">Companies That Move With Us</h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 anim-fade-up">
-            {certifications.map((cert, i) => (
-              <div
-                key={i}
-                className="group flex items-center justify-center p-6 bg-gray-50 hover:bg-white border border-gray-100 hover:border-[#C8A84B]/30 hover:shadow-md transition-all duration-300 rounded-lg"
-              >
-                <Image
-                  src={cert.src}
-                  alt={cert.alt}
-                  width={200}
-                  height={200}
-                  className="w-full h-[100px] object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CompaniesThatMoveWithUs />
 
       {/* ── Full-width image break ── */}
       <section className="relative h-[400px] md:h-[520px] overflow-hidden my-16 md:my-24">
         <Image
-          src="/images/hero-bg-new.jpg"
+          src="/images/homepage-image-break.jpg"
           alt="TSL Logistics fleet on the road"
           fill
           sizes="100vw"
@@ -297,19 +267,14 @@ export default function HomePage() {
           {/* Right: floating card with truck image */}
           <div className="lg:w-[52%] shrink-0 anim-fade-right flex items-center justify-center">
             <div className="relative w-full">
-              {/* White card behind the image */}
-              <div className="absolute inset-y-6 right-0 left-[8%] bg-white rounded-3xl shadow-xl" />
-              {/* Truck image — overflows the card on the left */}
-              <div className="relative z-10 pr-4">
-                <Image
-                  src="/images/about-team.jpg"
-                  alt="TSL Logistics team"
-                  width={760}
-                  height={480}
-                  className="w-full h-auto object-cover drop-shadow-2xl"
-                  sizes="(max-width: 1024px) 100vw, 52vw"
-                />
-              </div>
+              <Image
+                src="/images/about-team.jpg"
+                alt="TSL Logistics team"
+                width={760}
+                height={480}
+                className="h-auto w-full object-cover"
+                sizes="(max-width: 1024px) 100vw, 52vw"
+              />
             </div>
           </div>
 
@@ -351,11 +316,11 @@ export default function HomePage() {
             </p>
             <PermitDialog />
           </div>
-          {/* Right: rounded image */}
+          {/* Right: image */}
           <div className="md:w-[46%] shrink-0 anim-fade-right">
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
+            <div className="overflow-hidden shadow-2xl">
               <Image
-                src="/images/permit-section.jpg"
+                src="/images/permit-processing-homepage.jpg"
                 alt="TSL Logistics team and fleet"
                 width={760}
                 height={480}
@@ -403,7 +368,7 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:w-[58%] anim-fade-left">
-              <div className="rounded-xl overflow-hidden shadow-md border border-gray-100">
+              <div className="overflow-hidden shadow-md border border-gray-100">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15954.944552496003!2d103.9013238!3d1.3345077!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x913cceed8c5de5dc!2sTSL%20Logistics%20Pte%20Ltd!5e0!3m2!1sen!2ssg!4v1655692768220!5m2!1sen!2ssg"
                   width="100%"
@@ -417,8 +382,8 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex-1 flex flex-col gap-4 anim-fade-right">
-              <div className="flex items-start gap-4 bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
-                <div className="w-11 h-11 bg-[#C8A84B] rounded-full flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 bg-white border border-gray-100 p-5 shadow-sm hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
+                <div className="w-11 h-11 bg-[#C8A84B] flex items-center justify-center shrink-0 rounded-full">
                   <Phone size={18} className="text-white" />
                 </div>
                 <div>
@@ -426,8 +391,8 @@ export default function HomePage() {
                   <a href="tel:+6567772724" className="text-[#C8A84B] font-bold hover:underline text-lg">+65 6777 2724</a>
                 </div>
               </div>
-              <div className="flex items-start gap-4 bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
-                <div className="w-11 h-11 bg-[#C8A84B] rounded-full flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 bg-white border border-gray-100 p-5 shadow-sm hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
+                <div className="w-11 h-11 bg-[#C8A84B] flex items-center justify-center shrink-0 rounded-full">
                   <Mail size={18} className="text-white" />
                 </div>
                 <div>
@@ -448,8 +413,8 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-start gap-4 bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
-                <div className="w-11 h-11 bg-[#C8A84B] rounded-full flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 bg-white border border-gray-100 p-5 shadow-sm hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200">
+                <div className="w-11 h-11 bg-[#C8A84B] flex items-center justify-center shrink-0 rounded-full">
                   <MapPin size={18} className="text-white" />
                 </div>
                 <div>

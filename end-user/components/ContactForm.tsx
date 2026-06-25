@@ -89,7 +89,7 @@ export default function ContactForm({
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             placeholder="Your full name"
-            className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
+            className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
           />
         </div>
         <div>
@@ -100,7 +100,7 @@ export default function ContactForm({
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
             placeholder="+65 9123 4567"
-            className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
+            className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
           />
         </div>
       </div>
@@ -112,7 +112,7 @@ export default function ContactForm({
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
           placeholder="you@example.com"
-          className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
+          className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
         />
       </div>
       <div>
@@ -131,14 +131,14 @@ export default function ContactForm({
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           placeholder="Tell us more about your enquiry..."
-          className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none resize-y"
+          className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none resize-y"
         />
       </div>
       {error && <p className="text-red-500 text-sm">{error}</p>}
       <button
         type="submit"
         disabled={loading}
-        className="bg-[#C8A84B] hover:bg-[#111111] disabled:opacity-60 text-white font-semibold py-3 px-8 rounded uppercase text-sm tracking-wide transition-colors"
+        className="bg-[#C8A84B] hover:bg-[#111111] disabled:opacity-60 text-white font-semibold py-3 px-8 uppercase text-sm tracking-wide transition-colors"
       >
         {loading ? "Sending..." : "SUBMIT"}
       </button>

@@ -2,25 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
 
 export const metadata: Metadata = {
   title: "About Us | TSL Logistics",
   description:
     "We are a team of experienced movers in this industry, born to handle all of your valuable items with great care. Know more about us and our services today!",
 };
-
-const certifications = [
-  {
-    src: "/images/bizSAFE-Enterprise-Level-STAR-e1633345808369-1920w.jpeg",
-    alt: "BizSAFE Enterprise Level Star",
-  },
-  { src: "/images/ISO-45001-VERTICAL-SAC-1920w.jpeg", alt: "ISO 45001 SAC" },
-  { src: "/images/STA-Logo-1920w.png", alt: "STA Logo" },
-  {
-    src: "/images/ISO-45001-VERTICAL-SAC copy-1920w.jpeg",
-    alt: "ISO 45001 Certified",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -30,7 +18,7 @@ export default function AboutPage() {
       {/* ── Trusted Logistics — Image #15 style ── */}
       <section className="py-14 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-center">
             {/* Left: headline + text */}
             <div className="anim-fade-left">
               <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-5 leading-tight">
@@ -48,37 +36,14 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Center: tall portrait image */}
-            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-md anim-fade-up">
+            <div className="relative aspect-[16/10] overflow-hidden shadow-md anim-fade-right">
               <Image
-                src="/images/service-warehousing.jpg"
-                alt="TSL Logistics team member"
+                src="/images/about-trusted-logistics.png"
+                alt="TSL Logistics operations"
                 fill
-                sizes="(max-width: 1024px) 100vw, 400px"
+                sizes="(max-width: 1024px) 100vw, 660px"
                 className="object-cover object-center"
               />
-            </div>
-
-            {/* Right: two stacked images */}
-            <div className="flex flex-col gap-4 anim-fade-right">
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-md">
-                <Image
-                  src="/images/containers2.jpeg"
-                  alt="Container logistics"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 380px"
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-md">
-                <Image
-                  src="/images/service-logistics.jpg"
-                  alt="TSL Logistics warehouse"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 380px"
-                  className="object-cover"
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -124,27 +89,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Certifications ── */}
-      <section className="py-14 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-[#1a1a1a] mb-12">
-            Companies That Move With Us
-          </h2>
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
-            {certifications.map((cert, i) => (
-              <div key={i} className="group flex items-center justify-center">
-                <Image
-                  src={cert.src}
-                  alt={cert.alt}
-                  width={160}
-                  height={80}
-                  className="h-24 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CompaniesThatMoveWithUs />
 
       {/* ── Vision & Mission 2×2 Grid ── */}
       <section className="py-16 bg-white">
@@ -152,11 +97,11 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Vision — gold gradient card */}
             <div
-              className="rounded-2xl p-8 anim-fade-left"
+              className="p-8 anim-fade-left"
               style={{ background: "var(--gold-gradient)" }}
             >
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-full bg-[#1a1a1a]/20 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 bg-[#1a1a1a]/20 flex items-center justify-center shrink-0">
                   <svg
                     width="20"
                     height="20"
@@ -191,9 +136,9 @@ export default function AboutPage() {
             </div>
 
             {/* Top-right photo */}
-            <div className="relative rounded-2xl overflow-hidden min-h-[280px] anim-fade-right">
+            <div className="relative overflow-hidden min-h-[280px] anim-fade-right">
               <Image
-                src="/images/94177729_m-1920w.jpg"
+                src="/images/about-mission-team.png"
                 alt="TSL Logistics team"
                 fill
                 sizes="(max-width: 768px) 100vw, 600px"
@@ -202,9 +147,9 @@ export default function AboutPage() {
             </div>
 
             {/* Bottom-left photo */}
-            <div className="relative rounded-2xl overflow-hidden min-h-[280px] anim-fade-left">
+            <div className="relative overflow-hidden min-h-[280px] anim-fade-left">
               <Image
-                src="/images/service-mover.jpg"
+                src="/images/about-vision-team.png"
                 alt="TSL Logistics truck"
                 fill
                 sizes="(max-width: 768px) 100vw, 600px"
@@ -213,9 +158,9 @@ export default function AboutPage() {
             </div>
 
             {/* Mission — dark navy card */}
-            <div className="rounded-2xl p-8 bg-[#152642] anim-fade-right">
+            <div className="p-8 bg-[#152642] anim-fade-right">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 bg-white/15 flex items-center justify-center shrink-0">
                   <svg
                     width="20"
                     height="20"
@@ -286,26 +231,26 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-grid">
             {[
               {
-                img: "/images/TSL-Logistics-van-1920w.jpeg",
+                img: "/images/about-fleet-02.png",
                 alt: "TSL Logistics cargo van",
                 label: "Cargo Vans",
                 desc: "Perfect for small to medium-sized deliveries, our cargo vans provide versatility and efficiency.",
               },
               {
-                img: "/images/service-warehousing.jpg",
+                img: "/images/about-fleet-03.png",
                 alt: "TSL box truck",
                 label: "Box Trucks",
                 desc: "Our box trucks offer ample space and security for transporting large loads and valuable goods.",
               },
               {
-                img: "/images/TSL Logistics Trucker Container-1920w.png",
-                alt: "TSL tanker truck",
-                label: "Tanker Trucks",
-                desc: "Secure the safety and purity of your liquid and bulk cargo with our specialised tanker trucks, equipped to maintain optimal conditions throughout transportation.",
+                img: "/images/about-fleet-01.png",
+                alt: "TSL container truck",
+                label: "Container Trucks",
+                desc: "Built for heavier freight and container movements, our container trucks support reliable transport for larger commercial and industrial cargo.",
               },
             ].map((v) => (
               <div key={v.label}>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-4">
+                <div className="relative aspect-[4/3] overflow-hidden mb-4">
                   <Image
                     src={v.img}
                     alt={v.alt}
@@ -348,7 +293,7 @@ export default function AboutPage() {
             ].map((m) => (
               <div
                 key={m.year}
-                className="rounded-2xl p-8 flex flex-col justify-between h-[180px]"
+                className="p-8 flex flex-col justify-between h-[180px]"
                 style={{ background: "var(--gold-gradient)" }}
               >
                 <span className="text-5xl font-bold text-[#1a1a1a]">
@@ -364,64 +309,63 @@ export default function AboutPage() {
       </section>
 
       {/* ── Stats + Service Types ── */}
-      <section className="bg-[#152642] pt-14 pb-[120px] relative overflow-hidden">
-        {/* Hand images — full screen width, absolute */}
-        <div className="hidden md:block absolute left-0 top-0 w-[180px] lg:w-[220px] pointer-events-none">
-          <Image
-            src="/images/tangan-di-kiri.png"
-            alt=""
-            width={220}
-            height={220}
-            className="w-full object-contain object-top"
-          />
-        </div>
-        <div className="hidden md:block absolute right-0 top-0 w-[180px] lg:w-[220px] pointer-events-none">
-          <Image
-            src="/images/tangan-di-kanan.png"
-            alt=""
-            width={220}
-            height={220}
-            className="w-full object-contain object-top"
-          />
-        </div>
-
-        {/* Center content */}
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-12">
-          {/* Stat */}
-          <div className="baba mr-20">
-            <div className="flex items-baseline gap-2 flex-wrap justify-center">
-              <span className="text-5xl md:text-6xl font-bold text-white">
-                Over{" "}
-              </span>
-              <span
-                className="text-5xl md:text-6xl font-bold"
-                style={{
-                  background: "var(--gold-gradient)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                8,000
-              </span>
-            </div>
-            <p className="text-white text-xl font-semibold mt-1">
-              Finished Bookings
-            </p>
+      <section className="bg-white pt-16">
+        <div className="relative overflow-hidden bg-[#1f3a70] px-6 py-16 md:min-h-[330px] md:px-10 lg:px-16">
+          <div className="pointer-events-none absolute bottom-[-10px] left-[-48px] hidden w-[42vw] max-w-[590px] md:block">
+            <Image
+              src="/images/kotak-kotak-kotak.png"
+              alt=""
+              width={1194}
+              height={810}
+              className="w-full object-contain"
+            />
+          </div>
+          <div className="pointer-events-none absolute bottom-[-24px] left-[-90px] w-[300px] opacity-55 md:hidden">
+            <Image
+              src="/images/kotak-kotak-kotak.png"
+              alt=""
+              width={1194}
+              height={810}
+              className="w-full object-contain"
+            />
           </div>
 
-          {/* Service categories */}
-          <div className="flex flex-col gap-4">
+          <div className="relative z-10 mx-auto grid max-w-[1220px] items-center gap-10 md:min-h-[230px] md:grid-cols-[minmax(280px,0.78fr)_minmax(360px,1fr)_minmax(260px,0.55fr)]">
+            <div className="hidden md:block" />
+
+            <div className="text-center md:text-left">
+              <div className="flex flex-wrap items-baseline justify-center gap-2 md:justify-start">
+                <span className="text-5xl font-bold leading-none text-white md:text-[72px]">
+                  Over
+                </span>
+                <span
+                  className="text-5xl font-bold leading-none md:text-[72px]"
+                  style={{
+                    background: "var(--gold-gradient)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  8,000
+                </span>
+              </div>
+              <p className="mt-4 text-2xl font-medium leading-tight text-white md:text-[34px]">
+                Finished Bookings
+              </p>
+            </div>
+
+            <div className="grid justify-center gap-6 sm:grid-cols-3 md:grid-cols-1 md:justify-start md:gap-7">
             {[
               {
                 label: "Residential",
                 icon: (
                   <svg
-                    width="22"
-                    height="22"
+                    width="42"
+                    height="42"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="1.8"
+                    strokeWidth="1.55"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
@@ -434,12 +378,12 @@ export default function AboutPage() {
                 label: "Commercial",
                 icon: (
                   <svg
-                    width="22"
-                    height="22"
+                    width="42"
+                    height="42"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="1.8"
+                    strokeWidth="1.55"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
@@ -454,12 +398,12 @@ export default function AboutPage() {
                 label: "Offices",
                 icon: (
                   <svg
-                    width="22"
-                    height="22"
+                    width="42"
+                    height="42"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="1.8"
+                    strokeWidth="1.55"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
@@ -470,13 +414,16 @@ export default function AboutPage() {
                 ),
               },
             ].map(({ label, icon }) => (
-              <div key={label} className="flex items-center gap-3 text-white">
-                <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+              <div key={label} className="flex items-center gap-4 text-white">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center text-white md:h-14 md:w-14">
                   {icon}
                 </div>
-                <span className="font-semibold text-base">{label}</span>
+                <span className="text-2xl font-semibold leading-none md:text-[34px]">
+                  {label}
+                </span>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </section>

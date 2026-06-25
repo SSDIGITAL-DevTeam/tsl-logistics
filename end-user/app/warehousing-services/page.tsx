@@ -66,7 +66,7 @@ export default function WarehousingServicesPage() {
                 { title: "Cartons and boxed items", text: "Individual cartons and boxes stored neatly for easy access and tracking.", icon: serviceIcons.package },
               ]}
             />
-            <p className="mx-auto max-w-4xl text-center text-sm leading-[1.5] text-[#121212] md:text-[20px]">
+            <p className="mx-auto max-w-4xl text-center text-sm leading-[1.5] text-[#121212] md:text-base">
               Whether you manage bulk shipments or smaller consignments, our facility is equipped to handle your inventory with care and accuracy.
             </p>
           </div>
@@ -95,13 +95,13 @@ export default function WarehousingServicesPage() {
           />
         </section>
 
-        <section className="grid items-center gap-8 md:grid-cols-[1.03fr_1fr] md:gap-[68px]">
-          <div className="relative aspect-[616/606] overflow-hidden rounded-[27px] bg-[#e1e1e1]">
+        <section className="grid items-center gap-8 md:grid-cols-[1.03fr_1fr] md:gap-12">
+          <div className="relative aspect-[616/606] overflow-hidden bg-[#e1e1e1]">
             <Image src="/images/figma-services/warehouse-value.png" alt="Value-added warehouse services" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
             <FigmaSectionHeader title="Value-Added Warehouse Services" align="left" />
-            <div className="mt-7 text-sm leading-[1.5] text-[#121212] md:text-[20px]">
+            <div className="mt-7 text-sm leading-[1.5] text-[#121212] md:text-base">
               <p>Beyond storage, we offer value-added services to streamline your logistics workflow:</p>
               <ul className="mt-6 space-y-2 font-bold">
                 <li>Packing & repacking</li>
@@ -113,7 +113,7 @@ export default function WarehousingServicesPage() {
                 By integrating these services under one roof, we help reduce handling time, minimize errors, and improve overall efficiency.
               </p>
               <div className="mt-8">
-                <a href="/contact" className="inline-flex h-[38px] min-w-[150px] items-center justify-center rounded-full bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)]">
+                <a href="/contact" className="inline-flex h-[38px] min-w-[150px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)]">
                   Contact Us
                 </a>
               </div>
@@ -124,12 +124,12 @@ export default function WarehousingServicesPage() {
         <FigmaBand dark>
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_340px]">
             <div>
-              <h2 className="text-3xl font-extrabold leading-[1.3] md:text-[40px]">Let&apos;s Optimize Your Storage & Distribution</h2>
-              <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-[20px]">
+              <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">Let&apos;s Optimize Your Storage & Distribution</h2>
+              <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-base">
                 Looking for secure and flexible warehousing solutions in Singapore? Contact us today to discuss your storage requirements, space needs, and operational goals. Our team is ready to provide tailored warehousing solutions that help streamline your inventory management, improve efficiency, and support your business operations seamlessly as you grow.
               </p>
               <div className="mt-6">
-                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-[#121212]">
+                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center bg-white px-6 text-sm font-bold text-[#121212]">
                   Contact Us
                 </a>
               </div>
