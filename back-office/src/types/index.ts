@@ -13,6 +13,7 @@ export interface Lead {
   phone: string;
   enquiry: string | null;
   message: string | null;
+  notes: string | null;
   source: string;
   pagePath: string | null;
   ipAddress: string | null;

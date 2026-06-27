@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import {
-  FigmaBand,
   FigmaContactButton,
   FigmaImageCards,
   FigmaIntro,
@@ -31,7 +30,14 @@ const enquiryOptions = [
 
 export default function TSLLogisticsPage() {
   return (
-    <ServicePageLayout title="TSL Logistics" image="/images/service-mover.jpg" enquiryOptions={enquiryOptions} source="tsl-logistics">
+    <ServicePageLayout
+      title="TSL Logistics"
+      image="/images/service-mover.jpg"
+      enquiryOptions={enquiryOptions}
+      showContactForm={false}
+      ctaVariant="quote"
+      source="tsl-logistics"
+    >
       <FigmaServiceShell>
         <FigmaIntro
           title="TSL Logistics"
@@ -161,7 +167,7 @@ export default function TSLLogisticsPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[720px] space-y-8">
+        <section className="space-y-10 md:space-y-12">
           <h2 className="text-center text-xl font-bold leading-tight text-[#1a1a1a] md:text-2xl">
             Dedicated Trucking Services (Contract Based)
           </h2>
@@ -199,14 +205,14 @@ export default function TSLLogisticsPage() {
           ].map((item) => (
             <div
               key={item.alt}
-              className={`grid items-center gap-6 ${
+              className={`grid items-center gap-y-5 md:gap-x-10 lg:gap-x-14 ${
                 item.imageSide === "right"
-                  ? "md:grid-cols-[minmax(0,1fr)_230px] md:gap-10"
-                  : "md:grid-cols-[230px_minmax(0,1fr)] md:gap-10"
+                  ? "md:grid-cols-[minmax(0,1fr)_minmax(300px,440px)]"
+                  : "md:grid-cols-[minmax(300px,440px)_minmax(0,1fr)]"
               }`}
             >
               <div
-                className={`relative aspect-[230/190] overflow-hidden rounded-xl bg-[#e1e1e1] ${
+                className={`relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#e1e1e1] ${
                   item.imageSide === "right" ? "md:order-2 md:justify-self-end" : ""
                 }`}
               >
@@ -214,12 +220,12 @@ export default function TSLLogisticsPage() {
                   src={item.image}
                   alt={item.alt}
                   fill
-                  sizes="(min-width: 768px) 230px, 100vw"
+                  sizes="(min-width: 1024px) 440px, (min-width: 768px) 38vw, 100vw"
                   className="object-cover"
                 />
               </div>
-              <div className={item.imageSide === "right" ? "md:order-1" : ""}>
-                <p className="text-[13px] leading-relaxed text-[#1a1a1a] md:text-sm">
+              <div className={`${item.imageSide === "right" ? "md:order-1 md:justify-self-end" : ""} max-w-[620px]`}>
+                <p className="text-sm leading-relaxed text-[#1a1a1a] md:text-base">
                   {item.body}
                 </p>
                 <div className="mt-5">
@@ -235,70 +241,67 @@ export default function TSLLogisticsPage() {
           ))}
         </section>
 
-        <FigmaBand>
-          <div className="space-y-9">
-            <FigmaSectionHeader title="Why Choose Dedicated Trucking?" />
-            <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                { title: "Consistent Capacity", text: "Always-ready fleet with no last-minute shortages.", icon: serviceIcons.check },
-                { title: "Optimized Routes", text: "Custom routes for faster, more efficient deliveries.", icon: serviceIcons.check },
-                { title: "Dedicated Drivers", text: "Experienced drivers aligned with your standards.", icon: serviceIcons.check },
-                { title: "Cost Efficiency", text: "Stable pricing with reduced market risk.", icon: serviceIcons.check },
-              ].map((item) => {
-                const Icon = item.icon;
-                return (
-                  <article key={item.title} className="mx-auto max-w-[180px]">
-                    <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-gold-gradient text-[#121212]">
-                      <Icon size={20} strokeWidth={4} />
-                    </div>
-                    <h3 className="text-sm font-bold leading-tight text-[#1a1a1a]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-[#555]">
-                      {item.text}
-                    </p>
-                  </article>
-                );
-              })}
-            </div>
+        <section className="space-y-9">
+          <FigmaSectionHeader title="Why Choose Dedicated Trucking?" />
+          <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { title: "Consistent Capacity", text: "Always-ready fleet with no last-minute shortages.", icon: serviceIcons.check },
+              { title: "Optimized Routes", text: "Custom routes for faster, more efficient deliveries.", icon: serviceIcons.check },
+              { title: "Dedicated Drivers", text: "Experienced drivers aligned with your standards.", icon: serviceIcons.check },
+              { title: "Cost Efficiency", text: "Stable pricing with reduced market risk.", icon: serviceIcons.check },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.title} className="mx-auto max-w-[180px]">
+                  <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-gold-gradient text-[#121212]">
+                    <Icon size={20} strokeWidth={4} />
+                  </div>
+                  <h3 className="text-sm font-bold leading-tight text-[#1a1a1a]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-[#555]">
+                    {item.text}
+                  </p>
+                </article>
+              );
+            })}
           </div>
-        </FigmaBand>
+        </section>
 
         <FigmaSplitSection
           eyebrow="Freight Services"
           title="Total Control Across Air, Sea, and Land."
           image="/images/figma-services/logistics-freight.png"
           imageAlt="Freight services"
-          reverse
           body={[
             "Our multi-modal freight services cover air, sea, and land transportation, supported with seamless coordination and reliable transit links. We ensure efficient handling, timely movement, delivery across destinations, and simplified total transit times.",
           ]}
           cta="Contact Us"
         />
 
-        <section className="mx-auto max-w-[880px] space-y-12">
+        <section className="space-y-12">
           <h2 className="text-center text-[26px] font-bold leading-tight text-[#1a1a1a] md:text-[32px]">
             Permit Declaration
           </h2>
 
-          <div className="grid items-center gap-9 md:grid-cols-[400px_minmax(0,1fr)] md:gap-12">
-            <div className="relative aspect-[400/260] overflow-hidden rounded-xl bg-[#e1e1e1]">
+          <div className="grid items-center gap-8 md:grid-cols-[minmax(360px,520px)_minmax(0,1fr)] md:gap-12 lg:gap-16">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#e1e1e1]">
               <Image
                 src="/images/permit-processing-homepage.jpg"
                 alt="Permit declaration documentation"
                 fill
-                sizes="(min-width: 768px) 400px, 100vw"
+                sizes="(min-width: 1024px) 520px, (min-width: 768px) 44vw, 100vw"
                 className="object-cover"
               />
             </div>
-            <div className="max-w-[360px]">
-              <p className="text-[13px] leading-relaxed text-[#1a1a1a] md:text-sm">
+            <div className="max-w-[600px]">
+              <p className="text-sm leading-relaxed text-[#1a1a1a] md:text-base">
                 Managing transportation permits doesn&rsquo;t have to be
                 complicated. Our permit declaration service handles all
                 licenses and regulatory requirements for you, ensuring full
                 compliance across routes and regions.
               </p>
-              <p className="mt-5 text-[13px] leading-relaxed text-[#1a1a1a] md:text-sm">
+              <p className="mt-5 text-sm leading-relaxed text-[#1a1a1a] md:text-base">
                 We minimize delays, penalties, and disruptions by working
                 directly with authorities - so your shipments move smoothly,
                 legally, and on time.
@@ -318,7 +321,7 @@ export default function TSLLogisticsPage() {
             <h3 className="text-center text-xl font-bold leading-tight text-[#1a1a1a] md:text-[22px]">
               What We Handle
             </h3>
-            <div className="grid items-stretch gap-4 md:grid-cols-[1fr_270px]">
+            <div className="grid items-stretch gap-5 md:grid-cols-[minmax(0,1fr)_320px] lg:grid-cols-[minmax(0,1fr)_360px]">
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
                   {
@@ -346,7 +349,7 @@ export default function TSLLogisticsPage() {
                   return (
                     <article
                       key={item.title}
-                      className={`${index === 0 || index === 3 ? "bg-[#1a3263] text-white" : "bg-gold-gradient text-[#121212]"} min-h-[170px] rounded-xl p-5`}
+                      className={`${index === 0 || index === 3 ? "bg-[#1a3263] text-white" : "bg-gold-gradient text-[#121212]"} min-h-[170px] rounded-lg p-5`}
                     >
                       <div
                         className={`${index === 0 || index === 3 ? "bg-white text-[#1a3263]" : "bg-[#121212] text-[#f1d35f]"} mb-4 grid h-6 w-6 place-items-center rounded-full`}
@@ -363,13 +366,13 @@ export default function TSLLogisticsPage() {
                   );
                 })}
               </div>
-              <div className="flex min-h-[356px] items-center justify-center overflow-hidden rounded-xl bg-[#eeeeee]">
+              <div className="flex min-h-[356px] items-center justify-center overflow-hidden rounded-lg bg-[#eeeeee]">
                 <Image
                   src="/images/permit-container.png"
                   alt="Permit cargo container"
-                  width={270}
+                  width={360}
                   height={315}
-                  sizes="(min-width: 768px) 270px, 100vw"
+                  sizes="(min-width: 1024px) 360px, (min-width: 768px) 320px, 100vw"
                   className="h-full w-full object-contain p-7"
                 />
               </div>
@@ -388,8 +391,8 @@ export default function TSLLogisticsPage() {
           cta="Contact Us"
         />
 
-        <FigmaBand dark>
-          <div className="grid items-center gap-8 lg:grid-cols-[1fr_360px]">
+        <section className="relative left-1/2 w-screen -translate-x-1/2 bg-[#1a3263] px-5 py-10 text-white md:px-10 md:py-14">
+          <div className="mx-auto grid max-w-[1200px] items-center gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
             <div>
               <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">TSL Logistics: Complete Moving Solutions You Can Trust</h2>
               <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-base">
@@ -401,11 +404,20 @@ export default function TSLLogisticsPage() {
                 </a>
               </div>
             </div>
-            <div className="relative aspect-[360/230] overflow-hidden">
-              <Image src="/images/figma-services/logistics-container.png" alt="" fill sizes="360px" className="object-cover" />
+            <div className="-mb-10 flex justify-center md:-mb-14 lg:-mr-10 lg:justify-end">
+              <Image
+                src="/images/kontainer.png"
+                alt=""
+                width={1524}
+                height={1776}
+                sizes="(min-width: 1024px) 320px, 76vw"
+                quality={100}
+                unoptimized
+                className="h-auto w-full max-w-[280px] object-contain md:max-w-[310px] lg:max-w-[320px]"
+              />
             </div>
           </div>
-        </FigmaBand>
+        </section>
       </FigmaServiceShell>
     </ServicePageLayout>
   );

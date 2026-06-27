@@ -10,6 +10,39 @@ export const metadata: Metadata = {
     "We are a team of experienced movers in this industry, born to handle all of your valuable items with great care. Know more about us and our services today!",
 };
 
+const aboutGalleryImages = [
+  {
+    src: "/images/about-trusted-logistics.png",
+    alt: "TSL Logistics operation area",
+    className: "md:col-span-2 md:row-span-2",
+  },
+  {
+    src: "/images/about-team.jpg",
+    alt: "TSL Logistics team",
+    className: "md:col-span-1 md:row-span-1",
+  },
+  {
+    src: "/images/about-mission-team.png",
+    alt: "TSL Logistics staff discussion",
+    className: "md:col-span-1 md:row-span-1",
+  },
+  {
+    src: "/images/about-vision-team.png",
+    alt: "TSL Logistics moving team",
+    className: "md:col-span-1 md:row-span-1",
+  },
+  {
+    src: "/images/figma-services/warehouse-intro-new.jpg",
+    alt: "TSL warehouse facility",
+    className: "md:col-span-1 md:row-span-1",
+  },
+  {
+    src: "/images/figma-services/mover-intro-new.jpg",
+    alt: "TSL mover service",
+    className: "md:col-span-2 md:row-span-1",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -101,7 +134,7 @@ export default function AboutPage() {
               style={{ background: "var(--gold-gradient)" }}
             >
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 bg-[#1a1a1a]/20 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0">
                   <svg
                     width="20"
                     height="20"
@@ -160,7 +193,7 @@ export default function AboutPage() {
             {/* Mission — dark navy card */}
             <div className="p-8 bg-[#152642] anim-fade-right">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 bg-white/15 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0">
                   <svg
                     width="20"
                     height="20"
@@ -302,6 +335,36 @@ export default function AboutPage() {
                 <p className="text-sm text-[#2a1a00] leading-relaxed">
                   {m.desc}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Company Gallery ── */}
+      <section className="bg-gray-50 pb-16">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="mx-auto mb-10 max-w-3xl text-center">
+            <h2 className="text-2xl font-bold leading-tight text-[#1a1a1a] md:text-3xl">
+              Inside TSL Logistics
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-[#555] md:text-base">
+              A closer look at our teams, facilities, and logistics operations across every service.
+            </p>
+          </div>
+          <div className="grid auto-rows-[190px] grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+            {aboutGalleryImages.map((image) => (
+              <div
+                key={image.src}
+                className={`relative overflow-hidden rounded-lg bg-gray-100 ${image.className}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>

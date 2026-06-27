@@ -5,6 +5,7 @@ import api from '../lib/api';
 import { Button } from '../components/ui/Button';
 import { Select } from '../components/ui/Select';
 import { Badge } from '../components/ui/Badge';
+import { Modal } from '../components/ui/Modal';
 import type { Lead, PaginatedResponse } from '../types';
 import dayjs from 'dayjs';
 
@@ -25,6 +26,7 @@ export function LeadsPage() {
   const [page, setPage] = useState(1);
   const [searchInput, setSearchInput] = useState('');
   const [filters, setFilters] = useState<Filters>({ q: '', source: '', dateFrom: '', dateTo: '' });
+  const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
 
   // Debounce text search by 400ms
   useEffect(() => {
@@ -142,7 +144,7 @@ export function LeadsPage() {
           <table className="min-w-full">
             <thead>
               <tr className="border-b border-gray-100 bg-gray-50/70">
-                {['Name', 'Email', 'Phone', 'Enquiry', 'Source', 'Date'].map((h) => (
+                {['Name', 'Email', 'Phone', 'Enquiry', 'Description', 'Source', 'Date'].map((h) => (
                   <th key={h} className="px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-widest text-gray-400">
                     {h}
                   </th>
@@ -153,7 +155,7 @@ export function LeadsPage() {
               {isLoading ? (
                 [...Array(5)].map((_, i) => (
                   <tr key={i} className="animate-pulse">
-                    {[...Array(6)].map((_, j) => (
+                    {[...Array(7)].map((_, j) => (
                       <td key={j} className="px-4 py-3.5">
                         <div className="h-3.5 rounded-lg bg-gray-100" />
                       </td>
@@ -163,10 +165,23 @@ export function LeadsPage() {
               ) : data?.rows?.length ? (
                 data.rows.map((lead) => (
                   <tr key={lead.id} className="hover:bg-amber-50/20 transition-colors">
-                    <td className="px-4 py-3.5 text-sm font-semibold text-gray-900">{lead.name}</td>
+                    <td className="px-4 py-3.5 text-sm font-semibold text-gray-900 whitespace-nowrap">{lead.name}</td>
                     <td className="px-4 py-3.5 text-sm text-gray-500">{lead.email}</td>
                     <td className="px-4 py-3.5 text-sm text-gray-500">{lead.phone}</td>
                     <td className="px-4 py-3.5 text-sm text-gray-400 max-w-50 truncate">{lead.enquiry || '—'}</td>
+                    <td className="px-4 py-3.5 text-sm text-gray-500 max-w-64">
+                      {lead.notes || lead.message ? (
+                        <button
+                          type="button"
+                          onClick={() => setSelectedLead(lead)}
+                          className="max-w-64 truncate text-left text-[#9A7D2D] underline-offset-2 hover:underline"
+                        >
+                          {lead.notes || lead.message}
+                        </button>
+                      ) : (
+                        <span className="text-gray-300">—</span>
+                      )}
+                    </td>
                     <td className="px-4 py-3.5">
                       <Badge variant={getSourceColor(lead.source)}>{lead.source}</Badge>
                     </td>
@@ -175,7 +190,7 @@ export function LeadsPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="px-4 py-14 text-center text-sm text-gray-400">
+                  <td colSpan={7} className="px-4 py-14 text-center text-sm text-gray-400">
                     No leads found.
                   </td>
                 </tr>
@@ -200,6 +215,41 @@ export function LeadsPage() {
           </div>
         )}
       </div>
+      <Modal
+        open={Boolean(selectedLead)}
+        onClose={() => setSelectedLead(null)}
+        title="Lead Description"
+        size="lg"
+      >
+        {selectedLead && (
+          <div className="space-y-5">
+            <div className="grid gap-3 text-sm sm:grid-cols-2">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">Name</p>
+                <p className="mt-1 text-gray-900">{selectedLead.name}</p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">Source</p>
+                <p className="mt-1 text-gray-900">{selectedLead.source}</p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">Email</p>
+                <p className="mt-1 text-gray-900">{selectedLead.email}</p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">Phone</p>
+                <p className="mt-1 text-gray-900">{selectedLead.phone}</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">Description</p>
+              <p className="mt-2 whitespace-pre-wrap rounded-xl bg-gray-50 p-4 text-sm leading-relaxed text-gray-700">
+                {selectedLead.notes || selectedLead.message || 'No description provided.'}
+              </p>
+            </div>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }

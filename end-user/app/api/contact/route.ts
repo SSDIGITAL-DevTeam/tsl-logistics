@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
         phone: body.phone,
         enquiry: body.enquiry,
         message: body.message,
+        notes: body.notes || body.message,
         source: body.source || "contact",
         pagePath: body.pagePath || "/contact",
         _h: body._h,

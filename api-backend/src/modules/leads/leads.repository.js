@@ -33,7 +33,8 @@ function buildWhere({ q, source, dateFrom, dateTo }) {
         like(leads.name, `%${q}%`),
         like(leads.email, `%${q}%`),
         like(leads.phone, `%${q}%`),
-        like(leads.enquiry, `%${q}%`)
+        like(leads.enquiry, `%${q}%`),
+        like(leads.notes, `%${q}%`)
       )
     );
   }

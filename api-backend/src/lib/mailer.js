@@ -48,6 +48,7 @@ export async function sendLeadNotification(lead) {
         <tr><td><strong>Page</strong></td><td>${lead.pagePath ?? '-'}</td></tr>
         <tr><td><strong>Enquiry</strong></td><td>${lead.enquiry ?? '-'}</td></tr>
         <tr><td><strong>Message</strong></td><td>${lead.message ?? '-'}</td></tr>
+        <tr><td><strong>Notes</strong></td><td>${lead.notes ?? lead.message ?? '-'}</td></tr>
       </table>
     `,
   });

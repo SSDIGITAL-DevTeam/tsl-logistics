@@ -6,6 +6,7 @@ export const createLeadSchema = z.object({
   phone: z.string().min(5, 'Phone is required').max(50),
   enquiry: z.string().max(255).optional(),
   message: z.string().max(5000).optional(),
+  notes: z.string().max(5000).optional(),
   source: z.string().min(1, 'Source is required').max(100),
   pagePath: z.string().max(255).optional(),
   // Honeypot — must be empty

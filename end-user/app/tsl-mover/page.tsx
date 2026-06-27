@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ChevronRight } from "lucide-react";
+import { Fragment } from "react";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import TSLMoverQuoteForm from "@/components/TSLMoverQuoteForm";
 import {
   FigmaBand,
   FigmaContactButton,
-  FigmaFeatureGrid,
   FigmaImageCards,
   FigmaIntro,
   FigmaSectionHeader,
@@ -38,11 +40,11 @@ const featuredLogos = [
 
 export default function TSLMoverPage() {
   return (
-    <ServicePageLayout title="TSL Mover" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} source="tsl-mover">
+    <ServicePageLayout title="TSL Mover" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} showContactForm={false} source="tsl-mover">
       <FigmaServiceShell>
         <FigmaIntro
           title="TSL Mover"
-          image="/images/figma-services/mover-intro.png"
+          image="/images/figma-services/mover-intro-new.jpg"
           imageAlt="TSL Mover team moving furniture"
           body={[
             "TSL Mover is a full-service moving and storage company offering from packing, dismantling to moving, disposal of your unwanted items, and storage for the contents of your home, your office, your warehouse, your manufacturing facility, and your tradeshows.",
@@ -54,12 +56,12 @@ export default function TSLMoverPage() {
           cards={[
             {
               title: "RESIDENTIAL / OFFICE / COMMERCIAL / INTERNATIONAL / FACTORY MOVING",
-              image: "/images/figma-services/mover-residential.png",
+              image: "/images/figma-services/mover-card-primary.jpg",
               alt: "Residential and office moving",
             },
             {
               title: "SERVER / MACHINE / PIANO / ORGAN / POOL TABLE / SAFE BOX MOVING",
-              image: "/images/figma-services/mover-heavy.png",
+              image: "/images/figma-services/mover-card-heavy.jpg",
               alt: "Heavy item moving",
             },
           ]}
@@ -82,8 +84,8 @@ export default function TSLMoverPage() {
           </div>
         </section>
 
-        <section className="space-y-14">
-          <div className="-mx-5 bg-gold-gradient px-5 py-10 text-center md:-mx-10 md:px-10">
+        <section className="relative left-1/2 w-screen -translate-x-1/2 space-y-14 overflow-hidden">
+          <div className="bg-gold-gradient px-5 py-10 text-center md:px-10">
             <h2 className="text-2xl font-bold leading-tight text-[#121212] md:text-[30px]">
               Local Transportation & Dedicated Lorry Solutions
             </h2>
@@ -94,8 +96,8 @@ export default function TSLMoverPage() {
             </p>
           </div>
 
-          <div className="mx-auto grid max-w-[980px] items-center gap-9 md:grid-cols-[1fr_430px] md:gap-12">
-            <div className="max-w-[390px]">
+          <div className="mx-auto grid max-w-[1200px] items-center gap-9 px-5 md:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] md:gap-12 md:px-10 lg:gap-16">
+            <div className="max-w-[520px]">
               <h3 className="text-2xl font-bold leading-tight text-[#121212] md:text-[28px]">
                 Local Transportation Services
               </h3>
@@ -112,28 +114,28 @@ export default function TSLMoverPage() {
                 Contact Us
               </a>
             </div>
-            <div className="relative mx-auto aspect-[430/230] w-full max-w-[430px]">
+            <div className="relative mx-auto aspect-[520/278] w-full max-w-[520px]">
               <Image
-                src="/images/figma-services/mover-local.png"
+                src="/images/figma-services/mover-local-transportation.jpg"
                 alt="Local transportation moving service"
                 fill
-                sizes="(min-width: 768px) 430px, 100vw"
+                sizes="(min-width: 1024px) 520px, (min-width: 768px) 44vw, 100vw"
                 className="object-contain"
               />
             </div>
           </div>
 
-          <div className="mx-auto grid max-w-[980px] items-center gap-9 md:grid-cols-[430px_1fr] md:gap-12">
-            <div className="relative mx-auto aspect-[430/260] w-full max-w-[430px]">
+          <div className="mx-auto grid max-w-[1200px] items-center gap-9 px-5 pb-4 md:grid-cols-[minmax(360px,520px)_minmax(0,1fr)] md:gap-12 md:px-10 lg:gap-16">
+            <div className="relative mx-auto aspect-[520/315] w-full max-w-[520px]">
               <Image
-                src="/images/figma-services/mover-lorry.png"
+                src="/images/figma-services/mover-dedicated-lorry.jpg"
                 alt="Dedicated lorry service"
                 fill
-                sizes="(min-width: 768px) 430px, 100vw"
-                className="object-contain"
+                sizes="(min-width: 1024px) 520px, (min-width: 768px) 44vw, 100vw"
+                className="object-cover"
               />
             </div>
-            <div className="max-w-[430px] md:justify-self-end">
+            <div className="max-w-[520px] md:justify-self-end">
               <h3 className="text-2xl font-bold leading-tight text-[#121212] md:text-[28px]">
                 Dedicated Lorry Service
               </h3>
@@ -153,19 +155,19 @@ export default function TSLMoverPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[920px] space-y-12">
+        <section className="space-y-12">
           <h2 className="mx-auto max-w-[560px] text-center text-[26px] font-bold leading-tight text-[#121212] md:text-[32px]">
             Why Thousands Of Customers Have Chosen TSL Mover
           </h2>
 
-          <div className="grid items-stretch gap-5 md:grid-cols-[280px_1fr]">
+          <div className="grid items-stretch gap-5 md:grid-cols-[340px_1fr]">
             <div className="relative min-h-[390px] overflow-hidden rounded-xl bg-[#e1e1e1]">
               <Image
-                src="/images/figma-services/mover-trust.png"
+                  src="/images/figma-services/mover-customer-trust.jpg"
                 alt="TSL Mover customers"
                 fill
                 className="object-cover"
-                sizes="(min-width: 768px) 280px, 100vw"
+                sizes="(min-width: 768px) 340px, 100vw"
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -216,7 +218,7 @@ export default function TSLMoverPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[920px] space-y-8">
+        <section className="space-y-8">
           <h2 className="text-center text-xl font-bold leading-tight text-[#121212] md:text-2xl">
             We go the extra mile to give you top-notch services:
           </h2>
@@ -267,16 +269,75 @@ export default function TSLMoverPage() {
           </div>
         </section>
 
-        <section className="space-y-8">
-          <FigmaSectionHeader title="From Booking To Moving in 4 Easy Steps!" />
-          <FigmaFeatureGrid
-            features={[
-              { title: "Step 1", text: "Fill up your moving details.", icon: serviceIcons.file },
-              { title: "Step 2", text: "Receive quotation from our team.", icon: serviceIcons.clipboard },
-              { title: "Step 3", text: "Confirm your moving schedule.", icon: serviceIcons.calendar },
-              { title: "Step 4", text: "Move with TSL Mover.", icon: serviceIcons.truck },
-            ]}
-          />
+        <section className="relative left-1/2 w-screen -translate-x-1/2 bg-[#f2f2f2] px-5 py-12 md:px-10">
+          <div className="mx-auto grid max-w-[1200px] gap-6 md:grid-cols-3">
+            {[
+              {
+                text: "80% retention & repeat customers",
+                icon: "/images/mover-stat-like.svg",
+              },
+              {
+                text: "Over 1,200 satisfied customers & counting",
+                icon: "/images/mover-stat-satisfied.svg",
+              },
+              {
+                text: "Featured on SG Car Mart & SME500 Award winner",
+                icon: "/images/mover-stat-award.svg",
+              },
+            ].map((item) => (
+                <article
+                  key={item.text}
+                  className="flex min-h-[170px] flex-col items-center justify-center rounded-lg bg-white px-8 py-7 text-center"
+                >
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    width={44}
+                    height={44}
+                    className="mb-5 h-11 w-11 object-contain"
+                  />
+                  <p className="max-w-[230px] text-base font-semibold leading-[1.25] text-[#121212]">
+                    {item.text}
+                  </p>
+                </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-10 py-4">
+          <h2 className="text-center text-2xl font-bold leading-tight text-[#121212] md:text-[28px]">
+            From Booking To Moving In 4 Easy Steps!
+          </h2>
+          <div className="grid gap-x-6 gap-y-10 text-center sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-start">
+            {[
+              { title: "Step 1", text: "Get a FREE quote from our expert movers", icon: serviceIcons.file },
+              { title: "Step 2", text: "We help pack your goods efficiently", icon: serviceIcons.boxes },
+              { title: "Step 3", text: "We move your goods safely to your destination", icon: serviceIcons.truck },
+              { title: "Step 4", text: "We carefully unload and deliver to your new place", icon: serviceIcons.package },
+            ].map((item, index, steps) => {
+              const Icon = item.icon;
+              return (
+                <Fragment key={item.title}>
+                  <article className="mx-auto flex max-w-[170px] flex-col items-center">
+                    <div className="grid h-[76px] w-[76px] place-items-center rounded-full bg-gold-gradient text-[#121212] shadow-[0_2px_6px_rgba(0,0,0,0.12)]">
+                      <Icon size={30} strokeWidth={2.2} />
+                    </div>
+                    <h3 className="mt-5 text-sm font-bold leading-none text-[#121212]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-[11px] leading-[1.35] text-[#121212]">
+                      {item.text}
+                    </p>
+                  </article>
+                  {index < steps.length - 1 && (
+                    <div className="hidden pt-[28px] text-[#121212] lg:block">
+                      <ChevronRight size={28} strokeWidth={2.2} />
+                    </div>
+                  )}
+                </Fragment>
+              );
+            })}
+          </div>
         </section>
 
         <FigmaBand dark>
@@ -288,19 +349,7 @@ export default function TSLMoverPage() {
               </p>
               <FigmaContactButton>Contact Us</FigmaContactButton>
             </div>
-            <div className="bg-white p-6 text-[#121212]">
-              <div className="grid gap-4">
-                {["Name", "Email", "Phone Number", "Estimated Moving Date", "Property Type (FROM)", "Property Type (TO)", "Address (Moving From)", "Address (Moving To)"].map((field) => (
-                  <div key={field}>
-                    <label className="mb-1 block text-sm font-semibold">{field}</label>
-                    <div className="h-11 border border-black/30 bg-white px-3 text-sm leading-[2.75rem] text-black/45">
-                      {field.includes("Address") ? "Your Address" : field.includes("Date") ? "dd/mm/yy" : ""}
-                    </div>
-                  </div>
-                ))}
-                <button className="h-12 bg-gold-gradient text-sm font-bold text-[#121212]">Submit</button>
-              </div>
-            </div>
+            <TSLMoverQuoteForm />
           </div>
         </FigmaBand>
       </FigmaServiceShell>

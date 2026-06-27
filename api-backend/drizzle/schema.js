@@ -82,6 +82,7 @@ export const leads = mysqlTable(
     phone: varchar('phone', { length: 50 }).notNull(),
     enquiry: varchar('enquiry', { length: 255 }),
     message: text('message'),
+    notes: text('notes'),
     source: varchar('source', { length: 100 }).notNull(),
     pagePath: varchar('page_path', { length: 255 }),
     ipAddress: varchar('ip_address', { length: 45 }),

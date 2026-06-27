@@ -8,6 +8,7 @@ interface ServicePageLayoutProps {
   children: React.ReactNode;
   enquiryOptions?: string[];
   showContactForm?: boolean;
+  ctaVariant?: "dark" | "quote";
   source?: string;
 }
 
@@ -17,8 +18,11 @@ export default function ServicePageLayout({
   children,
   enquiryOptions,
   showContactForm = true,
+  ctaVariant = "dark",
   source = "service",
 }: ServicePageLayoutProps) {
+  const isQuoteCta = ctaVariant === "quote";
+
   return (
     <>
       <PageHero title={title} image={image} />
@@ -49,12 +53,14 @@ export default function ServicePageLayout({
       )}
 
       {/* ── CTA Banner ── */}
-      <section className="py-14 bg-[#1E1E1E] text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #C8A84B 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+      <section className={`py-14 text-center relative overflow-hidden ${isQuoteCta ? "bg-gray-50 text-[#252525] border-t border-gray-200" : "bg-[#1E1E1E] text-white"}`}>
+        {!isQuoteCta && (
+          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #C8A84B 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+        )}
         <div className="relative z-10 max-w-[720px] mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Get Started?</h2>
           <div className="gold-divider mb-5" />
-          <p className="mb-7 text-gray-300 text-sm leading-relaxed">
+          <p className={`mb-7 text-sm leading-relaxed ${isQuoteCta ? "text-[#555]" : "text-gray-300"}`}>
             Contact TSL Logistics today for a personalised solution to your logistics needs.
           </p>
           <Link

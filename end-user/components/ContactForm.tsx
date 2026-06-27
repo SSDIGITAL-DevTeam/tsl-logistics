@@ -43,6 +43,7 @@ export default function ContactForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          notes: form.message,
           source,
           pagePath: pathname,
         }),
