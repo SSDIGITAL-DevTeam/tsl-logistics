@@ -49,3 +49,4 @@ next-env.d.ts
 # uploads (api-backend)
 api-backend/uploads/*
 !api-backend/uploads/.gitkeep
+.env*
