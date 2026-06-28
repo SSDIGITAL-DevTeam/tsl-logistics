@@ -8,6 +8,7 @@ import TestimonialsSlider from "@/components/TestimonialsSlider";
 import PermitDialog from "@/components/PermitDialog";
 import JsonLd from "@/components/JsonLd";
 import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
+import HomeV2 from "@/components/HomeV2";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tsllogistics.sg";
 
@@ -142,6 +143,7 @@ export default function HomePage() {
       <JsonLd data={faqLd} />
       <JsonLd data={breadcrumbLd} />
 
+      <div className="theme-v1-only">
       {/* ── Hero ── */}
       <section className="relative min-h-[600px] md:min-h-[820px] flex flex-col justify-end overflow-hidden">
         {/* Full-bleed hero photo via next/image */}
@@ -428,6 +430,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </div>
+
+      <div className="theme-v2-only">
+        <HomeV2 />
+      </div>
     </>
   );
 }

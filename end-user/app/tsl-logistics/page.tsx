@@ -32,7 +32,7 @@ export default function TSLLogisticsPage() {
   return (
     <ServicePageLayout
       title="TSL Logistics"
-      image="/images/service-mover.jpg"
+      image="/images/edite-wfn05998.jpg"
       enquiryOptions={enquiryOptions}
       showContactForm={false}
       ctaVariant="quote"
@@ -41,7 +41,7 @@ export default function TSLLogisticsPage() {
       <FigmaServiceShell>
         <FigmaIntro
           title="TSL Logistics"
-          image="/images/figma-services/logistics-intro.png"
+          image="/images/edite-wfn05998.jpg"
           imageAlt="TSL Logistics truck"
           body={[
             "TSL Logistics is a full-service moving and storage company providing end-to-end solutions - from packing and dismantling to moving, disposal, and secure storage.",
@@ -66,6 +66,7 @@ export default function TSLLogisticsPage() {
             subtitle="Whether it's heavy machinery or oversized goods, our flatbed and lowbed trucks are equipped to handle diverse cargo types. We can help you maximise space and ensure load stability throughout transport."
           />
           <FigmaImageCards
+            imageFit="contain"
             cards={[
               {
                 title: "Flatbed Truck",
@@ -86,7 +87,7 @@ export default function TSLLogisticsPage() {
         <section>
           <FigmaSectionHeader title="DG Cargo / Trucking" />
           <div className="mt-8 grid items-center gap-8 md:grid-cols-[320px_minmax(0,1fr)] md:gap-12">
-            <div className="relative aspect-[320/300] overflow-hidden bg-[#e1e1e1]">
+            <div className="relative aspect-[320/300] overflow-hidden">
               <Image
                 src="/images/figma-services/logistics-dg.png"
                 alt="Dangerous goods trucking"
@@ -115,7 +116,7 @@ export default function TSLLogisticsPage() {
           </div>
         </section>
 
-        <section className="grid items-stretch gap-6 md:grid-cols-[1fr_300px] lg:grid-cols-[1fr_380px]">
+        <section>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               {
@@ -156,15 +157,6 @@ export default function TSLLogisticsPage() {
               );
             })}
           </div>
-          <div className="relative min-h-[360px] overflow-hidden bg-[#e1e1e1]">
-            <Image
-              src="/images/logistics-dangerous-goods-labels.png"
-              alt="Dangerous goods labelling"
-              fill
-              sizes="(min-width: 1024px) 380px, (min-width: 768px) 300px, 100vw"
-              className="object-cover"
-            />
-          </div>
         </section>
 
         <section className="space-y-10 md:space-y-12">
@@ -173,7 +165,7 @@ export default function TSLLogisticsPage() {
           </h2>
           {[
             {
-              image: "/images/figma-services/mover-heavy.png",
+              image: "/images/wfn05884-1.jpg",
               alt: "Dedicated trucking service",
               body: (
                 <>
@@ -183,7 +175,7 @@ export default function TSLLogisticsPage() {
               imageSide: "left",
             },
             {
-              image: "/images/figma-services/mover-residential.png",
+              image: "/images/wfn05862.jpg",
               alt: "TSL dedicated fleet",
               body: (
                 <>
@@ -193,7 +185,7 @@ export default function TSLLogisticsPage() {
               imageSide: "right",
             },
             {
-              image: "/images/figma-services/mover-lorry.png",
+              image: "/images/edited-wfn05994.jpg",
               alt: "TSL operation",
               body: (
                 <>
@@ -212,7 +204,7 @@ export default function TSLLogisticsPage() {
               }`}
             >
               <div
-                className={`relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#e1e1e1] ${
+                className={`relative aspect-[16/10] w-full overflow-hidden ${
                   item.imageSide === "right" ? "md:order-2 md:justify-self-end" : ""
                 }`}
               >
@@ -231,7 +223,7 @@ export default function TSLLogisticsPage() {
                 <div className="mt-5">
                   <a
                     href="/contact"
-                    className="inline-flex h-8 min-w-[150px] items-center justify-center rounded-full bg-gold-gradient px-5 text-[11px] font-bold text-[#121212] transition hover:opacity-90"
+                    className="inline-flex h-8 min-w-[150px] items-center justify-center bg-gold-gradient px-5 text-[11px] font-bold text-[#121212] transition hover:opacity-90"
                   >
                     Contact Us
                   </a>
@@ -253,7 +245,7 @@ export default function TSLLogisticsPage() {
               const Icon = item.icon;
               return (
                 <article key={item.title} className="mx-auto max-w-[180px]">
-                  <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-gold-gradient text-[#121212]">
+                  <div className="mx-auto mb-4 grid h-12 w-12 place-items-center bg-gold-gradient text-[#121212]">
                     <Icon size={20} strokeWidth={4} />
                   </div>
                   <h3 className="text-sm font-bold leading-tight text-[#1a1a1a]">
@@ -285,7 +277,7 @@ export default function TSLLogisticsPage() {
           </h2>
 
           <div className="grid items-center gap-8 md:grid-cols-[minmax(360px,520px)_minmax(0,1fr)] md:gap-12 lg:gap-16">
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#e1e1e1]">
+            <div className="relative aspect-[16/10] w-full overflow-hidden">
               <Image
                 src="/images/permit-processing-homepage.jpg"
                 alt="Permit declaration documentation"
@@ -309,7 +301,7 @@ export default function TSLLogisticsPage() {
               <div className="mt-6">
                 <a
                   href="/contact"
-                  className="inline-flex h-10 min-w-[190px] items-center justify-center rounded-full bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
+                  className="inline-flex h-10 min-w-[190px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
                 >
                   Contact Us
                 </a>
@@ -321,7 +313,7 @@ export default function TSLLogisticsPage() {
             <h3 className="text-center text-xl font-bold leading-tight text-[#1a1a1a] md:text-[22px]">
               What We Handle
             </h3>
-            <div className="grid items-stretch gap-5 md:grid-cols-[minmax(0,1fr)_320px] lg:grid-cols-[minmax(0,1fr)_360px]">
+            <div>
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
                   {
@@ -349,10 +341,10 @@ export default function TSLLogisticsPage() {
                   return (
                     <article
                       key={item.title}
-                      className={`${index === 0 || index === 3 ? "bg-[#1a3263] text-white" : "bg-gold-gradient text-[#121212]"} min-h-[170px] rounded-lg p-5`}
+                      className={`${index === 0 || index === 3 ? "bg-[#1a3263] text-white" : "bg-gold-gradient text-[#121212]"} min-h-[170px] p-5`}
                     >
                       <div
-                        className={`${index === 0 || index === 3 ? "bg-white text-[#1a3263]" : "bg-[#121212] text-[#f1d35f]"} mb-4 grid h-6 w-6 place-items-center rounded-full`}
+                        className={`${index === 0 || index === 3 ? "bg-white text-[#1a3263]" : "bg-[#121212] text-[#f1d35f]"} mb-4 grid h-6 w-6 place-items-center`}
                       >
                         <Icon size={15} strokeWidth={4} />
                       </div>
@@ -366,16 +358,6 @@ export default function TSLLogisticsPage() {
                   );
                 })}
               </div>
-              <div className="flex min-h-[356px] items-center justify-center overflow-hidden rounded-lg bg-[#eeeeee]">
-                <Image
-                  src="/images/permit-container.png"
-                  alt="Permit cargo container"
-                  width={360}
-                  height={315}
-                  sizes="(min-width: 1024px) 360px, (min-width: 768px) 320px, 100vw"
-                  className="h-full w-full object-contain p-7"
-                />
-              </div>
             </div>
           </div>
         </section>
@@ -383,7 +365,7 @@ export default function TSLLogisticsPage() {
         <FigmaSplitSection
           eyebrow="Project Management"
           title="End-to-End Project Management for Critical Logistics"
-          image="/images/figma-services/logistics-project.png"
+          image="/images/wfn06078.jpg"
           imageAlt="Project logistics management"
           body={[
             "We offer comprehensive project management for specialized and time-sensitive logistics operations. From planning and documentation to on-site coordination and transport execution, we manage every detail - ensuring timely completion, and one-stop coverage for large-scale, specialized, or high-risk transport projects.",
@@ -391,9 +373,9 @@ export default function TSLLogisticsPage() {
           cta="Contact Us"
         />
 
-        <section className="relative left-1/2 w-screen -translate-x-1/2 bg-[#1a3263] px-5 py-10 text-white md:px-10 md:py-14">
-          <div className="mx-auto grid max-w-[1200px] items-center gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
-            <div>
+        <section className="relative left-1/2 w-screen -translate-x-1/2 bg-[#1a3263] px-5 pt-10 text-white md:px-10 md:pt-14">
+          <div className="mx-auto grid max-w-[1200px] items-end gap-8 lg:grid-cols-[minmax(0,1fr)_460px]">
+            <div className="pb-10 md:pb-14">
               <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">TSL Logistics: Complete Moving Solutions You Can Trust</h2>
               <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-base">
                 TSL Logistics provides end-to-end moving and storage services, covering packing, dismantling, relocation, disposal, and secure storage for homes, offices, warehouses, and commercial spaces. With professional movers and proven processes, we ensure every move is handled securely, safely, and stress-free from start to finish.
@@ -404,16 +386,16 @@ export default function TSLLogisticsPage() {
                 </a>
               </div>
             </div>
-            <div className="-mb-10 flex justify-center md:-mb-14 lg:-mr-10 lg:justify-end">
+            <div className="flex justify-center lg:-mr-40 lg:justify-end">
               <Image
-                src="/images/kontainer.png"
+                src="/images/kontainer-full.png"
                 alt=""
                 width={1524}
                 height={1776}
-                sizes="(min-width: 1024px) 320px, 76vw"
+                sizes="(min-width: 1024px) 520px, 82vw"
                 quality={100}
                 unoptimized
-                className="h-auto w-full max-w-[280px] object-contain md:max-w-[310px] lg:max-w-[320px]"
+                className="h-auto w-full max-w-[340px] object-contain md:max-w-[400px] lg:max-w-[520px]"
               />
             </div>
           </div>

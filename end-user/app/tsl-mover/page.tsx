@@ -109,7 +109,7 @@ export default function TSLMoverPage() {
               </p>
               <a
                 href="/contact"
-                className="mt-6 inline-flex h-10 min-w-[190px] items-center justify-center rounded-full bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
+                className="mt-6 inline-flex h-10 min-w-[190px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
               >
                 Contact Us
               </a>
@@ -147,7 +147,7 @@ export default function TSLMoverPage() {
               </p>
               <a
                 href="/contact"
-                className="mt-6 inline-flex h-10 min-w-[190px] items-center justify-center rounded-full bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
+                className="mt-6 inline-flex h-10 min-w-[190px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
               >
                 Contact Us
               </a>
@@ -340,7 +340,7 @@ export default function TSLMoverPage() {
           </div>
         </section>
 
-        <FigmaBand dark>
+        <FigmaBand dark fullWidth>
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">Get Your Quotation Now With TSL Mover Service</h2>

@@ -18,8 +18,16 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsSlider() {
+export default function TestimonialsSlider({
+  variant = "dark",
+}: {
+  variant?: "dark" | "light";
+}) {
   const [current, setCurrent] = useState(0);
+  const quoteTextClass =
+    variant === "light" ? "text-[#151515]" : "text-white/85";
+  const inactiveDotClass =
+    variant === "light" ? "bg-[#151515]/20" : "bg-gray-300";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -49,7 +57,7 @@ export default function TestimonialsSlider() {
               </svg>
             ))}
           </div>
-          <p className="text-white/85 text-base md:text-lg leading-relaxed italic mb-6">
+          <p className={`${quoteTextClass} text-base md:text-lg leading-relaxed italic mb-6`}>
             &ldquo;{testimonials[current].text}&rdquo;
           </p>
           <p className="font-bold text-[#C8A84B] uppercase tracking-widest text-sm">
@@ -73,7 +81,7 @@ export default function TestimonialsSlider() {
               key={i}
               onClick={() => setCurrent(i)}
               className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                i === current ? "bg-[#C8A84B]" : "bg-gray-300"
+                i === current ? "bg-[#C8A84B]" : inactiveDotClass
               }`}
               aria-label={`Slide ${i + 1}`}
             />

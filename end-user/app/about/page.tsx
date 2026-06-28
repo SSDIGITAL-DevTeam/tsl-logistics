@@ -49,7 +49,7 @@ export default function AboutPage() {
       <PageHero title="About Us" image="/images/about-team.jpg" />
 
       {/* ── Trusted Logistics — Image #15 style ── */}
-      <section className="py-14 bg-white">
+      <section className="pt-14 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-center">
             {/* Left: headline + text */}

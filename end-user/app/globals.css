@@ -28,6 +28,18 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.theme-v2-only {
+  display: none;
+}
+
+html[data-theme-version="v2"] .theme-v1-only {
+  display: none !important;
+}
+
+html[data-theme-version="v2"] .theme-v2-only {
+  display: block;
+}
+
 /* ──────────────────────────────────────────────
    Component / utility helpers (custom CSS)
    ────────────────────────────────────────────── */

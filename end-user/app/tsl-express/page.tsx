@@ -79,7 +79,7 @@ export default function TSLExpressPage() {
               </div>
               <a
                 href="/contact"
-                className="mt-7 inline-flex h-11 min-w-[210px] items-center justify-center rounded-full bg-gold-gradient px-8 text-sm font-bold text-[#121212] transition hover:opacity-90"
+                className="mt-7 inline-flex h-11 min-w-[210px] items-center justify-center bg-gold-gradient px-8 text-sm font-bold text-[#121212] transition hover:opacity-90"
               >
                 Contact Us
               </a>
@@ -139,7 +139,7 @@ export default function TSLExpressPage() {
               </div>
               <a
                 href="/contact"
-                className="mt-7 inline-flex h-11 min-w-[210px] items-center justify-center rounded-full bg-gold-gradient px-8 text-sm font-bold text-[#121212] transition hover:opacity-90"
+                className="mt-7 inline-flex h-11 min-w-[210px] items-center justify-center bg-gold-gradient px-8 text-sm font-bold text-[#121212] transition hover:opacity-90"
               >
                 Contact Us
               </a>

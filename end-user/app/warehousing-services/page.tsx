@@ -45,7 +45,7 @@ export default function WarehousingServicesPage() {
         <FigmaSplitSection
           eyebrow="Strategic Warehouse Location"
           title="Strategic Warehouse Location"
-          image="/images/figma-services/warehouse-location.png"
+          image="/images/wfn05952.jpg"
           imageAlt="Warehouse location"
           body={[
             "Our warehouse is strategically located in Singapore's West Zone, providing easy access to major industrial areas, ports, and transport networks.",
@@ -147,7 +147,7 @@ export default function WarehousingServicesPage() {
           </div>
         </section>
 
-        <FigmaBand dark>
+        <FigmaBand dark fullWidth>
           <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
             <div>
               <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">Let&apos;s Optimize Your Storage & Distribution</h2>

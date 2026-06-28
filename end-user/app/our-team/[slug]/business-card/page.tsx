@@ -91,7 +91,7 @@ export default async function DigitalBusinessCardPage({ params }: Props) {
       <div className="absolute inset-0 bg-white/45" />
 
       <section className="relative z-10 mx-auto w-full max-w-[480px]">
-        <div className="relative overflow-hidden bg-white pb-5 shadow-md">
+        <div className="relative overflow-hidden rounded-lg bg-white pb-5 shadow-md">
           <div className="relative h-[250px] overflow-visible">
             <div className="absolute left-1/2 top-[34px] flex w-full -translate-x-1/2 flex-col items-center px-6">
               <div className="relative">

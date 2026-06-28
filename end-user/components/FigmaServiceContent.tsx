@@ -71,7 +71,7 @@ export function FigmaContactButton({ children = "Contact Us" }: { children?: str
   return (
     <a
       href="/contact"
-      className="inline-flex h-[38px] min-w-[150px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)] transition hover:opacity-90"
+      className="inline-flex h-[38px] min-w-[150px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
     >
       {children}
     </a>
@@ -81,7 +81,7 @@ export function FigmaContactButton({ children = "Contact Us" }: { children?: str
 export function FigmaIntro({ title, body, image, imageAlt }: IntroProps) {
   return (
     <section className="grid items-center gap-8 md:grid-cols-[411px_1fr] md:gap-12">
-      <div className="relative aspect-[411/410] overflow-hidden bg-[#e1e1e1]">
+      <div className="relative aspect-[411/410] overflow-hidden">
         <Image src={image} alt={imageAlt} fill sizes="(min-width: 768px) 48vw, 100vw" className="object-cover" priority />
       </div>
       <div>
@@ -131,20 +131,34 @@ export function FigmaSplitSection({ eyebrow, title, subtitle, body = [], image, 
         {cta && <div className="mt-8"><FigmaContactButton>{cta}</FigmaContactButton></div>}
         {features && <FigmaFeatureGrid features={features} compact className="mt-6" />}
       </div>
-      <div className={`relative aspect-[616/418] overflow-hidden bg-[#e1e1e1] ${reverse ? "md:order-1" : ""}`}>
+      <div className={`relative aspect-[616/418] overflow-hidden ${reverse ? "md:order-1" : ""}`}>
         <Image src={image} alt={imageAlt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
       </div>
     </section>
   );
 }
 
-export function FigmaImageCards({ cards, columns = 2 }: { cards: ImageCard[]; columns?: 2 | 3 }) {
+export function FigmaImageCards({
+  cards,
+  columns = 2,
+  imageFit = "cover",
+}: {
+  cards: ImageCard[];
+  columns?: 2 | 3;
+  imageFit?: "cover" | "contain";
+}) {
   return (
     <div className={`grid gap-6 ${columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
       {cards.map((card) => (
-        <article key={card.title} className="bg-white">
-          <div className="relative aspect-[619/440] overflow-hidden bg-[#e1e1e1]">
-            <Image src={card.image} alt={card.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-500 hover:scale-105" />
+        <article key={card.title}>
+          <div className="relative aspect-[619/440] overflow-hidden">
+            <Image
+              src={card.image}
+              alt={card.alt}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className={`${imageFit === "contain" ? "object-contain" : "object-cover"} transition-transform duration-500 hover:scale-105`}
+            />
           </div>
           <div className="pt-5">
             <h3 className="text-base font-bold leading-snug text-[#1a1a1a] md:text-lg">{card.title}</h3>
@@ -183,9 +197,27 @@ export function FigmaFeatureGrid({
   );
 }
 
-export function FigmaBand({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
+export function FigmaBand({
+  children,
+  dark = false,
+  fullWidth = false,
+}: {
+  children: ReactNode;
+  dark?: boolean;
+  fullWidth?: boolean;
+}) {
+  const colorClass = dark ? "bg-[#1a3263] text-white" : "bg-[#f5f5f5]";
+
+  if (fullWidth) {
+    return (
+      <section className={`relative left-1/2 w-screen -translate-x-1/2 px-5 py-10 md:px-10 md:py-14 ${colorClass}`}>
+        <div className="mx-auto max-w-[1200px]">{children}</div>
+      </section>
+    );
+  }
+
   return (
-    <section className={`px-5 py-10 md:-mx-4 md:px-10 md:py-14 ${dark ? "bg-[#1a3263] text-white" : "bg-[#f5f5f5]"}`}>
+    <section className={`px-5 py-10 md:-mx-4 md:px-10 md:py-14 ${colorClass}`}>
       {children}
     </section>
   );

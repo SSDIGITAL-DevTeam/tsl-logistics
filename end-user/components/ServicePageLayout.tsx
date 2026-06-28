@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ContactForm from "./ContactForm";
 import PageHero from "./PageHero";
 
@@ -18,17 +17,14 @@ export default function ServicePageLayout({
   children,
   enquiryOptions,
   showContactForm = true,
-  ctaVariant = "dark",
   source = "service",
 }: ServicePageLayoutProps) {
-  const isQuoteCta = ctaVariant === "quote";
-
   return (
     <>
       <PageHero title={title} image={image} />
 
       {/* ── Page Content ── */}
-      <div className="py-14 bg-white">
+      <div className="pt-14 bg-white">
         <div className="max-w-[1200px] mx-auto px-4">
           {children}
         </div>
@@ -52,25 +48,6 @@ export default function ServicePageLayout({
         </section>
       )}
 
-      {/* ── CTA Banner ── */}
-      <section className={`py-14 text-center relative overflow-hidden ${isQuoteCta ? "bg-gray-50 text-[#252525] border-t border-gray-200" : "bg-[#1E1E1E] text-white"}`}>
-        {!isQuoteCta && (
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #C8A84B 1px, transparent 0)", backgroundSize: "32px 32px" }} />
-        )}
-        <div className="relative z-10 max-w-[720px] mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Get Started?</h2>
-          <div className="gold-divider mb-5" />
-          <p className={`mb-7 text-sm leading-relaxed ${isQuoteCta ? "text-[#555]" : "text-gray-300"}`}>
-            Contact TSL Logistics today for a personalised solution to your logistics needs.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-[#C8A84B] hover:bg-[#9A7D2D] text-[#1E1E1E] font-bold py-3.5 px-10 uppercase text-sm tracking-widest transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-          >
-            Contact Us
-          </Link>
-        </div>
-      </section>
     </>
   );
 }

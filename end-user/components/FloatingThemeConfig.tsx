@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Check, Layers3, X } from "lucide-react";
 
-type ThemeVersion = "v1";
+type ThemeVersion = "v1" | "v2";
 
 const STORAGE_KEY = "tsl-theme-version";
 
@@ -17,10 +17,15 @@ const themeOptions: {
     label: "Theme V1",
     description: "Current visual system.",
   },
+  {
+    version: "v2",
+    label: "Theme V2",
+    description: "Editorial logistics homepage.",
+  },
 ];
 
 function isThemeVersion(value: string | null): value is ThemeVersion {
-  return value === "v1";
+  return value === "v1" || value === "v2";
 }
 
 function applyThemeVersion(version: ThemeVersion) {

@@ -69,7 +69,7 @@ export default function Footer() {
                   href="https://www.facebook.com/tsllogistics.sg/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 bg-[#C8A84B]/20 hover:bg-[#C8A84B] text-[#C8A84B] hover:text-[#1E1E1E] flex items-center justify-center transition-all duration-200"
+                  className="w-8 h-8 rounded-full bg-[#C8A84B]/20 hover:bg-[#C8A84B] text-[#C8A84B] hover:text-[#1E1E1E] flex items-center justify-center transition-all duration-200"
                   aria-label="Facebook"
                 >
                   <svg
