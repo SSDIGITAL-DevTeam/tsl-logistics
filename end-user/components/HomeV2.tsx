@@ -86,12 +86,6 @@ const whyUs = [
   },
 ];
 
-const proofStats = [
-  { value: "2003", label: "Founded in Singapore" },
-  { value: "4", label: "Core service divisions" },
-  { value: "24/7", label: "Responsive support for urgent jobs" },
-];
-
 function ContactCta({ className = "" }: { className?: string }) {
   return (
     <Link
@@ -106,115 +100,67 @@ function ContactCta({ className = "" }: { className?: string }) {
 export default function HomeV2() {
   return (
     <>
-      <section className="bg-[#f5f6f8]">
-        <div className="mx-auto grid min-h-[calc(100dvh-88px)] max-w-[1440px] items-stretch gap-0 px-5 py-8 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:py-10">
-          <div className="flex flex-col justify-between bg-[#152642] px-6 py-8 text-white md:px-10 lg:px-12">
-            <div className="max-w-[620px]">
-              <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#D8B84F]">
-                TSL Logistics Singapore
-              </p>
-              <h1 className="text-4xl font-bold leading-[1.02] tracking-[-0.02em] md:text-6xl lg:text-[68px]">
-                Moving cargo with control, care, and timing.
-              </h1>
-              <p className="mt-6 max-w-[520px] text-base leading-relaxed text-white/78">
-                A client-focused logistics partner for transport, warehousing, distribution, moving, and dangerous goods handling.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <ContactCta />
-                <Link
-                  href="#services"
-                  className="inline-flex h-12 items-center justify-center border border-white/22 px-7 text-sm font-bold text-white transition hover:border-white hover:bg-white/8 active:scale-[0.98]"
-                >
-                  View Services
-                </Link>
-              </div>
-            </div>
+      <section className="bg-white px-5 py-10 md:px-8 md:py-14">
+        <div className="mx-auto max-w-[1220px]">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+            <h1 className="max-w-[760px] text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-[#151515] md:text-6xl lg:text-[64px]">
+              Delivering value to our clients - On time, Every time!
+            </h1>
 
-            <div className="mt-12 grid gap-4 sm:grid-cols-3">
-              {proofStats.map((item) => (
-                <div key={item.label} className="border-t border-white/18 pt-4">
-                  <p className="text-3xl font-bold text-white">{item.value}</p>
-                  <p className="mt-2 text-xs leading-relaxed text-white/62">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
+            <div className="max-w-[340px] lg:justify-self-end">
+              <p className="text-sm leading-relaxed text-[#151515]">
+                TSL Logistics Pte Ltd was founded in 2003 by veteran logistics expert Mr. Alan Tay Soon Lai with the objective of establishing a client-focused logistics company in Singapore.
+              </p>
+              <ContactCta className="mt-6 bg-[#1f4fa8] text-white" />
             </div>
           </div>
 
-          <div className="grid min-h-[520px] gap-4 bg-white p-3 shadow-[0_24px_80px_rgba(20,38,66,0.12)] md:grid-cols-[1fr_0.58fr] md:grid-rows-[1fr_0.8fr] md:p-4 lg:min-h-0">
-            <div className="relative min-h-[360px] overflow-hidden bg-[#e7ebef] md:row-span-2">
-              <Image
-                src="/images/edited-wfn05994.jpg"
-                alt="TSL Logistics container trucking"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 58vw"
-                className="object-cover transition duration-700 hover:scale-[1.02]"
-              />
-            </div>
-            <div className="relative min-h-[220px] overflow-hidden bg-[#e7ebef]">
-              <Image
-                src="/images/wfn06078.jpg"
-                alt="TSL warehouse operations"
-                fill
-                sizes="(max-width: 768px) 100vw, 28vw"
-                className="object-cover transition duration-700 hover:scale-[1.02]"
-              />
-            </div>
-            <div className="relative min-h-[220px] overflow-hidden bg-[#f4f1ea]">
-              <Image
-                src="/images/kontainer-full.png"
-                alt="Container used for logistics storage and transport"
-                fill
-                sizes="(max-width: 768px) 100vw, 28vw"
-                className="object-contain p-5"
-              />
-            </div>
+          <div className="relative mt-10 aspect-[16/6] min-h-[280px] overflow-hidden rounded-[22px] bg-[#e7ebef] md:mt-12 md:min-h-[360px]">
+            <Image
+              src="/images/hero-section-v2.png"
+              alt="TSL Logistics warehouse and cargo operations"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 1220px"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
 
       <section id="services" className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-[1220px] px-5 md:px-8">
-          <div className="max-w-[720px]">
+          <div className="mx-auto max-w-[720px] text-center">
             <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
-              Four connected logistics divisions, one accountable team.
+              Our Services
             </h2>
-            <p className="mt-5 max-w-[650px] text-base leading-relaxed text-[#555]">
+            <p className="mx-auto mt-5 max-w-[650px] text-base leading-relaxed text-[#555]">
               Use a single partner for cargo movement, express delivery, moving, storage, and value-added handling.
             </p>
           </div>
 
-          <div className="mt-10 grid auto-rows-[300px] grid-cols-1 gap-5 md:auto-rows-[280px] md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
             {services.map((service) => (
               <Link
                 key={service.title}
                 href={service.href}
-                className={`group relative overflow-hidden bg-[#111827] shadow-[0_18px_50px_rgba(16,24,32,0.12)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#C8A84B] focus-visible:ring-offset-4 ${service.className}`}
+                className="group block overflow-hidden rounded-[1.25rem] bg-white shadow-[0_18px_50px_rgba(16,24,32,0.10)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#C8A84B] focus-visible:ring-offset-4"
               >
-                <Image
-                  src={service.image}
-                  alt={service.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,17,31,0.10)_0%,rgba(6,17,31,0.42)_45%,rgba(6,17,31,0.90)_100%)]" />
-                <div className="absolute inset-x-0 bottom-0 p-3 text-white md:p-5">
-                  <div className="flex items-end justify-between gap-4 border border-white/14 bg-[#07111f]/92 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-[3px] md:p-5">
-                    <div className="min-w-0">
-                      <h3 className="text-xl font-bold leading-tight">
-                        {service.title}
-                      </h3>
-                      <p className="mt-3 max-w-[460px] text-sm leading-relaxed text-white/88">
-                        {service.body}
-                      </p>
-                    </div>
-                    <span className="grid h-10 w-10 shrink-0 place-items-center bg-white text-[#121212] transition group-hover:translate-x-1">
-                      <ArrowRight size={18} />
-                    </span>
-                  </div>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex items-center justify-between px-5 py-4">
+                  <span className="font-semibold text-[#1a1a1a] text-base">{service.title}</span>
+                  <ArrowRight
+                    size={18}
+                    className="text-[#C8A84B] group-hover:translate-x-1 transition-transform duration-200"
+                  />
                 </div>
               </Link>
             ))}
@@ -224,93 +170,36 @@ export default function HomeV2() {
 
       <CompaniesThatMoveWithUs />
 
-      <section className="bg-[#f5f6f8] py-16 md:py-24">
-        <div className="mx-auto grid max-w-[1220px] gap-8 px-5 md:px-8 lg:grid-cols-[0.78fr_1.22fr]">
-          <div className="flex flex-col justify-between">
-            <div>
-              <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
-                Built around the jobs that cannot be late.
-              </h2>
-              <p className="mt-5 max-w-[520px] text-base leading-relaxed text-[#555]">
-                We simplify planning, permits, route coordination, storage, and final delivery so teams can stay focused on operations.
-              </p>
-            </div>
-            <div className="mt-10 border-l-4 border-[#C8A84B] pl-5">
-              <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#1a1a1a]">
-                Operational coverage
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-[#555]">
-                From local shipments to specialised cargo, our teams coordinate the handoff across road, warehouse, and site.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid gap-4 bg-white p-3 shadow-[0_20px_70px_rgba(20,38,66,0.10)] sm:grid-cols-[0.85fr_1.15fr]">
-            <div className="relative min-h-[360px] overflow-hidden bg-[#e7ebef]">
-              <Image
-                src="/images/wfn05862.jpg"
-                alt="TSL moving team handling wrapped furniture"
-                fill
-                sizes="(max-width: 768px) 100vw, 38vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="grid gap-4">
-              <div className="relative min-h-[210px] overflow-hidden bg-[#e7ebef]">
-                <Image
-                  src="/images/wfn06078.jpg"
-                  alt="Palletised cargo in TSL warehouse"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 46vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="bg-[#152642] p-6 text-white">
-                  <p className="text-4xl font-bold">20+</p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    Years of logistics experience behind every shipment.
-                  </p>
-                </div>
-                <div className="bg-gold-gradient p-6 text-[#121212]">
-                  <p className="text-4xl font-bold">1</p>
-                  <p className="mt-3 text-sm font-semibold leading-relaxed">
-                    Point of accountability across transport, storage, and delivery.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto grid max-w-[1220px] items-center gap-10 px-5 md:px-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="relative min-h-[420px] overflow-hidden">
-            <Image
-              src="/images/about-team.jpg"
-              alt="TSL Logistics team"
-              fill
-              sizes="(max-width: 1024px) 100vw, 52vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="lg:pl-8">
-            <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
-              A logistics partner built on practical execution.
+      <section className="section-soft overflow-hidden py-16 md:py-24">
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-10 px-6 lg:flex-row lg:gap-16">
+          <div className="flex-1">
+            <h2 className="mb-5 text-4xl font-bold leading-tight text-[#1a1a1a] md:text-5xl">
+              About Us
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-[#555]">
-              At TSL Logistics, we are dedicated to moving businesses forward. As a trusted logistics partner, we provide end-to-end solutions that simplify complexity, enhance efficiency, and deliver reliability across every mile.
+            <p className="mb-3 leading-relaxed text-[#555]">
+              At TSL Logistics, we are dedicated to moving businesses forward. As a trusted logistics
+              partner, we provide end-to-end solutions that simplify complexity, enhance efficiency,
+              and deliver reliability across every mile.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-[#555]">
-              From domestic deliveries to global distribution, our team ensures your cargo reaches its destination safely, on time, and with complete transparency.
+            <p className="mb-8 leading-relaxed text-[#555]">
+              From domestic deliveries to global distribution, our team ensures your cargo reaches its
+              destination safely, on time, and with complete transparency.
             </p>
-            <Link
-              href="/about"
-              className="mt-8 inline-flex h-12 items-center justify-center border border-[#151515] px-7 text-sm font-bold text-[#151515] transition hover:bg-[#151515] hover:text-white active:scale-[0.98]"
-            >
+            <Link href="/about" className="btn-pill-gold">
               Learn More
             </Link>
+          </div>
+
+          <div className="flex shrink-0 items-center justify-center lg:w-[52%]">
+            <div className="v2-surface relative min-h-[300px] w-full overflow-hidden md:min-h-[420px]">
+              <Image
+                src="/images/group-1000005860.png"
+                alt="TSL Logistics truck with container"
+                fill
+                sizes="(max-width: 1024px) 100vw, 52vw"
+                className="object-contain object-right"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -323,32 +212,24 @@ export default function HomeV2() {
             </h2>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-6">
-            {whyUs.map((item, index) => {
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {whyUs.map((item) => {
               const Icon = item.icon;
-              const featured = index === 0 || index === 1;
               return (
                 <article
                   key={item.title}
-                  className={`${
-                    featured
-                      ? "bg-white text-[#151515] md:col-span-3"
-                      : "border border-white/14 text-white md:col-span-2"
-                  } min-h-[210px] p-6`}
+                  className="min-h-[220px] border border-white/10 bg-white p-6 text-[#151515] shadow-[0_18px_50px_rgba(0,0,0,0.18)] md:p-7"
                 >
-                  <Icon
-                    size={30}
-                    strokeWidth={1.8}
-                    className={featured ? "text-[#C8A84B]" : "text-[#D8B84F]"}
-                  />
-                  <h3 className="mt-7 text-lg font-bold leading-tight">
+                  <span className="grid h-12 w-12 place-items-center bg-[#D8B84F] text-[#151515]">
+                    <Icon
+                      size={24}
+                      strokeWidth={1.9}
+                    />
+                  </span>
+                  <h3 className="mt-8 text-lg font-bold leading-tight">
                     {item.title}
                   </h3>
-                  <p
-                    className={`mt-3 text-sm leading-relaxed ${
-                      featured ? "text-[#555]" : "text-white/68"
-                    }`}
-                  >
+                  <p className="mt-3 text-sm leading-relaxed text-[#555]">
                     {item.body}
                   </p>
                 </article>
@@ -368,7 +249,7 @@ export default function HomeV2() {
               We simplify permit and documentation so you can focus on your business. Our team handles preparation, submission, and follow-up with government agencies.
             </p>
             <div className="mt-8">
-              <PermitDialog />
+              <PermitDialog triggerClassName="!bg-gold-gradient !px-8 !font-bold !text-[#151515] hover:!bg-gold-gradient hover:!brightness-95" />
             </div>
           </div>
 

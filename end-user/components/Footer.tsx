@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer>
       {/* ── CTA Banner ── */}
-      <div className="relative z-10 min-h-[360px] overflow-hidden bg-[#111] md:min-h-[410px]">
+      <div className="v2-no-radius relative z-10 min-h-[360px] overflow-hidden bg-[#111] md:min-h-[410px]">
         <Image
           src="/images/footer-cta-bg.png"
           alt=""
@@ -15,9 +15,9 @@ export default function Footer() {
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/20 md:bg-gradient-to-r md:from-black/45 md:via-black/20 md:to-transparent" />
-        <div className="pointer-events-none absolute bottom-0 right-0 z-10 hidden w-[56vw] max-w-[760px] md:block">
+        <div className="pointer-events-none absolute -bottom-36 right-[-210px] z-10 w-[145vw] max-w-none opacity-75 md:-bottom-40 md:right-[-170px] md:w-[72vw] md:max-w-[980px] md:opacity-100">
           <Image
-            src="/images/footer-cta-vehicle.png"
+            src="/images/chatgpt-footer-van-jun-29-2026-10-42-01-am.png"
             alt=""
             width={811}
             height={399}

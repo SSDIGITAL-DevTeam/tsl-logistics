@@ -3,11 +3,13 @@ import Image from "next/image";
 interface PageHeroProps {
   title: string;
   image?: string;
+  imagePosition?: string;
 }
 
 export default function PageHero({
   title,
   image = "/images/hero-bg-new.jpg",
+  imagePosition = "object-center",
 }: PageHeroProps) {
   return (
     <div className="relative h-[220px] md:h-[280px] overflow-hidden">
@@ -17,7 +19,7 @@ export default function PageHero({
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className={`object-cover ${imagePosition}`}
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-[#0f1923]/65" />

@@ -145,7 +145,7 @@ export default function HomePage() {
 
       <div className="theme-v1-only">
       {/* ── Hero ── */}
-      <section className="relative min-h-[600px] md:min-h-[820px] flex flex-col justify-end overflow-hidden">
+      <section className="relative flex min-h-[600px] flex-col items-center justify-center overflow-hidden md:min-h-[820px]">
         {/* Full-bleed hero photo via next/image */}
         <Image
           src="/images/hero-bg-new.jpg"
@@ -156,33 +156,21 @@ export default function HomePage() {
           className="object-cover object-center"
         />
         {/* Strong bottom gradient for headline legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/18 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/18 to-transparent" />
 
-        {/* Bottom content — split left/right like Image #3 */}
-        <div className="hero-in relative z-10 max-w-[1200px] mx-auto px-6 pb-16 pt-48 w-full">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-            {/* Left: big headline */}
-            <div className="flex-1">
-              <h1 className="text-5xl md:text-6xl lg:text-[68px] font-bold text-white leading-[1.08]" style={{ textWrap: "balance" }}>
-                Delivering value to<br />
-                our clients &ndash; On time,<br />
-                Every time!
-              </h1>
-            </div>
-
-            {/* Right: subtitle + CTA */}
-            <div className="md:w-[340px] shrink-0 flex flex-col items-start md:items-start gap-5">
-              <p className="text-white/80 text-sm md:text-base leading-relaxed">
-                TSL Logistics Pte Ltd was founded in 2003 by veteran logistics expert Mr. Alan Tay Soon Lai with
-                the objective of establishing a client-focused logistics company in Singapore.
-              </p>
-              <Link
-                href="/contact"
-                className="btn-pill-gold"
-              >
-                Contact Now
-              </Link>
-            </div>
+        {/* Centered column content */}
+        <div className="hero-in relative z-10 mx-auto w-full max-w-[1200px] px-6 py-20 md:py-28">
+          <div className="flex flex-col items-start gap-6 text-left">
+            <h1 className="max-w-[900px] text-5xl font-bold leading-[1.08] text-white md:text-6xl lg:text-[68px]" style={{ textWrap: "balance" }}>
+              Delivering value to our clients - On time, Every time!
+            </h1>
+            <p className="max-w-[640px] text-sm leading-relaxed text-white md:text-base">
+              TSL Logistics Pte Ltd was founded in 2003 by veteran logistics expert Mr. Alan Tay Soon Lai with the objective of establishing a client-focused logistics company in Singapore.
+            </p>
+            <Link href="/contact" className="btn-pill-gold">
+              Contact Now
+            </Link>
           </div>
         </div>
       </section>
@@ -231,17 +219,6 @@ export default function HomePage() {
       </section>
 
       <CompaniesThatMoveWithUs />
-
-      {/* ── Full-width image break ── */}
-      <section className="relative h-[400px] md:h-[520px] overflow-hidden my-16 md:my-24">
-        <Image
-          src="/images/homepage-image-break.jpg"
-          alt="TSL Logistics fleet on the road"
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </section>
 
       {/* ── About Us ── */}
       <section className="section-soft overflow-hidden py-16 md:py-24">

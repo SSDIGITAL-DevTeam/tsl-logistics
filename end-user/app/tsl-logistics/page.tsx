@@ -34,7 +34,6 @@ export default function TSLLogisticsPage() {
       title="TSL Logistics"
       image="/images/edite-wfn05998.jpg"
       enquiryOptions={enquiryOptions}
-      showContactForm={false}
       ctaVariant="quote"
       source="tsl-logistics"
     >
@@ -245,7 +244,7 @@ export default function TSLLogisticsPage() {
               const Icon = item.icon;
               return (
                 <article key={item.title} className="mx-auto max-w-[180px]">
-                  <div className="mx-auto mb-4 grid h-12 w-12 place-items-center bg-gold-gradient text-[#121212]">
+                  <div className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-full bg-gold-gradient text-[#121212]">
                     <Icon size={20} strokeWidth={4} />
                   </div>
                   <h3 className="text-sm font-bold leading-tight text-[#1a1a1a]">
@@ -344,7 +343,7 @@ export default function TSLLogisticsPage() {
                       className={`${index === 0 || index === 3 ? "bg-[#1a3263] text-white" : "bg-gold-gradient text-[#121212]"} min-h-[170px] p-5`}
                     >
                       <div
-                        className={`${index === 0 || index === 3 ? "bg-white text-[#1a3263]" : "bg-[#121212] text-[#f1d35f]"} mb-4 grid h-6 w-6 place-items-center`}
+                        className={`${index === 0 || index === 3 ? "text-white" : "text-[#121212]"} mb-4 grid h-6 w-6 place-items-center`}
                       >
                         <Icon size={15} strokeWidth={4} />
                       </div>
@@ -373,8 +372,8 @@ export default function TSLLogisticsPage() {
           cta="Contact Us"
         />
 
-        <section className="relative left-1/2 w-screen -translate-x-1/2 bg-[#1a3263] px-5 pt-10 text-white md:px-10 md:pt-14">
-          <div className="mx-auto grid max-w-[1200px] items-end gap-8 lg:grid-cols-[minmax(0,1fr)_460px]">
+        <section className="relative left-1/2 w-screen -translate-x-1/2 bg-[#1a3263] px-5 pt-6 text-white md:px-10 md:pt-8">
+          <div className="mx-auto grid max-w-[1200px] items-center gap-8 lg:grid-cols-[minmax(0,1fr)_460px]">
             <div className="pb-10 md:pb-14">
               <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">TSL Logistics: Complete Moving Solutions You Can Trust</h2>
               <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-base">
@@ -388,7 +387,7 @@ export default function TSLLogisticsPage() {
             </div>
             <div className="flex justify-center lg:-mr-40 lg:justify-end">
               <Image
-                src="/images/kontainer-full.png"
+                src="/images/chatgpt-container-jun-29-2026-10-39-12-am.png"
                 alt=""
                 width={1524}
                 height={1776}

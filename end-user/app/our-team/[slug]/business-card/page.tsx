@@ -56,7 +56,7 @@ function ContactRow({
   href?: string;
 }) {
   const content = (
-    <div className="flex min-h-[48px] items-center gap-3 bg-[#f7f8fa] px-4 py-2.5 text-[13px] leading-relaxed text-[#1a1a1a] md:text-sm">
+    <div className="v2-surface flex min-h-[48px] items-center gap-3 bg-[#f7f8fa] px-4 py-2.5 text-[13px] leading-relaxed text-[#1a1a1a] md:text-sm">
       <span className="grid h-5 w-5 shrink-0 place-items-center text-[#121212]">
         {icon}
       </span>
@@ -126,7 +126,7 @@ export default async function DigitalBusinessCardPage({ params }: Props) {
             <a
               href={`/api/team/${member.slug}/vcard`}
               download={`${member.slug}.vcf`}
-              className="mb-3 flex h-10 items-center justify-center bg-gold-gradient px-5 text-[13px] font-bold leading-none text-[#121212] transition-opacity hover:opacity-90"
+              className="v2-control mb-3 flex h-10 items-center justify-center bg-gold-gradient px-5 text-[13px] font-bold leading-none text-[#121212] transition-opacity hover:opacity-90"
             >
               Save Contact
             </a>
@@ -153,11 +153,11 @@ export default async function DigitalBusinessCardPage({ params }: Props) {
               >
                 {member.card.website}
               </ContactRow>
-              <div className="overflow-hidden bg-[#f7f8fa]">
+              <div className="v2-surface overflow-hidden bg-[#f7f8fa]">
                 <ContactRow icon={<MapPinned size={20} />}>
                   {member.card.address}
                 </ContactRow>
-                <div className="mx-3 mb-3 overflow-hidden">
+                <div className="v2-surface mx-3 mb-3 overflow-hidden">
                   <iframe
                     src={mapSrc}
                     width="100%"

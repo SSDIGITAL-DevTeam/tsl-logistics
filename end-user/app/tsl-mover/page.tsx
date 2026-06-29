@@ -114,7 +114,7 @@ export default function TSLMoverPage() {
                 Contact Us
               </a>
             </div>
-            <div className="relative mx-auto aspect-[520/278] w-full max-w-[520px]">
+            <div className="v2-surface relative mx-auto aspect-[520/278] w-full max-w-[520px] overflow-hidden">
               <Image
                 src="/images/figma-services/mover-local-transportation.jpg"
                 alt="Local transportation moving service"
@@ -126,7 +126,7 @@ export default function TSLMoverPage() {
           </div>
 
           <div className="mx-auto grid max-w-[1200px] items-center gap-9 px-5 pb-4 md:grid-cols-[minmax(360px,520px)_minmax(0,1fr)] md:gap-12 md:px-10 lg:gap-16">
-            <div className="relative mx-auto aspect-[520/315] w-full max-w-[520px]">
+            <div className="v2-surface relative mx-auto aspect-[520/315] w-full max-w-[520px] overflow-hidden">
               <Image
                 src="/images/figma-services/mover-dedicated-lorry.jpg"
                 alt="Dedicated lorry service"
@@ -161,7 +161,7 @@ export default function TSLMoverPage() {
           </h2>
 
           <div className="grid items-stretch gap-5 md:grid-cols-[340px_1fr]">
-            <div className="relative min-h-[390px] overflow-hidden rounded-xl bg-[#e1e1e1]">
+            <div className="relative min-h-[390px] overflow-hidden bg-[#e1e1e1]">
               <Image
                   src="/images/figma-services/mover-customer-trust.jpg"
                 alt="TSL Mover customers"
@@ -202,7 +202,7 @@ export default function TSLMoverPage() {
                 return (
                   <article
                     key={item.title}
-                    className={`${isNavy ? "bg-[#1f2d69] text-white" : "bg-gold-gradient text-[#121212]"} min-h-[185px] rounded-xl p-5`}
+                    className={`${isNavy ? "bg-[#1f2d69] text-white" : "bg-gold-gradient text-[#121212]"} min-h-[185px] p-5`}
                   >
                     <Icon size={23} strokeWidth={2.4} />
                     <h3 className="mt-4 text-sm font-bold leading-snug">
@@ -287,7 +287,7 @@ export default function TSLMoverPage() {
             ].map((item) => (
                 <article
                   key={item.text}
-                  className="flex min-h-[170px] flex-col items-center justify-center rounded-lg bg-white px-8 py-7 text-center"
+                  className="flex min-h-[170px] flex-col items-center justify-center bg-white px-8 py-7 text-center"
                 >
                   <Image
                     src={item.icon}

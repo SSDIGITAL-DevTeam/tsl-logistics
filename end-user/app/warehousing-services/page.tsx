@@ -72,7 +72,7 @@ export default function WarehousingServicesPage() {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className="rounded-2xl bg-[#f3f3f3] px-7 py-9 text-[#121212]">
+                <article key={item.title} className="bg-[#f3f3f3] px-7 py-9 text-[#121212]">
                   <Icon className="mb-4" size={34} strokeWidth={2.4} />
                   <h3 className="text-base font-bold leading-tight">{item.title}</h3>
                   <p className="mt-3 text-sm leading-[1.35]">{item.text}</p>

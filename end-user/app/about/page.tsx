@@ -36,20 +36,19 @@ const aboutGalleryImages = [
     alt: "TSL warehouse facility",
     className: "md:col-span-1 md:row-span-1",
   },
-  {
-    src: "/images/figma-services/mover-intro-new.jpg",
-    alt: "TSL mover service",
-    className: "md:col-span-2 md:row-span-1",
-  },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero title="About Us" image="/images/about-team.jpg" />
+      <PageHero
+        title="About Us"
+        image="/images/wfn05957.jpg"
+        imagePosition="object-[center_70%]"
+      />
 
       {/* ── Trusted Logistics — Image #15 style ── */}
-      <section className="pt-14 bg-white">
+      <section className="bg-white pt-14 pb-14 md:pb-16">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-center">
             {/* Left: headline + text */}
@@ -130,7 +129,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Vision — gold gradient card */}
             <div
-              className="p-8 anim-fade-left"
+              className="v2-surface p-8 anim-fade-left"
               style={{ background: "var(--gold-gradient)" }}
             >
               <div className="flex items-center gap-3 mb-5">
@@ -191,7 +190,7 @@ export default function AboutPage() {
             </div>
 
             {/* Mission — dark navy card */}
-            <div className="p-8 bg-[#152642] anim-fade-right">
+            <div className="v2-surface p-8 bg-[#152642] anim-fade-right">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 flex items-center justify-center shrink-0">
                   <svg
@@ -373,19 +372,19 @@ export default function AboutPage() {
 
       {/* ── Stats + Service Types ── */}
       <section className="bg-white pt-16">
-        <div className="relative overflow-hidden bg-[#1f3a70] px-6 py-16 md:min-h-[330px] md:px-10 lg:px-16">
-          <div className="pointer-events-none absolute bottom-[-10px] left-[-48px] hidden w-[42vw] max-w-[590px] md:block">
+        <div className="v2-no-radius relative overflow-hidden bg-[#1f3a70] px-6 py-16 md:min-h-[330px] md:px-10 lg:px-16">
+          <div className="pointer-events-none absolute bottom-[-52px] left-[-48px] hidden w-[42vw] max-w-[590px] md:block">
             <Image
-              src="/images/kotak-kotak-kotak.png"
+              src="/images/chatgpt-image-jun-29-2026-10-33-45-am.png"
               alt=""
               width={1194}
               height={810}
               className="w-full object-contain"
             />
           </div>
-          <div className="pointer-events-none absolute bottom-[-24px] left-[-90px] w-[300px] opacity-55 md:hidden">
+          <div className="pointer-events-none absolute bottom-[-58px] left-[-90px] w-[300px] opacity-55 md:hidden">
             <Image
-              src="/images/kotak-kotak-kotak.png"
+              src="/images/chatgpt-image-jun-29-2026-10-33-45-am.png"
               alt=""
               width={1194}
               height={810}

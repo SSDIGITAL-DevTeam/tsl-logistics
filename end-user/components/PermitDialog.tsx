@@ -124,14 +124,15 @@ function Dialog({ onClose }: { onClose: () => void }) {
   );
 }
 
-export default function PermitDialog() {
+export default function PermitDialog({ triggerClassName = "" }: { triggerClassName?: string }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <button
+        type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center bg-white hover:bg-gray-50 text-[#1a1a1a] font-semibold py-3 px-7 text-sm transition-all duration-200 hover:shadow-md active:scale-[0.98]"
+        className={`inline-flex items-center bg-white hover:bg-gray-50 text-[#1a1a1a] font-semibold py-3 px-7 text-sm transition-all duration-200 hover:shadow-md active:scale-[0.98] ${triggerClassName}`}
       >
         Show permit process
       </button>

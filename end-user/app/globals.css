@@ -40,6 +40,69 @@ html[data-theme-version="v2"] .theme-v2-only {
   display: block;
 }
 
+html[data-theme-version="v2"] {
+  --v2-radius-surface: 1.25rem;
+  --v2-radius-control: 9999px;
+  --v2-radius-field: 0.875rem;
+}
+
+html[data-theme-version="v2"] :is(
+  article,
+  form,
+  iframe,
+  .service-card,
+  .gold-card,
+  .testimonial-slide,
+  .v2-surface,
+  [class*="shadow"],
+  [class*="border"][class*="bg-"],
+  [class*="border"][class*="p-"],
+  [class*="border"][class*="overflow-hidden"],
+  [class*="bg-white"][class*=" p-"],
+  [class*="bg-gray-50"][class*=" p-"],
+  [class*="bg-[#"][class*=" p-"],
+  [class*="bg-gold-gradient"][class*=" p-"],
+  [class^="p-"][class*="bg-"],
+  [class*="overflow-hidden"][class*="bg-"],
+  [class*="overflow-hidden"][class*="aspect-"],
+  [class*="overflow-hidden"][class*="min-h-"]
+):not(header):not(nav):not(section):not(main):not(footer):not(.v2-no-radius) {
+  border-radius: var(--v2-radius-surface) !important;
+}
+
+html[data-theme-version="v2"] :is(
+  .v2-no-radius,
+  header,
+  header .nav-dropdown,
+  header [class*="shadow"],
+  header [class*="border"][class*="bg-"],
+  header [class*="overflow-hidden"][class*="bg-"]
+) {
+  border-radius: 0 !important;
+}
+
+html[data-theme-version="v2"] :is(
+  button,
+  .btn-pill-gold,
+  .btn-primary,
+  .btn-gold,
+  .v2-control,
+  a[class*="inline-flex"],
+  a[class*="btn-"],
+  [role="button"]
+) {
+  border-radius: var(--v2-radius-control) !important;
+}
+
+html[data-theme-version="v2"] :is(
+  input,
+  textarea,
+  select,
+  [role="combobox"]
+) {
+  border-radius: var(--v2-radius-field) !important;
+}
+
 /* ──────────────────────────────────────────────
    Component / utility helpers (custom CSS)
    ────────────────────────────────────────────── */

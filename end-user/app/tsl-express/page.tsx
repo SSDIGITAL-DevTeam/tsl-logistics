@@ -172,7 +172,7 @@ export default function TSLExpressPage() {
             </div>
             <div className="relative -mb-10 -mr-5 -mt-10 min-h-[260px] overflow-hidden md:-mb-14 md:-mr-10 md:-mt-14 lg:min-h-full">
               <Image
-                src="/images/figma-services/express-cta.png"
+                src="/images/chatgpt-image-jun-29-2026-10-33-45-am.png"
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 520px, 100vw"
