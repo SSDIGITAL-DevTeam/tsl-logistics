@@ -208,7 +208,7 @@ export default function HomeV2() {
         <div className="mx-auto max-w-[1220px] px-5 md:px-8">
           <div className="max-w-[680px]">
             <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] md:text-5xl">
-              Why teams keep TSL close to the operation.
+              Why Choose Us
             </h2>
           </div>
 
