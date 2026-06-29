@@ -24,10 +24,11 @@ export default function TestimonialsSlider({
   variant?: "dark" | "light";
 }) {
   const [current, setCurrent] = useState(0);
+  const isLight = variant === "light";
   const quoteTextClass =
-    variant === "light" ? "text-[#151515]" : "text-white/85";
+    isLight ? "text-[#151515]" : "text-white/85";
   const inactiveDotClass =
-    variant === "light" ? "bg-[#151515]/20" : "bg-gray-300";
+    isLight ? "bg-[#151515]/20" : "bg-gray-300";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -38,6 +39,47 @@ export default function TestimonialsSlider({
 
   const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
   const next = () => setCurrent((c) => (c + 1) % testimonials.length);
+
+  if (isLight) {
+    return (
+      <div className="grid gap-5 md:grid-cols-3">
+        {testimonials.map((testimonial, index) => (
+          <article
+            key={testimonial.name}
+            className="v2-surface flex min-h-[360px] flex-col justify-between border border-[#e7e8ec] bg-white p-7 shadow-[0_18px_50px_rgba(20,38,66,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(20,38,66,0.11)]"
+          >
+            <div>
+              <div className="mb-8 flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#C8A84B">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#C8A84B]">
+                  0{index + 1}
+                </span>
+              </div>
+
+              <p className="text-[15px] leading-relaxed text-[#2f2f2f]">
+                &ldquo;{testimonial.text}&rdquo;
+              </p>
+            </div>
+
+            <div className="mt-8 border-t border-[#eceef2] pt-5">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#151515]">
+                {testimonial.name}
+              </p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#9A7D2D]">
+                Verified Customer
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="relative">

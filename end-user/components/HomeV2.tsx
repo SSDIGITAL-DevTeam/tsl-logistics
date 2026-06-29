@@ -204,62 +204,137 @@ export default function HomeV2() {
         </div>
       </section>
 
-      <section className="bg-[#152642] py-16 text-white md:py-24">
+      <section className="bg-[#f4f4f4] py-16 md:py-24">
         <div className="mx-auto max-w-[1220px] px-5 md:px-8">
-          <div className="max-w-[680px]">
-            <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] md:text-5xl">
-              Why Choose Us
-            </h2>
-          </div>
+          <h2 className="text-center text-4xl font-bold leading-tight text-[#111] md:text-5xl">
+            Why Choose Us
+          </h2>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {whyUs.map((item) => {
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="v2-surface relative min-h-[360px] overflow-hidden bg-[#f0d44e] lg:row-span-2 lg:min-h-[430px]">
+              <Image
+                src="/images/figma-services/warehouse-short-term-new.jpg"
+                alt="Short-term warehouse storage"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 390px"
+                className="object-cover object-center"
+              />
+            </div>
+
+            {whyUs.slice(0, 2).map((item) => {
               const Icon = item.icon;
               return (
                 <article
                   key={item.title}
-                  className="min-h-[220px] border border-white/10 bg-white p-6 text-[#151515] shadow-[0_18px_50px_rgba(0,0,0,0.18)] md:p-7"
+                  className="min-h-[210px] bg-white p-8 text-[#111] md:p-9"
                 >
-                  <span className="grid h-12 w-12 place-items-center bg-[#D8B84F] text-[#151515]">
-                    <Icon
-                      size={24}
-                      strokeWidth={1.9}
-                    />
-                  </span>
-                  <h3 className="mt-8 text-lg font-bold leading-tight">
+                  <Icon size={34} strokeWidth={2.2} className="text-[#111]" />
+                  <h3 className="mt-8 text-xl font-bold leading-tight">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#555]">
+                  <p className="mt-4 max-w-[360px] text-base leading-relaxed text-[#333]">
                     {item.body}
                   </p>
                 </article>
               );
             })}
+
+            {whyUs.slice(3, 5).map((item) => {
+              const Icon = item.icon;
+              return (
+                <article
+                  key={item.title}
+                  className="min-h-[210px] bg-white p-8 text-[#111] md:p-9"
+                >
+                  <Icon size={34} strokeWidth={2.2} className="text-[#111]" />
+                  <h3 className="mt-8 text-xl font-bold leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-[360px] text-base leading-relaxed text-[#333]">
+                    {item.body}
+                  </p>
+                </article>
+              );
+            })}
+
+            {whyUs.slice(2, 3).map((item) => {
+              const Icon = item.icon;
+              return (
+                <article
+                  key={item.title}
+                  className="min-h-[210px] bg-white p-8 text-[#111] md:p-9"
+                >
+                  <Icon size={34} strokeWidth={2.2} className="text-[#111]" />
+                  <h3 className="mt-8 text-xl font-bold leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-[360px] text-base leading-relaxed text-[#333]">
+                    {item.body}
+                  </p>
+                </article>
+              );
+            })}
+
+            {whyUs.slice(5).map((item) => {
+              const Icon = item.icon;
+              return (
+                <article
+                  key={item.title}
+                  className="min-h-[210px] bg-white p-8 text-[#111] md:p-9"
+                >
+                  <Icon size={34} strokeWidth={2.2} className="text-[#111]" />
+                  <h3 className="mt-8 text-xl font-bold leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-[360px] text-base leading-relaxed text-[#333]">
+                    {item.body}
+                  </p>
+                </article>
+              );
+            })}
+
+            <div className="v2-surface relative min-h-[250px] overflow-hidden bg-[#f1d955]">
+              <Image
+                src="/images/figma-services/logistics-dg.png"
+                alt="Dangerous goods trucking"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 390px"
+                className="object-cover object-center"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f5f6f8] py-16 md:py-24">
-        <div className="mx-auto grid max-w-[1220px] items-center gap-10 px-5 md:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
+      <section className="v2-no-radius relative overflow-hidden py-20 text-white md:py-28">
+        <Image
+          src="/images/TSL Logistics Warehouse-1920w.jpeg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 mx-auto grid max-w-[1220px] items-center gap-10 px-5 md:px-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="max-w-[620px]">
+            <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-white md:text-5xl">
               Permit and document processing without the drag.
             </h2>
-            <p className="mt-5 max-w-[560px] text-base leading-relaxed text-[#555]">
+            <p className="mt-5 max-w-[560px] text-base leading-relaxed text-white/82">
               We simplify permit and documentation so you can focus on your business. Our team handles preparation, submission, and follow-up with government agencies.
             </p>
             <div className="mt-8">
-              <PermitDialog triggerClassName="!bg-gold-gradient !px-8 !font-bold !text-[#151515] hover:!bg-gold-gradient hover:!brightness-95" />
+              <PermitDialog triggerClassName="!border !border-white/80 !bg-transparent !px-8 !font-bold !text-white hover:!border-white hover:!bg-white hover:!text-[#151515]" />
             </div>
           </div>
 
-          <div className="relative min-h-[430px] overflow-hidden">
+          <div className="v2-surface relative min-h-[320px] overflow-hidden md:min-h-[430px]">
             <Image
-              src="/images/permit-processing-homepage.jpg"
-              alt="TSL Logistics permit processing support"
+              src="/images/figma-services/express-adhoc-new.jpg"
+              alt="Express ad hoc delivery"
               fill
               sizes="(max-width: 1024px) 100vw, 52vw"
-              className="object-cover"
+              className="object-cover object-center"
             />
           </div>
         </div>
