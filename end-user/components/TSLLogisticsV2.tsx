@@ -47,7 +47,6 @@ export default function TSLLogisticsV2() {
   return (
     <ServicePageLayoutV2
       title="TSL Logistics"
-      intro="Container trucking, DG cargo, flatbed transport, and project logistics for operationally complex cargo."
       image="/images/edite-wfn05998.jpg"
       enquiryOptions={enquiryOptions}
       source="tsl-logistics"
@@ -192,7 +191,6 @@ export default function TSLLogisticsV2() {
 
       <section className="space-y-12">
         <ServiceSplitV2
-          eyebrow="Documentation"
           title="Permit Declaration"
           image="/images/permit-processing-homepage.jpg"
           imageAlt="Permit declaration documentation"
@@ -233,7 +231,12 @@ export default function TSLLogisticsV2() {
         </div>
       </section>
 
-      <ServiceClosingBandV2/>
+      <ServiceClosingBandV2
+        title="TSL Logistics: Complete Moving Solutions You Can Trust"
+        body="TSL Logistics provides end-to-end moving and storage services, covering packing, dismantling, relocation, disposal, and secure storage for homes, offices, warehouses, and commercial spaces. With professional movers and proven processes, we ensure every move is handled securely, safely, and stress-free from start to finish."
+        cta="Contact Us"
+        ctaHref="/contact"
+      />
     </ServicePageLayoutV2>
   );
 }

@@ -9,14 +9,8 @@ export default function ContactV2() {
         <div className="mx-auto max-w-[1220px]">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
             <h1 className="max-w-[760px] text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-[#151515] md:text-6xl lg:text-[56px]">
-              Let&apos;s Get Your Shipment Moving
+              Contact Us
             </h1>
-            <div className="max-w-[340px] lg:justify-self-end">
-              <p className="text-sm leading-relaxed text-[#151515]">
-                Reach our Singapore office for transport, mover, express, and warehouse
-                enquiries — our team responds within one business day.
-              </p>
-            </div>
           </div>
 
           <div className="relative mt-10 h-[280px] overflow-hidden rounded-[22px] sm:h-[360px] md:mt-12 md:h-[440px]">
@@ -40,9 +34,6 @@ export default function ContactV2() {
           <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
             <div className="v2-surface v2-contact-form bg-white p-6 shadow-[0_18px_50px_rgba(16,24,32,0.08)] md:p-8">
               <h2 className="text-xl font-bold text-[#151515]">Send Us a Message</h2>
-              <p className="mt-1 text-sm text-[#555]">
-                Fill in the form below and our team will get back to you shortly.
-              </p>
               <div className="mt-6">
                 <ContactForm source="contact" />
               </div>
@@ -56,7 +47,7 @@ export default function ContactV2() {
                   href="tel:+6567772724"
                   className="mt-2 block text-lg font-bold text-[#D8B84F] hover:underline"
                 >
-                  +65 6777 2724
+                  +65 6777-2724
                 </a>
               </div>
 
@@ -65,19 +56,19 @@ export default function ContactV2() {
                 <h4 className="mt-5 font-bold text-[#151515]">Email Us</h4>
                 <div className="mt-3 space-y-2 text-sm">
                   <p>
-                    <span className="font-semibold text-[#151515]">Trucking: </span>
+                    <span className="font-semibold text-[#151515]">Trucking Enquiry: </span>
                     <a href="mailto:sales@tsllogistics.sg" className="font-semibold text-[#9A7D2D] hover:underline">
                       sales@tsllogistics.sg
                     </a>
                   </p>
                   <p>
-                    <span className="font-semibold text-[#151515]">Movers: </span>
+                    <span className="font-semibold text-[#151515]">Movers Enquiry: </span>
                     <a href="mailto:ops@tslmovers.sg" className="font-semibold text-[#9A7D2D] hover:underline">
                       ops@tslmovers.sg
                     </a>
                   </p>
                   <p>
-                    <span className="font-semibold text-[#151515]">Express: </span>
+                    <span className="font-semibold text-[#151515]">Express Team: </span>
                     <a href="mailto:ops@tslexpress.sg" className="font-semibold text-[#9A7D2D] hover:underline">
                       ops@tslexpress.sg
                     </a>
@@ -87,16 +78,17 @@ export default function ContactV2() {
 
               <div className="v2-surface bg-white p-6 shadow-sm">
                 <MapPin size={20} className="text-[#C8A84B]" />
-                <h4 className="mt-5 font-bold text-[#151515]">Our Location</h4>
+                <h4 className="mt-5 font-bold text-[#151515]">Our Locations</h4>
                 <p className="mt-2 text-sm leading-relaxed text-[#555]">
-                  Monday to Friday, 9am to 5pm
+                  Our doors, ears and break room are always open.
+                  <br />
+                  (Monday–Friday, from 9am-5pm)
                 </p>
                 <p className="mt-3 text-sm font-semibold text-[#9A7D2D]">
-                  Blk 3 Kaki Bukit Road 1 #02-01
+                  3 Kaki Bukit Road 1 #02-01
                 </p>
-                <p className="text-sm font-semibold text-[#9A7D2D]">
-                  Eunos Technolink, Singapore 415935
-                </p>
+                <p className="text-sm font-semibold text-[#9A7D2D]">Eunos Technolink</p>
+                <p className="text-sm font-semibold text-[#9A7D2D]">Singapore 415935</p>
               </div>
             </div>
           </div>

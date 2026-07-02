@@ -19,12 +19,12 @@ const navLinks: {
   children?: typeof services;
   hidden?: boolean;
 }[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "#", children: services },
-  { label: "Our Team", href: "/our-team" },
-  { label: "Blog", href: "/blog", hidden: true },
-  { label: "Contact Us", href: "/contact", hidden: true },
+  { label: "HOME", href: "/" },
+  { label: "ABOUT", href: "/about" },
+  { label: "SERVICES", href: "#", children: services },
+  { label: "OUR TEAM", href: "/our-team" },
+  { label: "BLOG", href: "/blog", hidden: true },
+  { label: "CONTACT US", href: "/contact", hidden: true },
 ];
 
 const visibleNavLinks = navLinks.filter((link) => !link.hidden);

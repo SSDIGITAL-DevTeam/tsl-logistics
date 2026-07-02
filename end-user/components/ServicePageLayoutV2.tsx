@@ -4,7 +4,6 @@ import ContactForm from "@/components/ContactForm";
 
 interface ServicePageLayoutV2Props {
   title: string;
-  intro: string;
   image: string;
   children: ReactNode;
   enquiryOptions?: string[];
@@ -14,7 +13,6 @@ interface ServicePageLayoutV2Props {
 
 export default function ServicePageLayoutV2({
   title,
-  intro,
   image,
   children,
   enquiryOptions,
@@ -26,14 +24,9 @@ export default function ServicePageLayoutV2({
       {/* ── Hero ── */}
       <section className="bg-white px-5 py-10 md:px-8 md:py-14">
         <div className="mx-auto max-w-[1220px]">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
-            <h1 className="max-w-[760px] text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-[#151515] md:text-6xl lg:text-[56px]">
-              {title}
-            </h1>
-            <div className="max-w-[340px] lg:justify-self-end">
-              <p className="text-sm leading-relaxed text-[#151515]">{intro}</p>
-            </div>
-          </div>
+          <h1 className="max-w-[760px] text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-[#151515] md:text-6xl lg:text-[56px]">
+            {title}
+          </h1>
 
           <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-[22px] bg-[#e7ebef] md:mt-12">
             <Image

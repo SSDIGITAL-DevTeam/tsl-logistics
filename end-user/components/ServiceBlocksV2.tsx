@@ -252,6 +252,16 @@ export function ServiceFeatureGridV2({
   );
 }
 
-export function ServiceClosingBandV2() {
-  return <CtaBandV2 />;
+export function ServiceClosingBandV2({
+  title,
+  body,
+  cta = "Contact Us",
+  ctaHref = "/contact",
+}: {
+  title: string;
+  body: string;
+  cta?: string;
+  ctaHref?: string;
+}) {
+  return <CtaBandV2 title={title} body={body} cta={cta} ctaHref={ctaHref} />;
 }

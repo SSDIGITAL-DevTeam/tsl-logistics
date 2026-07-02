@@ -52,8 +52,10 @@ export default function AboutV2() {
             <div className="max-w-[340px] lg:justify-self-end">
               <p className="text-sm leading-relaxed text-[#151515]">
                 Founded in 2003, TSL Logistics Pte Ltd is a client-focused, integrated
-                logistics provider trusted by global, regional, and local businesses across
-                Singapore.
+                logistics provider trusted by global, regional, and local businesses. Backed
+                by experienced professionals, proven systems, and a strong network of
+                reliable partners, we ensure every asset is carefully managed, accurately
+                tracked, and delivered safely and on time — every time.
               </p>
               <Link
                 href="/tsl-logistics"
@@ -88,25 +90,33 @@ export default function AboutV2() {
               style={{ background: "var(--gold-gradient)" }}
             >
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#5c4813]">Vision</p>
-              <p className="text-lg font-bold leading-snug text-[#1a1a1a] md:text-xl">
+              <p className="text-sm leading-relaxed text-[#2a2000]">
+                It&rsquo;s often very trendy these days to start a Vision statement with words
+                like &ldquo;To be the best logistics company&hellip;&rdquo; etc. And
+                that&rsquo;s why we won&rsquo;t! Mr Lai&rsquo;s vision for TSL is simple:
+              </p>
+              <p className="mt-4 text-lg font-bold leading-snug text-[#1a1a1a] md:text-xl">
                 &ldquo;To continue to remain the go to name for logistics services throughout
                 the region.&rdquo;
               </p>
               <p className="mt-4 text-sm leading-relaxed text-[#2a2000]">
-                We have earned the trust of our clients over two decades. Our vision is to
+                We have earned the trust of our clients over 12 years. Our vision is to
                 maintain and grow it for many more years to come.
               </p>
             </div>
 
             <div className="v2-surface bg-[#152642] p-7 md:p-8">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#E5C96A]">Mission</p>
-              <p className="text-lg font-bold leading-snug text-white md:text-xl">
+              <p className="text-sm leading-relaxed text-white/70">
+                As a solution-oriented company, we&rsquo;ve set ourselves the mission to:
+              </p>
+              <p className="mt-4 text-lg font-bold leading-snug text-white md:text-xl">
                 &ldquo;Evolve, innovate and invent ways to deliver better and more diverse air,
                 sea and freight services for our clients.&rdquo;
               </p>
               <p className="mt-4 text-sm leading-relaxed text-white/70">
-                To fulfil our mission, TSL constantly stays abreast of the latest trends and
-                technologies in modern logistics.
+                And to fulfil our mission, TSL constantly stays abreast of the latest trends
+                and technologies in modern logistics.
               </p>
             </div>
           </div>
@@ -120,9 +130,11 @@ export default function AboutV2() {
             <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
               Our Fleet
             </h2>
-            <p className="mx-auto mt-5 max-w-[560px] text-base leading-relaxed text-[#555]">
-              A wide range of vehicles for every need — from cargo vans to specialised
-              container trucks.
+            <p className="mx-auto mt-5 max-w-[650px] text-base leading-relaxed text-[#555]">
+              TSL Logistics is your trusted transportation partner in Singapore, offering
+              safe, flexible, and reliable logistics solutions. From vans and trucks to
+              specialised DG tankers and 20/40-footer rentals, we provide the right vehicle
+              to meet your needs — on your terms.
             </p>
           </div>
 
@@ -179,8 +191,7 @@ export default function AboutV2() {
 
       {/* ── Stats + Service Types ── */}
       <section className="v2-no-radius bg-[#152642] px-5 py-20 text-center text-white md:py-28">
-        <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#E5C96A]">Track Record</p>
-        <div className="mt-5 flex flex-wrap items-baseline justify-center gap-3">
+        <div className="flex flex-wrap items-baseline justify-center gap-3">
           <span className="text-6xl font-bold leading-none md:text-[88px]">Over</span>
           <span
             className="text-6xl font-bold leading-none md:text-[88px]"
@@ -194,7 +205,7 @@ export default function AboutV2() {
           </span>
         </div>
         <p className="mt-4 text-xl font-medium text-white/80 md:text-2xl">
-          Finished Bookings Across Singapore
+          Finished Bookings
         </p>
 
         <div className="mx-auto mt-12 flex max-w-[640px] flex-wrap items-center justify-center gap-3">

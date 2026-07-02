@@ -65,12 +65,13 @@ export default function OurTeamV2({
         <div className="mx-auto max-w-[1220px]">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
             <h1 className="max-w-[760px] text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-[#151515] md:text-6xl lg:text-[56px]">
-              Meet the people behind every delivery
+              Meet Our Team
             </h1>
             <div className="max-w-[340px] lg:justify-self-end">
               <p className="text-sm leading-relaxed text-[#151515]">
                 Meet the dedicated team behind our operations who ensure every process runs
-                smoothly, efficiently, and on time.
+                smoothly, efficiently, and on time. With strong coordination and attention to
+                detail, they keep everything moving forward.
               </p>
             </div>
           </div>

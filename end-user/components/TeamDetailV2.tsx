@@ -48,7 +48,7 @@ export default function TeamDetailV2({ member }: { member: TeamMember }) {
 
         <div className="mt-6 grid gap-5 md:grid-cols-2">
           <div className="v2-surface bg-white p-7 shadow-[0_18px_50px_rgba(16,24,32,0.08)] md:p-8">
-            <h2 className="text-lg font-bold text-[#151515]">Key Experience / Expertise</h2>
+            <h2 className="text-lg font-bold text-[#151515]">Key Experience / Expertise:</h2>
             <ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-[#555] md:text-[15px]">
               {member.experience.map((item) => (
                 <li key={item} className="flex gap-2.5">
@@ -60,14 +60,14 @@ export default function TeamDetailV2({ member }: { member: TeamMember }) {
 
             <div className="mt-6 border-t border-gray-100 pt-6">
               <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-[#9A7D2D]">
-                Role in the company
+                Role In The Company:
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#555] md:text-[15px]">{role}</p>
             </div>
           </div>
 
           <div className="v2-surface bg-[#152642] p-7 text-white md:p-8">
-            <h2 className="text-lg font-bold">Key Contributions / Value</h2>
+            <h2 className="text-lg font-bold">Key Contributions / Value:</h2>
             <p className="mt-4 text-sm leading-relaxed text-white/75 md:text-[15px]">
               {member.contributions.join(" ")}
             </p>

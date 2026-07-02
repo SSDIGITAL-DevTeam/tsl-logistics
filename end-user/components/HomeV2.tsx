@@ -22,7 +22,6 @@ import CtaBandV2 from "@/components/CtaBandV2";
 const services = [
   {
     title: "TSL Logistics",
-    body: "Container trucking, DG cargo, flatbed transport, and project logistics for operationally complex cargo.",
     image: "/images/edited-wfn05994.jpg",
     alt: "TSL Logistics container truck at loading area",
     href: "/tsl-logistics",
@@ -31,7 +30,6 @@ const services = [
   },
   {
     title: "TSL Mover",
-    body: "Residential, office, factory, and specialised moving handled by trained crews.",
     image: "/images/wfn05862.jpg",
     alt: "TSL Mover team moving wrapped furniture",
     href: "/tsl-mover",
@@ -40,7 +38,6 @@ const services = [
   },
   {
     title: "TSL Express",
-    body: "Fast ad hoc delivery and dedicated rider or van support for urgent movement.",
     image: "/images/service-express.jpg",
     alt: "TSL Express delivery vehicle",
     href: "/tsl-express",
@@ -49,7 +46,6 @@ const services = [
   },
   {
     title: "TSL Warehousing",
-    body: "Flexible storage, handling, packing, labelling, and inventory support.",
     image: "/images/wfn06078.jpg",
     alt: "TSL warehouse with palletised cargo",
     href: "/warehousing-services",
@@ -136,12 +132,10 @@ export default function HomeV2() {
       <section id="services" className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-[1220px] px-5 md:px-8">
           <div className="mx-auto max-w-[720px] text-center">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-[#C8A84B]">What we do</p>
             <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
               Our Services
             </h2>
-            <p className="mx-auto mt-5 max-w-[650px] text-base leading-relaxed text-[#555]">
-              Use a single partner for cargo movement, express delivery, moving, storage, and value-added handling.
-            </p>
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
@@ -312,9 +306,8 @@ export default function HomeV2() {
       </section>
 
       <CtaBandV2
-        eyebrow="Documentation"
-        title="Permit and document processing without the drag."
-        body="We simplify permit and documentation so you can focus on your business. Our team handles preparation, submission, and follow-up with government agencies."
+        title="Document & Permit Processing"
+        body="We simplify permit and documentation so you can focus on your business. From checklist to final approval, our team handles preparation, submission, and follow-up with government agencies — reducing delays and keeping you informed every step of the way."
         ctaSlot={
           <PermitDialog triggerClassName="!bg-gold-gradient !border-0 !text-[#121212] !px-7 !py-4 !font-bold hover:!opacity-90" />
         }
@@ -323,8 +316,9 @@ export default function HomeV2() {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-[1220px] px-5 md:px-8">
           <div className="mb-10 max-w-[640px]">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C8A84B]">What our clients say</p>
             <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
-              Client feedback from real moves and shipments.
+              Client Testimonials
             </h2>
           </div>
           <TestimonialsSlider variant="light" />
@@ -334,12 +328,10 @@ export default function HomeV2() {
       <section className="bg-[#f5f6f8] py-16 md:py-24">
         <div className="mx-auto max-w-[900px] px-5 md:px-8">
           <div className="mb-10 max-w-[620px]">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C8A84B]">Got questions?</p>
             <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
               FAQs
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-[#555]">
-              Quick answers for teams planning transport, warehousing, customs, and delivery support.
-            </p>
           </div>
           <FAQAccordion />
         </div>
@@ -348,12 +340,10 @@ export default function HomeV2() {
       <section className="bg-white pt-16 pb-56 md:pt-24">
         <div className="mx-auto max-w-[1220px] px-5 md:px-8">
           <div className="mb-10 max-w-[620px]">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C8A84B]">Get in touch</p>
             <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
               Find Us
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-[#555]">
-              Reach our Singapore office for transport, mover, express, and warehouse enquiries.
-            </p>
           </div>
           <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
             <div className="h-[280px] overflow-hidden border border-gray-100 shadow-sm sm:h-[360px] lg:h-full lg:min-h-[500px]">
