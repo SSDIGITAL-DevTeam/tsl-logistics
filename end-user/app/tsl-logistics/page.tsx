@@ -10,6 +10,7 @@ import {
   FigmaSplitSection,
   serviceIcons,
 } from "@/components/FigmaServiceContent";
+import TSLLogisticsV2 from "@/components/TSLLogisticsV2";
 
 export const metadata: Metadata = {
   title: "TSL Logistics | Container Trucking, Freight & Project Logistics",
@@ -30,6 +31,8 @@ const enquiryOptions = [
 
 export default function TSLLogisticsPage() {
   return (
+    <>
+    <div className="theme-v1-only">
     <ServicePageLayout
       title="TSL Logistics"
       image="/images/edite-wfn05998.jpg"
@@ -401,5 +404,11 @@ export default function TSLLogisticsPage() {
         </section>
       </FigmaServiceShell>
     </ServicePageLayout>
+    </div>
+
+    <div className="theme-v2-only">
+      <TSLLogisticsV2 />
+    </div>
+    </>
   );
 }

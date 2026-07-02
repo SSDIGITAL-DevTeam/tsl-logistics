@@ -17,6 +17,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
 import PermitDialog from "@/components/PermitDialog";
 import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
+import CtaBandV2 from "@/components/CtaBandV2";
 
 const services = [
   {
@@ -25,7 +26,8 @@ const services = [
     image: "/images/edited-wfn05994.jpg",
     alt: "TSL Logistics container truck at loading area",
     href: "/tsl-logistics",
-    className: "md:col-span-2 md:row-span-2",
+    className: "md:col-span-3",
+    imageClassName: "aspect-[4/3] md:aspect-[21/9]",
   },
   {
     title: "TSL Mover",
@@ -34,6 +36,7 @@ const services = [
     alt: "TSL Mover team moving wrapped furniture",
     href: "/tsl-mover",
     className: "md:col-span-1 md:row-span-1",
+    imageClassName: "aspect-[4/3]",
   },
   {
     title: "TSL Express",
@@ -42,6 +45,7 @@ const services = [
     alt: "TSL Express delivery vehicle",
     href: "/tsl-express",
     className: "md:col-span-1 md:row-span-1",
+    imageClassName: "aspect-[4/3]",
   },
   {
     title: "TSL Warehousing",
@@ -49,7 +53,8 @@ const services = [
     image: "/images/wfn06078.jpg",
     alt: "TSL warehouse with palletised cargo",
     href: "/warehousing-services",
-    className: "md:col-span-2 md:row-span-1",
+    className: "md:col-span-1",
+    imageClassName: "aspect-[4/3]",
   },
 ];
 
@@ -115,7 +120,7 @@ export default function HomeV2() {
             </div>
           </div>
 
-          <div className="relative mt-10 aspect-[16/6] min-h-[280px] overflow-hidden rounded-[22px] bg-[#e7ebef] md:mt-12 md:min-h-[360px]">
+          <div className="relative mt-10 aspect-[16/6] overflow-hidden rounded-[22px] bg-[#e7ebef] md:mt-12">
             <Image
               src="/images/hero-section-v2.png"
               alt="TSL Logistics warehouse and cargo operations"
@@ -139,19 +144,19 @@ export default function HomeV2() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
             {services.map((service) => (
               <Link
                 key={service.title}
                 href={service.href}
-                className="group block overflow-hidden rounded-[1.25rem] bg-white shadow-[0_18px_50px_rgba(16,24,32,0.10)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#C8A84B] focus-visible:ring-offset-4"
+                className={`group flex flex-col overflow-hidden rounded-[1.25rem] bg-white shadow-[0_18px_50px_rgba(16,24,32,0.10)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#C8A84B] focus-visible:ring-offset-4 ${service.className}`}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className={`relative overflow-hidden ${service.imageClassName}`}>
                   <Image
                     src={service.image}
                     alt={service.alt}
                     fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -211,7 +216,7 @@ export default function HomeV2() {
           </h2>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="v2-surface relative min-h-[360px] overflow-hidden bg-[#f0d44e] lg:row-span-2 lg:min-h-[430px]">
+            <div className="v2-surface relative min-h-[360px] overflow-hidden bg-[#f0d44e] sm:row-span-2 sm:min-h-[440px] lg:min-h-[430px]">
               <Image
                 src="/images/figma-services/warehouse-short-term-new.jpg"
                 alt="Short-term warehouse storage"
@@ -306,39 +311,14 @@ export default function HomeV2() {
         </div>
       </section>
 
-      <section className="v2-no-radius relative overflow-hidden py-20 text-white md:py-28">
-        <Image
-          src="/images/TSL Logistics Warehouse-1920w.jpeg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 mx-auto grid max-w-[1220px] items-center gap-10 px-5 md:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="max-w-[620px]">
-            <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-white md:text-5xl">
-              Permit and document processing without the drag.
-            </h2>
-            <p className="mt-5 max-w-[560px] text-base leading-relaxed text-white/82">
-              We simplify permit and documentation so you can focus on your business. Our team handles preparation, submission, and follow-up with government agencies.
-            </p>
-            <div className="mt-8">
-              <PermitDialog triggerClassName="!border !border-white/80 !bg-transparent !px-8 !font-bold !text-white hover:!border-white hover:!bg-white hover:!text-[#151515]" />
-            </div>
-          </div>
-
-          <div className="v2-surface relative min-h-[320px] overflow-hidden md:min-h-[430px]">
-            <Image
-              src="/images/figma-services/express-adhoc-new.jpg"
-              alt="Express ad hoc delivery"
-              fill
-              sizes="(max-width: 1024px) 100vw, 52vw"
-              className="object-cover object-center"
-            />
-          </div>
-        </div>
-      </section>
+      <CtaBandV2
+        eyebrow="Documentation"
+        title="Permit and document processing without the drag."
+        body="We simplify permit and documentation so you can focus on your business. Our team handles preparation, submission, and follow-up with government agencies."
+        ctaSlot={
+          <PermitDialog triggerClassName="!bg-gold-gradient !border-0 !text-[#121212] !px-7 !py-4 !font-bold hover:!opacity-90" />
+        }
+      />
 
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-[1220px] px-5 md:px-8">
@@ -376,11 +356,11 @@ export default function HomeV2() {
             </p>
           </div>
           <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
-            <div className="overflow-hidden border border-gray-100 shadow-sm">
+            <div className="h-[280px] overflow-hidden border border-gray-100 shadow-sm sm:h-[360px] lg:h-full lg:min-h-[500px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15954.944552496003!2d103.9013238!3d1.3345077!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x913cceed8c5de5dc!2sTSL%20Logistics%20Pte%20Ltd!5e0!3m2!1sen!2ssg!4v1655692768220!5m2!1sen!2ssg"
                 width="100%"
-                height="500"
+                height="100%"
                 style={{ border: 0, display: "block" }}
                 allowFullScreen
                 loading="lazy"

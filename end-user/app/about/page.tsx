@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
+import AboutV2 from "@/components/AboutV2";
 
 export const metadata: Metadata = {
   title: "About Us | TSL Logistics",
@@ -41,6 +42,7 @@ const aboutGalleryImages = [
 export default function AboutPage() {
   return (
     <>
+      <div className="theme-v1-only">
       <PageHero
         title="About Us"
         image="/images/wfn05957.jpg"
@@ -489,6 +491,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </div>
+
+      <div className="theme-v2-only">
+        <AboutV2 />
+      </div>
     </>
   );
 }

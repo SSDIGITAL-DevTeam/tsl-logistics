@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ContactRound } from "lucide-react";
 import { notFound } from "next/navigation";
+import TeamDetailV2 from "@/components/TeamDetailV2";
 import { departmentLabels, getInitials, getTeamMember, teamMembers } from "@/lib/team";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -54,6 +55,8 @@ export default async function TeamDetailPage({ params }: Props) {
   );
 
   return (
+    <>
+    <div className="theme-v1-only">
     <main className="bg-[#f3f3f3] pb-14">
       <section className="relative h-[138px] overflow-hidden bg-[#1a1a1a] md:h-[170px]">
         <Image
@@ -126,5 +129,11 @@ export default async function TeamDetailPage({ params }: Props) {
         </div>
       </section>
     </main>
+    </div>
+
+    <div className="theme-v2-only">
+      <TeamDetailV2 member={member} />
+    </div>
+    </>
   );
 }

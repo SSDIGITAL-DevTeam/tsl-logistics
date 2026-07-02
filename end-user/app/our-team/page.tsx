@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ContactRound } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import OurTeamV2 from "@/components/OurTeamV2";
 import { departmentLabels, teamMembers, type TeamMember } from "@/lib/team";
 
 type Props = {
@@ -112,6 +113,7 @@ export default async function OurTeamPage({ searchParams }: Props) {
 
   return (
     <>
+      <div className="theme-v1-only">
       <PageHero title="Our Team" image="/images/about-team.jpg" />
 
       <section className="bg-[#f4f4f4] py-12 md:py-16">
@@ -140,6 +142,11 @@ export default async function OurTeamPage({ searchParams }: Props) {
           </div>
         </div>
       </section>
+      </div>
+
+      <div className="theme-v2-only">
+        <OurTeamV2 selected={selected} members={members} />
+      </div>
     </>
   );
 }

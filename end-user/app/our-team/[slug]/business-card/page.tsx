@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import TeamBusinessCardActions from "@/components/TeamBusinessCardActions";
+import TeamBusinessCardV2 from "@/components/TeamBusinessCardV2";
 import { getInitials, getTeamMember, teamMembers } from "@/lib/team";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -83,6 +84,8 @@ export default async function DigitalBusinessCardPage({ params }: Props) {
   )}&output=embed`;
 
   return (
+    <>
+    <div className="theme-v1-only">
     <div className="relative overflow-hidden bg-[#f5f5f5] px-4 py-10 md:py-14">
       <div
         className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -175,5 +178,11 @@ export default async function DigitalBusinessCardPage({ params }: Props) {
         </div>
       </section>
     </div>
+    </div>
+
+    <div className="theme-v2-only">
+      <TeamBusinessCardV2 member={member} />
+    </div>
+    </>
   );
 }

@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Poppins } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import FloatingHelpWidget from "@/components/FloatingHelpWidget";
 import FloatingThemeConfig from "@/components/FloatingThemeConfig";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -124,9 +123,9 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col font-[family-name:var(--font-montserrat)]">
         <JsonLd data={organizationLd} />
         <ScrollToTop />
-        <Header />
+        <SiteHeader />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <SiteFooter />
         <FloatingThemeConfig />
         <FloatingHelpWidget />
       </body>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronUp } from "lucide-react";
 
 const faqs = [
@@ -69,6 +69,7 @@ const faqs = [
 
 export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
     <div className="space-y-2">
@@ -81,6 +82,7 @@ export default function FAQAccordion() {
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
+              aria-expanded={isOpen}
               className="flex items-center justify-between w-full px-6 py-5 text-left bg-white hover:bg-gray-50 transition-colors duration-150"
             >
               <h3 className="font-semibold text-[#1a1a1a] text-sm md:text-base pr-4">
@@ -98,7 +100,11 @@ export default function FAQAccordion() {
               </span>
             </button>
 
-            <div className={`accordion-content${isOpen ? " open" : ""}`}>
+            <div
+              ref={(el) => { contentRefs.current[i] = el; }}
+              className="accordion-content"
+              style={{ maxHeight: isOpen ? `${contentRefs.current[i]?.scrollHeight ?? 1000}px` : "0px" }}
+            >
               <div
                 className="px-6 py-5 bg-gray-50 text-sm text-[#555] leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: faq.answer }}

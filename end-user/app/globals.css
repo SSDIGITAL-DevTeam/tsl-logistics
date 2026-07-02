@@ -158,14 +158,13 @@ html[data-theme-version="v2"] :is(
 .hero-in > *:nth-child(3) { animation-delay: 0.31s; }
 .hero-in > *:nth-child(4) { animation-delay: 0.44s; }
 
-/* ── Accordion height transition ── */
+/* ── Accordion height transition ──
+   max-height is set inline per item from its measured scrollHeight (see
+   FAQAccordion.tsx), so this only needs to animate whatever value gets
+   set — no guessed ceiling, no CSS Grid track-sizing edge cases. */
 .accordion-content {
-  max-height: 0;
   overflow: hidden;
   transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.accordion-content.open {
-  max-height: 1200px;
 }
 
 /* ── Animations ── */
@@ -407,6 +406,15 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus {
   border-color: var(--primary) !important;
   box-shadow: 0 0 0 3px rgba(200, 168, 75, 0.18) !important;
+}
+
+/* ── v2 contact form submit button (ContactForm.tsx is shared with v1,
+   so this stays scoped to the v2 wrapper instead of editing that component) ── */
+.v2-contact-form button[type="submit"] {
+  background: var(--gold-gradient) !important;
+  color: #121212 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
 }
 
 /* ── Nav gold bar ── */

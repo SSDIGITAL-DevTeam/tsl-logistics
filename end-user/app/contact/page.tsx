@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Phone, Mail, MapPin } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
+import ContactV2 from "@/components/ContactV2";
 
 export const metadata: Metadata = {
   title: "Contact Us | TSL Logistics",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+    <div className="theme-v1-only">
       <PageHero title="Contact Us" image="/images/permit-section.jpg" />
 
       {/* ── Form + Contact Info ── */}
@@ -94,6 +96,11 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+    </div>
+
+    <div className="theme-v2-only">
+      <ContactV2 />
+    </div>
     </>
   );
 }
