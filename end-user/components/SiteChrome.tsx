@@ -10,7 +10,16 @@ import FooterV2 from "@/components/FooterV2";
 // v2 content ships — Header v2 / Footer v2 only render on these routes (and
 // their sub-routes, e.g. "/our-team" also covers "/our-team/alan-tay") so
 // unfinished pages keep the full v1 experience even when Theme V2 is active.
-const V2_READY_ROUTES = ["/", "/about", "/our-team", "/tsl-logistics", "/contact"];
+const V2_READY_ROUTES = [
+  "/",
+  "/about",
+  "/our-team",
+  "/tsl-logistics",
+  "/tsl-mover",
+  "/tsl-express",
+  "/warehousing-services",
+  "/contact",
+];
 
 function isV2Ready(pathname: string) {
   return V2_READY_ROUTES.some(

@@ -257,11 +257,25 @@ export function ServiceClosingBandV2({
   body,
   cta = "Contact Us",
   ctaHref = "/contact",
+  image,
+  imageAlt,
 }: {
   title: string;
   body: string;
   cta?: string;
   ctaHref?: string;
+  /** Overrides the default brand truck photo — use when it doesn't fit the page's context. */
+  image?: string;
+  imageAlt?: string;
 }) {
-  return <CtaBandV2 title={title} body={body} cta={cta} ctaHref={ctaHref} />;
+  return (
+    <CtaBandV2
+      title={title}
+      body={body}
+      cta={cta}
+      ctaHref={ctaHref}
+      {...(image ? { image } : {})}
+      {...(imageAlt ? { imageAlt } : {})}
+    />
+  );
 }

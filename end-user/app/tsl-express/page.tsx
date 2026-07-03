@@ -7,6 +7,7 @@ import {
   FigmaSplitSection,
   serviceIcons,
 } from "@/components/FigmaServiceContent";
+import TSLExpressV2 from "@/components/TSLExpressV2";
 
 export const metadata: Metadata = {
   title: "TSL Express | Optical Supply & Ad Hoc Delivery | TSL Logistics",
@@ -24,6 +25,8 @@ const enquiryOptions = [
 
 export default function TSLExpressPage() {
   return (
+    <>
+    <div className="theme-v1-only">
     <ServicePageLayout title="TSL Express" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
       <FigmaServiceShell>
         <FigmaIntro
@@ -183,5 +186,11 @@ export default function TSLExpressPage() {
         </section>
       </FigmaServiceShell>
     </ServicePageLayout>
+    </div>
+
+    <div className="theme-v2-only">
+      <TSLExpressV2 />
+    </div>
+    </>
   );
 }
