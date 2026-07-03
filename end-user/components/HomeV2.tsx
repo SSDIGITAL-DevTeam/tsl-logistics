@@ -31,7 +31,7 @@ const services = [
   },
   {
     title: "TSL Mover",
-    image: "/images/wfn05862.jpg",
+    image: "/images/tsl-mover.jpg",
     alt: "TSL Mover team moving wrapped furniture",
     href: "/tsl-mover",
     className: "md:col-span-1 md:row-span-1",
@@ -40,7 +40,7 @@ const services = [
   },
   {
     title: "TSL Express",
-    image: "/images/service-express.jpg",
+    image: "/images/tsl-express.jpg",
     alt: "TSL Express delivery vehicle",
     href: "/tsl-express",
     className: "md:col-span-1 md:row-span-1",
@@ -49,7 +49,7 @@ const services = [
   },
   {
     title: "TSL Warehousing",
-    image: "/images/wfn06078.jpg",
+    image: "/images/service-logistics.jpg",
     alt: "TSL warehouse with palletised cargo",
     href: "/warehousing-services",
     className: "md:col-span-1",
@@ -116,7 +116,7 @@ export default function HomeV2() {
               <p className="text-sm leading-relaxed text-[#151515]">
                 TSL Logistics Pte Ltd was founded in 2003 by veteran logistics expert Mr. Alan Tay Soon Lai with the objective of establishing a client-focused logistics company in Singapore.
               </p>
-              <ContactCta className="mt-6 bg-[#1f4fa8] text-white" />
+              <ContactCta className="mt-6" />
             </div>
           </div>
 
