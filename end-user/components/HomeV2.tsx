@@ -27,6 +27,7 @@ const services = [
     href: "/tsl-logistics",
     className: "md:col-span-3",
     imageClassName: "aspect-[4/3] md:aspect-[21/9]",
+    imageSizes: "(max-width: 768px) 100vw, 1220px",
   },
   {
     title: "TSL Mover",
@@ -35,6 +36,7 @@ const services = [
     href: "/tsl-mover",
     className: "md:col-span-1 md:row-span-1",
     imageClassName: "aspect-[4/3]",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw",
   },
   {
     title: "TSL Express",
@@ -43,6 +45,7 @@ const services = [
     href: "/tsl-express",
     className: "md:col-span-1 md:row-span-1",
     imageClassName: "aspect-[4/3]",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw",
   },
   {
     title: "TSL Warehousing",
@@ -51,6 +54,7 @@ const services = [
     href: "/warehousing-services",
     className: "md:col-span-1",
     imageClassName: "aspect-[4/3]",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw",
   },
 ];
 
@@ -150,7 +154,7 @@ export default function HomeV2() {
                     src={service.image}
                     alt={service.alt}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes={service.imageSizes}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
