@@ -277,7 +277,7 @@ export default function AboutPage() {
                 desc: "Our box trucks offer ample space and security for transporting large loads and valuable goods.",
               },
               {
-                img: "/images/about-fleet-01.png",
+                img: "/images/container-trucks.png",
                 alt: "TSL container truck",
                 label: "Container Trucks",
                 desc: "Built for heavier freight and container movements, our container trucks support reliable transport for larger commercial and industrial cargo.",

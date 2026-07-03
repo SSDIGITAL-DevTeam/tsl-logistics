@@ -86,13 +86,13 @@ const services = [
   },
   {
     title: "TSL Mover",
-    image: "/images/service-warehousing.jpg",
+    image: "/images/tsl-mover.jpg",
     alt: "TSL Mover truck",
     href: "/tsl-mover",
   },
   {
     title: "TSL Express",
-    image: "/images/service-express.jpg",
+    image: "/images/tsl-express.jpg",
     alt: "TSL Express delivery van",
     href: "/tsl-express",
   },
