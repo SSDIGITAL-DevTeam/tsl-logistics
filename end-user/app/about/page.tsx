@@ -271,7 +271,7 @@ export default function AboutPage() {
                 desc: "Perfect for small to medium-sized deliveries, our cargo vans provide versatility and efficiency.",
               },
               {
-                img: "/images/box-trucks.png",
+                img: "/images/box-truck-2.jpg",
                 alt: "TSL box truck",
                 label: "Box Trucks",
                 desc: "Our box trucks offer ample space and security for transporting large loads and valuable goods.",
