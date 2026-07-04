@@ -163,7 +163,7 @@ export default function HomePage() {
         <div className="hero-in relative z-10 mx-auto w-full max-w-[1200px] px-6 py-20 md:py-28">
           <div className="flex flex-col items-start gap-6 text-left">
             <h1 className="max-w-[900px] text-5xl font-bold leading-[1.08] text-white md:text-6xl lg:text-[68px]" style={{ textWrap: "balance" }}>
-              Delivering value to our clients - On time, Every time!
+              Delivering Value to Our Clients - On time, Every time!
             </h1>
             <p className="max-w-[640px] text-sm leading-relaxed text-white md:text-base">
               TSL Logistics Pte Ltd was founded in 2003 by veteran logistics expert Mr. Alan Tay Soon Lai with the objective of establishing a client-focused logistics company in Singapore.

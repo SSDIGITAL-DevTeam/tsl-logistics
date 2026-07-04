@@ -32,7 +32,7 @@ function DetailAvatar({ name, photo }: { name: string; photo?: string }) {
           alt={name}
           fill
           sizes="164px"
-          className="object-contain object-bottom"
+          className={photo.endsWith(".jpg") ? "object-cover object-top" : "object-contain object-bottom"}
           priority
         />
       ) : (

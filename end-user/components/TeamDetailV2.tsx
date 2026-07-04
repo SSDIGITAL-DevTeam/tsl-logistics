@@ -17,7 +17,7 @@ export default function TeamDetailV2({ member }: { member: TeamMember }) {
                 alt={member.name}
                 fill
                 sizes="150px"
-                className="object-contain object-bottom"
+                className={member.photo.endsWith(".jpg") ? "object-cover object-top" : "object-contain object-bottom"}
                 priority
               />
             ) : (

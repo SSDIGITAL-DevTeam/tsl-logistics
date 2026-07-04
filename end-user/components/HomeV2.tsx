@@ -109,7 +109,7 @@ export default function HomeV2() {
         <div className="mx-auto max-w-[1220px]">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
             <h1 className="max-w-[760px] text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-[#151515] md:text-6xl lg:text-[64px]">
-              Delivering value to our clients - On time, Every time!
+              Delivering Value to Our Clients - On time, Every time!
             </h1>
 
             <div className="max-w-[340px] lg:justify-self-end">

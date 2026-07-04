@@ -11,7 +11,7 @@ const fleet = [
     desc: "Perfect for small to medium-sized deliveries, our cargo vans provide versatility and efficiency.",
   },
   {
-    img: "/images/about-fleet-03.png",
+    img: "/images/box-trucks.png",
     alt: "TSL box truck",
     label: "Box Trucks",
     desc: "Our box trucks offer ample space and security for transporting large loads and valuable goods.",
