@@ -32,7 +32,7 @@ const featuredLogos = [
 
 const trustFeatures = [
   {
-    title: "More than 30 years of collective experience",
+    title: "Expertise Built Through Experience",
     text: "The rich experience of our team is evident in the way we handle valuable or fragile objects, and our prompt service.",
     icon: serviceIcons.shield,
   },
@@ -54,27 +54,18 @@ const trustFeatures = [
 ];
 
 const comparisonRows = [
-  [
-    "Fees",
-    "Quote low prices and charge hidden fees",
-    "Transparent, all-in-one pricing as shown on our FREE quotation",
-  ],
-  [
-    "Reliability",
-    "Often late, unresponsive and off-schedule",
-    "Reliable and punctual with 24/7 response time",
-  ],
-  [
-    "Expertise",
-    "Risk of damaging valuables & fragile goods",
-    "Over 30 years experience for safe & secure handling",
-  ],
+  { question: "Transparent Pricing", other: false, tsl: true },
+  { question: "Hidden Charges", other: true, tsl: false },
+  { question: "Punctual Service", other: false, tsl: true },
+  { question: "Experienced Team", other: false, tsl: true },
+  { question: "Safe & Careful Handling", other: false, tsl: true },
+  { question: "24/7 Customer Support", other: false, tsl: true },
 ];
 
 const trustStats = [
   { text: "80% retention & repeat customers", icon: "/images/mover-stat-like.svg" },
   { text: "Over 1,200 satisfied customers & counting", icon: "/images/mover-stat-satisfied.svg" },
-  { text: "Featured on SG Car Mart & SME500 Award winner", icon: "/images/mover-stat-award.svg" },
+  { text: "Trusted by Businesses Partnering with SMEs and corporate clients", icon: "/images/mover-stat-award.svg" },
 ];
 
 const bookingSteps = [
@@ -87,14 +78,14 @@ const bookingSteps = [
 export default function TSLMoverV2() {
   return (
     <ServicePageLayoutV2
-      title="TSL Mover"
+      title="Movers"
       image="/images/service-warehousing.jpg"
       enquiryOptions={enquiryOptions}
       showContactForm={false}
       source="tsl-mover"
     >
       <ServiceIntroV2
-        title="TSL Mover"
+        title="Movers"
         image="/images/figma-services/mover-intro-new.jpg"
         imageAlt="TSL Mover team moving furniture"
         body={[
@@ -118,23 +109,6 @@ export default function TSLMoverV2() {
         ]}
       />
 
-      <section className="space-y-8">
-        <ServiceSectionHeaderV2 title="We Are Featured On" />
-        <div className="grid grid-cols-2 items-center gap-x-8 gap-y-7 md:grid-cols-4">
-          {featuredLogos.map((logo) => (
-            <div key={logo.alt} className="flex h-20 items-center justify-center">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={170}
-                height={86}
-                className="max-h-16 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="space-y-14">
         <div className="v2-surface bg-gold-gradient px-5 py-10 text-center md:px-10">
           <h2 className="text-2xl font-bold leading-tight text-[#121212] md:text-[30px]">
@@ -147,55 +121,41 @@ export default function TSLMoverV2() {
           </p>
         </div>
 
-        <div className="grid items-center gap-9 md:grid-cols-2 md:gap-12 lg:gap-16">
-          <div className="max-w-[520px]">
-            <h3 className="text-2xl font-bold leading-tight text-[#121212] md:text-[28px]">
-              Local Transportation Services
-            </h3>
-            <p className="mt-5 text-sm leading-relaxed text-[#1f1f1f]">
-              We provide local transportation for furniture, cartons, office
-              items, and equipment, serving both individuals and SMEs. With
-              careful handling and reliable scheduling, we ensure your items
-              are moved safely and on time for every job.
-            </p>
-            <div className="mt-6">
-              <ServiceContactButtonV2 className="!h-10 !px-6 !text-xs">Contact Us</ServiceContactButtonV2>
+        <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(360px,460px)] md:gap-14 lg:gap-16">
+          <div className="space-y-8">
+            <div className="v2-surface bg-[#f7f8fa] p-6 md:p-7">
+              <p className="eyebrow mb-1">01</p>
+              <h3 className="text-xl font-bold leading-tight text-[#151515] md:text-2xl">
+                Local Transportation Services
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#555] md:text-base">
+                We provide local transportation for furniture, cartons, office
+                items, and equipment, serving both individuals and SMEs. With
+                careful handling and reliable scheduling, we ensure your items
+                are moved safely and on time for every job.
+              </p>
+            </div>
+            <div className="v2-surface bg-[#f7f8fa] p-6 md:p-7">
+              <p className="eyebrow mb-1">02</p>
+              <h3 className="text-xl font-bold leading-tight text-[#151515] md:text-2xl">
+                Dedicated Lorry Service
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#555] md:text-base">
+                Our dedicated lorry service offers exclusive vehicle usage
+                under monthly or long-term contracts. Ideal for retail,
+                logistics, and commercial businesses, this solution delivers
+                stable capacity, predictable costs, and operational efficiency.
+              </p>
             </div>
           </div>
-          <div className="v2-surface relative mx-auto aspect-[520/278] w-full overflow-hidden">
-            <Image
-              src="/images/figma-services/mover-local-transportation.jpg"
-              alt="Local transportation moving service"
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-contain"
-            />
-          </div>
-        </div>
-
-        <div className="grid items-center gap-9 md:grid-cols-2 md:gap-12 lg:gap-16">
-          <div className="v2-surface relative mx-auto aspect-[520/315] w-full overflow-hidden md:order-1">
+          <div className="v2-surface relative mx-auto aspect-[4/5] w-full overflow-hidden shadow-[0_18px_50px_rgba(16,24,32,0.10)] md:aspect-auto md:h-full md:min-h-[420px]">
             <Image
               src="/images/figma-services/mover-dedicated-lorry.jpg"
               alt="Dedicated lorry service"
               fill
-              sizes="(min-width: 768px) 50vw, 100vw"
+              sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
             />
-          </div>
-          <div className="max-w-[520px] md:order-2">
-            <h3 className="text-2xl font-bold leading-tight text-[#121212] md:text-[28px]">
-              Dedicated Lorry Service
-            </h3>
-            <p className="mt-5 text-sm leading-relaxed text-[#1f1f1f]">
-              Our dedicated lorry service offers exclusive vehicle usage
-              under monthly or long-term contracts. Ideal for retail,
-              logistics, and commercial businesses, this solution delivers
-              stable capacity, predictable costs, and operational efficiency.
-            </p>
-            <div className="mt-6">
-              <ServiceContactButtonV2 className="!h-10 !px-6 !text-xs">Contact Us</ServiceContactButtonV2>
-            </div>
           </div>
         </div>
       </section>
@@ -207,7 +167,7 @@ export default function TSLMoverV2() {
         <div className="grid items-stretch gap-5 md:grid-cols-[340px_1fr]">
           <div className="v2-surface relative min-h-[390px] overflow-hidden">
             <Image
-              src="/images/figma-services/mover-customer-trust.jpg"
+              src="/images/thousand-cs.jpg"
               alt="TSL Mover customers"
               fill
               className="object-cover"
@@ -223,24 +183,22 @@ export default function TSLMoverV2() {
           We go the extra mile to give you top-notch services:
         </h2>
         <div className="v2-surface overflow-hidden border border-[#d7dce5] text-[12px] leading-relaxed text-[#121212]">
-          <div className="grid grid-cols-[90px_1fr_1.25fr] bg-gold-gradient font-semibold">
-            <div className="px-3 py-3" />
+          <div className="grid grid-cols-3 bg-gold-gradient font-semibold">
+            <div className="px-3 py-3">Questions</div>
             <div className="border-l border-white/60 px-3 py-3">Other Movers</div>
-            <div className="border-l border-white/60 px-3 py-3">TSL</div>
+            <div className="border-l border-white/60 px-3 py-3">TSL Movers</div>
           </div>
           {comparisonRows.map((row) => (
             <div
-              key={row[0]}
-              className="grid grid-cols-[90px_1fr_1.25fr] border-t border-[#d7dce5] bg-white"
+              key={row.question}
+              className="grid grid-cols-3 items-center border-t border-[#d7dce5] bg-white"
             >
-              <div className="bg-[#f1db67] px-3 py-3 font-semibold">{row[0]}</div>
-              <div className="border-l border-[#d7dce5] px-3 py-3">
-                <span className="mr-1 text-base font-bold leading-none text-red-600">x</span>
-                {row[1]}
+              <div className="px-3 py-3 font-semibold">{row.question}</div>
+              <div className="border-l border-[#d7dce5] px-3 py-3 text-center">
+                {row.other ? "✅" : "❌"}
               </div>
-              <div className="border-l border-[#d7dce5] px-3 py-3">
-                <span className="mr-1 text-base font-bold leading-none text-green-600">✓</span>
-                {row[2]}
+              <div className="border-l border-[#d7dce5] px-3 py-3 text-center">
+                {row.tsl ? "✅" : "❌"}
               </div>
             </div>
           ))}
@@ -297,12 +255,11 @@ export default function TSLMoverV2() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Get Your Quotation Now With TSL Mover Service
+              Get Your Quotation Now With TSL Movers
             </h2>
             <p className="max-w-lg text-sm leading-relaxed text-white/80 md:text-base">
               Submit your details and our team will get back to you with the right moving support.
             </p>
-            <ServiceContactButtonV2>Contact Us</ServiceContactButtonV2>
           </div>
           <div className="v2-surface overflow-hidden">
             <TSLMoverQuoteForm />
