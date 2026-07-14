@@ -20,19 +20,19 @@ const idealFor = [
   { title: "Urgent or last-minute shipments", icon: serviceIcons.clock },
   { title: "One-off deliveries outside regular schedules", icon: serviceIcons.route },
   { title: "Documents, parcels, and time-critical cargo", icon: serviceIcons.file },
-  { title: "Businesses needing speed without long-term obligations", icon: serviceIcons.zap },
+  { title: "Businesses needing ad hoc transportation services", icon: serviceIcons.zap },
 ];
 
 export default function TSLExpressV2() {
   return (
     <ServicePageLayoutV2
-      title="TSL Express"
+      title="Express"
       image="/images/service-express.jpg"
       enquiryOptions={enquiryOptions}
       source="tsl-express"
     >
       <ServiceIntroV2
-        title="TSL Express"
+        title="Express"
         image="/images/figma-services/express-intro-new.jpg"
         imageAlt="TSL Express delivery"
         body={[
@@ -49,7 +49,6 @@ export default function TSLExpressV2() {
         body={[
           "Optical supplies demand precision, care, and expert handling. At TSL Logistics, our specially trained carriers ensure glass lenses, frames, and contact lenses are transported safely and securely. With proven expertise and meticulous handling, we protect your optical goods from damage - delivering them intact, reliable, and worry-free every time.",
         ]}
-        cta="Contact Us"
       />
 
       <ServiceSplitV2
@@ -60,7 +59,6 @@ export default function TSLExpressV2() {
           "Our express ad hoc delivery service is designed for urgent, one-off shipments that require speed and flexibility. With fast dispatch and adaptable scheduling, we handle last-minute or unexpected deliveries - no long-term contracts required.",
           "From critical documents to time-sensitive cargo, our agile team ensures safe, accurate, and on-time delivery without compromise.",
         ]}
-        cta="Contact Us"
       />
 
       <section className="space-y-9">
@@ -76,14 +74,15 @@ export default function TSLExpressV2() {
           "We provide contract-based dedicated van and biker services designed for businesses that require reliable, high-frequency daily deliveries. With assigned vehicles and professional riders operating exclusively for your operations, we help you maintain consistent service quality, optimized delivery routes, and faster last-mile performance.",
           "This solution gives you greater control, predictable costs, and the confidence that your deliveries are handled by a team fully aligned with your operational standards.",
         ]}
-        cta="Contact Us"
       />
 
       <ServiceClosingBandV2
         title="TSL Express: Fast, Reliable Logistics You Can Trust"
         body="Ready to experience seamless shipping and delivery with TSL Express? Whether you need urgent courier services, freight forwarding, or comprehensive logistics solutions, our dedicated team ensures your goods arrive safely and on time, every time. Let us handle the logistics - so you can focus on growing your business."
-        cta="Contact Us"
-        ctaHref="/contact"
+        showCta={false}
+        image="/images/box2.png"
+        imageAlt="TSL Express delivery boxes"
+        imageFullBleed
       />
     </ServicePageLayoutV2>
   );

@@ -37,7 +37,7 @@ export default function ServicePageLayout({
             <div className="text-center mb-8">
               <p className="eyebrow mb-2">Get a Quote</p>
               <h2 className="text-xl md:text-2xl font-bold text-[#252525]">
-                Request for TSL Logistics Service
+                Request for TSL Express Service
               </h2>
               <div className="gold-divider" />
             </div>

@@ -27,10 +27,10 @@ export default function TSLExpressPage() {
   return (
     <>
     <div className="theme-v1-only">
-    <ServicePageLayout title="TSL Express" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
+    <ServicePageLayout title="Express" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
       <FigmaServiceShell>
         <FigmaIntro
-          title="TSL Express"
+          title="Express"
           image="/images/figma-services/express-intro-new.jpg"
           imageAlt="TSL Express delivery"
           body={[
@@ -47,7 +47,6 @@ export default function TSLExpressPage() {
           body={[
             "Optical supplies demand precision, care, and expert handling. At TSL Logistics, our specially trained carriers ensure glass lenses, frames, and contact lenses are transported safely and securely. With proven expertise and meticulous handling, we protect your optical goods from damage - delivering them intact, reliable, and worry-free every time.",
           ]}
-          cta="Contact Us"
         />
 
         <section className="mx-auto max-w-[1100px] space-y-12 py-2">
@@ -80,12 +79,6 @@ export default function TSLExpressPage() {
                   compromise.
                 </p>
               </div>
-              <a
-                href="/contact"
-                className="mt-7 inline-flex h-11 min-w-[210px] items-center justify-center bg-gold-gradient px-8 text-sm font-bold text-[#121212] transition hover:opacity-90"
-              >
-                Contact Us
-              </a>
             </div>
           </div>
         </section>
@@ -99,7 +92,7 @@ export default function TSLExpressPage() {
               { title: "Urgent or last-minute shipments", icon: serviceIcons.clock },
               { title: "One-off deliveries outside regular schedules", icon: serviceIcons.route },
               { title: "Documents, parcels, and time-critical cargo", icon: serviceIcons.file },
-              { title: "Businesses needing speed without long-term obligations", icon: serviceIcons.zap },
+              { title: "Businesses needing ad hoc transportation services", icon: serviceIcons.zap },
             ].map((item) => {
               const Icon = item.icon;
               return (
@@ -140,12 +133,6 @@ export default function TSLExpressPage() {
                   fully aligned with your operational standards.
                 </p>
               </div>
-              <a
-                href="/contact"
-                className="mt-7 inline-flex h-11 min-w-[210px] items-center justify-center bg-gold-gradient px-8 text-sm font-bold text-[#121212] transition hover:opacity-90"
-              >
-                Contact Us
-              </a>
             </div>
 
             <div className="relative aspect-[536/324] overflow-hidden rounded-xl bg-[#e1e1e1]">
@@ -167,16 +154,11 @@ export default function TSLExpressPage() {
               <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-base">
                 Ready to experience seamless shipping and delivery with TSL Express? Whether you need urgent courier services, freight forwarding, or comprehensive logistics solutions, our dedicated team ensures your goods arrive safely and on time, every time. Let us handle the logistics - so you can focus on growing your business.
               </p>
-              <div className="mt-6">
-                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center bg-white px-6 text-sm font-bold text-[#121212]">
-                  Contact Us
-                </a>
-              </div>
             </div>
             <div className="relative -mb-10 -mr-5 -mt-10 min-h-[260px] overflow-hidden md:-mb-14 md:-mr-10 md:-mt-14 lg:min-h-full">
               <Image
-                src="/images/chatgpt-image-jun-29-2026-10-33-45-am.png"
-                alt=""
+                src="/images/box2.png"
+                alt="TSL Express delivery boxes"
                 fill
                 sizes="(min-width: 1024px) 520px, 100vw"
                 className="object-cover object-left"

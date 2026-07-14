@@ -257,25 +257,35 @@ export function ServiceClosingBandV2({
   body,
   cta = "Contact Us",
   ctaHref = "/contact",
+  showCta = true,
   image,
   imageAlt,
+  imageFullBleed = false,
 }: {
   title: string;
   body: string;
   cta?: string;
   ctaHref?: string;
+  /** Set to false to hide the CTA button entirely. */
+  showCta?: boolean;
   /** Overrides the default brand truck photo — use when it doesn't fit the page's context. */
   image?: string;
   imageAlt?: string;
+  /** Fills the whole image side edge-to-edge instead of a contained rounded card. */
+  imageFullBleed?: boolean;
 }) {
   return (
-    <CtaBandV2
-      title={title}
-      body={body}
-      cta={cta}
-      ctaHref={ctaHref}
-      {...(image ? { image } : {})}
-      {...(imageAlt ? { imageAlt } : {})}
-    />
+    <div className="relative left-1/2 w-screen -translate-x-1/2">
+      <CtaBandV2
+        title={title}
+        body={body}
+        cta={cta}
+        ctaHref={ctaHref}
+        imageFullBleed={imageFullBleed}
+        {...(showCta ? {} : { ctaSlot: false })}
+        {...(image ? { image } : {})}
+        {...(imageAlt ? { imageAlt } : {})}
+      />
+    </div>
   );
 }

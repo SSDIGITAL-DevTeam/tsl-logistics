@@ -17,6 +17,7 @@ export default function CtaBandV2({
   ctaSlot,
   image = "/images/group-1000005860.png",
   imageAlt = "TSL Logistics truck with container",
+  imageFullBleed = false,
   className = "",
 }: {
   eyebrow?: string;
@@ -28,12 +29,14 @@ export default function CtaBandV2({
   ctaSlot?: ReactNode;
   image?: string;
   imageAlt?: string;
+  /** Fills the whole image side edge-to-edge instead of a contained rounded card. */
+  imageFullBleed?: boolean;
   className?: string;
 }) {
   return (
     <section className={`relative overflow-hidden bg-[#111111] px-5 py-14 md:px-10 md:py-20 ${className}`}>
       <div className="mx-auto grid max-w-[1220px] items-center gap-10 md:grid-cols-2">
-        <div className="max-w-[560px]">
+        <div className="relative z-10 max-w-[560px]">
           {eyebrow && (
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#E5C96A]">{eyebrow}</p>
           )}
@@ -60,15 +63,27 @@ export default function CtaBandV2({
           </div>
         </div>
 
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[22px] md:aspect-[16/11]">
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-contain"
-          />
-        </div>
+        {imageFullBleed ? (
+          <div className="relative -mx-5 h-64 sm:h-80 md:absolute md:inset-y-0 md:right-0 md:mx-0 md:h-auto md:w-1/2">
+            <Image
+              src={image}
+              alt={imageAlt}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[22px] md:aspect-[16/11]">
+            <Image
+              src={image}
+              alt={imageAlt}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-contain"
+            />
+          </div>
+        )}
       </div>
     </section>
   );
