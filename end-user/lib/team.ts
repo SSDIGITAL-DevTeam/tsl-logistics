@@ -85,7 +85,8 @@ export const teamMembers: TeamMember[] = [
     ],
     card: {
       ...commonCard,
-      email: "shirley@tsllogistics.sg",
+      email: "shirleygoh@tsllogistics.sg",
+      phone: "+65 8811 9292",
     },
   },
   {
@@ -108,6 +109,7 @@ export const teamMembers: TeamMember[] = [
     card: {
       ...commonCard,
       email: "phillip@tsllogistics.sg",
+      phone: "+65 9355 6417",
     },
   },
   {
@@ -131,7 +133,10 @@ export const teamMembers: TeamMember[] = [
     ],
     card: {
       ...commonCard,
+      company: "TSL EXPRESS PTE LTD",
       email: "weeliang@tslexpress.sg",
+      phone: "+65 8116 6011",
+      website: "www.tslexpress.sg",
     },
   },
   {
@@ -155,7 +160,10 @@ export const teamMembers: TeamMember[] = [
     ],
     card: {
       ...commonCard,
-      email: "patrick@tslmovers.sg",
+      company: "TSL Movers & Warehousing Pte Ltd",
+      email: "patrickwee@tslmovers.sg",
+      phone: "+65 8030 8181",
+      website: "www.tslmovers.sg",
     },
   },
   {
@@ -179,7 +187,10 @@ export const teamMembers: TeamMember[] = [
     ],
     card: {
       ...commonCard,
-      email: "spencer@tslmovers.sg",
+      company: "TSL Movers & Warehousing Pte Ltd",
+      email: "spencertan@tslmovers.sg",
+      phone: "+65 8123 3668",
+      website: "www.tslmovers.sg",
     },
   },
 ];
