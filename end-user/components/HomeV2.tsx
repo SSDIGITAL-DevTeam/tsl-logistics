@@ -30,7 +30,7 @@ const services = [
     imageSizes: "(max-width: 768px) 100vw, 1220px",
   },
   {
-    title: "TSL Mover",
+    title: "TSL Movers",
     image: "/images/tsl-mover.jpg",
     alt: "TSL Mover team moving wrapped furniture",
     href: "/tsl-mover",
@@ -109,14 +109,13 @@ export default function HomeV2() {
         <div className="mx-auto max-w-[1220px]">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
             <h1 className="max-w-[760px] text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-[#151515] md:text-6xl lg:text-[64px]">
-              Delivering Value to Our Clients - On time, Every time!
+              Trusted · Reliable · Delivered
             </h1>
 
             <div className="max-w-[340px] lg:justify-self-end">
               <p className="text-sm leading-relaxed text-[#151515]">
                 TSL Logistics Pte Ltd was founded in 2003 by veteran logistics expert Mr. Alan Tay Soon Lai with the objective of establishing a client-focused logistics company in Singapore.
               </p>
-              <ContactCta className="mt-6" />
             </div>
           </div>
 
@@ -196,11 +195,11 @@ export default function HomeV2() {
           <div className="flex shrink-0 items-center justify-center lg:w-[52%]">
             <div className="v2-surface relative min-h-[300px] w-full overflow-hidden md:min-h-[420px]">
               <Image
-                src="/images/group-1000005860.png"
+                src="/images/about-team.jpg"
                 alt="TSL Logistics truck with container"
                 fill
                 sizes="(max-width: 1024px) 100vw, 52vw"
-                className="object-contain object-right"
+                className="object-cover object-right"
               />
             </div>
           </div>
@@ -214,17 +213,7 @@ export default function HomeV2() {
           </h2>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="v2-surface relative min-h-[360px] overflow-hidden bg-[#f0d44e] sm:row-span-2 sm:min-h-[440px] lg:min-h-[430px]">
-              <Image
-                src="/images/figma-services/warehouse-short-term-new.jpg"
-                alt="Short-term warehouse storage"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 390px"
-                className="object-cover object-center"
-              />
-            </div>
-
-            {whyUs.slice(0, 2).map((item) => {
+            {whyUs.map((item) => {
               const Icon = item.icon;
               return (
                 <article
@@ -241,70 +230,6 @@ export default function HomeV2() {
                 </article>
               );
             })}
-
-            {whyUs.slice(3, 5).map((item) => {
-              const Icon = item.icon;
-              return (
-                <article
-                  key={item.title}
-                  className="min-h-[210px] bg-white p-8 text-[#111] md:p-9"
-                >
-                  <Icon size={34} strokeWidth={2.2} className="text-[#111]" />
-                  <h3 className="mt-8 text-xl font-bold leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 max-w-[360px] text-base leading-relaxed text-[#333]">
-                    {item.body}
-                  </p>
-                </article>
-              );
-            })}
-
-            {whyUs.slice(2, 3).map((item) => {
-              const Icon = item.icon;
-              return (
-                <article
-                  key={item.title}
-                  className="min-h-[210px] bg-white p-8 text-[#111] md:p-9"
-                >
-                  <Icon size={34} strokeWidth={2.2} className="text-[#111]" />
-                  <h3 className="mt-8 text-xl font-bold leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 max-w-[360px] text-base leading-relaxed text-[#333]">
-                    {item.body}
-                  </p>
-                </article>
-              );
-            })}
-
-            {whyUs.slice(5).map((item) => {
-              const Icon = item.icon;
-              return (
-                <article
-                  key={item.title}
-                  className="min-h-[210px] bg-white p-8 text-[#111] md:p-9"
-                >
-                  <Icon size={34} strokeWidth={2.2} className="text-[#111]" />
-                  <h3 className="mt-8 text-xl font-bold leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 max-w-[360px] text-base leading-relaxed text-[#333]">
-                    {item.body}
-                  </p>
-                </article>
-              );
-            })}
-
-            <div className="v2-surface relative min-h-[250px] overflow-hidden bg-[#f1d955]">
-              <Image
-                src="/images/figma-services/logistics-dg.png"
-                alt="Dangerous goods trucking"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 390px"
-                className="object-cover object-center"
-              />
-            </div>
           </div>
         </div>
       </section>
@@ -312,6 +237,8 @@ export default function HomeV2() {
       <CtaBandV2
         title="Document & Permit Processing"
         body="We simplify permit and documentation so you can focus on your business. From checklist to final approval, our team handles preparation, submission, and follow-up with government agencies — reducing delays and keeping you informed every step of the way."
+        image="/images/permit.png"
+        imageAlt="TSL Logistics team and fleet"
         ctaSlot={
           <PermitDialog triggerClassName="!bg-gold-gradient !border-0 !text-[#121212] !px-7 !py-4 !font-bold hover:!opacity-90" />
         }

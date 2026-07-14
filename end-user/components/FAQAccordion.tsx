@@ -16,10 +16,6 @@ const faqs = [
     </ul>`,
   },
   {
-    question: "What regions do you operate in?",
-    answer: "We have a global reach, operating across various regions and continents to meet the diverse needs of our clients. If you are looking for a reliable logistics solution provider with extensive international reach and a proven track record, TSL Logistics can help.",
-  },
-  {
     question: "What industries do you specialise in serving?",
     answer: "We specialise in serving a wide range of industries, including retail, manufacturing, healthcare, automotive, technology, and more. Whether you are looking to send your goods across borders or within Singapore, we can help. We also have the expertise to handle dangerous goods (DG) and perishable goods.",
   },
@@ -40,7 +36,7 @@ const faqs = [
   },
   {
     question: "What type of transportation do you offer?",
-    answer: "We offer a variety of transportation options, including road, rail, air, and sea freight, to accommodate different shipping requirements. We also have our own fleet of containers and tankers for operations that require long- or short-haul services, and we specialise in local delivery services.",
+    answer: "We offer a variety of transportation options, including road, air, and sea freight, to accommodate different shipping requirements. We also have our own fleet of containers and tankers for operations that require long- or short-haul services, and we specialise in local delivery services.",
   },
   {
     question: "Are there any free trade agreements (FTAs) Singapore has that can benefit my business?",

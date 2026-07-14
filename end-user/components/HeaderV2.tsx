@@ -113,7 +113,7 @@ export default function HeaderV2() {
           {/* ── Logo ── */}
           <Link href="/" className="shrink-0 transition-opacity hover:opacity-85">
             <Image
-              src="/images/logo-tsl.svg"
+              src="/images/tsl-logo.png"
               alt="TSL Logistics"
               width={247}
               height={51}

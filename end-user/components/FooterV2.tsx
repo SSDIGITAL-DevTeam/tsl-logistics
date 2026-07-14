@@ -7,13 +7,12 @@ const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Our Team", href: "/our-team" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ];
 
 const serviceLinks = [
   { label: "TSL Logistics", href: "/tsl-logistics" },
-  { label: "TSL Mover", href: "/tsl-mover" },
+  { label: "TSL Movers", href: "/tsl-mover" },
   { label: "TSL Express", href: "/tsl-express" },
   { label: "Warehousing Services", href: "/warehousing-services" },
 ];
@@ -22,7 +21,11 @@ export default function FooterV2() {
   return (
     <footer>
       {/* ── CTA Banner ── */}
-      <CtaBandV2 eyebrow="Ready to ship?" />
+      <CtaBandV2
+        eyebrow="Ready to ship?"
+        cta="Call Us Today"
+        ctaHref="https://wa.me/6588119292?text=Hi%20TSL%20Logistics%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+      />
 
       {/* ── Main Footer ── */}
       <div className="border-t border-gray-100 bg-white text-[#1a1a1a]">
@@ -32,17 +35,13 @@ export default function FooterV2() {
             <div className="lg:col-span-1">
               <Link href="/">
                 <Image
-                  src="/images/logo-tsl.svg"
+                  src="/images/tsl-logo.png"
                   alt="TSL Logistics"
                   width={247}
                   height={51}
                   className="mb-4 h-10 w-auto"
                 />
               </Link>
-              <p className="mb-4 text-sm leading-relaxed text-[#555]">
-                TSL Logistics Pte Ltd – Your trusted partner for transportation,
-                warehousing, &amp; distribution in Singapore.
-              </p>
               <a
                 href="https://www.facebook.com/tsllogistics.sg/"
                 target="_blank"
@@ -111,14 +110,28 @@ export default function FooterV2() {
                     <span>+65 6777 2724</span>
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="mailto:sales@tsllogistics.sg"
-                    className="flex items-start gap-2.5 text-sm text-[#555] transition-colors duration-200 hover:text-[#9A7D2D]"
-                  >
-                    <Mail size={14} className="mt-0.5 shrink-0 text-[#C8A84B]" />
-                    <span>sales@tsllogistics.sg</span>
-                  </a>
+                <li className="flex items-start gap-2.5 text-sm text-[#555]">
+                  <Mail size={14} className="mt-0.5 shrink-0 text-[#C8A84B]" />
+                  <span className="space-y-1">
+                    <span className="block">
+                      <span className="text-[#999]">Trucking: </span>
+                      <a href="mailto:sales@tsllogistics.sg" className="transition-colors duration-200 hover:text-[#9A7D2D]">
+                        sales@tsllogistics.sg
+                      </a>
+                    </span>
+                    <span className="block">
+                      <span className="text-[#999]">Movers: </span>
+                      <a href="mailto:ops@tslmovers.sg" className="transition-colors duration-200 hover:text-[#9A7D2D]">
+                        ops@tslmovers.sg
+                      </a>
+                    </span>
+                    <span className="block">
+                      <span className="text-[#999]">Express: </span>
+                      <a href="mailto:ops@tslexpress.sg" className="transition-colors duration-200 hover:text-[#9A7D2D]">
+                        ops@tslexpress.sg
+                      </a>
+                    </span>
+                  </span>
                 </li>
                 <li>
                   <a

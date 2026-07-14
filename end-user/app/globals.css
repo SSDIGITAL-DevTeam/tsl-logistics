@@ -195,6 +195,21 @@ html[data-theme-version="v2"] :is(
 
 .testimonial-slide { animation: fadeIn 0.5s ease; }
 
+/* ── Testimonials marquee (v2 "light" variant) ──
+   Content is duplicated once in the component; animating exactly -50%
+   moves the first copy fully out just as the second copy lines up,
+   giving a seamless continuous loop. */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 40s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* Scroll-driven reveal (progressive enhancement — Chrome 115+, Firefox 110+).
    Falls back to plain visible content where animation-timeline is unsupported. */
 @supports (animation-timeline: view()) {

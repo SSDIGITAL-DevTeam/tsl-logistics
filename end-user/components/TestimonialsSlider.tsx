@@ -16,6 +16,22 @@ const testimonials = [
     text: "Very impressed with Patrick and his team. They are hardworking, efficient, polite and accommodating. Helped us with disposal of items and sending items to external storage too. They treated our items with care and made the moving a lot smoother for us. Well done and we will definitely engage your services again.",
     name: "PEARL ONG",
   },
+  {
+    text: "We've been using TSL Logistics for our container trucking needs for over a year now. Always on time, drivers are professional, and communication is clear from booking to delivery. Great partner for our supply chain.",
+    name: "DAVID TAN",
+  },
+  {
+    text: "Needed an urgent same-day delivery and TSL Express came through without any issues. Rider called ahead, item arrived intact, and the whole process was smooth from start to finish. Will definitely use again for rush jobs.",
+    name: "MICHELLE LIM",
+  },
+  {
+    text: "Our company has been storing inventory with TSL Warehousing for a few months. Facility is clean, well organised, and the team is responsive whenever we need to check stock or arrange collection. Reliable partner overall.",
+    name: "RAYMOND KOH",
+  },
+  {
+    text: "From the sales enquiry to the actual job, everyone at TSL was professional and easy to work with. Pricing was transparent with no hidden surprises. Highly recommend them for anyone needing dependable logistics support.",
+    name: "AMANDA WEE",
+  },
 ];
 
 export default function TestimonialsSlider({
@@ -41,42 +57,46 @@ export default function TestimonialsSlider({
   const next = () => setCurrent((c) => (c + 1) % testimonials.length);
 
   if (isLight) {
+    const loopedCards = [...testimonials, ...testimonials];
+
     return (
-      <div className="grid gap-5 md:grid-cols-3">
-        {testimonials.map((testimonial, index) => (
-          <article
-            key={testimonial.name}
-            className="v2-surface flex min-h-[360px] flex-col justify-between border border-[#e7e8ec] bg-white p-7 shadow-[0_18px_50px_rgba(20,38,66,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(20,38,66,0.11)]"
-          >
-            <div>
-              <div className="mb-8 flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#C8A84B">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
+      <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+        <div className="marquee-track flex w-max gap-5">
+          {loopedCards.map((testimonial, index) => (
+            <article
+              key={`${testimonial.name}-${index}`}
+              className="v2-surface flex w-[320px] shrink-0 flex-col justify-between border border-[#e7e8ec] bg-white p-7 shadow-[0_18px_50px_rgba(20,38,66,0.07)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(20,38,66,0.11)] md:w-[360px]"
+            >
+              <div>
+                <div className="mb-8 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#C8A84B">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#C8A84B]">
+                    {String((index % testimonials.length) + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#C8A84B]">
-                  0{index + 1}
-                </span>
+
+                <p className="text-[15px] leading-relaxed text-[#2f2f2f]">
+                  &ldquo;{testimonial.text}&rdquo;
+                </p>
               </div>
 
-              <p className="text-[15px] leading-relaxed text-[#2f2f2f]">
-                &ldquo;{testimonial.text}&rdquo;
-              </p>
-            </div>
-
-            <div className="mt-8 border-t border-[#eceef2] pt-5">
-              <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#151515]">
-                {testimonial.name}
-              </p>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#9A7D2D]">
-                Verified Customer
-              </p>
-            </div>
-          </article>
-        ))}
+              <div className="mt-8 border-t border-[#eceef2] pt-5">
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#151515]">
+                  {testimonial.name}
+                </p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#9A7D2D]">
+                  Verified Customer
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     );
   }

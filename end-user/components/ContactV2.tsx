@@ -56,19 +56,19 @@ export default function ContactV2() {
                 <h4 className="mt-5 font-bold text-[#151515]">Email Us</h4>
                 <div className="mt-3 space-y-2 text-sm">
                   <p>
-                    <span className="font-semibold text-[#151515]">Trucking Enquiry: </span>
+                    <span className="font-semibold text-[#151515]">Logistics Enquiry: </span>
                     <a href="mailto:sales@tsllogistics.sg" className="font-semibold text-[#9A7D2D] hover:underline">
                       sales@tsllogistics.sg
                     </a>
                   </p>
                   <p>
-                    <span className="font-semibold text-[#151515]">Movers Enquiry: </span>
+                    <span className="font-semibold text-[#151515]">Movers & Warehousing Enquiry: </span>
                     <a href="mailto:ops@tslmovers.sg" className="font-semibold text-[#9A7D2D] hover:underline">
                       ops@tslmovers.sg
                     </a>
                   </p>
                   <p>
-                    <span className="font-semibold text-[#151515]">Express Team: </span>
+                    <span className="font-semibold text-[#151515]">Express Enquiry: </span>
                     <a href="mailto:ops@tslexpress.sg" className="font-semibold text-[#9A7D2D] hover:underline">
                       ops@tslexpress.sg
                     </a>

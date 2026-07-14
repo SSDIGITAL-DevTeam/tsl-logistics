@@ -46,15 +46,15 @@ export default function ContactPage() {
                 <div>
                   <h4 className="font-bold text-[#252525] mb-2">Email Us</h4>
                   <p className="text-sm mb-1">
-                    <span className="font-bold text-[#252525]">Trucking Enquiry: </span>
+                    <span className="font-bold text-[#252525]">Logistics Enquiry: </span>
                     <a href="mailto:sales@tsllogistics.sg" className="text-[#C8A84B] font-semibold hover:underline">sales@tsllogistics.sg</a>
                   </p>
                   <p className="text-sm mb-1">
-                    <span className="font-bold text-[#252525]">Movers Enquiry: </span>
+                    <span className="font-bold text-[#252525]">Movers & Warehousing Enquiry: </span>
                     <a href="mailto:ops@tslmovers.sg" className="text-[#C8A84B] font-semibold hover:underline">ops@tslmovers.sg</a>
                   </p>
                   <p className="text-sm">
-                    <span className="font-bold text-[#252525]">Express Team: </span>
+                    <span className="font-bold text-[#252525]">Express Enquiry: </span>
                     <a href="mailto:ops@tslexpress.sg" className="text-[#C8A84B] font-semibold hover:underline">ops@tslexpress.sg</a>
                   </p>
                 </div>

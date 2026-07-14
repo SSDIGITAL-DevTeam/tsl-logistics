@@ -36,14 +36,6 @@ const faqLd = {
     },
     {
       "@type": "Question",
-      name: "What regions do you operate in?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We have a global reach, operating across various regions and continents to meet the diverse needs of our clients.",
-      },
-    },
-    {
-      "@type": "Question",
       name: "What industries do you specialise in serving?",
       acceptedAnswer: {
         "@type": "Answer",
@@ -85,7 +77,7 @@ const services = [
     href: "/tsl-logistics",
   },
   {
-    title: "TSL Mover",
+    title: "TSL Movers",
     image: "/images/tsl-mover.jpg",
     alt: "TSL Mover truck",
     href: "/tsl-mover",
@@ -163,14 +155,11 @@ export default function HomePage() {
         <div className="hero-in relative z-10 mx-auto w-full max-w-[1200px] px-6 py-20 md:py-28">
           <div className="flex flex-col items-start gap-6 text-left">
             <h1 className="max-w-[900px] text-5xl font-bold leading-[1.08] text-white md:text-6xl lg:text-[68px]" style={{ textWrap: "balance" }}>
-              Delivering Value to Our Clients - On time, Every time!
+              Trusted · Reliable · Delivered
             </h1>
             <p className="max-w-[640px] text-sm leading-relaxed text-white md:text-base">
               TSL Logistics Pte Ltd was founded in 2003 by veteran logistics expert Mr. Alan Tay Soon Lai with the objective of establishing a client-focused logistics company in Singapore.
             </p>
-            <Link href="/contact" className="btn-pill-gold">
-              Contact Now
-            </Link>
           </div>
         </div>
       </section>
@@ -299,7 +288,7 @@ export default function HomePage() {
           <div className="md:w-[46%] shrink-0 anim-fade-right">
             <div className="overflow-hidden shadow-2xl">
               <Image
-                src="/images/permit-processing-homepage.jpg"
+                src="/images/permit.png"
                 alt="TSL Logistics team and fleet"
                 width={760}
                 height={480}

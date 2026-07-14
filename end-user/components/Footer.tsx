@@ -36,7 +36,9 @@ export default function Footer() {
               visibility and confidence throughout the shipping process.
             </p>
             <a
-              href="tel:+6567772724"
+              href="https://wa.me/6588119292?text=Hi%20TSL%20Logistics%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-w-[230px] items-center justify-center gap-2 bg-white px-7 py-4 text-sm font-semibold text-[#1a1a1a] transition hover:bg-[#f2f2f2] active:scale-[0.98]"
             >
               Call Us Today <span aria-hidden>→</span>
@@ -53,17 +55,13 @@ export default function Footer() {
             <div className="lg:col-span-1">
               <Link href="/">
                 <Image
-                  src="/images/logo-tsl.svg"
+                  src="/images/tsl-logo-footer.png"
                   alt="TSL Logistics"
                   width={247}
                   height={51}
-                  className="mb-4 h-10 w-auto brightness-0 invert"
+                  className="mb-4 h-10 w-auto"
                 />
               </Link>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                TSL Logistics Pte Ltd – Your trusted partner for transportation,
-                warehousing, &amp; distribution in Singapore.
-              </p>
               <div className="flex items-center gap-3 mt-2">
                 <a
                   href="https://www.facebook.com/tsllogistics.sg/"
@@ -94,7 +92,6 @@ export default function Footer() {
                   { label: "Home", href: "/" },
                   { label: "About Us", href: "/about" },
                   { label: "Our Team", href: "/our-team" },
-                  { label: "Blog", href: "/blog" },
                   { label: "Contact Us", href: "/contact" },
                 ].map((link) => (
                   <li key={link.href}>
@@ -118,7 +115,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {[
                   { label: "TSL Logistics", href: "/tsl-logistics" },
-                  { label: "TSL Mover", href: "/tsl-mover" },
+                  { label: "TSL Movers", href: "/tsl-mover" },
                   {
                     label: "TSL Express",
                     href: "/tsl-express",
@@ -159,17 +156,31 @@ export default function Footer() {
                     <span>+65 6777 2724</span>
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="mailto:sales@tsllogistics.sg"
-                    className="flex items-start gap-2.5 text-gray-400 hover:text-[#C8A84B] text-sm transition-colors duration-200"
-                  >
-                    <Mail
-                      size={14}
-                      className="shrink-0 mt-0.5 text-[#C8A84B]"
-                    />
-                    <span>sales@tsllogistics.sg</span>
-                  </a>
+                <li className="flex items-start gap-2.5 text-gray-400 text-sm">
+                  <Mail
+                    size={14}
+                    className="shrink-0 mt-0.5 text-[#C8A84B]"
+                  />
+                  <span className="space-y-1">
+                    <span className="block">
+                      <span className="text-gray-500">Trucking: </span>
+                      <a href="mailto:sales@tsllogistics.sg" className="hover:text-[#C8A84B] transition-colors duration-200">
+                        sales@tsllogistics.sg
+                      </a>
+                    </span>
+                    <span className="block">
+                      <span className="text-gray-500">Movers: </span>
+                      <a href="mailto:ops@tslmovers.sg" className="hover:text-[#C8A84B] transition-colors duration-200">
+                        ops@tslmovers.sg
+                      </a>
+                    </span>
+                    <span className="block">
+                      <span className="text-gray-500">Express: </span>
+                      <a href="mailto:ops@tslexpress.sg" className="hover:text-[#C8A84B] transition-colors duration-200">
+                        ops@tslexpress.sg
+                      </a>
+                    </span>
+                  </span>
                 </li>
                 <li>
                   <a

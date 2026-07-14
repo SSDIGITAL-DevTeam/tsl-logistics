@@ -24,9 +24,6 @@ export default function CompaniesThatMoveWithUs() {
           <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C8A84B]">
             Our credentials
           </p>
-          <h2 className="text-2xl font-bold text-[#1a1a1a] md:text-3xl">
-            Companies That Move With Us
-          </h2>
         </div>
         <div className="grid grid-cols-2 gap-6 anim-fade-up md:grid-cols-4">
           {certifications.map((cert) => (
@@ -39,7 +36,7 @@ export default function CompaniesThatMoveWithUs() {
                 alt={cert.alt}
                 width={200}
                 height={200}
-                className="h-[100px] w-full object-contain grayscale transition-all duration-300 group-hover:grayscale-0"
+                className="h-[100px] w-full object-contain"
               />
             </div>
           ))}
