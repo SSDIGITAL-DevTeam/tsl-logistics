@@ -13,27 +13,27 @@ export const metadata: Metadata = {
 
 const aboutGalleryImages = [
   {
-    src: "/images/about-trusted-logistics.png",
+    src: "/images/inside1.jpeg",
     alt: "TSL Logistics operation area",
     className: "md:col-span-2 md:row-span-2",
   },
   {
-    src: "/images/about-team.jpg",
+    src: "/images/inside2.jpeg",
     alt: "TSL Logistics team",
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    src: "/images/about-mission-team.png",
+    src: "/images/inside3.jpeg",
     alt: "TSL Logistics staff discussion",
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    src: "/images/about-vision-team.png",
+    src: "/images/inside4.jpeg",
     alt: "TSL Logistics moving team",
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    src: "/images/figma-services/warehouse-intro-new.jpg",
+    src: "/images/inside5.jpeg",
     alt: "TSL warehouse facility",
     className: "md:col-span-1 md:row-span-1",
   },
@@ -72,7 +72,7 @@ export default function AboutPage() {
 
             <div className="relative aspect-[16/10] overflow-hidden shadow-md anim-fade-right">
               <Image
-                src="/images/about-trusted-logistics.png"
+                src="/images/_DSC0024-2.jpg"
                 alt="TSL Logistics operations"
                 fill
                 sizes="(max-width: 1024px) 100vw, 660px"
@@ -113,7 +113,7 @@ export default function AboutPage() {
           {/* Pegang-kotak image */}
           <div className="relative z-10 w-[380px] md:w-[500px]">
             <Image
-              src="/images/pegang-kotak.png"
+              src="/images/tangan-kotak.png"
               alt="Hands holding a package"
               width={700}
               height={560}
@@ -157,7 +157,6 @@ export default function AboutPage() {
                 It&rsquo;s often very trendy these days to start a Vision
                 statement with words like &ldquo;To be the best logistics
                 company&hellip;&rdquo; etc. And that&rsquo;s why we won&rsquo;t!
-                Mr Lai&rsquo;s vision for TSL is simple:
               </p>
               <p className="text-base md:text-lg font-bold text-[#1a1a1a] leading-snug mb-5">
                 &ldquo;To continue to remain the go to name for logistics
@@ -172,7 +171,7 @@ export default function AboutPage() {
             {/* Top-right photo */}
             <div className="relative overflow-hidden min-h-[280px] anim-fade-right">
               <Image
-                src="/images/about-mission-team.png"
+                src="/images/blur-car.png"
                 alt="TSL Logistics team"
                 fill
                 sizes="(max-width: 768px) 100vw, 600px"
@@ -377,7 +376,7 @@ export default function AboutPage() {
         <div className="v2-no-radius relative overflow-hidden bg-[#1f3a70] px-6 py-16 md:min-h-[330px] md:px-10 lg:px-16">
           <div className="pointer-events-none absolute bottom-[-52px] left-[-48px] hidden w-[42vw] max-w-[590px] md:block">
             <Image
-              src="/images/chatgpt-image-jun-29-2026-10-33-45-am.png"
+              src="/images/box.png"
               alt=""
               width={1194}
               height={810}
@@ -386,7 +385,7 @@ export default function AboutPage() {
           </div>
           <div className="pointer-events-none absolute bottom-[-58px] left-[-90px] w-[300px] opacity-55 md:hidden">
             <Image
-              src="/images/chatgpt-image-jun-29-2026-10-33-45-am.png"
+              src="/images/box.png"
               alt=""
               width={1194}
               height={810}
@@ -394,7 +393,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="relative z-10 mx-auto grid max-w-[1220px] items-center gap-10 md:min-h-[230px] md:grid-cols-[minmax(280px,0.78fr)_minmax(360px,1fr)_minmax(260px,0.55fr)]">
+          <div className="relative z-10 mx-auto grid max-w-[1220px] items-center gap-10 md:min-h-[230px] md:grid-cols-[minmax(280px,0.9fr)_minmax(360px,1fr)]">
             <div className="hidden md:block" />
 
             <div className="text-center md:text-left">
@@ -416,77 +415,6 @@ export default function AboutPage() {
               <p className="mt-4 text-2xl font-medium leading-tight text-white md:text-[34px]">
                 Finished Bookings
               </p>
-            </div>
-
-            <div className="grid justify-center gap-6 sm:grid-cols-3 md:grid-cols-1 md:justify-start md:gap-7">
-            {[
-              {
-                label: "Residential",
-                icon: (
-                  <svg
-                    width="42"
-                    height="42"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.55"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                ),
-              },
-              {
-                label: "Commercial",
-                icon: (
-                  <svg
-                    width="42"
-                    height="42"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.55"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="2" y="7" width="20" height="14" rx="2" />
-                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                    <line x1="12" y1="12" x2="12" y2="16" />
-                    <line x1="10" y1="14" x2="14" y2="14" />
-                  </svg>
-                ),
-              },
-              {
-                label: "Offices",
-                icon: (
-                  <svg
-                    width="42"
-                    height="42"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.55"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M3 9h18" />
-                    <path d="M9 21V9" />
-                  </svg>
-                ),
-              },
-            ].map(({ label, icon }) => (
-              <div key={label} className="flex items-center gap-4 text-white">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center text-white md:h-14 md:w-14">
-                  {icon}
-                </div>
-                <span className="text-2xl font-semibold leading-none md:text-[34px]">
-                  {label}
-                </span>
-              </div>
-            ))}
             </div>
           </div>
         </div>

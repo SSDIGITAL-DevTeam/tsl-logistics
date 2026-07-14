@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Building2, Home as HomeIcon, Warehouse as WarehouseIcon } from "lucide-react";
 import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
 
 const fleet = [
@@ -33,12 +32,6 @@ const milestones = [
   { year: "2023", desc: "Launch of TSL Express Pte Ltd" },
 ];
 
-const serviceTypes = [
-  { label: "Residential", icon: HomeIcon },
-  { label: "Commercial", icon: Building2 },
-  { label: "Offices", icon: WarehouseIcon },
-];
-
 export default function AboutV2() {
   return (
     <>
@@ -68,7 +61,7 @@ export default function AboutV2() {
 
           <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-[22px] bg-[#e7ebef] md:mt-12">
             <Image
-              src="/images/about-trusted-logistics.png"
+              src="/images/_DSC0024-2.jpg"
               alt="TSL Logistics operations"
               fill
               priority
@@ -93,7 +86,7 @@ export default function AboutV2() {
               <p className="text-sm leading-relaxed text-[#2a2000]">
                 It&rsquo;s often very trendy these days to start a Vision statement with words
                 like &ldquo;To be the best logistics company&hellip;&rdquo; etc. And
-                that&rsquo;s why we won&rsquo;t! Mr Lai&rsquo;s vision for TSL is simple:
+                that&rsquo;s why we won&rsquo;t!
               </p>
               <p className="mt-4 text-lg font-bold leading-snug text-[#1a1a1a] md:text-xl">
                 &ldquo;To continue to remain the go to name for logistics services throughout
@@ -207,18 +200,6 @@ export default function AboutV2() {
         <p className="mt-4 text-xl font-medium text-white/80 md:text-2xl">
           Finished Bookings
         </p>
-
-        <div className="mx-auto mt-12 flex max-w-[640px] flex-wrap items-center justify-center gap-3">
-          {serviceTypes.map(({ label, icon: Icon }) => (
-            <div
-              key={label}
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-6 py-3"
-            >
-              <Icon size={18} strokeWidth={1.8} className="text-[#E5C96A]" />
-              <span className="text-sm font-semibold">{label}</span>
-            </div>
-          ))}
-        </div>
       </section>
     </>
   );
