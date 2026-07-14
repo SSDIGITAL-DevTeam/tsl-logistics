@@ -56,7 +56,9 @@ function TeamCard({ member }: { member: TeamMember }) {
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
           className={`transition duration-500 group-hover:scale-[1.03] ${
-            member.photo.endsWith(".jpg") ? "object-cover object-top" : "object-contain object-bottom"
+            member.photo.endsWith(".jpg") || member.slug === "alan-tay"
+              ? "object-cover object-top"
+              : "object-contain object-bottom"
           }`}
         />
       )}
@@ -116,7 +118,7 @@ export default async function OurTeamPage({ searchParams }: Props) {
   return (
     <>
       <div className="theme-v1-only">
-      <PageHero title="Our Team" image="/images/about-team.jpg" />
+      <PageHero title="Our Team" image="/images/ourteam-banner.png" imagePosition="object-[center_35%]" />
 
       <section className="bg-[#f4f4f4] py-12 md:py-16">
         <div className="mx-auto max-w-[1240px] px-5 md:px-6">

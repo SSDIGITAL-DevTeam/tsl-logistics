@@ -49,7 +49,7 @@ export const teamMembers: TeamMember[] = [
     name: "Alan Tay",
     role: "Managing Director (Founder) - Logistics",
     department: "logistics",
-    photo: "/images/alan-tay.jpg",
+    photo: "/images/alan.png",
     intro:
       "Founder and Managing Director of TSL Group, with over 20 years of experience in the logistics industry. He began his career in courier services and has since built deep expertise across trucking, warehousing, and end-to-end supply chain operations, driving efficiency and reliability at every level.",
     experience: [
@@ -71,7 +71,7 @@ export const teamMembers: TeamMember[] = [
     name: "Shirley Goh",
     role: "Sales Manager - Logistics",
     department: "logistics",
-    photo: "/images/shirley-goh.jpg",
+    photo: "/images/shirley.png",
     intro:
       "Started with TSL Logistics in 2018 without prior industry experience, driven by a strong willingness to learn. Gained hands-on experience across Sales, Customer Service, Accounts, and Operations, building a well-rounded understanding of logistics, client management, and operations. Brings a practical, adaptable approach backed by years of cross-functional experience.",
     experience: [
@@ -117,7 +117,7 @@ export const teamMembers: TeamMember[] = [
     name: "Chia Weeliang",
     role: "Business Development Manager - Express",
     department: "express",
-    photo: "/images/chia-weeliang.jpg",
+    photo: "/images/chia.png",
     intro:
       "Chia focuses on express delivery opportunities, helping customers plan fast, practical delivery arrangements for urgent and recurring jobs.",
     experience: [
@@ -171,7 +171,7 @@ export const teamMembers: TeamMember[] = [
     name: "Spencer Tan",
     role: "Business Development Manager - Movers",
     department: "movers",
-    photo: "/images/spencer-tan.jpg",
+    photo: "/images/spencer.png",
     intro:
       "Spencer helps moving customers plan the right scope, manpower, and timing for residential and business relocations.",
     experience: [

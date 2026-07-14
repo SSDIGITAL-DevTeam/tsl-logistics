@@ -25,7 +25,9 @@ function TeamCardV2({ member }: { member: TeamMember }) {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
             className={`transition duration-500 group-hover:scale-[1.03] ${
-              member.photo.endsWith(".jpg") ? "object-cover object-top" : "object-contain object-bottom"
+              member.photo.endsWith(".jpg") || member.slug === "alan-tay"
+                ? "object-cover object-top"
+                : "object-contain object-bottom"
             }`}
           />
         )}
