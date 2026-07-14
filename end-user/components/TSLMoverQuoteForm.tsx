@@ -120,6 +120,7 @@ export default function TSLMoverQuoteForm() {
           type="text"
           value={form.name}
           onChange={(event) => updateField("name", event.target.value)}
+          placeholder="Your Name"
           className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
         />
       </div>
@@ -131,6 +132,7 @@ export default function TSLMoverQuoteForm() {
           type="email"
           value={form.email}
           onChange={(event) => updateField("email", event.target.value)}
+          placeholder="you@example.com"
           className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
         />
       </div>
@@ -142,6 +144,7 @@ export default function TSLMoverQuoteForm() {
           type="tel"
           value={form.phone}
           onChange={(event) => updateField("phone", event.target.value)}
+          placeholder="+65 9123 4567"
           className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
         />
       </div>
