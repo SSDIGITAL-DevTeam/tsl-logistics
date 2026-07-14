@@ -4,10 +4,8 @@ import ServicePageLayout from "@/components/ServicePageLayout";
 import {
   FigmaBand,
   FigmaImageCards,
-  FigmaIntro,
   FigmaSectionHeader,
   FigmaServiceShell,
-  FigmaSplitSection,
   serviceIcons,
 } from "@/components/FigmaServiceContent";
 import WarehousingServicesV2 from "@/components/WarehousingServicesV2";
@@ -33,29 +31,41 @@ export default function WarehousingServicesPage() {
   return (
     <>
     <div className="theme-v1-only">
-    <ServicePageLayout title="Warehousing Services" image="/images/TSL Logistics Warehouse-1920w.jpeg" enquiryOptions={enquiryOptions} source="warehousing-services">
+    <ServicePageLayout title="Warehousing" image="/images/TSL Logistics Warehouse-1920w.jpeg" enquiryOptions={enquiryOptions} source="warehousing-services" requestFormServiceSuffix={false}>
       <FigmaServiceShell>
-        <FigmaIntro
-          title="TSL Warehousing"
-          image="/images/figma-services/warehouse-intro-new.jpg"
-          imageAlt="TSL Warehousing facility"
-          body={[
-            "Reliable, secure, and flexible warehousing solutions to support your supply chain needs.",
-            "Our Singapore West Zone facility is designed for efficient handling of general cargo, offering scalable storage options and integrated logistics support to help your business operate smoothly and grow with confidence.",
-          ]}
-        />
-
-        <FigmaSplitSection
-          eyebrow="Strategic Warehouse Location"
-          title="Strategic Warehouse Location"
-          image="/images/wfn05952.jpg"
-          imageAlt="Warehouse location"
-          body={[
-            "Our warehouse is strategically located in Singapore's West Zone, providing easy access to major industrial areas, ports, and transport networks.",
-            "This ensures faster handling, smoother distribution, and cost-efficient logistics for your operations.",
-          ]}
-          cta="Contact Us"
-        />
+        <section className="grid items-center gap-8 md:grid-cols-[411px_1fr] md:gap-12">
+          <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-full md:min-h-[440px]">
+            <Image
+              src="/images/tsl-warehousing.jpg"
+              alt="TSL Warehousing facility"
+              fill
+              sizes="(min-width: 768px) 411px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold leading-tight text-[#1a1a1a] md:text-4xl">
+                TSL Warehousing
+              </h2>
+              <div className="mt-5 space-y-4 text-sm leading-relaxed text-[#555] md:text-base">
+                <p>Reliable, secure, and flexible warehousing solutions to support your supply chain needs.</p>
+                <p>Our Singapore West Zone facility is designed for efficient handling of general cargo, offering scalable storage options and integrated logistics support to help your business operate smoothly and grow with confidence.</p>
+              </div>
+            </div>
+            <div className="border-t border-[#e2e2e2] pt-8">
+              <p className="eyebrow mb-2">Strategic Warehouse Location</p>
+              <h3 className="text-xl font-bold leading-tight text-[#1a1a1a] md:text-2xl">
+                Strategic Warehouse Location
+              </h3>
+              <div className="mt-4 space-y-4 text-sm leading-relaxed text-[#555] md:text-base">
+                <p>Our warehouse is strategically located in Singapore's West Zone, providing easy access to major industrial areas, ports, and transport networks.</p>
+                <p>This ensures faster handling, smoother distribution, and cost-efficient logistics for your operations.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="space-y-10 py-2">
           <div className="text-center">
@@ -151,21 +161,16 @@ export default function WarehousingServicesPage() {
         </section>
 
         <FigmaBand dark fullWidth>
-          <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
+          <div className="grid items-stretch gap-8 py-6 md:py-10 lg:grid-cols-[minmax(0,1fr)_380px]">
             <div>
               <h2 className="text-2xl font-bold leading-[1.3] md:text-3xl">Let&apos;s Optimize Your Storage & Distribution</h2>
               <p className="mt-4 max-w-3xl text-sm leading-[1.5] text-white/90 md:text-base">
                 Looking for secure and flexible warehousing solutions in Singapore? Contact us today to discuss your storage requirements, space needs, and operational goals. Our team is ready to provide tailored warehousing solutions that help streamline your inventory management, improve efficiency, and support your business operations seamlessly as you grow.
               </p>
-              <div className="mt-6">
-                <a href="/contact" className="inline-flex h-[52px] min-w-[180px] items-center justify-center bg-white px-6 text-sm font-bold text-[#121212]">
-                  Contact Us
-                </a>
-              </div>
             </div>
             <div className="relative -mb-10 -mr-5 -mt-10 min-h-[260px] overflow-hidden md:-mb-14 md:-mr-10 md:-mt-14 lg:min-h-full">
               <Image
-                src="/images/figma-services/warehouse-cta.png"
+                src="/images/box3.png"
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 520px, 100vw"

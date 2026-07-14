@@ -5,9 +5,7 @@ import {
   ServiceContactButtonV2,
   ServiceFeatureGridV2,
   ServiceImageCardsV2,
-  ServiceIntroV2,
   ServiceSectionHeaderV2,
-  ServiceSplitV2,
   serviceIcons,
 } from "@/components/ServiceBlocksV2";
 
@@ -38,32 +36,45 @@ const valueAddedItems = [
 export default function WarehousingServicesV2() {
   return (
     <ServicePageLayoutV2
-      title="Warehousing Services"
+      title="Warehousing"
       image="/images/TSL Logistics Warehouse-1920w.jpeg"
       enquiryOptions={enquiryOptions}
       source="warehousing-services"
+      requestFormServiceSuffix={false}
     >
-      <ServiceIntroV2
-        title="TSL Warehousing"
-        image="/images/figma-services/warehouse-intro-new.jpg"
-        imageAlt="TSL Warehousing facility"
-        body={[
-          "Reliable, secure, and flexible warehousing solutions to support your supply chain needs.",
-          "Our Singapore West Zone facility is designed for efficient handling of general cargo, offering scalable storage options and integrated logistics support to help your business operate smoothly and grow with confidence.",
-        ]}
-      />
-
-      <ServiceSplitV2
-        eyebrow="Strategic Warehouse Location"
-        title="Strategic Warehouse Location"
-        image="/images/wfn05952.jpg"
-        imageAlt="Warehouse location"
-        body={[
-          "Our warehouse is strategically located in Singapore's West Zone, providing easy access to major industrial areas, ports, and transport networks.",
-          "This ensures faster handling, smoother distribution, and cost-efficient logistics for your operations.",
-        ]}
-        cta="Contact Us"
-      />
+      <section className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+        <div className="v2-surface relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-full md:min-h-[440px]">
+          <Image
+            src="/images/tsl-warehousing.jpg"
+            alt="TSL Warehousing facility"
+            fill
+            sizes="(min-width: 768px) 48vw, 100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="space-y-7">
+          <div className="v2-surface bg-[#f7f8fa] p-6 md:p-7">
+            <h2 className="text-xl font-bold leading-tight text-[#151515] md:text-2xl">
+              TSL Warehousing
+            </h2>
+            <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#555] md:text-base">
+              <p>Reliable, secure, and flexible warehousing solutions to support your supply chain needs.</p>
+              <p>Our Singapore West Zone facility is designed for efficient handling of general cargo, offering scalable storage options and integrated logistics support to help your business operate smoothly and grow with confidence.</p>
+            </div>
+          </div>
+          <div className="v2-surface bg-[#f7f8fa] p-6 md:p-7">
+            <p className="eyebrow mb-1">Strategic Warehouse Location</p>
+            <h3 className="text-xl font-bold leading-tight text-[#151515] md:text-2xl">
+              Strategic Warehouse Location
+            </h3>
+            <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#555] md:text-base">
+              <p>Our warehouse is strategically located in Singapore's West Zone, providing easy access to major industrial areas, ports, and transport networks.</p>
+              <p>This ensures faster handling, smoother distribution, and cost-efficient logistics for your operations.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="space-y-10">
         <div className="text-center">
@@ -145,9 +156,8 @@ export default function WarehousingServicesV2() {
       <ServiceClosingBandV2
         title="Let's Optimize Your Storage & Distribution"
         body="Looking for secure and flexible warehousing solutions in Singapore? Contact us today to discuss your storage requirements, space needs, and operational goals. Our team is ready to provide tailored warehousing solutions that help streamline your inventory management, improve efficiency, and support your business operations seamlessly as you grow."
-        cta="Contact Us"
-        ctaHref="/contact"
-        image="/images/figma-services/warehouse-cta.png"
+        showCta={false}
+        image="/images/box3.png"
         imageAlt="Warehouse storage boxes"
       />
     </ServicePageLayoutV2>

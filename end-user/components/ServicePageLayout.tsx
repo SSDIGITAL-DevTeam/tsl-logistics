@@ -9,6 +9,8 @@ interface ServicePageLayoutProps {
   showContactForm?: boolean;
   ctaVariant?: "dark" | "quote";
   source?: string;
+  /** Set to false to drop the trailing "Service" word in the request form heading. */
+  requestFormServiceSuffix?: boolean;
 }
 
 export default function ServicePageLayout({
@@ -18,6 +20,7 @@ export default function ServicePageLayout({
   enquiryOptions,
   showContactForm = true,
   source = "service",
+  requestFormServiceSuffix = true,
 }: ServicePageLayoutProps) {
   return (
     <>
@@ -37,7 +40,7 @@ export default function ServicePageLayout({
             <div className="text-center mb-8">
               <p className="eyebrow mb-2">Get a Quote</p>
               <h2 className="text-xl md:text-2xl font-bold text-[#252525]">
-                Request for TSL Express Service
+                Request for TSL {title}{requestFormServiceSuffix ? " Service" : ""}
               </h2>
               <div className="gold-divider" />
             </div>
