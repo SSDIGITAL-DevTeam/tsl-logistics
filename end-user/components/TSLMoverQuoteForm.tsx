@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import PhoneInput, { isPhoneValueValid } from "./ui/PhoneInput";
+import SuccessModal from "./ui/SuccessModal";
 
 const propertyTypes = [
   "HDB",
@@ -36,12 +38,20 @@ const initialForm: FormState = {
   _h: "",
 };
 
+const NAME_PATTERN = /^[\p{L}][\p{L}\s'.-]{1,99}$/u;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function today() {
+  return new Date().toISOString().split("T")[0];
+}
+
 export default function TSLMoverQuoteForm() {
   const pathname = usePathname();
   const [form, setForm] = useState<FormState>(initialForm);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const updateField = (field: keyof FormState, value: string) => {
     setForm((current) => ({ ...current, [field]: value }));
@@ -55,11 +65,45 @@ export default function TSLMoverQuoteForm() {
     `Address (moving to): ${form.addressTo || "-"}`,
   ].join("\n");
 
+  const validate = () => {
+    const errors: Record<string, string> = {};
+
+    if (!NAME_PATTERN.test(form.name.trim())) {
+      errors.name = "Enter a valid name (letters only, 2-100 characters).";
+    }
+    if (!EMAIL_PATTERN.test(form.email.trim())) {
+      errors.email = "Enter a valid email address.";
+    }
+    if (!isPhoneValueValid(form.phone)) {
+      errors.phone = "Enter a valid phone number for the selected country.";
+    }
+    if (!form.movingDate || form.movingDate < today()) {
+      errors.movingDate = "Please select today's date or a future date.";
+    }
+    if (!form.propertyFrom) {
+      errors.propertyFrom = "Please select a property type.";
+    }
+    if (!form.propertyTo) {
+      errors.propertyTo = "Please select a property type.";
+    }
+    if (form.addressFrom.trim().length < 5) {
+      errors.addressFrom = "Enter a more complete address (min. 5 characters).";
+    }
+    if (form.addressTo.trim().length < 5) {
+      errors.addressTo = "Enter a more complete address (min. 5 characters).";
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setLoading(true);
     setError("");
 
+    if (!validate()) return;
+
+    setLoading(true);
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -77,7 +121,22 @@ export default function TSLMoverQuoteForm() {
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to submit quotation request");
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        if (data?.errors) {
+          setFieldErrors(
+            Object.fromEntries(
+              Object.entries(data.errors as Record<string, string[]>).map(([key, msgs]) => [
+                key,
+                msgs[0],
+              ]),
+            ),
+          );
+        } else {
+          setError("Something went wrong. Please try again.");
+        }
+        return;
+      }
 
       setSubmitted(true);
       setForm(initialForm);
@@ -90,13 +149,10 @@ export default function TSLMoverQuoteForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white p-8 text-center text-[#121212]">
-        <div className="mb-4 text-5xl text-[#C8A84B]">&#10003;</div>
-        <p className="text-lg font-semibold">Thank you for your quotation request.</p>
-        <p className="mt-2 text-sm leading-relaxed text-[#555]">
-          Our team will get back to you with the right moving support.
-        </p>
-      </div>
+      <SuccessModal
+        title="Thank you for your quotation request."
+        message="Our team will get back to you with the right moving support."
+      />
     );
   }
 
@@ -123,6 +179,7 @@ export default function TSLMoverQuoteForm() {
           placeholder="Your Name"
           className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
         />
+        {fieldErrors.name && <p className="mt-1 text-xs text-red-500">{fieldErrors.name}</p>}
       </div>
 
       <div>
@@ -135,17 +192,14 @@ export default function TSLMoverQuoteForm() {
           placeholder="you@example.com"
           className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
         />
+        {fieldErrors.email && <p className="mt-1 text-xs text-red-500">{fieldErrors.email}</p>}
       </div>
 
       <div>
         <label className="mb-1 block text-sm font-semibold">Phone Number</label>
-        <input
-          required
-          type="tel"
-          value={form.phone}
-          onChange={(event) => updateField("phone", event.target.value)}
-          placeholder="+65 9123 4567"
-          className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
+        <PhoneInput
+          onChange={(value) => updateField("phone", value)}
+          error={fieldErrors.phone}
         />
       </div>
 
@@ -154,10 +208,12 @@ export default function TSLMoverQuoteForm() {
         <input
           required
           type="date"
+          min={today()}
           value={form.movingDate}
           onChange={(event) => updateField("movingDate", event.target.value)}
           className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
         />
+        {fieldErrors.movingDate && <p className="mt-1 text-xs text-red-500">{fieldErrors.movingDate}</p>}
       </div>
 
       <div>
@@ -175,6 +231,7 @@ export default function TSLMoverQuoteForm() {
             </option>
           ))}
         </select>
+        {fieldErrors.propertyFrom && <p className="mt-1 text-xs text-red-500">{fieldErrors.propertyFrom}</p>}
       </div>
 
       <div>
@@ -192,6 +249,7 @@ export default function TSLMoverQuoteForm() {
             </option>
           ))}
         </select>
+        {fieldErrors.propertyTo && <p className="mt-1 text-xs text-red-500">{fieldErrors.propertyTo}</p>}
       </div>
 
       <div>
@@ -204,6 +262,7 @@ export default function TSLMoverQuoteForm() {
           placeholder="Your Address"
           className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
         />
+        {fieldErrors.addressFrom && <p className="mt-1 text-xs text-red-500">{fieldErrors.addressFrom}</p>}
       </div>
 
       <div>
@@ -216,6 +275,7 @@ export default function TSLMoverQuoteForm() {
           placeholder="Your Address"
           className="h-11 w-full border border-black/30 bg-white px-3 text-sm outline-none transition focus:border-[#C8A84B]"
         />
+        {fieldErrors.addressTo && <p className="mt-1 text-xs text-red-500">{fieldErrors.addressTo}</p>}
       </div>
 
       {error && <p className="text-sm text-red-600">{error}</p>}

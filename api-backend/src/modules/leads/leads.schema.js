@@ -1,9 +1,18 @@
 import { z } from 'zod';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 export const createLeadSchema = z.object({
-  name: z.string().min(1, 'Name is required').max(255),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().min(5, 'Phone is required').max(50),
+  name: z
+    .string()
+    .trim()
+    .min(2, 'Name must be at least 2 characters')
+    .max(255)
+    .regex(/^[\p{L}][\p{L}\s'.-]*$/u, "Name may only contain letters, spaces, and ' - ."),
+  email: z.string().trim().email('Invalid email address').max(255),
+  phone: z
+    .string()
+    .trim()
+    .refine((v) => isValidPhoneNumber(v), 'Invalid phone number'),
   enquiry: z.string().max(255).optional(),
   message: z.string().max(5000).optional(),
   notes: z.string().max(5000).optional(),

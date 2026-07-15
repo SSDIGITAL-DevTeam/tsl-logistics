@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import CustomSelect from "./ui/CustomSelect";
+import PhoneInput, { isPhoneValueValid } from "./ui/PhoneInput";
+import SuccessModal from "./ui/SuccessModal";
 
 interface ContactFormProps {
   enquiryOptions?: string[];
@@ -16,6 +18,9 @@ const defaultOptions = [
   "Others",
 ];
 
+const NAME_PATTERN = /^[\p{L}][\p{L}\s'.-]{1,99}$/u;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function ContactForm({
   enquiryOptions = defaultOptions,
   source = "contact",
@@ -24,6 +29,7 @@ export default function ContactForm({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -33,10 +39,33 @@ export default function ContactForm({
     _h: "", // honeypot — must stay empty
   });
 
+  const validate = () => {
+    const errors: Record<string, string> = {};
+
+    if (!NAME_PATTERN.test(form.name.trim())) {
+      errors.name = "Enter a valid name (letters only, 2-100 characters).";
+    }
+    if (!EMAIL_PATTERN.test(form.email.trim())) {
+      errors.email = "Enter a valid email address.";
+    }
+    if (!isPhoneValueValid(form.phone)) {
+      errors.phone = "Enter a valid phone number for the selected country.";
+    }
+    if (form.message.length > 5000) {
+      errors.message = "Message is too long (max 5000 characters).";
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError("");
+
+    if (!validate()) return;
+
+    setLoading(true);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -48,7 +77,24 @@ export default function ContactForm({
           pagePath: pathname,
         }),
       });
-      if (!res.ok) throw new Error();
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        if (data?.errors) {
+          setFieldErrors(
+            Object.fromEntries(
+              Object.entries(data.errors as Record<string, string[]>).map(([key, msgs]) => [
+                key,
+                msgs[0],
+              ]),
+            ),
+          );
+        } else {
+          setError("Something went wrong. Please try again.");
+        }
+        return;
+      }
+
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again.");
@@ -59,11 +105,10 @@ export default function ContactForm({
 
   if (submitted) {
     return (
-      <div className="text-center py-8">
-        <div className="text-[#C8A84B] text-5xl mb-4">&#10003;</div>
-        <p className="font-semibold text-[#252525] text-lg">Thank you for contacting us.</p>
-        <p className="text-[#555] mt-2">We will get back to you as soon as possible.</p>
-      </div>
+      <SuccessModal
+        title="Thank you for contacting us."
+        message="We will get back to you as soon as possible."
+      />
     );
   }
 
@@ -92,16 +137,13 @@ export default function ContactForm({
             placeholder="Your full name"
             className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
           />
+          {fieldErrors.name && <p className="mt-1 text-xs text-red-500">{fieldErrors.name}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-[#252525] mb-1">Phone <span className="text-red-500">*</span></label>
-          <input
-            type="tel"
-            required
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            placeholder="+65 9123 4567"
-            className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
+          <PhoneInput
+            onChange={(value) => setForm({ ...form, phone: value })}
+            error={fieldErrors.phone}
           />
         </div>
       </div>
@@ -115,6 +157,7 @@ export default function ContactForm({
           placeholder="you@example.com"
           className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none"
         />
+        {fieldErrors.email && <p className="mt-1 text-xs text-red-500">{fieldErrors.email}</p>}
       </div>
       <div>
         <label className="block text-sm font-medium text-[#252525] mb-1">Type of Enquiry</label>
@@ -134,6 +177,7 @@ export default function ContactForm({
           placeholder="Tell us more about your enquiry..."
           className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:border-[#C8A84B] focus:outline-none resize-y"
         />
+        {fieldErrors.message && <p className="mt-1 text-xs text-red-500">{fieldErrors.message}</p>}
       </div>
       {error && <p className="text-red-500 text-sm">{error}</p>}
       <button
