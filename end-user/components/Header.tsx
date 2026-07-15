@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { getHeaderBrandName } from "@/lib/headerBrand";
 
 const services = [
   { label: "TSL Logistics", href: "/tsl-logistics" },
@@ -31,6 +32,8 @@ const visibleNavLinks = navLinks.filter((link) => !link.hidden);
 
 export default function Header() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const brandName = getHeaderBrandName(pathname, searchParams.get("department"));
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -96,15 +99,21 @@ export default function Header() {
         >
 
           {/* ── Logo ── */}
-          <Link href="/" className="shrink-0 hover:opacity-85 transition-opacity">
+          <Link href="/" className="flex shrink-0 items-center gap-2.5 hover:opacity-85 transition-opacity">
             <Image
-              src="/images/tsl-logo.png"
-              alt="TSL Logistics"
-              width={247}
-              height={51}
-              className="h-[42px] w-auto"
+              src="/images/logo-only-tsl.png"
+              alt="TSL"
+              width={64}
+              height={80}
+              className="h-10 w-auto"
               priority
             />
+            <span className="flex flex-col leading-tight">
+              <span className="text-lg font-bold text-[#C8A84B]">{brandName}</span>
+              <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#1a1a1a]">
+                Trusted &middot; Reliable &middot; Delivered
+              </span>
+            </span>
           </Link>
 
           {/* ── Desktop Nav (centre) ── */}

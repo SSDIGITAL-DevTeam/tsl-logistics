@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 import HeaderV2 from "@/components/HeaderV2";
@@ -31,18 +32,22 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   if (!isV2Ready(pathname)) {
-    return <Header />;
+    return (
+      <Suspense fallback={null}>
+        <Header />
+      </Suspense>
+    );
   }
 
   return (
-    <>
+    <Suspense fallback={null}>
       <div className="theme-v1-only">
         <Header />
       </div>
       <div className="theme-v2-only">
         <HeaderV2 />
       </div>
-    </>
+    </Suspense>
   );
 }
 
@@ -50,17 +55,21 @@ export function SiteFooter() {
   const pathname = usePathname();
 
   if (!isV2Ready(pathname)) {
-    return <Footer />;
+    return (
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
+    );
   }
 
   return (
-    <>
+    <Suspense fallback={null}>
       <div className="theme-v1-only">
         <Footer />
       </div>
       <div className="theme-v2-only">
         <FooterV2 />
       </div>
-    </>
+    </Suspense>
   );
 }

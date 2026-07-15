@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Mail, MapPin, Phone } from "lucide-react";
 import CtaBandV2 from "@/components/CtaBandV2";
+import { getHeaderBrandName } from "@/lib/headerBrand";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -18,6 +22,10 @@ const serviceLinks = [
 ];
 
 export default function FooterV2() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const brandName = getHeaderBrandName(pathname, searchParams.get("department"));
+
   return (
     <footer>
       {/* ── CTA Banner ── */}
@@ -33,14 +41,20 @@ export default function FooterV2() {
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
             {/* Logo & About */}
             <div className="lg:col-span-1">
-              <Link href="/">
+              <Link href="/" className="mb-4 flex items-center gap-2.5">
                 <Image
-                  src="/images/tsl-logo.png"
-                  alt="TSL Logistics"
-                  width={247}
-                  height={51}
-                  className="mb-4 h-10 w-auto"
+                  src="/images/logo-only-tsl.png"
+                  alt="TSL"
+                  width={64}
+                  height={80}
+                  className="h-10 w-auto"
                 />
+                <span className="flex flex-col leading-tight">
+                  <span className="text-lg font-bold text-[#C8A84B]">{brandName}</span>
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#1a1a1a]">
+                    Trusted &middot; Reliable &middot; Delivered
+                  </span>
+                </span>
               </Link>
               <a
                 href="https://www.facebook.com/tsllogistics.sg/"

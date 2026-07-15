@@ -1,8 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Phone, MapPin, Mail } from "lucide-react";
+import { getHeaderBrandName } from "@/lib/headerBrand";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const brandName = getHeaderBrandName(pathname, searchParams.get("department"));
+
   return (
     <footer>
       {/* ── CTA Banner ── */}
@@ -53,14 +61,20 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Logo & About */}
             <div className="lg:col-span-1">
-              <Link href="/">
+              <Link href="/" className="mb-4 flex items-center gap-2.5">
                 <Image
-                  src="/images/tsl-logo-footer.png"
-                  alt="TSL Logistics"
-                  width={247}
-                  height={51}
-                  className="mb-4 h-10 w-auto"
+                  src="/images/logo-only-tsl.png"
+                  alt="TSL"
+                  width={64}
+                  height={80}
+                  className="h-10 w-auto"
                 />
+                <span className="flex flex-col leading-tight">
+                  <span className="text-lg font-bold text-[#C8A84B]">{brandName}</span>
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-white/70">
+                    Trusted &middot; Reliable &middot; Delivered
+                  </span>
+                </span>
               </Link>
               <div className="flex items-center gap-3 mt-2">
                 <a

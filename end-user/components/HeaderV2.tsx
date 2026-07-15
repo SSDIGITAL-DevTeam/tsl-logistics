@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { getHeaderBrandName } from "@/lib/headerBrand";
 
 const services = [
   { label: "TSL Logistics", href: "/tsl-logistics" },
@@ -34,6 +35,8 @@ const HEADER_H_SCROLLED = 64;
 
 export default function HeaderV2() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const brandName = getHeaderBrandName(pathname, searchParams.get("department"));
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -111,15 +114,21 @@ export default function HeaderV2() {
           style={{ height: scrolled ? HEADER_H_SCROLLED : HEADER_H }}
         >
           {/* ── Logo ── */}
-          <Link href="/" className="shrink-0 transition-opacity hover:opacity-85">
+          <Link href="/" className="flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-85">
             <Image
-              src="/images/tsl-logo.png"
-              alt="TSL Logistics"
-              width={247}
-              height={51}
+              src="/images/logo-only-tsl.png"
+              alt="TSL"
+              width={64}
+              height={80}
               className={`w-auto transition-all duration-300 ${scrolled ? "h-9" : "h-10"}`}
               priority
             />
+            <span className="flex flex-col leading-tight">
+              <span className="text-lg font-bold text-[#C8A84B]">{brandName}</span>
+              <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#151515]">
+                Trusted &middot; Reliable &middot; Delivered
+              </span>
+            </span>
           </Link>
 
           {/* ── Desktop capsule nav ── */}

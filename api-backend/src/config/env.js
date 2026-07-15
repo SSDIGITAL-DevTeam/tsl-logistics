@@ -1,5 +1,13 @@
 import { z } from 'zod';
 
+// Accepts a bare email or nodemailer's "Display Name <email>" format.
+const emailOrNamedEmail = z
+  .string()
+  .refine(
+    (v) => /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(v) || /^[^<>]+<[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+>$/.test(v),
+    { message: 'Must be a valid email or "Name <email>" format' },
+  );
+
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z
@@ -24,7 +32,7 @@ const envSchema = z.object({
     .transform((v) => v === 'true'),
   SMTP_USER: z.string().optional(),
   SMTP_PASS: z.string().optional(),
-  MAIL_FROM: z.string().email().default('no-reply@tsl-logistics.com'),
+  MAIL_FROM: emailOrNamedEmail.default('no-reply@tsl-logistics.com'),
   LEAD_NOTIFY_TO: z.string().email().optional(),
   LEAD_NOTIFY_TSL_LOGISTICS: z.string().email().default('sales@tsllogistics.sg'),
   LEAD_NOTIFY_TSL_MOVER: z.string().email().default('ops@tslmovers.sg'),
