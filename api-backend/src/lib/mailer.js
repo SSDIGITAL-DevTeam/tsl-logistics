@@ -32,11 +32,19 @@ export async function sendMail({ to, subject, html, text }) {
   }
 }
 
+const SOURCE_NOTIFY_MAP = {
+  'tsl-logistics': env.LEAD_NOTIFY_TSL_LOGISTICS,
+  'tsl-mover': env.LEAD_NOTIFY_TSL_MOVER,
+  'warehousing-services': env.LEAD_NOTIFY_TSL_MOVER,
+  'tsl-express': env.LEAD_NOTIFY_TSL_EXPRESS,
+};
+
 export async function sendLeadNotification(lead) {
-  if (!env.LEAD_NOTIFY_TO) return;
+  const to = SOURCE_NOTIFY_MAP[lead.source] || env.LEAD_NOTIFY_TO;
+  if (!to) return;
 
   await sendMail({
-    to: env.LEAD_NOTIFY_TO,
+    to,
     subject: `New lead from ${lead.source} — ${lead.name}`,
     html: `
       <h2>New Lead Received</h2>

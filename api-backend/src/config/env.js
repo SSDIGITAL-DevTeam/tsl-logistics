@@ -26,6 +26,9 @@ const envSchema = z.object({
   SMTP_PASS: z.string().optional(),
   MAIL_FROM: z.string().email().default('no-reply@tsl-logistics.com'),
   LEAD_NOTIFY_TO: z.string().email().optional(),
+  LEAD_NOTIFY_TSL_LOGISTICS: z.string().email().default('sales@tsllogistics.sg'),
+  LEAD_NOTIFY_TSL_MOVER: z.string().email().default('ops@tslmovers.sg'),
+  LEAD_NOTIFY_TSL_EXPRESS: z.string().email().default('ops@tslexpress.sg'),
   RESET_LINK_URL: z
     .string()
     .url()
