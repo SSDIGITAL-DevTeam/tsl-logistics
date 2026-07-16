@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
 import AboutV2 from "@/components/AboutV2";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 export const metadata: Metadata = {
   title: "About Us | TSL Logistics",
@@ -80,6 +81,29 @@ export default function AboutPage() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Company Video ── */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="mx-auto mb-10 max-w-[640px] text-center">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C8A84B]">
+              Company Video
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-3">
+              See TSL Logistics In Action
+            </h2>
+            <p className="text-[#555] leading-relaxed text-sm">
+              From our fleet and warehousing operations to the people behind
+              every shipment — take a closer look at how TSL Logistics keeps
+              your cargo moving, safely and on time.
+            </p>
+          </div>
+          <YouTubeEmbed
+            videoId="e1ZKB5_jOeI"
+            title="TSL Logistics Corporate Video"
+          />
         </div>
       </section>
 

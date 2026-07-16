@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 const fleet = [
   {
@@ -131,6 +132,29 @@ export default function AboutV2() {
               className="object-cover"
             />
           </div>
+        </div>
+      </section>
+
+      {/* ── Company Video ── */}
+      <section className="bg-[#f4f4f4] py-16 md:py-24">
+        <div className="mx-auto max-w-[1220px] px-5 md:px-8">
+          <div className="mx-auto mb-10 max-w-[640px] text-center">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C8A84B]">
+              Company Video
+            </p>
+            <h2 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-[#151515] md:text-5xl">
+              See TSL Logistics In Action
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-[#555] md:text-base">
+              From our fleet and warehousing operations to the people behind
+              every shipment — take a closer look at how TSL Logistics keeps
+              your cargo moving, safely and on time.
+            </p>
+          </div>
+          <YouTubeEmbed
+            videoId="e1ZKB5_jOeI"
+            title="TSL Logistics Corporate Video"
+          />
         </div>
       </section>
 
