@@ -23,12 +23,12 @@ export default function Footer() {
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/20 md:bg-gradient-to-r md:from-black/45 md:via-black/20 md:to-transparent" />
-        <div className="pointer-events-none absolute -bottom-36 right-[-210px] z-10 w-[145vw] max-w-none opacity-75 md:-bottom-40 md:right-[-170px] md:w-[72vw] md:max-w-[980px] md:opacity-100">
+        <div className="pointer-events-none absolute bottom-[-15px] right-[-40px] z-10 w-[95vw] max-w-[420px] opacity-70 md:bottom-[-50px] md:right-[-20px] md:w-[48vw] md:max-w-[900px] md:opacity-100">
           <Image
-            src="/images/chatgpt-footer-van-jun-29-2026-10-42-01-am.png"
+            src="/images/cta-bg.png"
             alt=""
-            width={811}
-            height={399}
+            width={2160}
+            height={1440}
             className="h-auto w-full object-contain"
           />
         </div>
