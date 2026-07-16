@@ -46,7 +46,7 @@ export default function TSLMoverPage() {
     <ServicePageLayout title="Movers" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} showContactForm={false} source="tsl-mover">
       <FigmaServiceShell>
         <FigmaIntro
-          title="Movers"
+          title="TSL Movers"
           image="/images/figma-services/mover-intro-new.jpg"
           imageAlt="TSL Mover team moving furniture"
           body={[

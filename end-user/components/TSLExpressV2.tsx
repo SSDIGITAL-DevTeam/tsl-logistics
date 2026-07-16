@@ -32,7 +32,7 @@ export default function TSLExpressV2() {
       source="tsl-express"
     >
       <ServiceIntroV2
-        title="Express"
+        title="TSL Express"
         image="/images/figma-services/express-intro-new.jpg"
         imageAlt="TSL Express delivery"
         body={[

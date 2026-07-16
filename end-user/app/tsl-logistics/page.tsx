@@ -41,7 +41,7 @@ export default function TSLLogisticsPage() {
     >
       <FigmaServiceShell>
         <FigmaIntro
-          title="Logistics"
+          title="TSL Logistics"
           image="/images/edite-wfn05998.jpg"
           imageAlt="TSL Logistics truck"
           body={[

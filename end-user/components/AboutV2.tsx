@@ -24,12 +24,74 @@ const fleet = [
 ];
 
 const milestones = [
-  { year: "2013", desc: "TSL Logistics Pte Ltd established" },
-  { year: "2015", desc: "Expansion into container trucking services" },
-  { year: "2018", desc: "Introduction of DG cargo trucking services" },
-  { year: "2021", desc: "Fleet expansion to support higher volume operations" },
-  { year: "2022", desc: "Launch of TSL Movers & Warehousing" },
-  { year: "2023", desc: "Launch of TSL Express Pte Ltd" },
+  {
+    year: "2013",
+    title: "TSL Logistics Pte Ltd Established",
+    desc: (
+      <>
+        Started operations with a dedicated team of <strong className="font-semibold text-[#151515]">10 employees</strong>,
+        laying the foundation for reliable logistics solutions.
+      </>
+    ),
+  },
+  {
+    year: "2015",
+    title: "Expansion into Container Trucking Services",
+    desc: (
+      <>
+        Broadened service capabilities with the introduction of container
+        trucking, growing the team to <strong className="font-semibold text-[#151515]">30 employees</strong>.
+      </>
+    ),
+  },
+  {
+    year: "2018",
+    title: "Introduction of DG Cargo Trucking Services",
+    desc: (
+      <>
+        Expanded expertise to include{" "}
+        <strong className="font-semibold text-[#151515]">
+          Dangerous Goods (DG) cargo transportation
+        </strong>{" "}
+        while achieving <strong className="font-semibold text-[#151515]">bizSAFE Level 3</strong> certification.
+        Team size grew to <strong className="font-semibold text-[#151515]">70 employees</strong>.
+      </>
+    ),
+  },
+  {
+    year: "2021",
+    title: "Fleet Expansion & Operational Growth",
+    desc: (
+      <>
+        Expanded the fleet to support increasing customer demand and
+        higher-volume operations. Achieved the prestigious{" "}
+        <strong className="font-semibold text-[#151515]">bizSAFE STAR</strong> certification and grew to{" "}
+        <strong className="font-semibold text-[#151515]">90 employees</strong>.
+      </>
+    ),
+  },
+  {
+    year: "2022",
+    title: "Launch of TSL Movers & Warehousing",
+    desc: (
+      <>
+        Diversified into professional moving and warehousing solutions with
+        the establishment of <strong className="font-semibold text-[#151515]">TSL Movers & Warehousing</strong>. Team
+        expanded to <strong className="font-semibold text-[#151515]">100 employees</strong>.
+      </>
+    ),
+  },
+  {
+    year: "2023",
+    title: "Launch of TSL Express Pte Ltd",
+    desc: (
+      <>
+        Established <strong className="font-semibold text-[#151515]">TSL Express Pte Ltd</strong> to provide fast and
+        reliable express delivery services, marking another milestone in the
+        Group&rsquo;s growth with a workforce of <strong className="font-semibold text-[#151515]">120 employees</strong>.
+      </>
+    ),
+  },
 ];
 
 export default function AboutV2() {
@@ -169,11 +231,16 @@ export default function AboutV2() {
                     className="absolute -left-9 top-1.5 h-3.5 w-3.5 rounded-full ring-4 ring-[#f4f4f4] md:-left-11"
                     style={{ background: "var(--gold-gradient)" }}
                   />
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:gap-6">
                     <span className="text-2xl font-bold leading-none text-[#151515] sm:w-[100px] sm:shrink-0 md:text-3xl">
                       {m.year}
                     </span>
-                    <p className="text-sm leading-relaxed text-[#555] md:text-base">{m.desc}</p>
+                    <div>
+                      <h3 className="text-base font-bold leading-snug text-[#151515] md:text-lg">
+                        {m.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-[#555] md:text-base">{m.desc}</p>
+                    </div>
                   </div>
                 </div>
               ))}

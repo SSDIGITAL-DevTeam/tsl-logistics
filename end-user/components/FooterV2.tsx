@@ -49,12 +49,7 @@ export default function FooterV2() {
                   height={80}
                   className="h-10 w-auto"
                 />
-                <span className="flex flex-col leading-tight">
-                  <span className="text-lg font-bold text-[#C8A84B]">{brandName}</span>
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#1a1a1a]">
-                    Trusted &middot; Reliable &middot; Delivered
-                  </span>
-                </span>
+                <span className="text-xl font-bold text-[#C8A84B]">{brandName}</span>
               </Link>
               <a
                 href="https://www.facebook.com/tsllogistics.sg/"
@@ -128,13 +123,13 @@ export default function FooterV2() {
                   <Mail size={14} className="mt-0.5 shrink-0 text-[#C8A84B]" />
                   <span className="space-y-1">
                     <span className="block">
-                      <span className="text-[#999]">Trucking: </span>
+                      <span className="text-[#999]">Logistics: </span>
                       <a href="mailto:sales@tsllogistics.sg" className="transition-colors duration-200 hover:text-[#9A7D2D]">
                         sales@tsllogistics.sg
                       </a>
                     </span>
                     <span className="block">
-                      <span className="text-[#999]">Movers: </span>
+                      <span className="text-[#999]">Movers & Warehousing: </span>
                       <a href="mailto:ops@tslmovers.sg" className="transition-colors duration-200 hover:text-[#9A7D2D]">
                         ops@tslmovers.sg
                       </a>

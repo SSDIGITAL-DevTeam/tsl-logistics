@@ -124,8 +124,8 @@ export default function HeaderV2() {
               priority
             />
             <span className="flex flex-col leading-tight">
-              <span className="text-lg font-bold text-[#C8A84B]">{brandName}</span>
-              <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#151515]">
+              <span className="text-xl font-bold text-[#C8A84B]">{brandName}</span>
+              <span className="text-[11px] font-semibold text-[#151515]">
                 Trusted &middot; Reliable &middot; Delivered
               </span>
             </span>

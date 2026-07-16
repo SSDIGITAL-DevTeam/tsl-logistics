@@ -30,7 +30,7 @@ export default function TSLExpressPage() {
     <ServicePageLayout title="Express" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
       <FigmaServiceShell>
         <FigmaIntro
-          title="Express"
+          title="TSL Express"
           image="/images/figma-services/express-intro-new.jpg"
           imageAlt="TSL Express delivery"
           body={[

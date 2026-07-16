@@ -367,11 +367,11 @@ export default function HomePage() {
                   <h4 className="font-bold text-[#1a1a1a] mb-2">Email Us</h4>
                   <div className="space-y-1">
                     <p className="text-sm">
-                      <span className="font-semibold text-[#1a1a1a]">Trucking — </span>
+                      <span className="font-semibold text-[#1a1a1a]">Logistics — </span>
                       <a href="mailto:sales@tsllogistics.sg" className="text-[#C8A84B] font-semibold hover:underline">sales@tsllogistics.sg</a>
                     </p>
                     <p className="text-sm">
-                      <span className="font-semibold text-[#1a1a1a]">Movers — </span>
+                      <span className="font-semibold text-[#1a1a1a]">Movers & Warehousing — </span>
                       <a href="mailto:ops@tslmovers.sg" className="text-[#C8A84B] font-semibold hover:underline">ops@tslmovers.sg</a>
                     </p>
                     <p className="text-sm">

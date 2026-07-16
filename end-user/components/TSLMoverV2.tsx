@@ -85,7 +85,7 @@ export default function TSLMoverV2() {
       source="tsl-mover"
     >
       <ServiceIntroV2
-        title="Movers"
+        title="TSL Movers"
         image="/images/figma-services/mover-intro-new.jpg"
         imageAlt="TSL Mover team moving furniture"
         body={[

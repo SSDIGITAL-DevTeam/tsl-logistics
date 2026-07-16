@@ -69,12 +69,7 @@ export default function Footer() {
                   height={80}
                   className="h-10 w-auto"
                 />
-                <span className="flex flex-col leading-tight">
-                  <span className="text-lg font-bold text-[#C8A84B]">{brandName}</span>
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-white/70">
-                    Trusted &middot; Reliable &middot; Delivered
-                  </span>
-                </span>
+                <span className="text-xl font-bold text-[#C8A84B]">{brandName}</span>
               </Link>
               <div className="flex items-center gap-3 mt-2">
                 <a
@@ -177,13 +172,13 @@ export default function Footer() {
                   />
                   <span className="space-y-1">
                     <span className="block">
-                      <span className="text-gray-500">Trucking: </span>
+                      <span className="text-gray-500">Logistics: </span>
                       <a href="mailto:sales@tsllogistics.sg" className="hover:text-[#C8A84B] transition-colors duration-200">
                         sales@tsllogistics.sg
                       </a>
                     </span>
                     <span className="block">
-                      <span className="text-gray-500">Movers: </span>
+                      <span className="text-gray-500">Movers & Warehousing: </span>
                       <a href="mailto:ops@tslmovers.sg" className="hover:text-[#C8A84B] transition-colors duration-200">
                         ops@tslmovers.sg
                       </a>
