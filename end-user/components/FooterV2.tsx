@@ -49,7 +49,12 @@ export default function FooterV2() {
                   height={80}
                   className="h-10 w-auto"
                 />
-                <span className="text-xl font-bold text-[#C8A84B]">{brandName}</span>
+                <span className="flex flex-col leading-tight">
+                  <span className="text-xl font-bold text-[#C8A84B]">{brandName}</span>
+                  <span className="text-[11px] font-semibold text-[#1a1a1a]">
+                    Trusted &middot; Reliable &middot; Delivered
+                  </span>
+                </span>
               </Link>
               <a
                 href="https://www.facebook.com/tsllogistics.sg/"

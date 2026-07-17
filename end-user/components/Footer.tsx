@@ -69,7 +69,12 @@ export default function Footer() {
                   height={80}
                   className="h-10 w-auto"
                 />
-                <span className="text-xl font-bold text-[#C8A84B]">{brandName}</span>
+                <span className="flex flex-col leading-tight">
+                  <span className="text-xl font-bold text-[#C8A84B]">{brandName}</span>
+                  <span className="text-[11px] font-semibold text-white/70">
+                    Trusted &middot; Reliable &middot; Delivered
+                  </span>
+                </span>
               </Link>
               <div className="flex items-center gap-3 mt-2">
                 <a
