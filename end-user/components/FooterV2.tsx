@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Mail, MapPin, Phone } from "lucide-react";
 import CtaBandV2 from "@/components/CtaBandV2";
+import CallUsDropdown from "@/components/CallUsDropdown";
 import { getHeaderBrandName } from "@/lib/headerBrand";
 
 const quickLinks = [
@@ -31,8 +32,7 @@ export default function FooterV2() {
       {/* ── CTA Banner ── */}
       <CtaBandV2
         eyebrow="Ready to ship?"
-        cta="Call Us Today"
-        ctaHref="https://wa.me/6588119292?text=Hi%20TSL%20Logistics%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+        ctaSlot={<CallUsDropdown variant="gold" />}
       />
 
       {/* ── Main Footer ── */}
@@ -149,15 +149,14 @@ export default function FooterV2() {
                 </li>
                 <li>
                   <a
-                    href="https://goo.gl/maps/oFjmzyzy9dH5nnFr5"
+                    href="https://www.google.com/maps?q=8%40Tradehub%2021%2C%208%20Boon%20Lay%20Way%2C%20Singapore%20609964"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-2.5 text-sm text-[#555] transition-colors duration-200 hover:text-[#9A7D2D]"
                   >
                     <MapPin size={14} className="mt-0.5 shrink-0 text-[#C8A84B]" />
                     <span>
-                      3 Kaki Bukit Road 1 #02-01, Eunos Technolink, Singapore
-                      415935
+                      8 Boon Lay Way, #04-03, 8@Tradehub 21, Singapore 609964
                     </span>
                   </a>
                 </li>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Phone, MapPin, Mail } from "lucide-react";
+import CallUsDropdown from "@/components/CallUsDropdown";
 import { getHeaderBrandName } from "@/lib/headerBrand";
 
 export default function Footer() {
@@ -43,14 +44,7 @@ export default function Footer() {
               help businesses move goods efficiently while maintaining complete
               visibility and confidence throughout the shipping process.
             </p>
-            <a
-              href="https://wa.me/6588119292?text=Hi%20TSL%20Logistics%2C%20I%20would%20like%20to%20make%20an%20enquiry."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-w-[230px] items-center justify-center gap-2 bg-white px-7 py-4 text-sm font-semibold text-[#1a1a1a] transition hover:bg-[#f2f2f2] active:scale-[0.98]"
-            >
-              Call Us Today <span aria-hidden>→</span>
-            </a>
+            <CallUsDropdown variant="light" />
           </div>
         </div>
       </div>
@@ -198,7 +192,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://goo.gl/maps/oFjmzyzy9dH5nnFr5"
+                    href="https://www.google.com/maps?q=8%40Tradehub%2021%2C%208%20Boon%20Lay%20Way%2C%20Singapore%20609964"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-2.5 text-gray-400 hover:text-[#C8A84B] text-sm transition-colors duration-200"
@@ -208,8 +202,7 @@ export default function Footer() {
                       className="shrink-0 mt-0.5 text-[#C8A84B]"
                     />
                     <span>
-                      3 Kaki Bukit Road 1 #02-01, Eunos Technolink, Singapore
-                      415935
+                      8 Boon Lay Way, #04-03, 8@Tradehub 21, Singapore 609964
                     </span>
                   </a>
                 </li>

@@ -50,13 +50,15 @@ export default function TeamBusinessCardV2({ member }: { member: TeamMember }) {
 
           <div className="-mt-[56px] flex flex-col items-center px-6 pb-8">
             <div className="relative h-[112px] w-[112px] overflow-hidden rounded-full border-[5px] border-white bg-[#152642] text-2xl font-bold text-white shadow-lg">
-              {member.photo ? (
+              {(member.avatar ?? member.photo) ? (
                 <Image
-                  src={member.photo}
+                  src={(member.avatar ?? member.photo) as string}
                   alt={member.name}
                   fill
                   sizes="112px"
-                  className="object-cover object-top"
+                  className={
+                    member.avatar ? "object-cover object-center" : "object-cover object-top"
+                  }
                 />
               ) : (
                 <div className="grid h-full w-full place-items-center">

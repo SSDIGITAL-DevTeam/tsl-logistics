@@ -6,6 +6,10 @@ export type TeamMember = {
   role: string;
   department: TeamDepartment;
   photo?: string;
+  /** Square head-and-shoulders crop for the circular avatars (team detail +
+   *  business card). Falls back to `photo`, which is a full-body cutout and
+   *  reads badly inside a small circle. */
+  avatar?: string;
   intro: string;
   experience: string[];
   contributions: string[];
@@ -34,8 +38,8 @@ const commonCard = {
   company: "TSL LOGISTICS PTE LTD",
   phone: "+65 8688 8606",
   website: "www.tsllogistics.sg",
-  address: "3 Kaki Bukit Rd 1, #02-01 Eunos Technolink, Singapore 415935",
-  mapQuery: "TSL Logistics Pte Ltd, 3 Kaki Bukit Road 1, Singapore 415935",
+  address: "8 Boon Lay Way, #04-03, 8@Tradehub 21, Singapore 609964",
+  mapQuery: "8@Tradehub 21, 8 Boon Lay Way, Singapore 609964",
   socials: {
     facebook: "https://www.facebook.com/tsllogistics.sg/",
     instagram: "https://www.instagram.com/tsllogistics.sg/",
@@ -50,6 +54,7 @@ export const teamMembers: TeamMember[] = [
     role: "Managing Director (Founder) - Logistics",
     department: "logistics",
     photo: "/images/alan.png",
+    avatar: "/images/team/alan-tay-avatar.png",
     intro:
       "Founder and Managing Director of TSL Group, with over 20 years of experience in the logistics industry. He began his career in courier services and has since built deep expertise across trucking, warehousing, and end-to-end supply chain operations, driving efficiency and reliability at every level.",
     experience: [
@@ -72,6 +77,7 @@ export const teamMembers: TeamMember[] = [
     role: "Sales Manager - Logistics",
     department: "logistics",
     photo: "/images/shirley.png",
+    avatar: "/images/team/shirley-goh-avatar.png",
     intro:
       "Started with TSL Logistics in 2018 without prior industry experience, driven by a strong willingness to learn. Gained hands-on experience across Sales, Customer Service, Accounts, and Operations, building a well-rounded understanding of logistics, client management, and operations. Brings a practical, adaptable approach backed by years of cross-functional experience.",
     experience: [
@@ -95,6 +101,7 @@ export const teamMembers: TeamMember[] = [
     role: "Operation Manager - Logistics",
     department: "logistics",
     photo: "/images/team/phillip-wong.png",
+    avatar: "/images/team/phillip-wong-avatar.png",
     intro:
       "Joined logistics industry in 2017 as an Operations Controller cum Customer Service, gaining extensive hands-on experience in operational coordination and client support. Over the years, has developed strong expertise in managing and optimizing trucking operations.",
     experience: [
@@ -118,6 +125,7 @@ export const teamMembers: TeamMember[] = [
     role: "Business Development Manager - Express",
     department: "express",
     photo: "/images/chia.png",
+    avatar: "/images/team/chia-weeliang-avatar.png",
     intro:
       "Chia focuses on express delivery opportunities, helping customers plan fast, practical delivery arrangements for urgent and recurring jobs.",
     experience: [
@@ -145,6 +153,7 @@ export const teamMembers: TeamMember[] = [
     role: "Managing Director - Movers",
     department: "movers",
     photo: "/images/team/patrick-wee.png",
+    avatar: "/images/team/patrick-wee-avatar.png",
     intro:
       "Patrick leads the TSL Movers team, overseeing moving services for residential, office, commercial, and specialized relocation projects.",
     experience: [
@@ -172,6 +181,7 @@ export const teamMembers: TeamMember[] = [
     role: "Business Development Manager - Movers",
     department: "movers",
     photo: "/images/spencer.png",
+    avatar: "/images/team/spencer-tan-avatar.png",
     intro:
       "Spencer helps moving customers plan the right scope, manpower, and timing for residential and business relocations.",
     experience: [

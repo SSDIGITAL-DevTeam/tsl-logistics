@@ -69,9 +69,9 @@ export default function ContactPage() {
                   <p className="text-[#555] text-sm leading-relaxed">
                     Our doors, ears and break room are always open.<br />(Monday–Friday, from 9am-5pm)
                   </p>
-                  <p className="text-[#C8A84B] font-semibold text-sm mt-2">3 Kaki Bukit Road 1 #02-01</p>
-                  <p className="text-[#C8A84B] font-semibold text-sm">Eunos Technolink</p>
-                  <p className="text-[#C8A84B] font-semibold text-sm">Singapore 415935</p>
+                  <p className="text-[#C8A84B] font-semibold text-sm mt-2">8 Boon Lay Way, #04-03</p>
+                  <p className="text-[#C8A84B] font-semibold text-sm">8@Tradehub 21</p>
+                  <p className="text-[#C8A84B] font-semibold text-sm">Singapore 609964</p>
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
         <div className="max-w-[1200px] mx-auto px-4">
           <div className="overflow-hidden shadow-md border border-gray-100">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15954.944552496003!2d103.9013238!3d1.3345077!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x913cceed8c5de5dc!2sTSL%20Logistics%20Pte%20Ltd!5e0!3m2!1sen!2ssg!4v1655364251092!5m2!1sen!2ssg"
+              src="https://www.google.com/maps?q=8%40Tradehub%2021%2C%208%20Boon%20Lay%20Way%2C%20Singapore%20609964&output=embed"
               width="100%"
               height="420"
               style={{ border: 0, display: "block" }}

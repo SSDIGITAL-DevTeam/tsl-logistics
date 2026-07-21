@@ -23,19 +23,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function DetailAvatar({ name, photo, slug }: { name: string; photo?: string; slug?: string }) {
+function DetailAvatar({
+  name,
+  photo,
+  avatar,
+  slug,
+}: {
+  name: string;
+  photo?: string;
+  avatar?: string;
+  slug?: string;
+}) {
+  const src = avatar ?? photo;
   return (
     <div className="relative h-[174px] w-[174px] overflow-hidden rounded-full border-[6px] border-[#1a1a1a] bg-gold-gradient text-3xl font-bold text-[#121212]">
-      {photo ? (
+      {src ? (
         <Image
-          src={photo}
+          src={src}
           alt={name}
           fill
           sizes="164px"
           className={
-            photo.endsWith(".jpg") || slug === "alan-tay"
-              ? "object-cover object-top"
-              : "object-contain object-bottom"
+            avatar
+              ? "object-cover object-center"
+              : src.endsWith(".jpg") || slug === "alan-tay"
+                ? "object-cover object-top"
+                : "object-contain object-bottom"
           }
           priority
         />
@@ -77,7 +90,12 @@ export default async function TeamDetailPage({ params }: Props) {
       <section className="mx-auto max-w-[1160px] px-5 md:px-6">
         <div className="-mt-[86px] grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-start">
           <div>
-            <DetailAvatar name={member.name} photo={member.photo} slug={member.slug} />
+            <DetailAvatar
+              name={member.name}
+              photo={member.photo}
+              avatar={member.avatar}
+              slug={member.slug}
+            />
             <div className="mt-6">
               <h1 className="text-3xl font-bold leading-tight text-[#1a1a1a]">
                 {member.name}

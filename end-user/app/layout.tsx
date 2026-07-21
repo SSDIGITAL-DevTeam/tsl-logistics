@@ -94,15 +94,15 @@ const organizationLd = {
   email: "sales@tsllogistics.sg",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Blk 3 Kaki Bukit Road 1 #02-01, Eunos Technolink",
+    streetAddress: "8 Boon Lay Way #04-03, 8@Tradehub 21",
     addressLocality: "Singapore",
-    postalCode: "415935",
+    postalCode: "609964",
     addressCountry: "SG",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 1.3345077,
-    longitude: 103.9013238,
+    latitude: 1.3387,
+    longitude: 103.7056,
   },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",

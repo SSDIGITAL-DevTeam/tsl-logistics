@@ -11,16 +11,18 @@ export default function TeamDetailV2({ member }: { member: TeamMember }) {
       <div className="mx-auto max-w-[1220px]">
         <div className="v2-surface flex flex-col items-center gap-6 bg-[#f4f4f4] p-8 text-center md:flex-row md:items-center md:gap-10 md:p-12 md:text-left">
           <div className="relative h-[150px] w-[150px] shrink-0 overflow-hidden rounded-full border-[6px] border-white bg-gold-gradient text-3xl font-bold text-[#121212] shadow-lg">
-            {member.photo ? (
+            {(member.avatar ?? member.photo) ? (
               <Image
-                src={member.photo}
+                src={(member.avatar ?? member.photo) as string}
                 alt={member.name}
                 fill
                 sizes="150px"
                 className={
-                  member.photo.endsWith(".jpg") || member.slug === "alan-tay"
-                    ? "object-cover object-top"
-                    : "object-contain object-bottom"
+                  member.avatar
+                    ? "object-cover object-center"
+                    : member.photo!.endsWith(".jpg") || member.slug === "alan-tay"
+                      ? "object-cover object-top"
+                      : "object-contain object-bottom"
                 }
                 priority
               />

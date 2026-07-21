@@ -29,16 +29,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function Avatar({ name, photo }: { name: string; photo?: string }) {
+function Avatar({
+  name,
+  photo,
+  avatar,
+}: {
+  name: string;
+  photo?: string;
+  avatar?: string;
+}) {
+  const src = avatar ?? photo;
   return (
     <div className="relative z-10 grid h-[124px] w-[124px] place-items-center overflow-hidden rounded-full border-[5px] border-[#1a1a1a] bg-gold-gradient text-2xl font-bold text-[#121212] shadow-md">
-      {photo ? (
+      {src ? (
         <Image
-          src={photo}
+          src={src}
           alt={name}
           fill
           sizes="124px"
-          className="object-cover object-top"
+          className={avatar ? "object-cover object-center" : "object-cover object-top"}
         />
       ) : (
         getInitials(name)
@@ -98,7 +107,7 @@ export default async function DigitalBusinessCardPage({ params }: Props) {
           <div className="relative h-[250px] overflow-visible">
             <div className="absolute left-1/2 top-[34px] flex w-full -translate-x-1/2 flex-col items-center px-6">
               <div className="relative">
-                <Avatar name={member.name} photo={member.photo} />
+                <Avatar name={member.name} photo={member.photo} avatar={member.avatar} />
                 <div className="absolute -bottom-1 -right-2 z-20 grid h-10 w-10 place-items-center overflow-hidden rounded-full border-[3px] border-white bg-white">
                   <Image
                     src="/images/logo-tsl-kotak.png"
