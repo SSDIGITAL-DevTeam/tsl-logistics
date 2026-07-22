@@ -15,7 +15,7 @@ type Service = {
 const services: Service[] = [
   { name: "TSL Logistics", phone: "+65 8811 9292", wa: "6588119292" },
   { name: "TSL Movers", phone: "+65 8030 8181", wa: "6580308181" },
-  { name: "TSL Warehouse", phone: "+65 8123 3668", wa: "6581233668" },
+  { name: "TSL Warehousing", phone: "+65 8123 3668", wa: "6581233668" },
   { name: "TSL Express", phone: "+65 8116 6011", wa: "6581166011" },
 ];
 
