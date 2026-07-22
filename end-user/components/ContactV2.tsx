@@ -85,7 +85,7 @@ export default function ContactV2() {
                   (Monday–Friday, from 9am-5pm)
                 </p>
                 <p className="mt-3 text-sm font-semibold text-[#9A7D2D]">
-                  8 Boon Lay Way, #04-03
+                  8 Boon Lay Way, #09-13
                 </p>
                 <p className="text-sm font-semibold text-[#9A7D2D]">8@Tradehub 21</p>
                 <p className="text-sm font-semibold text-[#9A7D2D]">Singapore 609964</p>

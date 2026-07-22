@@ -38,7 +38,7 @@ const commonCard = {
   company: "TSL LOGISTICS PTE LTD",
   phone: "+65 8688 8606",
   website: "www.tsllogistics.sg",
-  address: "8 Boon Lay Way, #04-03, 8@Tradehub 21, Singapore 609964",
+  address: "8 Boon Lay Way, #09-13, 8@Tradehub 21, Singapore 609964",
   mapQuery: "8@Tradehub 21, 8 Boon Lay Way, Singapore 609964",
   socials: {
     facebook: "https://www.facebook.com/tsllogistics.sg/",

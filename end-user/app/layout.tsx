@@ -94,7 +94,7 @@ const organizationLd = {
   email: "sales@tsllogistics.sg",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "8 Boon Lay Way #04-03, 8@Tradehub 21",
+    streetAddress: "8 Boon Lay Way #09-13, 8@Tradehub 21",
     addressLocality: "Singapore",
     postalCode: "609964",
     addressCountry: "SG",

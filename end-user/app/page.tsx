@@ -388,7 +388,7 @@ export default function HomePage() {
                 <div>
                   <h4 className="font-bold text-[#1a1a1a] mb-1">Our Location</h4>
                   <p className="text-[#666] text-sm leading-relaxed">Monday–Friday, 9am–5pm</p>
-                  <p className="text-[#C8A84B] font-semibold text-sm mt-2">8 Boon Lay Way, #04-03</p>
+                  <p className="text-[#C8A84B] font-semibold text-sm mt-2">8 Boon Lay Way, #09-13</p>
                   <p className="text-[#C8A84B] font-semibold text-sm">8@Tradehub 21, Singapore 609964</p>
                 </div>
               </div>

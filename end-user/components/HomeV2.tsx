@@ -319,7 +319,7 @@ export default function HomeV2() {
                 <MapPin size={20} className="text-[#C8A84B]" />
                 <h4 className="mt-5 font-bold text-[#151515]">Our Location</h4>
                 <p className="mt-2 text-sm leading-relaxed text-[#555]">Monday to Friday, 9am to 5pm</p>
-                <p className="mt-3 text-sm font-semibold text-[#9A7D2D]">8 Boon Lay Way, #04-03</p>
+                <p className="mt-3 text-sm font-semibold text-[#9A7D2D]">8 Boon Lay Way, #09-13</p>
                 <p className="text-sm font-semibold text-[#9A7D2D]">8@Tradehub 21, Singapore 609964</p>
               </div>
             </div>

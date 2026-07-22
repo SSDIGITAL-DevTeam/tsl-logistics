@@ -69,7 +69,7 @@ export default function ContactPage() {
                   <p className="text-[#555] text-sm leading-relaxed">
                     Our doors, ears and break room are always open.<br />(Monday–Friday, from 9am-5pm)
                   </p>
-                  <p className="text-[#C8A84B] font-semibold text-sm mt-2">8 Boon Lay Way, #04-03</p>
+                  <p className="text-[#C8A84B] font-semibold text-sm mt-2">8 Boon Lay Way, #09-13</p>
                   <p className="text-[#C8A84B] font-semibold text-sm">8@Tradehub 21</p>
                   <p className="text-[#C8A84B] font-semibold text-sm">Singapore 609964</p>
                 </div>

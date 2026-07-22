@@ -202,7 +202,7 @@ export default function Footer() {
                       className="shrink-0 mt-0.5 text-[#C8A84B]"
                     />
                     <span>
-                      8 Boon Lay Way, #04-03, 8@Tradehub 21, Singapore 609964
+                      8 Boon Lay Way, #09-13, 8@Tradehub 21, Singapore 609964
                     </span>
                   </a>
                 </li>
