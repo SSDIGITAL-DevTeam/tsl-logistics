@@ -7,17 +7,16 @@ type Variant = "gold" | "light";
 
 type Service = {
   name: string;
-  contact?: string;
   phone: string; // display
   wa: string; // wa.me number
 };
 
 // Each option opens WhatsApp for the matching service (ClickUp task 17/7/2026).
 const services: Service[] = [
-  { name: "TSL Logistics", contact: "Sales", phone: "+65 8811 9292", wa: "6588119292" },
+  { name: "TSL Logistics", phone: "+65 8811 9292", wa: "6588119292" },
   { name: "TSL Movers", phone: "+65 8030 8181", wa: "6580308181" },
   { name: "TSL Warehouse", phone: "+65 8123 3668", wa: "6581233668" },
-  { name: "TSL Express", contact: "Wee Liang", phone: "+65 8116 6011", wa: "6581166011" },
+  { name: "TSL Express", phone: "+65 8116 6011", wa: "6581166011" },
 ];
 
 function waLink(service: Service) {
@@ -109,9 +108,6 @@ export default function CallUsDropdown({
                   <span className="min-w-0">
                     <span className="block text-sm font-bold leading-tight text-[#151515]">
                       {service.name}
-                      {service.contact && (
-                        <span className="font-medium text-[#777]"> ({service.contact})</span>
-                      )}
                     </span>
                     <span className="block text-[13px] text-[#555]">{service.phone}</span>
                   </span>
