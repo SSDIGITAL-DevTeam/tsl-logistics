@@ -4,7 +4,6 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import FloatingHelpWidget from "@/components/FloatingHelpWidget";
-import FloatingThemeConfig from "@/components/FloatingThemeConfig";
 import ScrollToTop from "@/components/ScrollToTop";
 import JsonLd from "@/components/JsonLd";
 
@@ -126,7 +125,6 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
-        <FloatingThemeConfig />
         <FloatingHelpWidget />
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && (
