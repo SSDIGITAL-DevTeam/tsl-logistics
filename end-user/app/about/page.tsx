@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
-import AboutV2 from "@/components/AboutV2";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 export const metadata: Metadata = {
@@ -43,7 +42,6 @@ const aboutGalleryImages = [
 export default function AboutPage() {
   return (
     <>
-      <div className="theme-v1-only">
       <PageHero
         title="About Us"
         image="/images/wfn05957.jpg"
@@ -155,7 +153,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Vision — gold gradient card */}
             <div
-              className="v2-surface p-8 anim-fade-left"
+              className="p-8 anim-fade-left"
               style={{ background: "var(--gold-gradient)" }}
             >
               <div className="flex items-center gap-3 mb-5">
@@ -215,7 +213,7 @@ export default function AboutPage() {
             </div>
 
             {/* Mission — dark navy card */}
-            <div className="v2-surface p-8 bg-[#152642] anim-fade-right">
+            <div className="p-8 bg-[#152642] anim-fade-right">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 flex items-center justify-center shrink-0">
                   <svg
@@ -463,7 +461,7 @@ export default function AboutPage() {
 
       {/* ── Stats + Service Types ── */}
       <section className="bg-white pt-16">
-        <div className="v2-no-radius relative overflow-hidden bg-[#1f3a70] px-6 py-16 md:min-h-[330px] md:px-10 lg:px-16">
+        <div className="relative overflow-hidden bg-[#1f3a70] px-6 py-16 md:min-h-[330px] md:px-10 lg:px-16">
           <div className="pointer-events-none absolute bottom-[-52px] left-[-48px] hidden w-[42vw] max-w-[590px] md:block">
             <Image
               src="/images/box.png"
@@ -509,11 +507,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      </div>
-
-      <div className="theme-v2-only">
-        <AboutV2 />
-      </div>
     </>
   );
 }

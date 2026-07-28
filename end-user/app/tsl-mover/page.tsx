@@ -13,7 +13,6 @@ import {
   FigmaServiceShell,
   serviceIcons,
 } from "@/components/FigmaServiceContent";
-import TSLMoverV2 from "@/components/TSLMoverV2";
 
 export const metadata: Metadata = {
   title: "TSL Mover | Professional Moving Services Singapore | TSL Logistics",
@@ -41,8 +40,6 @@ const featuredLogos = [
 
 export default function TSLMoverPage() {
   return (
-    <>
-    <div className="theme-v1-only">
     <ServicePageLayout title="Movers" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} showContactForm={false} source="tsl-mover">
       <FigmaServiceShell>
         <FigmaIntro
@@ -302,11 +299,5 @@ export default function TSLMoverPage() {
         </FigmaBand>
       </FigmaServiceShell>
     </ServicePageLayout>
-    </div>
-
-    <div className="theme-v2-only">
-      <TSLMoverV2 />
-    </div>
-    </>
   );
 }

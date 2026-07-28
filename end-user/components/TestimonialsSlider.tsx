@@ -65,7 +65,7 @@ export default function TestimonialsSlider({
           {loopedCards.map((testimonial, index) => (
             <article
               key={`${testimonial.name}-${index}`}
-              className="v2-surface flex w-[320px] shrink-0 flex-col justify-between border border-[#e7e8ec] bg-white p-7 shadow-[0_18px_50px_rgba(20,38,66,0.07)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(20,38,66,0.11)] md:w-[360px]"
+              className="flex w-[320px] shrink-0 flex-col justify-between border border-[#e7e8ec] bg-white p-7 shadow-[0_18px_50px_rgba(20,38,66,0.07)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(20,38,66,0.11)] md:w-[360px]"
             >
               <div>
                 <div className="mb-8 flex items-center justify-between">

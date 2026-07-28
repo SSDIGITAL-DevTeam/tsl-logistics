@@ -8,7 +8,6 @@ import {
   FigmaServiceShell,
   serviceIcons,
 } from "@/components/FigmaServiceContent";
-import WarehousingServicesV2 from "@/components/WarehousingServicesV2";
 
 export const metadata: Metadata = {
   title: "TSL Warehousing | Storage Solutions Singapore | TSL Logistics",
@@ -29,8 +28,6 @@ const enquiryOptions = [
 
 export default function WarehousingServicesPage() {
   return (
-    <>
-    <div className="theme-v1-only">
     <ServicePageLayout title="Warehousing" image="/images/TSL Logistics Warehouse-1920w.jpeg" enquiryOptions={enquiryOptions} source="warehousing-services" requestFormServiceSuffix={false}>
       <FigmaServiceShell>
         <section className="grid items-center gap-8 md:grid-cols-[411px_1fr] md:gap-12">
@@ -181,11 +178,5 @@ export default function WarehousingServicesPage() {
         </FigmaBand>
       </FigmaServiceShell>
     </ServicePageLayout>
-    </div>
-
-    <div className="theme-v2-only">
-      <WarehousingServicesV2 />
-    </div>
-    </>
   );
 }

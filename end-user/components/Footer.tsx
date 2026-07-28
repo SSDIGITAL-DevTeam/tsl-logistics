@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer>
       {/* ── CTA Banner ── */}
-      <div className="v2-no-radius relative z-10 min-h-[360px] overflow-hidden bg-[#111] md:min-h-[410px]">
+      <div className="relative z-10 min-h-[360px] overflow-hidden bg-[#111] md:min-h-[410px]">
         <Image
           src="/images/footer-cta-bg.png"
           alt=""
