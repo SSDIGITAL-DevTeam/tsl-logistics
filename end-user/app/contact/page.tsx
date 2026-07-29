@@ -4,9 +4,10 @@ import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Contact Us | TSL Logistics",
+  title: "Contact Us",
   description:
     "Get in touch with TSL Logistics. Contact us for trucking, warehousing, moving, and express delivery enquiries.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

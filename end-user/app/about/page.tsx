@@ -6,9 +6,10 @@ import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 export const metadata: Metadata = {
-  title: "About Us | TSL Logistics",
+  title: "About Us",
   description:
     "We are a team of experienced movers in this industry, born to handle all of your valuable items with great care. Know more about us and our services today!",
+  alternates: { canonical: "/about" },
 };
 
 const aboutGalleryImages = [

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "TSL Logistics | Container Trucking, Freight & Project Logistics",
   description:
     "TSL Logistics provides container trucking, flatbed and lowbed transport, DG cargo handling, freight services, permit declaration, and project logistics.",
+  alternates: { canonical: "/tsl-logistics" },
 };
 
 const enquiryOptions = [

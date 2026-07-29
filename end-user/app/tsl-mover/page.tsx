@@ -15,9 +15,10 @@ import {
 } from "@/components/FigmaServiceContent";
 
 export const metadata: Metadata = {
-  title: "TSL Mover | Professional Moving Services Singapore | TSL Logistics",
+  title: "TSL Mover | Professional Moving Services Singapore",
   description:
     "TSL Mover provides residential, office, commercial, factory, international, server, machine, piano, organ, pool table, and safe box moving services.",
+  alternates: { canonical: "/tsl-mover" },
 };
 
 const enquiryOptions = [

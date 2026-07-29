@@ -12,8 +12,9 @@ type Props = {
 const departments = ["logistics", "express", "movers"] as const;
 
 export const metadata: Metadata = {
-  title: "Our Team | TSL Logistics",
+  title: "Our Team",
   description: "Meet the dedicated team behind TSL Logistics operations.",
+  alternates: { canonical: "/our-team" },
 };
 
 function PillTabs({ selected }: { selected: string }) {

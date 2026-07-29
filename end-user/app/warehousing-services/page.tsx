@@ -10,9 +10,10 @@ import {
 } from "@/components/FigmaServiceContent";
 
 export const metadata: Metadata = {
-  title: "TSL Warehousing | Storage Solutions Singapore | TSL Logistics",
+  title: "TSL Warehousing | Storage Solutions Singapore",
   description:
     "TSL Warehousing provides secure general cargo storage, flexible storage options, inventory management, packing, sorting, labelling, loading, and unloading services.",
+  alternates: { canonical: "/warehousing-services" },
 };
 
 const enquiryOptions = [

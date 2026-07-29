@@ -9,9 +9,10 @@ import {
 } from "@/components/FigmaServiceContent";
 
 export const metadata: Metadata = {
-  title: "TSL Express | Optical Supply & Ad Hoc Delivery | TSL Logistics",
+  title: "TSL Express | Optical Supply & Ad Hoc Delivery",
   description:
     "TSL Express provides optical supply delivery, express ad hoc delivery, and contract-based dedicated van or biker service.",
+  alternates: { canonical: "/tsl-express" },
 };
 
 const enquiryOptions = [

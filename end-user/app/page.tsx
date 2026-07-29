@@ -12,12 +12,15 @@ import CompaniesThatMoveWithUs from "@/components/CompaniesThatMoveWithUs";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tsllogistics.sg";
 
 export const metadata: Metadata = {
-  title: "Logistic Company in Singapore | Logistic Service Provider | TSL Logistics",
+  // `title` is deliberately omitted: the root layout's `title.default` already
+  // holds the exact homepage title and is used verbatim, whereas setting a
+  // title here would run it through the "%s | TSL Logistics" template and
+  // append a second suffix.
   description:
     "Streamline your logistic service provider, TSL Logistics the best logistics company in Singapore. Your trusted partner for transportation, warehousing, & distribution.",
-  alternates: { canonical: SITE_URL },
+  alternates: { canonical: "/" },
   openGraph: {
-    url: SITE_URL,
+    url: "/",
   },
 };
 
