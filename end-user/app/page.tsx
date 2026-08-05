@@ -153,8 +153,10 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/18 to-transparent" />
 
         {/* Centered column content */}
-        <div className="hero-in relative z-10 mx-auto w-full max-w-[1200px] px-6 py-20 md:py-28">
-          <div className="flex flex-col items-start gap-6 text-left">
+        <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 py-20 md:py-28">
+          {/* `hero-in` sits here so the <h1> is a direct child — the entrance
+              animation skips h1 so it never starts at opacity:0 (LCP). */}
+          <div className="hero-in flex flex-col items-start gap-6 text-left">
             <h1 className="max-w-[900px] text-5xl font-bold leading-[1.08] text-white md:text-6xl lg:text-[68px]" style={{ textWrap: "balance" }}>
               Trusted · Reliable · Delivered
             </h1>

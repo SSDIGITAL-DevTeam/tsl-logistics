@@ -47,11 +47,36 @@ export default function TestimonialsSlider({
     isLight ? "bg-[#151515]/20" : "bg-gray-300";
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, []);
+    // The light variant is a pure CSS marquee and never reads `current`, so
+    // rotating state there is wasted work.
+    if (isLight) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    const stop = () => {
+      if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+      }
+    };
+    const start = () => {
+      if (timer !== null) return;
+      timer = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % testimonials.length);
+      }, 7000);
+    };
+    // Don't re-render on a background tab — this used to run forever.
+    const onVisibilityChange = () => (document.hidden ? stop() : start());
+
+    if (!document.hidden) start();
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      stop();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [isLight]);
 
   const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
   const next = () => setCurrent((c) => (c + 1) % testimonials.length);

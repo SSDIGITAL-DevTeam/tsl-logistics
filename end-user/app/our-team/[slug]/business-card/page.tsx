@@ -25,6 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${member.name} | Digital Business Card`,
     description: `${member.name}, ${member.role} at TSL Logistics.`,
+    // Deliberately excluded from sitemap.ts — these are share-by-link cards,
+    // not search landing pages. Without this they were still crawlable and
+    // would compete with /our-team/[slug] for the same person's name.
+    robots: { index: false, follow: true },
   };
 }
 
@@ -75,8 +79,16 @@ function ContactRow({
 
   if (!href) return content;
 
+  // tel:/mailto: should stay in place; only real http(s) destinations open in a
+  // new tab, and those need rel to avoid handing the opener to a third party.
+  const isExternal = /^https?:/i.test(href);
+
   return (
-    <a href={href} className="block">
+    <a
+      href={href}
+      className="block"
+      {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
+    >
       {content}
     </a>
   );

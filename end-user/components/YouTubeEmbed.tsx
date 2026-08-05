@@ -36,7 +36,9 @@ export default function YouTubeEmbed({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-            alt={title}
+            // Decorative: the wrapping button already carries
+            // aria-label="Play video: {title}".
+            alt=""
             className="h-full w-full object-cover"
           />
           <span className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/40" />

@@ -77,19 +77,31 @@ body {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-in > * { animation: heroIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+/* The <h1> is deliberately excluded: `both` fill-mode holds it at opacity:0
+   through the delay, and an invisible element cannot count as painted — that
+   defers Largest Contentful Paint on every page using this class. */
+.hero-in > *:not(h1) { animation: heroIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .hero-in > *:nth-child(1) { animation-delay: 0.05s; }
 .hero-in > *:nth-child(2) { animation-delay: 0.18s; }
 .hero-in > *:nth-child(3) { animation-delay: 0.31s; }
 .hero-in > *:nth-child(4) { animation-delay: 0.44s; }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-in > * { animation: none; }
+}
+
 /* ── Accordion height transition ──
-   max-height is set inline per item from its measured scrollHeight (see
-   FAQAccordion.tsx), so this only needs to animate whatever value gets
-   set — no guessed ceiling, no CSS Grid track-sizing edge cases. */
+   Animates a grid track between 0fr and 1fr. The previous approach read each
+   panel's scrollHeight during render to set an inline max-height, which forced
+   a synchronous layout for every item on the homepage. This needs no
+   measurement, so there is no reflow and no guessed ceiling. */
 .accordion-content {
-  overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: grid;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-content { transition: none; }
 }
 
 /* ── Animations ── */

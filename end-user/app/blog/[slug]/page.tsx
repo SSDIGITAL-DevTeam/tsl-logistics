@@ -127,7 +127,8 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="aspect-video relative overflow-hidden mb-8 shadow-md">
               <Image
                 src={`${API_URL}${post.coverImage}`}
-                alt={post.title}
+                // Decorative: duplicates the article <h1> rendered just above.
+                alt=""
                 fill
                 sizes="(max-width: 800px) 100vw, 800px"
                 className="object-cover"

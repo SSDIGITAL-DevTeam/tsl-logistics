@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { ChevronUp } from "lucide-react";
 
 const faqs = [
@@ -65,7 +65,6 @@ const faqs = [
 
 export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
     <div className="space-y-2">
@@ -97,14 +96,15 @@ export default function FAQAccordion() {
             </button>
 
             <div
-              ref={(el) => { contentRefs.current[i] = el; }}
               className="accordion-content"
-              style={{ maxHeight: isOpen ? `${contentRefs.current[i]?.scrollHeight ?? 1000}px` : "0px" }}
+              style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
             >
-              <div
-                className="px-6 py-5 bg-gray-50 text-sm text-[#555] leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: faq.answer }}
-              />
+              <div className="overflow-hidden">
+                <div
+                  className="px-6 py-5 bg-gray-50 text-sm text-[#555] leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: faq.answer }}
+                />
+              </div>
             </div>
           </div>
         );

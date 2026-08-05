@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import {
   FigmaBand,
@@ -150,9 +151,9 @@ export default function WarehousingServicesPage() {
                 By integrating these services under one roof, we help reduce handling time, minimize errors, and improve overall efficiency.
               </p>
               <div className="mt-8">
-                <a href="/contact" className="inline-flex h-[38px] min-w-[150px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)]">
+                <Link href="/contact" className="inline-flex h-[38px] min-w-[150px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] shadow-[0_1px_2px_rgba(25,33,61,0.08)]">
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </div>

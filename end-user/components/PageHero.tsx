@@ -15,7 +15,9 @@ export default function PageHero({
     <div className="relative h-[220px] md:h-[280px] overflow-hidden">
       <Image
         src={image}
-        alt={title}
+        // Decorative: the <h1> below renders this exact string, so a non-empty
+        // alt would make screen readers announce the title twice.
+        alt=""
         fill
         priority
         sizes="100vw"
