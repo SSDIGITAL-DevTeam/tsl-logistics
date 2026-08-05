@@ -231,7 +231,7 @@ export default function HomePage() {
               destination safely, on time, and with complete transparency.
             </p>
             <Link href="/about" className="btn-pill-gold">
-              Learn More
+              About TSL Logistics
             </Link>
           </div>
 
