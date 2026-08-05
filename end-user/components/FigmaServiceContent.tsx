@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import {
   Boxes,
@@ -69,12 +70,12 @@ export const serviceIcons = {
 
 export function FigmaContactButton({ children = "Contact Us" }: { children?: string }) {
   return (
-    <a
+    <Link
       href="/contact"
       className="inline-flex h-[38px] min-w-[150px] items-center justify-center bg-gold-gradient px-6 text-[12px] font-bold text-[#121212] transition hover:opacity-90"
     >
       {children}
-    </a>
+    </Link>
   );
 }
 

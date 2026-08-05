@@ -11,7 +11,10 @@ const config: Config = {
         primary: '#C8A84B',
       },
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+        // Must match the next/font family loaded in app/layout.tsx. Previously
+        // this named "Plus Jakarta Sans", which is never loaded, so every
+        // `font-sans` silently fell back to system-ui.
+        sans: ["var(--font-montserrat)", "system-ui", "sans-serif"],
       },
     },
   },

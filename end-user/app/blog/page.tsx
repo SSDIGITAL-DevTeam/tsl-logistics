@@ -48,7 +48,9 @@ export default async function BlogPage() {
                       <div className="aspect-[16/9] relative overflow-hidden">
                         <Image
                           src={coverSrc}
-                          alt={post.title}
+                          // Decorative: the card's <h2> link below repeats the
+                          // title, so this image adds no new information.
+                          alt=""
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"

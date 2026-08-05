@@ -2,16 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useSearchParams } from "next/navigation";
 import { Phone, MapPin, Mail } from "lucide-react";
 import CallUsDropdown from "@/components/CallUsDropdown";
-import { getHeaderBrandName } from "@/lib/headerBrand";
+import BrandName from "@/components/BrandName";
 
 export default function Footer() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const brandName = getHeaderBrandName(pathname, searchParams.get("department"));
-
   return (
     <footer>
       {/* ── CTA Banner ── */}
@@ -58,13 +53,14 @@ export default function Footer() {
               <Link href="/" className="mb-4 flex items-center gap-2.5">
                 <Image
                   src="/images/logo-only-tsl.png"
-                  alt="TSL"
+                  // Decorative: brand name follows as text inside this link.
+                  alt=""
                   width={64}
                   height={80}
                   className="h-10 w-auto"
                 />
                 <span className="flex flex-col leading-tight">
-                  <span className="text-xl font-bold text-[#C8A84B]">{brandName}</span>
+                  <span className="text-xl font-bold text-[#C8A84B]"><BrandName /></span>
                   <span className="text-[11px] font-semibold text-white/70">
                     Trusted &middot; Reliable &middot; Delivered
                   </span>
@@ -100,6 +96,10 @@ export default function Footer() {
                   { label: "Home", href: "/" },
                   { label: "About Us", href: "/about" },
                   { label: "Our Team", href: "/our-team" },
+                  // Without this, /blog and every /blog/[slug] have no inbound
+                  // internal link anywhere on the site — sitemap.ts was their
+                  // only route to discovery.
+                  { label: "Blog", href: "/blog" },
                   { label: "Contact Us", href: "/contact" },
                 ].map((link) => (
                   <li key={link.href}>
