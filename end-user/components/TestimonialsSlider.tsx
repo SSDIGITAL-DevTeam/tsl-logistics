@@ -162,16 +162,23 @@ export default function TestimonialsSlider({
         >
           <ChevronLeft size={16} />
         </button>
-        <div className="flex gap-2">
+        {/* The visible dot stays 10px, but the button itself is 24x24 with no
+            gap so centres sit exactly 24px apart — WCAG 2.5.8 minimum. */}
+        <div className="flex">
           {testimonials.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                i === current ? "bg-[#C8A84B]" : inactiveDotClass
-              }`}
+              className="grid h-6 w-6 place-items-center rounded-full"
               aria-label={`Slide ${i + 1}`}
-            />
+              aria-current={i === current ? "true" : undefined}
+            >
+              <span
+                className={`block h-2.5 w-2.5 rounded-full transition-colors ${
+                  i === current ? "bg-[#C8A84B]" : inactiveDotClass
+                }`}
+              />
+            </button>
           ))}
         </div>
         <button

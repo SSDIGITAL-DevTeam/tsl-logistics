@@ -358,7 +358,7 @@ export default function HomePage() {
                   <Phone size={18} className="text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#1a1a1a] mb-1">Call Us</h4>
+                  <h3 className="font-bold text-[#1a1a1a] mb-1">Call Us</h3>
                   <a href="tel:+6567772724" className="text-[#C8A84B] font-bold hover:underline text-lg">+65 6777 2724</a>
                 </div>
               </div>
@@ -367,7 +367,7 @@ export default function HomePage() {
                   <Mail size={18} className="text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#1a1a1a] mb-2">Email Us</h4>
+                  <h3 className="font-bold text-[#1a1a1a] mb-2">Email Us</h3>
                   <div className="space-y-1">
                     <p className="text-sm">
                       <span className="font-semibold text-[#1a1a1a]">Logistics — </span>
@@ -389,7 +389,7 @@ export default function HomePage() {
                   <MapPin size={18} className="text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#1a1a1a] mb-1">Our Location</h4>
+                  <h3 className="font-bold text-[#1a1a1a] mb-1">Our Location</h3>
                   <p className="text-[#666] text-sm leading-relaxed">Monday–Friday, 9am–5pm</p>
                   <p className="text-[#C8A84B] font-semibold text-sm mt-2">8 Boon Lay Way, #09-13</p>
                   <p className="text-[#C8A84B] font-semibold text-sm">8@Tradehub 21, Singapore 609964</p>

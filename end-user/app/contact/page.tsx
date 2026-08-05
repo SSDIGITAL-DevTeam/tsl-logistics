@@ -33,7 +33,7 @@ export default function ContactPage() {
                   <Phone size={18} className="text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#252525] mb-1">Call Us</h4>
+                  <h3 className="font-bold text-[#252525] mb-1">Call Us</h3>
                   <a href="tel:+6567772724" className="text-[#C8A84B] font-bold hover:underline text-lg">+65 6777-2724</a>
                 </div>
               </div>
@@ -43,7 +43,7 @@ export default function ContactPage() {
                   <Mail size={18} className="text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#252525] mb-2">Email Us</h4>
+                  <h3 className="font-bold text-[#252525] mb-2">Email Us</h3>
                   <p className="text-sm mb-1">
                     <span className="font-bold text-[#252525]">Logistics: </span>
                     <a href="mailto:sales@tsllogistics.sg" className="text-[#C8A84B] font-semibold hover:underline">sales@tsllogistics.sg</a>
@@ -64,7 +64,7 @@ export default function ContactPage() {
                   <MapPin size={18} className="text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#252525] mb-1">Our Locations</h4>
+                  <h3 className="font-bold text-[#252525] mb-1">Our Locations</h3>
                   <p className="text-[#555] text-sm leading-relaxed">
                     Our doors, ears and break room are always open.<br />(Monday–Friday, from 9am-5pm)
                   </p>

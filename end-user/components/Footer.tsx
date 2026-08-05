@@ -88,9 +88,9 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-bold text-[#C8A84B] mb-5 uppercase text-xs tracking-widest">
+              <h3 className="font-bold text-[#C8A84B] mb-5 uppercase text-xs tracking-widest">
                 Quick Links
-              </h4>
+              </h3>
               <ul className="space-y-2.5">
                 {[
                   { label: "Home", href: "/" },
@@ -117,9 +117,9 @@ export default function Footer() {
 
             {/* Services */}
             <div>
-              <h4 className="font-bold text-[#C8A84B] mb-5 uppercase text-xs tracking-widest">
+              <h3 className="font-bold text-[#C8A84B] mb-5 uppercase text-xs tracking-widest">
                 Our Services
-              </h4>
+              </h3>
               <ul className="space-y-2.5">
                 {[
                   { label: "TSL Logistics", href: "/tsl-logistics" },
@@ -148,9 +148,9 @@ export default function Footer() {
 
             {/* Contact */}
             <div>
-              <h4 className="font-bold text-[#C8A84B] mb-5 uppercase text-xs tracking-widest">
+              <h3 className="font-bold text-[#C8A84B] mb-5 uppercase text-xs tracking-widest">
                 Contact Us
-              </h4>
+              </h3>
               <ul className="space-y-3.5">
                 <li>
                   <a
