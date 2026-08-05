@@ -139,7 +139,7 @@ export default function Header() {
                   <button
                     type="button"
                     aria-expanded={servicesOpen}
-                    aria-haspopup="menu"
+                    aria-controls="services-dropdown"
                     onClick={() => setServicesOpen((current) => !current)}
                     className={`relative flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                       isActive(link.href)
@@ -159,27 +159,33 @@ export default function Header() {
 
                   {servicesOpen && (
                     <div
+                      id="services-dropdown"
                       className="nav-dropdown absolute left-1/2 top-full z-50 mt-2 w-[min(360px,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden border border-gray-100 bg-white shadow-2xl"
-                      role="menu"
                     >
-                      <div className="py-1">
+                      {/* A plain list of links, not role="menu" — that role
+                          promises arrow-key navigation and roving focus we
+                          don't implement, and its menuitems were nested inside
+                          a generic <div>, which breaks its owned-element
+                          structure. A <ul> also tells screen readers the count. */}
+                      <ul className="py-1">
                         {link.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setServicesOpen(false)}
-                            role="menuitem"
-                            className={`nav-dropdown-item flex items-center gap-2.5 border-b border-gray-50 px-5 py-3 text-sm transition-all last:border-0 ${
-                              pathname.startsWith(child.href)
-                                ? "text-[#C8A84B] font-semibold bg-[#C8A84B]/5"
-                                : "text-[#333] hover:bg-[#C8A84B]/5 hover:text-[#C8A84B]"
-                            }`}
-                          >
-                            <ChevronRight size={11} className="text-[#C8A84B] shrink-0" />
-                            {child.label}
-                          </Link>
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              onClick={() => setServicesOpen(false)}
+                              aria-current={pathname.startsWith(child.href) ? "page" : undefined}
+                              className={`nav-dropdown-item flex items-center gap-2.5 border-b border-gray-50 px-5 py-3 text-sm transition-all last:border-0 ${
+                                pathname.startsWith(child.href)
+                                  ? "text-[#C8A84B] font-semibold bg-[#C8A84B]/5"
+                                  : "text-[#333] hover:bg-[#C8A84B]/5 hover:text-[#C8A84B]"
+                              }`}
+                            >
+                              <ChevronRight size={11} className="text-[#C8A84B] shrink-0" />
+                              {child.label}
+                            </Link>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
                   )}
                 </div>
@@ -220,6 +226,8 @@ export default function Header() {
               setServicesOpen(false);
             }}
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
             className="p-2 text-[#1a1a1a] transition-colors hover:bg-gray-100 md:hidden"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -228,7 +236,10 @@ export default function Header() {
 
         {/* ── Mobile Menu ── */}
         {mobileOpen && (
-          <div className="mobile-menu-in max-h-[calc(100vh-72px)] overflow-y-auto border-t border-gray-100 bg-white shadow-lg md:hidden">
+          <div
+            id="mobile-menu"
+            className="mobile-menu-in max-h-[calc(100vh-72px)] overflow-y-auto border-t border-gray-100 bg-white shadow-lg md:hidden"
+          >
             <nav className="mx-auto flex max-w-[1200px] flex-col px-5 py-3">
               {visibleNavLinks.map((link) =>
                 link.children ? (

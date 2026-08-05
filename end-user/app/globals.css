@@ -45,12 +45,16 @@ body {
   transition: padding-left 0.2s ease, background-color 0.2s ease, color 0.2s ease;
   animation: navItemIn 0.3s ease both;
 }
-.nav-dropdown-item:nth-child(1) { animation-delay: 0.03s; }
-.nav-dropdown-item:nth-child(2) { animation-delay: 0.06s; }
-.nav-dropdown-item:nth-child(3) { animation-delay: 0.09s; }
-.nav-dropdown-item:nth-child(4) { animation-delay: 0.12s; }
-.nav-dropdown-item:nth-child(5) { animation-delay: 0.15s; }
-.nav-dropdown-item:nth-child(6) { animation-delay: 0.18s; }
+/* The stagger counts <li> position, not the link's — the desktop dropdown wraps
+   each link in its own <li>, so every .nav-dropdown-item is its parent's first
+   child and :nth-child on the link itself would give them all one delay.
+   The mobile menu has no <li>, hence the second selector in each pair. */
+li:nth-child(1) > .nav-dropdown-item, .nav-dropdown-item:nth-child(1) { animation-delay: 0.03s; }
+li:nth-child(2) > .nav-dropdown-item, .nav-dropdown-item:nth-child(2) { animation-delay: 0.06s; }
+li:nth-child(3) > .nav-dropdown-item, .nav-dropdown-item:nth-child(3) { animation-delay: 0.09s; }
+li:nth-child(4) > .nav-dropdown-item, .nav-dropdown-item:nth-child(4) { animation-delay: 0.12s; }
+li:nth-child(5) > .nav-dropdown-item, .nav-dropdown-item:nth-child(5) { animation-delay: 0.15s; }
+li:nth-child(6) > .nav-dropdown-item, .nav-dropdown-item:nth-child(6) { animation-delay: 0.18s; }
 @keyframes navItemIn {
   from { opacity: 0; transform: translateX(-8px); }
   to   { opacity: 1; transform: translateX(0); }

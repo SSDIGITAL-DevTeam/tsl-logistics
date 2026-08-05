@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
@@ -62,11 +62,46 @@ const permitContent = [
 ];
 
 function Dialog({ onClose }: { onClose: () => void }) {
-  // Lock body scroll while open
+  const panelRef = useRef<HTMLDivElement>(null);
+  const titleId = useId();
+
   useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
-  }, []);
+    panelRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      // Keep Tab inside the dialog — aria-modal tells assistive tech the rest
+      // of the page is inert, so focus must not escape to it.
+      const focusables = panelRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      if (!focusables?.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeyDown);
+      previouslyFocused?.focus();
+    };
+  }, [onClose]);
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-end md:items-center justify-center">
@@ -74,10 +109,18 @@ function Dialog({ onClose }: { onClose: () => void }) {
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
+        aria-hidden="true"
       />
 
       {/* Panel — bottom sheet on mobile, centered modal on md+ */}
-      <div className="relative bg-white w-full md:max-w-[580px]-2xl shadow-2xl flex flex-col max-h-[88svh] md:max-h-[80vh] z-10 animate-sheet-up md:animate-none">
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        className="relative bg-white w-full md:max-w-[580px]-2xl shadow-2xl flex flex-col max-h-[88svh] md:max-h-[80vh] z-10 animate-sheet-up md:animate-none outline-none"
+      >
 
         {/* Drag handle (mobile only) */}
         <div className="md:hidden flex justify-center pt-3 pb-1 shrink-0">
@@ -86,7 +129,7 @@ function Dialog({ onClose }: { onClose: () => void }) {
 
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-4 pb-4 border-b border-gray-100 shrink-0">
-          <h3 className="font-bold text-[#1a1a1a] text-lg">Document &amp; Permit Processing</h3>
+          <h3 id={titleId} className="font-bold text-[#1a1a1a] text-lg">Document &amp; Permit Processing</h3>
           <button
             onClick={onClose}
             className="w-8 h-8 flex items-center justify-center hover:bg-gray-100 transition-colors text-[#555]"

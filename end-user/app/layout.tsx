@@ -105,11 +105,27 @@ const organizationLd = {
   sameAs: ["https://www.tsllogistics.sg/"],
 };
 
+/**
+ * A GA4 measurement ID looks like `G-` followed by an alphanumeric code.
+ * The check is deliberately stricter than "is this set": the `.env.example`
+ * placeholder `G-XXXXXXXXXX` reached production once, and an invalid ID still
+ * costs ~144ms of main-thread work and two long tasks while collecting nothing.
+ */
+function resolveGaId(): string | null {
+  const id = process.env.NEXT_PUBLIC_GA_ID?.trim();
+  if (!id) return null;
+  if (!/^G-[A-Z0-9]{6,}$/i.test(id)) return null;
+  if (/^G-X+$/i.test(id)) return null; // the placeholder
+  return id;
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = resolveGaId();
+
   return (
     <html lang="en" className={montserrat.variable}>
       <body className="min-h-screen flex flex-col font-[family-name:var(--font-montserrat)]">
@@ -121,9 +137,7 @@ export default function RootLayout({
         <FloatingHelpWidget />
         {/* Must live inside <body> — as a direct child of <html> this was
             invalid nesting and the browser relocated it during parsing. */}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        )}
+        {gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
     </html>
   );

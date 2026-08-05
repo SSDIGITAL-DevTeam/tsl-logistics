@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronUp } from "lucide-react";
 
 const faqs = [
@@ -65,6 +65,7 @@ const faqs = [
 
 export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const idBase = useId();
 
   return (
     <div className="space-y-2">
@@ -75,27 +76,39 @@ export default function FAQAccordion() {
             key={i}
             className="border border-gray-200 overflow-hidden"
           >
-            <button
-              onClick={() => setOpenIndex(isOpen ? null : i)}
-              aria-expanded={isOpen}
-              className="flex items-center justify-between w-full px-6 py-5 text-left bg-white hover:bg-gray-50 transition-colors duration-150"
-            >
-              <h3 className="font-semibold text-[#1a1a1a] text-sm md:text-base pr-4">
-                {faq.question}
-              </h3>
-              {/* Gold circle chevron button */}
-              <span
-                className="w-8 h-8 flex items-center justify-center shrink-0 rounded-full transition-all duration-200"
-                style={{ background: "var(--gold-gradient)" }}
+            {/* The heading wraps the button, not the other way round: a
+                heading nested inside a button is not exposed as a heading, so
+                the FAQ list would vanish from screen-reader outlines. */}
+            <h3 className="font-semibold text-[#1a1a1a] text-sm md:text-base">
+              <button
+                id={`${idBase}-trigger-${i}`}
+                onClick={() => setOpenIndex(isOpen ? null : i)}
+                aria-expanded={isOpen}
+                aria-controls={`${idBase}-panel-${i}`}
+                className="flex items-center justify-between w-full px-6 py-5 text-left bg-white hover:bg-gray-50 transition-colors duration-150"
               >
-                <ChevronUp
-                  size={16}
-                  className={`text-[#1a1a1a] transition-transform duration-200 ${isOpen ? "rotate-0" : "rotate-180"}`}
-                />
-              </span>
-            </button>
+                <span className="pr-4">{faq.question}</span>
+                {/* Gold circle chevron */}
+                <span
+                  aria-hidden="true"
+                  className="w-8 h-8 flex items-center justify-center shrink-0 rounded-full transition-all duration-200"
+                  style={{ background: "var(--gold-gradient)" }}
+                >
+                  <ChevronUp
+                    size={16}
+                    className={`text-[#1a1a1a] transition-transform duration-200 ${isOpen ? "rotate-0" : "rotate-180"}`}
+                  />
+                </span>
+              </button>
+            </h3>
 
             <div
+              id={`${idBase}-panel-${i}`}
+              role="region"
+              aria-labelledby={`${idBase}-trigger-${i}`}
+              // A collapsed panel must leave the a11y tree and the tab order —
+              // 0fr only hides it visually, so its links stayed focusable.
+              inert={!isOpen}
               className="accordion-content"
               style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
             >

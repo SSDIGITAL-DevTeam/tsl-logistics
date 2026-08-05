@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 type Variant = "gold" | "light";
@@ -62,6 +62,9 @@ export default function CallUsDropdown({
     };
   }, [open]);
 
+  const panelId = useId();
+  const headingId = useId();
+
   const triggerClass =
     variant === "gold"
       ? "inline-flex items-center gap-2 rounded-full bg-gold-gradient px-7 py-4 text-sm font-bold text-[#121212] transition hover:opacity-90 active:scale-[0.98]"
@@ -72,8 +75,8 @@ export default function CallUsDropdown({
       <button
         type="button"
         onClick={() => setOpen((current) => !current)}
-        aria-haspopup="menu"
         aria-expanded={open}
+        aria-controls={panelId}
         className={triggerClass}
       >
         {label}
@@ -83,12 +86,20 @@ export default function CallUsDropdown({
         />
       </button>
 
+      {/* Not role="menu": that role may only own menuitems, but this panel
+          contains a <p> heading and a <ul> of <li>. It's a labelled group of
+          links, which is what it actually is. */}
       {open && (
         <div
-          role="menu"
+          id={panelId}
+          role="group"
+          aria-labelledby={headingId}
           className="absolute bottom-full left-0 z-[80] mb-3 w-[290px] overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_18px_50px_rgba(16,24,32,0.22)]"
         >
-          <p className="border-b border-gray-100 px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#9A7D2D]">
+          <p
+            id={headingId}
+            className="border-b border-gray-100 px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#9A7D2D]"
+          >
             Choose a service
           </p>
           <ul className="p-1.5">
@@ -98,7 +109,6 @@ export default function CallUsDropdown({
                   href={waLink(service)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  role="menuitem"
                   onClick={() => setOpen(false)}
                   className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-left transition hover:bg-[#f4f4f4]"
                 >
