@@ -24,7 +24,7 @@ const navLinks: {
   { label: "ABOUT", href: "/about" },
   { label: "SERVICES", href: "#", children: services },
   { label: "OUR TEAM", href: "/our-team" },
-  { label: "BLOG", href: "/blog", hidden: true },
+  { label: "ARTICLES", href: "/blog" },
   { label: "CONTACT US", href: "/contact", hidden: true },
 ];
 

@@ -4,21 +4,37 @@ import Link from "next/link";
 import { getBlogPosts } from "@/lib/api";
 import PageHero from "@/components/PageHero";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Read everything about logistics, moving services, warehousing tips, and industry insights from TSL Logistics Singapore.",
-  alternates: { canonical: "/blog" },
-};
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const searchParams = await props.searchParams;
+  const page = typeof searchParams.page === "string" ? parseInt(searchParams.page, 10) : 1;
+  
+  const canonicalUrl = page > 1 ? `/blog?page=${page}` : "/blog";
+  
+  return {
+    title: page > 1 ? `Articles - Page ${page}` : "Articles",
+    description: "Read everything about logistics, moving services, warehousing tips, and industry insights from TSL Logistics Singapore.",
+    alternates: { canonical: canonicalUrl },
+  };
+}
 
 const API_URL = process.env.TSL_API_URL ?? "";
 
-export default async function BlogPage() {
-  const { rows: posts } = await getBlogPosts({ limit: 9 });
+type Props = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function BlogPage(props: Props) {
+  const searchParams = await props.searchParams;
+  const page = typeof searchParams.page === "string" ? parseInt(searchParams.page, 10) : 1;
+  const limit = 9; // Menampilkan 9 item per halaman
+  
+  const { rows: posts, totalPages } = await getBlogPosts({ page, limit });
 
   return (
     <>
-      <PageHero title="Blog" image="/images/hero-bg-new.jpg" />
+      <PageHero title="Articles" image="/images/hero-bg-new.jpg" />
 
       {/* Blog Grid */}
       <section className="py-16 bg-white">
@@ -84,6 +100,25 @@ export default async function BlogPage() {
                   </article>
                 );
               })}
+            </div>
+          )}
+
+          {/* Pagination UI */}
+          {totalPages > 1 && (
+            <div className="mt-14 flex justify-center items-center gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <Link
+                  key={pageNum}
+                  href={`/blog?page=${pageNum}`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all ${
+                    pageNum === page
+                      ? "bg-[#C8A84B] text-white shadow-md"
+                      : "bg-gray-50 text-[#444] border border-gray-200 hover:bg-[#C8A84B]/10 hover:text-[#C8A84B] hover:border-[#C8A84B]/30"
+                  }`}
+                >
+                  {pageNum}
+                </Link>
+              ))}
             </div>
           )}
         </div>

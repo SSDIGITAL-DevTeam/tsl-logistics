@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 2, name: "Articles", item: `${SITE_URL}/blog` },
       { "@type": "ListItem", position: 3, name: post.title, item: url },
     ],
   };
@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Page Header */}
       <div className="bg-[#1E1E1E] py-12 border-b border-[#C8A84B]/30">
         <div className="hero-in max-w-[1200px] mx-auto px-4 text-center">
-          <p className="eyebrow mb-2">Blog</p>
+          <p className="eyebrow mb-2">Articles</p>
           <h1 className="text-2xl md:text-3xl font-bold text-white leading-snug px-4">{post.title}</h1>
           <div className="gold-divider" />
         </div>
@@ -149,7 +149,7 @@ export default async function BlogPostPage({ params }: Props) {
               href="/blog"
               className="inline-flex items-center gap-2 text-[#C8A84B] font-semibold text-sm hover:text-[#9A7D2D] transition-colors"
             >
-              ← Back to Blog
+              ← Back to Articles
             </Link>
           </div>
         </div>

@@ -3672,6 +3672,30 @@ async function seed() {
       status: 'published',
       publishedAt: new Date('2023-10-27T05:36:42.000Z'),
     },
+    {
+      title: "How Automation is Transforming Logistics in 2024",
+      excerpt: "Discover the latest automation trends reshaping the logistics industry in Singapore.",
+      content: "<div data-rss-type=\"text\"><p>Automation is revolutionizing the way warehouses and transport networks operate. By implementing advanced robotics and AI, companies can dramatically reduce processing times and error rates.</p></div>",
+      categoryId: catMap['logistics'],
+      status: 'published',
+      publishedAt: new Date('2024-01-15T10:00:00.000Z'),
+    },
+    {
+      title: "Sustainable Practices in Modern Warehousing",
+      excerpt: "Learn how green warehousing initiatives are helping companies reduce their carbon footprint.",
+      content: "<div data-rss-type=\"text\"><p>Modern warehousing is focusing more on sustainability. Solar panels, energy-efficient lighting, and electric forklifts are just a few ways the industry is going green.</p></div>",
+      categoryId: catMap['logistics'],
+      status: 'published',
+      publishedAt: new Date('2024-02-10T14:30:00.000Z'),
+    },
+    {
+      title: "The Future of Express Delivery Services",
+      excerpt: "Same-day delivery is becoming the norm. How are express delivery services keeping up?",
+      content: "<div data-rss-type=\"text\"><p>With consumer expectations at an all-time high, express delivery services must innovate constantly. Route optimization algorithms and local micro-fulfillment centers are the key.</p></div>",
+      categoryId: catMap['logistics'],
+      status: 'published',
+      publishedAt: new Date('2024-03-05T09:15:00.000Z'),
+    },
   ];
 
   for (const post of posts) {

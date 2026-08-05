@@ -53,7 +53,7 @@ export async function getBlogPosts(opts?: {
     ...(opts?.category ? { category: opts.category } : {}),
   });
   try {
-    const res = await apiFetch(`/api/v1/blog?${qs}`, { next: { revalidate: 3600 } } as RequestInit);
+    const res = await apiFetch(`/api/v1/blog?${qs}`, { cache: 'no-store' } as RequestInit);
     if (!res.ok) return { rows: [], total: 0, page: 1, limit: 9, totalPages: 0 };
     return res.json();
   } catch {
@@ -63,7 +63,7 @@ export async function getBlogPosts(opts?: {
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
-    const res = await apiFetch(`/api/v1/blog/${slug}`, { next: { revalidate: 3600 } } as RequestInit);
+    const res = await apiFetch(`/api/v1/blog/${slug}`, { cache: 'no-store' } as RequestInit);
     if (res.status === 404) return null;
     if (!res.ok) return null;
     return res.json();
@@ -74,7 +74,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 
 export async function getBlogSlugs(): Promise<BlogSlug[]> {
   try {
-    const res = await apiFetch('/api/v1/blog/slugs', { next: { revalidate: 3600 } } as RequestInit);
+    const res = await apiFetch('/api/v1/blog/slugs', { cache: 'no-store' } as RequestInit);
     if (!res.ok) return [];
     return res.json();
   } catch {
