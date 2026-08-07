@@ -31,6 +31,17 @@ export interface PaginatedPosts {
   totalPages: number;
 }
 
+/**
+ * Blog content changes rarely, so it is cached for an hour rather than refetched
+ * on every request. `cache: 'no-store'` meant each visitor hit the API backend
+ * again, which removed any chance of static rendering or ISR.
+ *
+ * Publishing from the back office therefore takes up to an hour to appear. If
+ * that becomes a problem, tag these fetches and call revalidateTag on publish
+ * instead of lowering this number.
+ */
+const BLOG_REVALIDATE = 3600;
+
 async function apiFetch(path: string, init: RequestInit = {}): Promise<Response> {
   if (!API_URL) throw new Error('TSL_API_URL not configured');
   const controller = new AbortController();
@@ -53,7 +64,9 @@ export async function getBlogPosts(opts?: {
     ...(opts?.category ? { category: opts.category } : {}),
   });
   try {
-    const res = await apiFetch(`/api/v1/blog?${qs}`, { cache: 'no-store' } as RequestInit);
+    const res = await apiFetch(`/api/v1/blog?${qs}`, {
+      next: { revalidate: BLOG_REVALIDATE },
+    } as RequestInit);
     if (!res.ok) return { rows: [], total: 0, page: 1, limit: 9, totalPages: 0 };
     return res.json();
   } catch {
@@ -63,7 +76,9 @@ export async function getBlogPosts(opts?: {
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
-    const res = await apiFetch(`/api/v1/blog/${slug}`, { cache: 'no-store' } as RequestInit);
+    const res = await apiFetch(`/api/v1/blog/${slug}`, {
+      next: { revalidate: BLOG_REVALIDATE },
+    } as RequestInit);
     if (res.status === 404) return null;
     if (!res.ok) return null;
     return res.json();
@@ -74,7 +89,9 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 
 export async function getBlogSlugs(): Promise<BlogSlug[]> {
   try {
-    const res = await apiFetch('/api/v1/blog/slugs', { cache: 'no-store' } as RequestInit);
+    const res = await apiFetch('/api/v1/blog/slugs', {
+      next: { revalidate: BLOG_REVALIDATE },
+    } as RequestInit);
     if (!res.ok) return [];
     return res.json();
   } catch {

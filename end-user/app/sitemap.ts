@@ -1,6 +1,10 @@
 import type { MetadataRoute } from 'next';
-import { getBlogSlugs } from '@/lib/api';
+import { getBlogPosts, getBlogSlugs } from '@/lib/api';
 import { teamMembers } from '@/lib/team';
+
+// Must match the page size used by app/blog/page.tsx, otherwise the paginated
+// URLs listed here won't line up with the ones the listing actually renders.
+const BLOG_PAGE_SIZE = 9;
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://tsllogistics.sg').replace(/\/$/, '');
 const now = new Date();
@@ -43,5 +47,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     blogRoutes = [];
   }
 
-  return [...staticRoutes, ...teamRoutes, ...blogRoutes];
+  // Paginated listing pages. Page 1 is already covered by /blog above, so only
+  // pages 2..n are added — each one self-canonicalises, so they are indexable
+  // in their own right and otherwise only reachable by crawling the pager.
+  let blogPageRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const { totalPages } = await getBlogPosts({ page: 1, limit: BLOG_PAGE_SIZE });
+    blogPageRoutes = Array.from({ length: Math.max(totalPages - 1, 0) }, (_, i) => ({
+      url: `${SITE_URL}/blog?page=${i + 2}`,
+      lastModified: now,
+      priority: 0.4,
+      changeFrequency: 'weekly' as const,
+    }));
+  } catch {
+    blogPageRoutes = [];
+  }
+
+  return [...staticRoutes, ...teamRoutes, ...blogPageRoutes, ...blogRoutes];
 }

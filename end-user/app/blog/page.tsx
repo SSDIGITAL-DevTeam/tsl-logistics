@@ -3,8 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/api";
 import PageHero from "@/components/PageHero";
+import JsonLd from "@/components/JsonLd";
 
-export const dynamic = "force-dynamic";
+// No `force-dynamic`: reading searchParams already opts this route into dynamic
+// rendering, so the flag added nothing while blocking the fetch cache in
+// lib/api.ts from ever being used.
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tsllogistics.sg";
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const searchParams = await props.searchParams;
@@ -12,8 +17,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   
   const canonicalUrl = page > 1 ? `/blog?page=${page}` : "/blog";
   
+  // Title carries the topic, not just the page type — "Articles" on its own
+  // gives Google nothing to match a search against.
+  const base = "Logistics Articles & Insights";
+
   return {
-    title: page > 1 ? `Articles - Page ${page}` : "Articles",
+    title: page > 1 ? `${base} - Page ${page}` : base,
     description: "Read everything about logistics, moving services, warehousing tips, and industry insights from TSL Logistics Singapore.",
     alternates: { canonical: canonicalUrl },
   };
@@ -32,9 +41,42 @@ export default async function BlogPage(props: Props) {
   
   const { rows: posts, totalPages } = await getBlogPosts({ page, limit });
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Articles", item: `${SITE_URL}/blog` },
+    ],
+  };
+
+  // Describes the listing itself. The individual posts carry Article schema on
+  // their own pages; this tells Google what this page collects and in what order.
+  const collectionLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Logistics Articles & Insights",
+    description:
+      "Logistics, moving, warehousing and transport insights from TSL Logistics Singapore.",
+    url: page > 1 ? `${SITE_URL}/blog?page=${page}` : `${SITE_URL}/blog`,
+    isPartOf: { "@type": "WebSite", name: "TSL Logistics", url: SITE_URL },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: posts.map((post, i) => ({
+        "@type": "ListItem",
+        position: (page - 1) * limit + i + 1,
+        url: `${SITE_URL}/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
+  };
+
   return (
     <>
-      <PageHero title="Articles" image="/images/hero-bg-new.jpg" />
+      <JsonLd data={breadcrumbLd} />
+      <JsonLd data={collectionLd} />
+
+      <PageHero title="Logistics Articles & Insights" image="/images/hero-bg-new.jpg" />
 
       {/* Blog Grid */}
       <section className="py-16 bg-white">
