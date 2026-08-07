@@ -96,10 +96,11 @@ export default function Footer() {
                   { label: "Home", href: "/" },
                   { label: "About Us", href: "/about" },
                   { label: "Our Team", href: "/our-team" },
-                  // Without this, /blog and every /blog/[slug] have no inbound
-                  // internal link anywhere on the site — sitemap.ts was their
-                  // only route to discovery.
-                  { label: "Blog", href: "/blog" },
+                  // No Articles link: the client asked for the articles to be
+                  // hidden from the site entirely (Aug 2026). /blog and every
+                  // /blog/[slug] are now orphan pages — they stay live and
+                  // indexable, but sitemap.ts is their only discovery path, so
+                  // those sitemap entries must not be removed.
                   { label: "Contact Us", href: "/contact" },
                 ].map((link) => (
                   <li key={link.href}>

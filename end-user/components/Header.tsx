@@ -24,7 +24,10 @@ const navLinks: {
   { label: "ABOUT", href: "/about" },
   { label: "SERVICES", href: "#", children: services },
   { label: "OUR TEAM", href: "/our-team" },
-  { label: "ARTICLES", href: "/blog" },
+  // Hidden from the nav at the client's request (Aug 2026). The pages stay
+  // live, indexable and in the sitemap — only the menu entry is removed. The
+  // footer keeps a link so the articles are still reachable by crawlers.
+  { label: "ARTICLES", href: "/blog", hidden: true },
   { label: "CONTACT US", href: "/contact", hidden: true },
 ];
 
