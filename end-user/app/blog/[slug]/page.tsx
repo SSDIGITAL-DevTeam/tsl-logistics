@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: Props) {
       "@type": "Organization",
       name: "TSL Logistics",
       url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.png` },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-wordmark.png` },
     },
   };
 

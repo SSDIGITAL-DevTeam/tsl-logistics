@@ -78,7 +78,11 @@ const organizationLd = {
   "@id": `${SITE_URL}/#organization`,
   name: "TSL Logistics Pte Ltd",
   url: SITE_URL,
-  logo: `${SITE_URL}/icon.png`,
+  // The horizontal wordmark, not the square favicon: Google renders this in
+  // the Knowledge Panel, where a lockup with the company name reads better.
+  // It also must not live at /icon.png — a file there would shadow the
+  // app/icon.png favicon route and silently replace the tab icon.
+  logo: `${SITE_URL}/logo-wordmark.png`,
   description:
     "Singapore's trusted logistics partner since 2003. Specialising in transportation, warehousing, distribution, moving, and dangerous goods handling.",
   foundingDate: "2003",
