@@ -39,9 +39,11 @@ function PillTabs({ selected }: { selected: string }) {
   );
 }
 
-function TeamCard({ member }: { member: TeamMember }) {
+function TeamCard({ member, hidden }: { member: TeamMember; hidden?: boolean }) {
   return (
-    <article className="group relative min-h-[526px] overflow-hidden bg-[#111]">
+    <article
+      className={`group relative min-h-[526px] overflow-hidden bg-[#111]${hidden ? " hidden" : ""}`}
+    >
       <Image
         src="/images/team/latar-card.png"
         alt=""
@@ -111,9 +113,18 @@ export default async function OurTeamPage({ searchParams }: Props) {
   )
     ? (resolvedSearchParams?.department as (typeof departments)[number])
     : "logistics";
-  const members = teamMembers.filter(
-    (member) => member.department === selected,
-  );
+  // Every member is rendered; the inactive departments are hidden with CSS
+  // rather than left out of the markup.
+  //
+  // This page canonicalises to /our-team regardless of ?department, so Google
+  // only ever reads the default tab. When the other departments were filtered
+  // out of the HTML entirely, the three members outside "logistics" had no
+  // inbound link anywhere on the site and were never crawled — Search Console
+  // reported them as "Discovered - currently not indexed" with no crawl date,
+  // while their three logistics colleagues indexed within days.
+  //
+  // Display is unchanged: `hidden` is display:none, so the grid still lays out
+  // only the selected department.
 
   return (
     <>
@@ -139,8 +150,12 @@ export default async function OurTeamPage({ searchParams }: Props) {
           </div>
 
           <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {members.map((member) => (
-              <TeamCard key={member.slug} member={member} />
+            {teamMembers.map((member) => (
+              <TeamCard
+                key={member.slug}
+                member={member}
+                hidden={member.department !== selected}
+              />
             ))}
           </div>
         </div>
