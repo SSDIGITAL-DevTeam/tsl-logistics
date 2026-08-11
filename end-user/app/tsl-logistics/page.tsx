@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import JsonLd from "@/components/JsonLd";
+import { segmentSeo, serviceLd } from "@/lib/segmentSeo";
 import {
   FigmaImageCards,
   FigmaIntro,
@@ -11,9 +13,10 @@ import {
 } from "@/components/FigmaServiceContent";
 
 export const metadata: Metadata = {
-  title: "TSL Logistics | Container Trucking, Freight & Project Logistics",
+  title: "Container Haulage & Trucking Singapore",
   description:
-    "TSL Logistics provides container trucking, flatbed and lowbed transport, DG cargo handling, freight services, permit declaration, and project logistics.",
+    "Licensed container haulier in Singapore. 20ft & 40ft container trucking, prime mover haulage, flatbed and lowbed transport, out-of-gauge cargo and DG trucking.",
+  keywords: segmentSeo.logistics.keywords,
   alternates: { canonical: "/tsl-logistics" },
 };
 
@@ -31,12 +34,13 @@ const enquiryOptions = [
 export default function TSLLogisticsPage() {
   return (
     <ServicePageLayout
-      title="Logistics"
+      title="Container Haulage & Trucking Singapore"
       image="/images/edite-wfn05998.jpg"
       enquiryOptions={enquiryOptions}
       ctaVariant="quote"
       source="tsl-logistics"
     >
+      <JsonLd data={serviceLd(segmentSeo.logistics)} />
       <FigmaServiceShell>
         <FigmaIntro
           title="TSL Logistics"

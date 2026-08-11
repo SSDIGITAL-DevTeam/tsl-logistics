@@ -4,6 +4,8 @@ import { ChevronRight } from "lucide-react";
 import { Fragment } from "react";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import TSLMoverQuoteForm from "@/components/TSLMoverQuoteForm";
+import JsonLd from "@/components/JsonLd";
+import { segmentSeo, serviceLd } from "@/lib/segmentSeo";
 import {
   FigmaBand,
   FigmaContactButton,
@@ -15,9 +17,10 @@ import {
 } from "@/components/FigmaServiceContent";
 
 export const metadata: Metadata = {
-  title: "TSL Mover | Professional Moving Services Singapore",
+  title: "House & Office Movers Singapore",
   description:
-    "TSL Mover provides residential, office, commercial, factory, international, server, machine, piano, organ, pool table, and safe box moving services.",
+    "Movers in Singapore for HDB, condo and landed homes, offices, factories and international relocation. Specialty movers for pianos, safes, servers and machinery.",
+  keywords: segmentSeo.movers.keywords,
   alternates: { canonical: "/tsl-mover" },
 };
 
@@ -41,7 +44,8 @@ const featuredLogos = [
 
 export default function TSLMoverPage() {
   return (
-    <ServicePageLayout title="Movers" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} showContactForm={false} source="tsl-mover">
+    <ServicePageLayout title="House & Office Movers Singapore" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} showContactForm={false} source="tsl-mover">
+      <JsonLd data={serviceLd(segmentSeo.movers)} />
       <FigmaServiceShell>
         <FigmaIntro
           title="TSL Movers"

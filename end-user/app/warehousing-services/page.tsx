@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import JsonLd from "@/components/JsonLd";
+import { segmentSeo, serviceLd } from "@/lib/segmentSeo";
 import {
   FigmaBand,
   FigmaImageCards,
@@ -11,9 +13,10 @@ import {
 } from "@/components/FigmaServiceContent";
 
 export const metadata: Metadata = {
-  title: "TSL Warehousing | Storage Solutions Singapore",
+  title: "Warehousing Services Singapore",
   description:
-    "TSL Warehousing provides secure general cargo storage, flexible storage options, inventory management, packing, sorting, labelling, loading, and unloading services.",
+    "Secure warehousing services in Singapore. Warehouse space and storage rental, flexible long and short-term terms, 3PL handling and inventory management.",
+  keywords: segmentSeo.warehousing.keywords,
   alternates: { canonical: "/warehousing-services" },
 };
 
@@ -30,7 +33,8 @@ const enquiryOptions = [
 
 export default function WarehousingServicesPage() {
   return (
-    <ServicePageLayout title="Warehousing" image="/images/TSL Logistics Warehouse-1920w.jpeg" enquiryOptions={enquiryOptions} source="warehousing-services" requestFormServiceSuffix={false}>
+    <ServicePageLayout title="Warehousing Services Singapore" image="/images/TSL Logistics Warehouse-1920w.jpeg" enquiryOptions={enquiryOptions} source="warehousing-services" requestFormServiceSuffix={false}>
+      <JsonLd data={serviceLd(segmentSeo.warehousing)} />
       <FigmaServiceShell>
         <section className="grid items-center gap-8 md:grid-cols-[411px_1fr] md:gap-12">
           <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-full md:min-h-[440px]">

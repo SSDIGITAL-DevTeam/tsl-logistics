@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import JsonLd from "@/components/JsonLd";
+import { segmentSeo, serviceLd } from "@/lib/segmentSeo";
 import {
   FigmaIntro,
   FigmaServiceShell,
@@ -9,9 +11,12 @@ import {
 } from "@/components/FigmaServiceContent";
 
 export const metadata: Metadata = {
-  title: "TSL Express | Optical Supply & Ad Hoc Delivery",
+  // The root layout appends " | TSL Logistics" (16 chars), so keep this side
+  // under ~44 to stay within the ~60 Google renders before truncating.
+  title: "Motorbike & Dedicated Courier Singapore",
   description:
-    "TSL Express provides optical supply delivery, express ad hoc delivery, and contract-based dedicated van or biker service.",
+    "Dedicated courier and motorbike rider services in Singapore. Contract couriers, dispatch riders, optical supplies and express ad hoc delivery.",
+  keywords: segmentSeo.express.keywords,
   alternates: { canonical: "/tsl-express" },
 };
 
@@ -25,7 +30,8 @@ const enquiryOptions = [
 
 export default function TSLExpressPage() {
   return (
-    <ServicePageLayout title="Express" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
+    <ServicePageLayout title="Dedicated Courier & Biker Service Singapore" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
+      <JsonLd data={serviceLd(segmentSeo.express)} />
       <FigmaServiceShell>
         <FigmaIntro
           title="TSL Express"
