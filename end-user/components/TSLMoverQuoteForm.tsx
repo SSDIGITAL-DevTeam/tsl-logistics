@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import PhoneInput, { isPhoneValueValid } from "./ui/PhoneInput";
-import SuccessModal from "./ui/SuccessModal";
+import { thankYouPath } from "@/lib/leadConversion";
 
 const propertyTypes = [
   "HDB",
@@ -49,7 +49,6 @@ export default function TSLMoverQuoteForm() {
   const pathname = usePathname();
   const [form, setForm] = useState<FormState>(initialForm);
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
@@ -133,28 +132,24 @@ export default function TSLMoverQuoteForm() {
             ),
           );
         } else {
-          setError("Something went wrong. Please try again.");
+          // Covers the backend's 429 rate limiter too — show its message so a
+          // blocked user isn't told "try again" forever.
+          setError(data?.message || "Something went wrong. Please try again.");
         }
+        setLoading(false);
         return;
       }
 
-      setSubmitted(true);
-      setForm(initialForm);
+      // Hard navigation — see the same comment in ContactForm.tsx. No
+      // setForm(initialForm) or setLoading(false): this document is about to be
+      // torn down, and resetting the fields first would only make them flash
+      // empty on a slow navigation.
+      window.location.assign(thankYouPath("tsl-mover"));
     } catch {
       setError("Something went wrong. Please try again.");
-    } finally {
       setLoading(false);
     }
   };
-
-  if (submitted) {
-    return (
-      <SuccessModal
-        title="Thank you for your quotation request."
-        message="Our team will get back to you with the right moving support."
-      />
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4 bg-white p-6 text-[#121212]">

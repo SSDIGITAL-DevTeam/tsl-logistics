@@ -9,6 +9,11 @@ const BLOG_PAGE_SIZE = 9;
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://tsllogistics.sg').replace(/\/$/, '');
 const now = new Date();
 
+// /thank-you and /thank-you/* are deliberately absent: they are noindex
+// conversion pages gated behind a form-submission cookie, so a crawler hitting
+// one gets a 307 to "/". Listing them would only feed Search Console
+// "Excluded by 'noindex'" noise. Note robots.ts must NOT Disallow them either —
+// a blocked page can never be crawled, so Google would never see the noindex.
 const staticRoutes: MetadataRoute.Sitemap = [
   { url: SITE_URL, lastModified: now, priority: 1.0, changeFrequency: 'weekly' },
   { url: `${SITE_URL}/about`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },

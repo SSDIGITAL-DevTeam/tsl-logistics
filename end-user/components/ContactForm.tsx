@@ -4,7 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import CustomSelect from "./ui/CustomSelect";
 import PhoneInput, { isPhoneValueValid } from "./ui/PhoneInput";
-import SuccessModal from "./ui/SuccessModal";
+import { thankYouPath } from "@/lib/leadConversion";
 
 interface ContactFormProps {
   enquiryOptions?: string[];
@@ -26,7 +26,6 @@ export default function ContactForm({
   source = "contact",
 }: ContactFormProps) {
   const pathname = usePathname();
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -90,27 +89,29 @@ export default function ContactForm({
             ),
           );
         } else {
-          setError("Something went wrong. Please try again.");
+          // Covers the backend's 429 rate limiter too — show its message so a
+          // blocked user isn't told "try again" forever.
+          setError(data?.message || "Something went wrong. Please try again.");
         }
+        setLoading(false);
         return;
       }
 
-      setSubmitted(true);
+      // Hard navigation, not router.push: this must be a real document load so
+      // the GTM container re-initialises on the thank-you page. The Conversion
+      // Linker (which carries the gclid from the ad click) and any Page-View
+      // based Ads trigger both depend on that.
+      //
+      // The gate cookie arrived with the response above and is already in the
+      // jar — the browser commits Set-Cookie when headers arrive, before fetch()
+      // resolves. setLoading(false) is deliberately omitted: keep the button
+      // disabled until the browser tears this document down.
+      window.location.assign(thankYouPath(source));
     } catch {
       setError("Something went wrong. Please try again.");
-    } finally {
       setLoading(false);
     }
   };
-
-  if (submitted) {
-    return (
-      <SuccessModal
-        title="Thank you for contacting us."
-        message="We will get back to you as soon as possible."
-      />
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
