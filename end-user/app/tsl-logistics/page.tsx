@@ -34,7 +34,7 @@ const enquiryOptions = [
 export default function TSLLogisticsPage() {
   return (
     <ServicePageLayout
-      title="Container Haulage & Trucking Singapore"
+      title="Logistics"
       image="/images/edite-wfn05998.jpg"
       enquiryOptions={enquiryOptions}
       ctaVariant="quote"
