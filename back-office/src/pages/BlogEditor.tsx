@@ -74,12 +74,10 @@ export function BlogEditor({ id, onClose }: Props) {
 
   const titleValue = watch('title');
 
-  // Auto-generate slug from title when creating
+  // Auto-generate slug from title (both creating and editing)
   useEffect(() => {
-    if (!isEdit) {
-      setValue('slug', slugify(titleValue || ''), { shouldValidate: false, shouldDirty: false });
-    }
-  }, [titleValue, isEdit, setValue]);
+    setValue('slug', slugify(titleValue || ''), { shouldValidate: false, shouldDirty: true });
+  }, [titleValue, setValue]);
 
   useEffect(() => {
     if (post) {
@@ -108,6 +106,9 @@ export function BlogEditor({ id, onClose }: Props) {
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['admin-posts'] });
+      if (isEdit) {
+        qc.invalidateQueries({ queryKey: ['admin-post', id] });
+      }
       toast.success(isEdit ? 'Post updated' : 'Post created');
       onClose();
     },

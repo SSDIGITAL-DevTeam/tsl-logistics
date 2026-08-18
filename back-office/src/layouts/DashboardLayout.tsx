@@ -38,7 +38,7 @@ function SidebarContent({ onLogout, onClose }: SidebarProps) {
     <aside className="flex h-full w-[240px] flex-col bg-[#0A0A0B]">
       {/* Logo */}
       <div className="relative flex h-16 items-center justify-center border-b border-white/6">
-        <img src="/logo.png" alt="TSL Logistics" className="h-8 w-auto object-contain" />
+        <img src="/logo-only-tsl.png" alt="TSL Logistics" className="h-9 w-auto object-contain" />
         {onClose && (
           <button
             onClick={onClose}
@@ -162,7 +162,7 @@ export function DashboardLayout() {
             >
               <Menu className="h-5 w-5" />
             </button>
-            <img src="/logo.png" alt="TSL" className="h-7 w-auto object-contain lg:hidden" />
+            <img src="/logo-only-tsl.png" alt="TSL" className="h-8 w-auto object-contain lg:hidden" />
             <p className="hidden lg:block text-sm font-semibold text-gray-700">{pageTitle}</p>
           </div>
 

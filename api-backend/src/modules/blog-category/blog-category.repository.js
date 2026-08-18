@@ -1,9 +1,9 @@
-import { eq } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 import { db } from '../../../drizzle/db.js';
 import { blogCategories } from '../../../drizzle/schema.js';
 
 export async function findAllCategories() {
-  return db.select().from(blogCategories).orderBy(blogCategories.name);
+  return db.select().from(blogCategories).orderBy(desc(blogCategories.createdAt));
 }
 
 export async function findCategoryById(id) {

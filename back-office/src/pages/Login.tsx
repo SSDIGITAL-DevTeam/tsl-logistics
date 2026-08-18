@@ -37,7 +37,7 @@ export function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#141414] via-[#1E1E1E] to-[#252525] px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <img src="/logo.png" alt="TSL Logistics" className="mx-auto mb-5 h-14 w-auto object-contain" />
+          <img src="/logo-only-tsl.png" alt="TSL Logistics" className="mx-auto mb-5 h-16 w-auto object-contain" />
           <h1 className="text-2xl font-bold text-white">Back Office</h1>
           <p className="mt-1.5 text-sm text-white/40">Sign in to manage your logistics website</p>
         </div>
