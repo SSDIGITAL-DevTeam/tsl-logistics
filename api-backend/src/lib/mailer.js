@@ -138,10 +138,6 @@ export async function sendLeadNotification(lead, options = {}) {
         <tr><td><strong>Source</strong></td><td>${esc(lead.source)}</td></tr>
         <tr><td><strong>Submitted</strong></td><td>${esc(leadDate)}</td></tr>
         <tr><td><strong>Page</strong></td><td>${esc(lead.pagePath)}</td></tr>
-        <tr><td><strong>UTM Source</strong></td><td>${esc(lead.utmSource)}</td></tr>
-        <tr><td><strong>UTM Medium</strong></td><td>${esc(lead.utmMedium)}</td></tr>
-        <tr><td><strong>UTM Campaign</strong></td><td>${esc(lead.utmCampaign)}</td></tr>
-        <tr><td><strong>Google Ads GCLID</strong></td><td>${esc(lead.gclid)}</td></tr>
         <tr><td><strong>Enquiry</strong></td><td>${esc(lead.enquiry)}</td></tr>
         <tr><td><strong>Message</strong></td><td>${esc(lead.message)}</td></tr>
         <tr><td><strong>Notes</strong></td><td>${esc(lead.notes ?? lead.message)}</td></tr>
