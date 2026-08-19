@@ -124,6 +124,13 @@ export async function sendLeadNotification(lead, options = {}) {
        </p>`
     : '';
 
+  // notes defaults to a copy of message at creation time (see leads.service.js) when
+  // the form has no separate notes field — only show it when it's an actual addition.
+  const notesRow =
+    lead.notes && lead.notes !== lead.message
+      ? `<tr><td><strong>Notes</strong></td><td>${esc(lead.notes)}</td></tr>`
+      : '';
+
   await sendMail({
     to,
     bcc,
@@ -140,7 +147,7 @@ export async function sendLeadNotification(lead, options = {}) {
         <tr><td><strong>Page</strong></td><td>${esc(lead.pagePath)}</td></tr>
         <tr><td><strong>Enquiry</strong></td><td>${esc(lead.enquiry)}</td></tr>
         <tr><td><strong>Message</strong></td><td>${esc(lead.message)}</td></tr>
-        <tr><td><strong>Notes</strong></td><td>${esc(lead.notes ?? lead.message)}</td></tr>
+        ${notesRow}
       </table>
     `,
   });
