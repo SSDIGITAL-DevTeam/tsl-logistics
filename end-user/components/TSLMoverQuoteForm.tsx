@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import PhoneInput, { isPhoneValueValid } from "./ui/PhoneInput";
 import { thankYouPath } from "@/lib/leadConversion";
+import { getStoredUtm } from "@/lib/utmTracker";
 
 const propertyTypes = [
   "HDB",
@@ -116,6 +117,7 @@ export default function TSLMoverQuoteForm() {
           notes,
           source: "tsl-mover",
           pagePath: pathname,
+          ...getStoredUtm(),
           _h: form._h,
         }),
       });

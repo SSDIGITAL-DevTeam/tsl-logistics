@@ -87,6 +87,10 @@ export const leads = mysqlTable(
     pagePath: varchar('page_path', { length: 255 }),
     ipAddress: varchar('ip_address', { length: 45 }),
     userAgent: varchar('user_agent', { length: 255 }),
+    utmSource: varchar('utm_source', { length: 255 }),
+    utmMedium: varchar('utm_medium', { length: 255 }),
+    utmCampaign: varchar('utm_campaign', { length: 255 }),
+    gclid: varchar('gclid', { length: 255 }),
     ...timestamps(),
   },
   (table) => [

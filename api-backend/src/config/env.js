@@ -37,6 +37,7 @@ const envSchema = z.object({
   LEAD_NOTIFY_TSL_LOGISTICS: z.string().email().default('sales@tsllogistics.sg'),
   LEAD_NOTIFY_TSL_MOVER: z.string().email().default('ops@tslmovers.sg'),
   LEAD_NOTIFY_TSL_EXPRESS: z.string().email().default('ops@tslexpress.sg'),
+  LEAD_NOTIFY_BCC: z.string().email().optional().default('rahmaariani3@gmail.com'),
   RESET_LINK_URL: z
     .string()
     .url()

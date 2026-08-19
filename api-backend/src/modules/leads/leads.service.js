@@ -19,10 +19,14 @@ export async function createLeadService(data, req) {
     pagePath: data.pagePath || null,
     ipAddress: req.ip,
     userAgent: req.headers['user-agent']?.slice(0, 255) || null,
+    utmSource: data.utmSource || null,
+    utmMedium: data.utmMedium || null,
+    utmCampaign: data.utmCampaign || null,
+    gclid: data.gclid || null,
   });
 
   // Fire-and-forget email notification
-  sendLeadNotification(data).catch((err) =>
+  sendLeadNotification({ ...data, ...lead }).catch((err) =>
     logger.error({ err }, 'Lead notification email failed')
   );
 
@@ -44,6 +48,10 @@ export async function exportLeadsService(query) {
     Notes: r.notes ?? '',
     Source: r.source,
     Page: r.pagePath ?? '',
+    'UTM Source': r.utmSource ?? '',
+    'UTM Medium': r.utmMedium ?? '',
+    'UTM Campaign': r.utmCampaign ?? '',
+    GCLID: r.gclid ?? '',
     Date: r.createdAt.toISOString().split('T')[0],
   }));
 }

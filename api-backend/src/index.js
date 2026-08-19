@@ -103,10 +103,13 @@ app.use((req, res) => {
 // ─── Central error handler (must be last) ────────────────────────────────────
 app.use(errorMiddleware);
 
+import { ensureUtmColumns } from './lib/ensureUtmColumns.js';
+
 // ─── Start server ─────────────────────────────────────────────────────────────
 const PORT = env.PORT;
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   logger.info(`TSL API Backend running on port ${PORT} [${env.NODE_ENV}]`);
+  await ensureUtmColumns();
 });
 
 export default app;

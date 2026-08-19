@@ -17,6 +17,10 @@ export interface Lead {
   source: string;
   pagePath: string | null;
   ipAddress: string | null;
+  utmSource: string | null;
+  utmMedium: string | null;
+  utmCampaign: string | null;
+  gclid: string | null;
   createdAt: string;
   updatedAt: string;
 }

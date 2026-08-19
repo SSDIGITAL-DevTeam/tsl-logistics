@@ -18,17 +18,19 @@ function getTransporter() {
   return transporter;
 }
 
-export async function sendMail({ to, subject, html, text }) {
+export async function sendMail({ to, bcc, subject, html, text }) {
   const transport = getTransporter();
   if (!transport) {
-    logger.warn({ to, subject }, 'SMTP not configured — email skipped');
+    logger.warn({ to, bcc, subject }, 'SMTP not configured — email skipped');
     return;
   }
   try {
-    await transport.sendMail({ from: env.MAIL_FROM, to, subject, html, text });
-    logger.info({ to, subject }, 'Email sent');
+    const mailOptions = { from: env.MAIL_FROM, to, subject, html, text };
+    if (bcc) mailOptions.bcc = bcc;
+    await transport.sendMail(mailOptions);
+    logger.info({ to, bcc, subject }, 'Email sent');
   } catch (err) {
-    logger.error({ err, to, subject }, 'Email send failed');
+    logger.error({ err, to, bcc, subject }, 'Email send failed');
   }
 }
 
@@ -43,8 +45,11 @@ export async function sendLeadNotification(lead) {
   const to = SOURCE_NOTIFY_MAP[lead.source] || env.LEAD_NOTIFY_TO;
   if (!to) return;
 
+  const bcc = env.LEAD_NOTIFY_BCC || undefined;
+
   await sendMail({
     to,
+    bcc,
     subject: `New lead from ${lead.source} — ${lead.name}`,
     html: `
       <h2>New Lead Received</h2>
@@ -54,6 +59,10 @@ export async function sendLeadNotification(lead) {
         <tr><td><strong>Phone</strong></td><td>${lead.phone}</td></tr>
         <tr><td><strong>Source</strong></td><td>${lead.source}</td></tr>
         <tr><td><strong>Page</strong></td><td>${lead.pagePath ?? '-'}</td></tr>
+        <tr><td><strong>UTM Source</strong></td><td>${lead.utmSource ?? '-'}</td></tr>
+        <tr><td><strong>UTM Medium</strong></td><td>${lead.utmMedium ?? '-'}</td></tr>
+        <tr><td><strong>UTM Campaign</strong></td><td>${lead.utmCampaign ?? '-'}</td></tr>
+        <tr><td><strong>Google Ads GCLID</strong></td><td>${lead.gclid ?? '-'}</td></tr>
         <tr><td><strong>Enquiry</strong></td><td>${lead.enquiry ?? '-'}</td></tr>
         <tr><td><strong>Message</strong></td><td>${lead.message ?? '-'}</td></tr>
         <tr><td><strong>Notes</strong></td><td>${lead.notes ?? lead.message ?? '-'}</td></tr>
