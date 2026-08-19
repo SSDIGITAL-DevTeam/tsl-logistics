@@ -32,6 +32,10 @@ export async function POST(req: NextRequest) {
         // for the cookie value below.
         source: body.source || "contact",
         pagePath: body.pagePath || "/contact",
+        utmSource: body.utmSource || null,
+        utmMedium: body.utmMedium || null,
+        utmCampaign: body.utmCampaign || null,
+        gclid: body.gclid || null,
         _h: body._h,
       }),
     });

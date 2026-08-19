@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import CustomSelect from "./ui/CustomSelect";
 import PhoneInput, { isPhoneValueValid } from "./ui/PhoneInput";
 import { thankYouPath } from "@/lib/leadConversion";
+import { getStoredUtm } from "@/lib/utmTracker";
 
 interface ContactFormProps {
   enquiryOptions?: string[];
@@ -71,6 +72,7 @@ export default function ContactForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          ...getStoredUtm(),
           notes: form.message,
           source,
           pagePath: pathname,

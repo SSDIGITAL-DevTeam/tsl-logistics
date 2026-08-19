@@ -6,6 +6,7 @@ import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import FloatingHelpWidget from "@/components/FloatingHelpWidget";
 import ScrollToTop from "@/components/ScrollToTop";
 import JsonLd from "@/components/JsonLd";
+import UtmTracker from "@/components/UtmTracker";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -151,6 +152,7 @@ export default function RootLayout({
     <html lang="en" className={montserrat.variable}>
       <body className="min-h-screen flex flex-col font-[family-name:var(--font-montserrat)]">
         <JsonLd data={organizationLd} />
+        <UtmTracker />
         <ScrollToTop />
         <SiteHeader />
         <main className="flex-1">{children}</main>

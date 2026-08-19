@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Download, Search, X } from 'lucide-react';
+import { Download, Eye, Search, X } from 'lucide-react';
 import api from '../lib/api';
 import { Button } from '../components/ui/Button';
 import { Select } from '../components/ui/Select';
@@ -144,8 +144,8 @@ export function LeadsPage() {
           <table className="min-w-full">
             <thead>
               <tr className="border-b border-gray-100 bg-gray-50/70">
-                {['Name', 'Email', 'Phone', 'Enquiry', 'Description', 'Source', 'Date'].map((h) => (
-                  <th key={h} className="px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-widest text-gray-400">
+                {['Name', 'Email', 'Phone', 'Enquiry', 'Description', 'Source', 'Date', 'Action'].map((h) => (
+                  <th key={h} className={`px-4 py-3 text-[10px] font-semibold uppercase tracking-widest text-gray-400 ${h === 'Action' ? 'text-center' : 'text-left'}`}>
                     {h}
                   </th>
                 ))}
@@ -155,7 +155,7 @@ export function LeadsPage() {
               {isLoading ? (
                 [...Array(5)].map((_, i) => (
                   <tr key={i} className="animate-pulse">
-                    {[...Array(7)].map((_, j) => (
+                    {[...Array(8)].map((_, j) => (
                       <td key={j} className="px-4 py-3.5">
                         <div className="h-3.5 rounded-lg bg-gray-100" />
                       </td>
@@ -170,27 +170,36 @@ export function LeadsPage() {
                     <td className="px-4 py-3.5 text-sm text-gray-500">{lead.phone}</td>
                     <td className="px-4 py-3.5 text-sm text-gray-400 max-w-50 truncate">{lead.enquiry || '—'}</td>
                     <td className="px-4 py-3.5 text-sm text-gray-500 max-w-64">
-                      {lead.notes || lead.message ? (
-                        <button
-                          type="button"
-                          onClick={() => setSelectedLead(lead)}
-                          className="max-w-64 truncate text-left text-[#9A7D2D] underline-offset-2 hover:underline"
-                        >
-                          {lead.notes || lead.message}
-                        </button>
-                      ) : (
-                        <span className="text-gray-300">—</span>
-                      )}
+                      <span className="max-w-64 truncate block" title={lead.notes || lead.message || undefined}>
+                        {lead.notes || lead.message || '—'}
+                      </span>
                     </td>
                     <td className="px-4 py-3.5">
-                      <Badge variant={getSourceColor(lead.source)}>{lead.source}</Badge>
+                      <div className="flex flex-col gap-1 items-start">
+                        <Badge variant={getSourceColor(lead.source)}>{lead.source}</Badge>
+                        {(lead.utmSource || lead.gclid) && (
+                          <span className="inline-flex items-center rounded-md bg-purple-50 px-2 py-0.5 text-[10px] font-semibold text-purple-700 ring-1 ring-inset ring-purple-600/20">
+                            {lead.gclid || lead.utmSource === 'google' ? 'Google Ads' : lead.utmSource}
+                          </span>
+                        )}
+                      </div>
                     </td>
-                    <td className="px-4 py-3.5 text-sm text-gray-400">{dayjs(lead.createdAt).format('DD MMM YYYY')}</td>
+                    <td className="px-4 py-3.5 text-sm text-gray-400 whitespace-nowrap">{dayjs(lead.createdAt).format('DD MMM YYYY')}</td>
+                    <td className="px-4 py-3.5 text-center">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedLead(lead)}
+                        title="View Lead Details"
+                        className="inline-flex items-center justify-center p-2 text-gray-400 hover:text-[#9A7D2D] hover:bg-amber-50 rounded-lg transition-colors"
+                      >
+                        <Eye className="h-4 w-4" />
+                      </button>
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={7} className="px-4 py-14 text-center text-sm text-gray-400">
+                  <td colSpan={8} className="px-4 py-14 text-center text-sm text-gray-400">
                     No leads found.
                   </td>
                 </tr>
@@ -218,7 +227,7 @@ export function LeadsPage() {
       <Modal
         open={Boolean(selectedLead)}
         onClose={() => setSelectedLead(null)}
-        title="Lead Description"
+        title="Lead Details"
         size="lg"
       >
         {selectedLead && (
@@ -241,6 +250,30 @@ export function LeadsPage() {
                 <p className="mt-1 text-gray-900">{selectedLead.phone}</p>
               </div>
             </div>
+
+            {/* Campaign & Traffic Attribution */}
+            <div className="rounded-xl border border-gray-100 bg-gray-50/80 p-3.5">
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Campaign & Traffic Source</p>
+              <div className="grid gap-2 text-xs sm:grid-cols-2">
+                <div>
+                  <span className="text-gray-400">UTM Source:</span>{' '}
+                  <span className="font-semibold text-gray-800">{selectedLead.utmSource || '— (Direct/Organic)'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">UTM Medium:</span>{' '}
+                  <span className="font-semibold text-gray-800">{selectedLead.utmMedium || '—'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">UTM Campaign:</span>{' '}
+                  <span className="font-semibold text-gray-800">{selectedLead.utmCampaign || '—'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">GCLID (Google Ads):</span>{' '}
+                  <span className="font-semibold text-gray-800 truncate block">{selectedLead.gclid || '—'}</span>
+                </div>
+              </div>
+            </div>
+
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">Description</p>
               <p className="mt-2 whitespace-pre-wrap rounded-xl bg-gray-50 p-4 text-sm leading-relaxed text-gray-700">
