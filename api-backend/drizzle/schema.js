@@ -91,6 +91,8 @@ export const leads = mysqlTable(
     utmMedium: varchar('utm_medium', { length: 255 }),
     utmCampaign: varchar('utm_campaign', { length: 255 }),
     gclid: varchar('gclid', { length: 255 }),
+    // NULL = notification email never confirmed sent (see src/resend-lead-notifications.js)
+    notifiedAt: timestamp('notified_at'),
     ...timestamps(),
   },
   (table) => [

@@ -114,7 +114,9 @@ export async function forgotPasswordService(email) {
   await db.insert(passwordResets).values({ email, token, expiresAt });
 
   const resetUrl = `${env.RESET_LINK_URL}?token=${token}`;
-  await sendPasswordResetEmail(email, resetUrl);
+  // sendMail throws on failure; keep the endpoint's response identical either way
+  // (the mailer already logs the underlying SMTP error).
+  await sendPasswordResetEmail(email, resetUrl).catch(() => {});
 }
 
 export async function resetPasswordService({ token, password }) {

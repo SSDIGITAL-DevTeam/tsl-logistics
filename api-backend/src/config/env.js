@@ -26,10 +26,11 @@ const envSchema = z.object({
     .string()
     .optional()
     .transform((v) => (v ? parseInt(v, 10) : undefined)),
+  // Stays undefined when unset so mailer.js can fall back to (port === 465).
   SMTP_SECURE: z
     .string()
     .optional()
-    .transform((v) => v === 'true'),
+    .transform((v) => (v === undefined ? undefined : v === 'true')),
   SMTP_USER: z.string().optional(),
   SMTP_PASS: z.string().optional(),
   MAIL_FROM: emailOrNamedEmail.default('no-reply@tsl-logistics.com'),

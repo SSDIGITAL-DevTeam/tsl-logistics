@@ -1,10 +1,51 @@
-import { and, desc, eq, gte, like, lte, or, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, inArray, isNull, like, lte, not, or, sql } from 'drizzle-orm';
+import { randomUUID } from 'crypto';
 import { db } from '../../../drizzle/db.js';
 import { leads } from '../../../drizzle/schema.js';
 
+// Sources of the one-off CSV import (src/seed-leads.js). These were already
+// handled offline and must never be emailed by the resend CLI.
+export const LEGACY_SOURCE_PATTERN = 'TSL % Form';
+
 export async function insertLead(data) {
-  const [result] = await db.insert(leads).values(data);
-  return result;
+  // Generate the id up front: MySQL INSERT returns a ResultSetHeader, not the row,
+  // so callers would otherwise have no id to mark as notified.
+  const row = { id: randomUUID(), ...data };
+  await db.insert(leads).values(row);
+  return row;
+}
+
+export async function markLeadNotified(id) {
+  return db.update(leads).set({ notifiedAt: new Date() }).where(eq(leads.id, id));
+}
+
+export async function findLeadsPendingNotification({
+  since,
+  until,
+  sources,
+  ids,
+  includeLegacy = false,
+  limit,
+} = {}) {
+  const conditions = [isNull(leads.notifiedAt)];
+
+  if (!includeLegacy) conditions.push(not(like(leads.source, LEGACY_SOURCE_PATTERN)));
+  if (sources?.length) conditions.push(inArray(leads.source, sources));
+  if (ids?.length) conditions.push(inArray(leads.id, ids));
+  if (since) conditions.push(gte(leads.createdAt, new Date(since)));
+  if (until) {
+    const end = new Date(until);
+    end.setHours(23, 59, 59, 999);
+    conditions.push(lte(leads.createdAt, end));
+  }
+
+  const query = db
+    .select()
+    .from(leads)
+    .where(and(...conditions))
+    .orderBy(asc(leads.createdAt));
+
+  return limit ? query.limit(limit) : query;
 }
 
 export async function findLeads({ page = 1, limit = 20, q, source, dateFrom, dateTo }) {

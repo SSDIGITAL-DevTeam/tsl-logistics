@@ -1,4 +1,10 @@
-import { insertLead, findLeads, findAllLeadsForExport, findLeadSources } from './leads.repository.js';
+import {
+  insertLead,
+  findLeads,
+  findAllLeadsForExport,
+  findLeadSources,
+  markLeadNotified,
+} from './leads.repository.js';
 import { sendLeadNotification } from '../../lib/mailer.js';
 import { env } from '../../config/env.js';
 import { logger } from '../../lib/logger.js';
@@ -25,10 +31,11 @@ export async function createLeadService(data, req) {
     gclid: data.gclid || null,
   });
 
-  // Fire-and-forget email notification
-  sendLeadNotification({ ...data, ...lead }).catch((err) =>
-    logger.error({ err }, 'Lead notification email failed')
-  );
+  // Fire-and-forget email notification. notified_at stays NULL when it fails, so
+  // `npm run mail:resend` picks the lead up later.
+  sendLeadNotification({ ...data, ...lead, createdAt: new Date() })
+    .then(() => markLeadNotified(lead.id))
+    .catch((err) => logger.error({ err, leadId: lead.id }, 'Lead notification email failed'));
 
   return lead;
 }

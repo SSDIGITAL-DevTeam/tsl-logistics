@@ -9,6 +9,8 @@
     "migrate": "node --env-file=.env src/migrate.js",
     "seed": "node --env-file=.env src/seed.js",
     "db:setup": "npm run migrate && npm run seed",
+    "mail:check": "node --env-file=.env src/check-mail.js",
+    "mail:resend": "node --env-file=.env src/resend-lead-notifications.js",
     "generate": "drizzle-kit generate",
     "lint": "eslint src/"
   },
