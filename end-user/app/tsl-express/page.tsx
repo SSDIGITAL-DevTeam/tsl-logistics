@@ -30,7 +30,7 @@ const enquiryOptions = [
 
 export default function TSLExpressPage() {
   return (
-    <ServicePageLayout title="Express" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
+    <ServicePageLayout title="Express" subtitle="Dedicated Courier & Biker Service Singapore" image="/images/service-express.jpg" enquiryOptions={enquiryOptions} source="tsl-express">
       <JsonLd data={serviceLd(segmentSeo.express)} />
       <FigmaServiceShell>
         <FigmaIntro

@@ -35,6 +35,7 @@ export default function TSLLogisticsPage() {
   return (
     <ServicePageLayout
       title="Logistics"
+      subtitle="Container Haulage & Trucking Singapore"
       image="/images/edite-wfn05998.jpg"
       enquiryOptions={enquiryOptions}
       ctaVariant="quote"

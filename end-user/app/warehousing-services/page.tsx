@@ -33,7 +33,7 @@ const enquiryOptions = [
 
 export default function WarehousingServicesPage() {
   return (
-    <ServicePageLayout title="Warehousing" image="/images/TSL Logistics Warehouse-1920w.jpeg" enquiryOptions={enquiryOptions} source="warehousing-services" requestFormServiceSuffix={false}>
+    <ServicePageLayout title="Warehousing" subtitle="Warehousing Services Singapore" image="/images/TSL Logistics Warehouse-1920w.jpeg" enquiryOptions={enquiryOptions} source="warehousing-services" requestFormServiceSuffix={false}>
       <JsonLd data={serviceLd(segmentSeo.warehousing)} />
       <FigmaServiceShell>
         <section className="grid items-center gap-8 md:grid-cols-[411px_1fr] md:gap-12">
