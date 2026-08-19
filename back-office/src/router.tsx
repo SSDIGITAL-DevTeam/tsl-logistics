@@ -27,8 +27,10 @@ export const router = createBrowserRouter([
           { path: '/leads', element: <LeadsPage /> },
           { path: '/blog', element: <BlogListPage /> },
           { path: '/categories', element: <CategoriesPage /> },
+          { path: '*', element: <Navigate to="/dashboard" replace /> },
         ],
       },
     ],
   },
+  { path: '*', element: <Navigate to="/login" replace /> },
 ]);
