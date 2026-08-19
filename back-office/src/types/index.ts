@@ -21,6 +21,8 @@ export interface Lead {
   utmMedium: string | null;
   utmCampaign: string | null;
   gclid: string | null;
+  gbraid: string | null;
+  wbraid: string | null;
   createdAt: string;
   updatedAt: string;
 }

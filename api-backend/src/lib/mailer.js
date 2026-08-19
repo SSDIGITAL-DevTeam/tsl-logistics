@@ -1,6 +1,10 @@
 import nodemailer from 'nodemailer';
 import { env } from '../config/env.js';
+import { isGoogleAdsLead } from '../utils/attribution.js';
 import { logger } from './logger.js';
+
+// Subject is a header, not HTML — strip CR/LF rather than escaping.
+const subjectSafe = (v) => String(v).replace(/[\r\n]+/g, ' ').slice(0, 200);
 
 let transporter = null;
 
@@ -77,13 +81,17 @@ export function resolveLeadRecipient(source) {
   return SOURCE_NOTIFY_MAP[source] || env.LEAD_NOTIFY_TO || null;
 }
 
+// Lead fields are attacker-controlled free text (message/notes accept 5000
+// chars), so nothing reaches the template unescaped — otherwise a visitor
+// could plant markup or a phishing link in the sales team's inbox.
 function esc(value) {
   if (value === null || value === undefined || value === '') return '-';
   return String(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function formatLeadDate(value) {
@@ -134,11 +142,12 @@ export async function sendLeadNotification(lead, options = {}) {
   await sendMail({
     to,
     bcc,
-    subject,
+    subject: subjectSafe(subject),
     html: `
       <h2>New Lead Received</h2>
       ${banner}
       <table cellpadding="6" style="border-collapse:collapse">
+        <tr><td><strong>From Google Ads?</strong></td><td>${isGoogleAdsLead(lead) ? '<strong>YES</strong>' : 'No'}</td></tr>
         <tr><td><strong>Name</strong></td><td>${esc(lead.name)}</td></tr>
         <tr><td><strong>Email</strong></td><td>${esc(lead.email)}</td></tr>
         <tr><td><strong>Phone</strong></td><td>${esc(lead.phone)}</td></tr>

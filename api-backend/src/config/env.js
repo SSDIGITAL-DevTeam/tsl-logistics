@@ -27,6 +27,7 @@ const envSchema = z.object({
     .optional()
     .transform((v) => (v ? parseInt(v, 10) : undefined)),
   // Stays undefined when unset so mailer.js can fall back to (port === 465).
+  // A plain `v === 'true'` would yield false and defeat that fallback.
   SMTP_SECURE: z
     .string()
     .optional()
@@ -38,7 +39,11 @@ const envSchema = z.object({
   LEAD_NOTIFY_TSL_LOGISTICS: z.string().email().default('sales@tsllogistics.sg'),
   LEAD_NOTIFY_TSL_MOVER: z.string().email().default('ops@tslmovers.sg'),
   LEAD_NOTIFY_TSL_EXPRESS: z.string().email().default('ops@tslexpress.sg'),
-  LEAD_NOTIFY_BCC: z.string().email().optional().default('rahmaariani3@gmail.com'),
+  // No default on purpose: a hardcoded fallback would silently BCC every
+  // lead's name, email and phone to that address on any deployment that
+  // forgets to set it. Plain string rather than .email() so a comma-separated
+  // list of recipients works (nodemailer accepts that form natively).
+  LEAD_NOTIFY_BCC: z.string().optional(),
   RESET_LINK_URL: z
     .string()
     .url()

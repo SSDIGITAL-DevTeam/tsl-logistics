@@ -91,6 +91,10 @@ export const leads = mysqlTable(
     utmMedium: varchar('utm_medium', { length: 255 }),
     utmCampaign: varchar('utm_campaign', { length: 255 }),
     gclid: varchar('gclid', { length: 255 }),
+    // iOS 14.5+ replacements Google Ads sends when a gclid cannot be set:
+    // gbraid for app→web, wbraid for web→web.
+    gbraid: varchar('gbraid', { length: 255 }),
+    wbraid: varchar('wbraid', { length: 255 }),
     // NULL = notification email never confirmed sent (see src/resend-lead-notifications.js)
     notifiedAt: timestamp('notified_at'),
     ...timestamps(),
@@ -98,6 +102,7 @@ export const leads = mysqlTable(
   (table) => [
     index('idx_leads_source').on(table.source),
     index('idx_leads_created_at').on(table.createdAt),
+    index('idx_leads_utm_source').on(table.utmSource),
   ]
 );
 

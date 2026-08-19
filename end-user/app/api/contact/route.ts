@@ -36,6 +36,8 @@ export async function POST(req: NextRequest) {
         utmMedium: body.utmMedium || null,
         utmCampaign: body.utmCampaign || null,
         gclid: body.gclid || null,
+        gbraid: body.gbraid || null,
+        wbraid: body.wbraid || null,
         _h: body._h,
       }),
     });

@@ -7,6 +7,7 @@ import { Select } from '../components/ui/Select';
 import { Badge } from '../components/ui/Badge';
 import { Modal } from '../components/ui/Modal';
 import type { Lead, PaginatedResponse } from '../types';
+import { getChannelLabel, isGoogleAdsLead } from '../lib/attribution';
 import dayjs from 'dayjs';
 
 const SOURCE_COLORS: Record<string, 'gold' | 'info' | 'success' | 'warning'> = {};
@@ -17,7 +18,7 @@ function getSourceColor(source: string) {
   return SOURCE_COLORS[source];
 }
 
-interface Filters { q: string; source: string; dateFrom: string; dateTo: string; }
+interface Filters { q: string; source: string; channel: string; dateFrom: string; dateTo: string; }
 
 const inputCls =
   'rounded-xl border border-gray-200 bg-white px-3.5 py-2.5 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary hover:border-gray-300 transition-colors w-full';
@@ -25,7 +26,7 @@ const inputCls =
 export function LeadsPage() {
   const [page, setPage] = useState(1);
   const [searchInput, setSearchInput] = useState('');
-  const [filters, setFilters] = useState<Filters>({ q: '', source: '', dateFrom: '', dateTo: '' });
+  const [filters, setFilters] = useState<Filters>({ q: '', source: '', channel: '', dateFrom: '', dateTo: '' });
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
 
   // Debounce text search by 400ms
@@ -44,11 +45,12 @@ export function LeadsPage() {
 
   const clearAll = () => {
     setSearchInput('');
-    setFilters({ q: '', source: '', dateFrom: '', dateTo: '' });
+    setFilters({ q: '', source: '', channel: '', dateFrom: '', dateTo: '' });
     setPage(1);
   };
 
-  const hasFilters = searchInput || filters.source || filters.dateFrom || filters.dateTo;
+  const hasFilters =
+    searchInput || filters.source || filters.channel || filters.dateFrom || filters.dateTo;
 
   const params = new URLSearchParams({
     page: String(page),
@@ -94,7 +96,7 @@ export function LeadsPage() {
 
       {/* Filters — live, no submit needed */}
       <div className="rounded-2xl bg-white p-4 ring-1 ring-black/5 shadow-sm">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <div className="relative">
             <Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-gray-400" />
             <input
@@ -111,6 +113,17 @@ export function LeadsPage() {
             options={[
               { value: '', label: 'All Sources' },
               ...(sources?.map(({ source }) => ({ value: source, label: source })) ?? []),
+            ]}
+          />
+          {/* Traffic channel — distinct from "Source" above, which is the form
+              the lead came from (contact, tsl-mover…), not the ad platform. */}
+          <Select
+            value={filters.channel}
+            onChange={(v) => updateFilter('channel', v)}
+            placeholder="All Channels"
+            options={[
+              { value: '', label: 'All Channels' },
+              { value: 'google-ads', label: 'Google Ads only' },
             ]}
           />
           <input
@@ -177,9 +190,9 @@ export function LeadsPage() {
                     <td className="px-4 py-3.5">
                       <div className="flex flex-col gap-1 items-start">
                         <Badge variant={getSourceColor(lead.source)}>{lead.source}</Badge>
-                        {(lead.utmSource || lead.gclid) && (
+                        {getChannelLabel(lead) && (
                           <span className="inline-flex items-center rounded-md bg-purple-50 px-2 py-0.5 text-[10px] font-semibold text-purple-700 ring-1 ring-inset ring-purple-600/20">
-                            {lead.gclid || lead.utmSource === 'google' ? 'Google Ads' : lead.utmSource}
+                            {getChannelLabel(lead)}
                           </span>
                         )}
                       </div>
@@ -254,6 +267,16 @@ export function LeadsPage() {
             {/* Campaign & Traffic Attribution */}
             <div className="rounded-xl border border-gray-100 bg-gray-50/80 p-3.5">
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Campaign & Traffic Source</p>
+              <div className="mb-2 flex items-center gap-2 text-xs">
+                <span className="text-gray-400">From Google Ads:</span>
+                {isGoogleAdsLead(selectedLead) ? (
+                  <span className="inline-flex items-center rounded-md bg-purple-50 px-2 py-0.5 text-[10px] font-semibold text-purple-700 ring-1 ring-inset ring-purple-600/20">
+                    Yes
+                  </span>
+                ) : (
+                  <span className="font-semibold text-gray-800">No</span>
+                )}
+              </div>
               <div className="grid gap-2 text-xs sm:grid-cols-2">
                 <div>
                   <span className="text-gray-400">UTM Source:</span>{' '}
@@ -270,6 +293,14 @@ export function LeadsPage() {
                 <div>
                   <span className="text-gray-400">GCLID (Google Ads):</span>{' '}
                   <span className="font-semibold text-gray-800 truncate block">{selectedLead.gclid || '—'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">GBRAID (iOS app→web):</span>{' '}
+                  <span className="font-semibold text-gray-800 truncate block">{selectedLead.gbraid || '—'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">WBRAID (iOS web→web):</span>{' '}
+                  <span className="font-semibold text-gray-800 truncate block">{selectedLead.wbraid || '—'}</span>
                 </div>
               </div>
             </div>

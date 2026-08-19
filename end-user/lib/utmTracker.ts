@@ -3,30 +3,51 @@ export interface UtmParams {
   utmMedium?: string;
   utmCampaign?: string;
   gclid?: string;
+  // Google Ads sends these instead of gclid on iOS 14.5+, where a gclid
+  // cannot be set: gbraid for app→web, wbraid for web→web. Without them a
+  // sizeable share of paid clicks looks like direct traffic.
+  gbraid?: string;
+  wbraid?: string;
 }
 
 const UTM_COOKIE_NAME = "tsl_utm";
 const UTM_STORAGE_KEY = "tsl_utm_params";
 
+const PARAM_MAP: Record<keyof UtmParams, string> = {
+  utmSource: "utm_source",
+  utmMedium: "utm_medium",
+  utmCampaign: "utm_campaign",
+  gclid: "gclid",
+  gbraid: "gbraid",
+  wbraid: "wbraid",
+};
+
 export function captureUtmFromUrl(): UtmParams | null {
   if (typeof window === "undefined") return null;
 
   const params = new URLSearchParams(window.location.search);
-  const utmSource = params.get("utm_source") || undefined;
-  const utmMedium = params.get("utm_medium") || undefined;
-  const utmCampaign = params.get("utm_campaign") || undefined;
-  const gclid = params.get("gclid") || undefined;
-
-  if (utmSource || utmMedium || utmCampaign || gclid) {
-    const data: UtmParams = { utmSource, utmMedium, utmCampaign, gclid };
-    try {
-      sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(data));
-      // Store in cookie for 30 days
-      document.cookie = `${UTM_COOKIE_NAME}=${encodeURIComponent(JSON.stringify(data))}; path=/; max-age=${30 * 86400}; SameSite=Lax`;
-    } catch {}
-    return data;
+  const incoming: UtmParams = {};
+  for (const [key, param] of Object.entries(PARAM_MAP) as [keyof UtmParams, string][]) {
+    const value = params.get(param);
+    if (value) incoming[key] = value;
   }
-  return null;
+
+  if (Object.keys(incoming).length === 0) return null;
+
+  // Merge rather than replace. Auto-tagging and manual tagging can arrive on
+  // different landings — overwriting the whole object would let a `?gclid=`
+  // link wipe the utm_* captured earlier (and vice versa), losing the campaign
+  // name on exactly the leads we most want to attribute.
+  const data: UtmParams = { ...getStoredUtm(), ...incoming };
+
+  try {
+    sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(data));
+    // Store in cookie for 30 days
+    const secure = window.location.protocol === "https:" ? "; Secure" : "";
+    document.cookie = `${UTM_COOKIE_NAME}=${encodeURIComponent(JSON.stringify(data))}; path=/; max-age=${30 * 86400}; SameSite=Lax${secure}`;
+  } catch {}
+
+  return data;
 }
 
 export function getStoredUtm(): UtmParams {

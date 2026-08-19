@@ -1,7 +1,10 @@
-import { and, asc, desc, eq, gte, inArray, isNull, like, lte, not, or, sql } from 'drizzle-orm';
+import {
+  and, asc, desc, eq, gte, inArray, isNotNull, isNull, like, lte, not, or, sql,
+} from 'drizzle-orm';
 import { randomUUID } from 'crypto';
 import { db } from '../../../drizzle/db.js';
 import { leads } from '../../../drizzle/schema.js';
+import { PAID_MEDIUMS } from '../../utils/attribution.js';
 
 // Sources of the one-off CSV import (src/seed-leads.js). These were already
 // handled offline and must never be emailed by the resend CLI.
@@ -48,9 +51,9 @@ export async function findLeadsPendingNotification({
   return limit ? query.limit(limit) : query;
 }
 
-export async function findLeads({ page = 1, limit = 20, q, source, dateFrom, dateTo }) {
+export async function findLeads({ page = 1, limit = 20, q, source, channel, dateFrom, dateTo }) {
   const offset = (page - 1) * limit;
-  const where = buildWhere({ q, source, dateFrom, dateTo });
+  const where = buildWhere({ q, source, channel, dateFrom, dateTo });
 
   const [rows, [{ count }]] = await Promise.all([
     db.select().from(leads).where(where).orderBy(desc(leads.createdAt)).limit(limit).offset(offset),
@@ -60,12 +63,12 @@ export async function findLeads({ page = 1, limit = 20, q, source, dateFrom, dat
   return { rows, total: count, page, limit, totalPages: Math.ceil(count / limit) };
 }
 
-export async function findAllLeadsForExport({ q, source, dateFrom, dateTo }) {
-  const where = buildWhere({ q, source, dateFrom, dateTo });
+export async function findAllLeadsForExport({ q, source, channel, dateFrom, dateTo }) {
+  const where = buildWhere({ q, source, channel, dateFrom, dateTo });
   return db.select().from(leads).where(where).orderBy(desc(leads.createdAt));
 }
 
-function buildWhere({ q, source, dateFrom, dateTo }) {
+function buildWhere({ q, source, channel, dateFrom, dateTo }) {
   const conditions = [];
 
   if (q) {
@@ -80,6 +83,20 @@ function buildWhere({ q, source, dateFrom, dateTo }) {
     );
   }
   if (source) conditions.push(eq(leads.source, source));
+  // Mirrors isGoogleAdsLead() in src/utils/attribution.js — keep both in sync.
+  if (channel === 'google-ads') {
+    conditions.push(
+      or(
+        isNotNull(leads.gclid),
+        isNotNull(leads.gbraid),
+        isNotNull(leads.wbraid),
+        and(
+          eq(sql`lower(${leads.utmSource})`, 'google'),
+          inArray(sql`lower(${leads.utmMedium})`, PAID_MEDIUMS)
+        )
+      )
+    );
+  }
   if (dateFrom) conditions.push(gte(leads.createdAt, new Date(dateFrom)));
   if (dateTo) {
     const end = new Date(dateTo);

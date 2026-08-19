@@ -6,6 +6,7 @@ import {
   markLeadNotified,
 } from './leads.repository.js';
 import { sendLeadNotification } from '../../lib/mailer.js';
+import { isGoogleAdsLead } from '../../utils/attribution.js';
 import { env } from '../../config/env.js';
 import { logger } from '../../lib/logger.js';
 
@@ -29,6 +30,8 @@ export async function createLeadService(data, req) {
     utmMedium: data.utmMedium || null,
     utmCampaign: data.utmCampaign || null,
     gclid: data.gclid || null,
+    gbraid: data.gbraid || null,
+    wbraid: data.wbraid || null,
   });
 
   // Fire-and-forget email notification. notified_at stays NULL when it fails, so
@@ -59,6 +62,9 @@ export async function exportLeadsService(query) {
     'UTM Medium': r.utmMedium ?? '',
     'UTM Campaign': r.utmCampaign ?? '',
     GCLID: r.gclid ?? '',
+    GBRAID: r.gbraid ?? '',
+    WBRAID: r.wbraid ?? '',
+    'Google Ads': isGoogleAdsLead(r) ? 'Yes' : 'No',
     Date: r.createdAt.toISOString().split('T')[0],
   }));
 }

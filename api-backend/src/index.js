@@ -103,16 +103,12 @@ app.use((req, res) => {
 // ─── Central error handler (must be last) ────────────────────────────────────
 app.use(errorMiddleware);
 
-import { ensureUtmColumns } from './lib/ensureUtmColumns.js';
-
 // ─── Start server ─────────────────────────────────────────────────────────────
 const PORT = env.PORT;
-app.listen(PORT, async () => {
+// The leads table's UTM/GCLID columns now come from drizzle migrations
+// (0003_add_utm_gclid_tracking) rather than DDL on boot — see `npm run migrate`.
+app.listen(PORT, () => {
   logger.info(`TSL API Backend running on port ${PORT} [${env.NODE_ENV}]`);
-  // Must never take the server down — log and keep serving.
-  await ensureUtmColumns().catch((err) =>
-    logger.error({ err }, 'Failed to check/add UTM columns to leads table')
-  );
 });
 
 export default app;
