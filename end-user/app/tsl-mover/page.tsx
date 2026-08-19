@@ -44,7 +44,7 @@ const featuredLogos = [
 
 export default function TSLMoverPage() {
   return (
-    <ServicePageLayout title="Movers" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} showContactForm={false} source="tsl-mover">
+    <ServicePageLayout title="Movers" subtitle="House & Office Movers Singapore" image="/images/service-warehousing.jpg" enquiryOptions={enquiryOptions} showContactForm={false} source="tsl-mover">
       <JsonLd data={serviceLd(segmentSeo.movers)} />
       <FigmaServiceShell>
         <FigmaIntro

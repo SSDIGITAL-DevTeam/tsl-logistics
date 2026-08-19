@@ -3,6 +3,8 @@ import PageHero from "./PageHero";
 
 interface ServicePageLayoutProps {
   title: string;
+  /** Keyword phrase shown under the hero title, e.g. "Container Haulage & Trucking Singapore". */
+  subtitle?: string;
   image?: string;
   children: React.ReactNode;
   enquiryOptions?: string[];
@@ -15,6 +17,7 @@ interface ServicePageLayoutProps {
 
 export default function ServicePageLayout({
   title,
+  subtitle,
   image,
   children,
   enquiryOptions,
@@ -24,7 +27,7 @@ export default function ServicePageLayout({
 }: ServicePageLayoutProps) {
   return (
     <>
-      <PageHero title={title} image={image} />
+      <PageHero title={title} subtitle={subtitle} image={image} />
 
       {/* ── Page Content ── */}
       <div className="pt-14 bg-white">
