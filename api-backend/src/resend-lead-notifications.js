@@ -27,6 +27,7 @@ import {
   markLeadNotified,
 } from './modules/leads/leads.repository.js';
 import { sendLeadNotification, resolveLeadRecipient } from './lib/mailer.js';
+import { ensureUtmColumns } from './lib/ensureUtmColumns.js';
 
 const args = process.argv.slice(2);
 const getFlag = (name) => {
@@ -62,7 +63,26 @@ const truncate = (s, n) => {
   return v.length > n ? `${v.slice(0, n - 1)}…` : v;
 };
 
+/**
+ * The UTM/GCLID columns are normally created by ensureUtmColumns() on server boot,
+ * which never runs for a CLI script — so a server that hasn't restarted since that
+ * feature shipped still lacks them. notified_at comes from `npm run migrate`.
+ */
+async function ensureSchema() {
+  await ensureUtmColumns();
+
+  const [cols] = await pool.query('SHOW COLUMNS FROM `leads` LIKE "notified_at"');
+  if (!Array.isArray(cols) || cols.length === 0) {
+    throw new Error(
+      'Column `notified_at` is missing — run `npm run migrate` first, then verify with:\n' +
+        "  SHOW COLUMNS FROM leads LIKE 'notified_at';"
+    );
+  }
+}
+
 async function main() {
+  await ensureSchema();
+
   const leads = await findLeadsPendingNotification({
     since,
     until,

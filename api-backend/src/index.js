@@ -109,7 +109,10 @@ import { ensureUtmColumns } from './lib/ensureUtmColumns.js';
 const PORT = env.PORT;
 app.listen(PORT, async () => {
   logger.info(`TSL API Backend running on port ${PORT} [${env.NODE_ENV}]`);
-  await ensureUtmColumns();
+  // Must never take the server down — log and keep serving.
+  await ensureUtmColumns().catch((err) =>
+    logger.error({ err }, 'Failed to check/add UTM columns to leads table')
+  );
 });
 
 export default app;
