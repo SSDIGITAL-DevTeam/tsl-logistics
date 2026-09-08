@@ -13,14 +13,14 @@ async function seed() {
 
   // ── Admin user ───────────────────────────────────────────────────────────────
   const email = 'admin@tsl-logistics.com';
-  const password = await bcrypt.hash('Admin@1234!', 12);
+  const password = await bcrypt.hash('Ld^w@7)Hk1>2@)0', 12);
 
   await db
     .insert(users)
     .values({ name: 'TSL Admin', email, password, role: 'admin', status: 'active' })
-    .onDuplicateKeyUpdate({ set: { name: 'TSL Admin' } });
+    .onDuplicateKeyUpdate({ set: { password, name: 'TSL Admin' } });
 
-  console.log(`  ✅ Admin user: ${email} (password: Admin@1234!)`);
+  console.log(`  ✅ Admin user: ${email} (password updated)`);
 
   // ── Blog categories ───────────────────────────────────────────────────────────
   const categoryData = [
