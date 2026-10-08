@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import Script from "next/script";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
@@ -140,6 +141,18 @@ function resolveGtmId(): string | null {
   return id;
 }
 
+/**
+ * Google Ads Google Tag (gtag.js) accounts for each service division:
+ * - TSL Logistics: AW-942191124
+ * - TSL Movers:    AW-11309674954
+ * - TSL Express:   AW-18369880459
+ */
+const GOOGLE_ADS_IDS = [
+  "AW-942191124",   // TSL Logistics
+  "AW-11309674954", // TSL Movers
+  "AW-18369880459", // TSL Express
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -158,6 +171,19 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <FloatingHelpWidget />
+        {/* Google tag (gtag.js) for Google Ads (Logistics, Movers, Express) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_IDS[0]}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            ${GOOGLE_ADS_IDS.map((id) => `gtag('config', '${id}');`).join("\n            ")}
+          `}
+        </Script>
         {/* Both tag loaders must live inside <body> — as direct children of
             <html> this was invalid nesting and the browser relocated it during
             parsing. (The Next docs' own GTM example does exactly that; don't

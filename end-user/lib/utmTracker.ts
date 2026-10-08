@@ -32,6 +32,14 @@ export function captureUtmFromUrl(): UtmParams | null {
     if (value) incoming[key] = value;
   }
 
+  // Google Ads auto-tagging often appends `gad_source` (e.g. `gad_source=1`).
+  // If present without explicit UTMs or gclid, mark as Google Paid Search (cpc).
+  const gadSource = params.get("gad_source");
+  if (gadSource && !incoming.gclid && !incoming.utmSource) {
+    incoming.utmSource = "google";
+    incoming.utmMedium = "cpc";
+  }
+
   if (Object.keys(incoming).length === 0) return null;
 
   // Merge rather than replace. Auto-tagging and manual tagging can arrive on
