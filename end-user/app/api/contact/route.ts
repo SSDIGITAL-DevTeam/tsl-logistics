@@ -17,9 +17,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "API not configured" }, { status: 503 });
     }
 
+    const forwardedFor = req.headers.get("x-forwarded-for");
+    const realIp = req.headers.get("x-real-ip");
+    const clientIp = forwardedFor ? forwardedFor.split(",")[0].trim() : (realIp || "");
+
+    const headers: Record<string, string> = { "Content-Type": "application/json" };
+    if (clientIp) {
+      headers["x-forwarded-for"] = clientIp;
+    }
+
     const response = await fetch(`${apiUrl}/api/v1/leads`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify({
         name: body.name,
         email: body.email,

@@ -1,8 +1,9 @@
 import rateLimit from 'express-rate-limit';
+import { env } from '../config/env.js';
 
 export const apiRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100,
+  max: env.NODE_ENV === 'production' ? 100 : 1000,
   standardHeaders: true,
   legacyHeaders: false,
   message: { message: 'Too many requests, please try again later.' },
@@ -10,7 +11,7 @@ export const apiRateLimit = rateLimit({
 
 export const leadsRateLimit = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 10,
+  max: env.NODE_ENV === 'production' ? 10 : 1000,
   standardHeaders: true,
   legacyHeaders: false,
   message: { message: 'Too many form submissions. Please try again later.' },
